@@ -199,20 +199,20 @@ export const sceneggiature: ScriptItem[] = [
     title: "Classe Z",
     href: "/media/opera/alessandro-aronadio-guido-chiesa-renato-sannio/classe-z/CLASSE%20Z%20%20def%2031.10.pdf",
     pdf: true,
-    content: null,
+    content: `<p><a href="/media/opera/alessandro-aronadio-guido-chiesa-renato-sannio/classe-z/CLASSE%20Z%20%20def%2031.10.pdf">↓ Scarica PDF</a></p>`,
   },
   {
     year: 2018,
     title: "Ti presento Sofia",
     href: "/media/opera/ti-pre/no%20kids%2020%20gen%2018.pdf",
     pdf: true,
-    content: null,
+    content: `<p><a href="/media/opera/ti-pre/no%20kids%2020%20gen%2018.pdf">↓ Scarica PDF</a></p>`,
   },
   {
     year: 2019,
     title: "Cambio tutto!",
     href: "/media/opera/cambio-tutto/CAMBIO%20TUTTO%21%209%20settembre.pdf",
     pdf: true,
-    content: null,
+    content: `<p><a href="/media/opera/cambio-tutto/CAMBIO%20TUTTO%21%209%20settembre.pdf">↓ Scarica PDF</a></p>`,
   },
 ];
