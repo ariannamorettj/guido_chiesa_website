@@ -23,9 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# media assets (file pesanti, non versionati)
-media/
-
 # vecchia copia del progetto
 guidochiesa 2/
 
@@ -34,6 +31,8 @@ src/assets/astro.svg
 src/assets/background.svg
 src/components/Welcome.astro
 
-# immagini non referenziate
-public/images/home-hero.jpg
+# foto gallery (troppo pesante per git — 700MB+)
+public/media/photologue/
+public/images/
+
 src/pages/README.md

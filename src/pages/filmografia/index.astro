@@ -63,9 +63,10 @@ const withContent = sections.reduce((n, s) => n + s.items.filter(i => i.content)
             </div>
 
             <div class="space-y-0.5">
-              {items.map((item) => (
-                item.content ? (
-                  <details class="group rounded-2xl border border-transparent transition hover:border-black/5 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.10)]">
+              {items.map((item) => {
+                const slug = item.href ? item.href.replace('/filmografia/', '').replace(/\/$/, '') : null;
+                return item.content ? (
+                  <details id={slug ?? undefined} class="group rounded-2xl border border-transparent transition hover:border-black/5 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.10)]">
                     <summary class="flex cursor-pointer list-none items-baseline gap-5 px-4 py-2.5">
                       <span class="w-10 shrink-0 text-sm tabular-nums text-zinc-400">{item.year}</span>
                       <span class="flex flex-1 items-center justify-between gap-4">
@@ -82,16 +83,16 @@ const withContent = sections.reduce((n, s) => n + s.items.filter(i => i.content)
                 ) : (
                   <div class="flex items-baseline gap-5 px-4 py-2.5">
                     <span class="w-10 shrink-0 text-sm tabular-nums text-zinc-400">{item.year}</span>
-                    {item.href ? (
-                      <a href={import.meta.env.BASE_URL + item.href.slice(1)} class="text-base font-medium text-zinc-800 transition hover:text-emerald-700">
+                    {slug ? (
+                      <a href={'#' + slug} class="text-base font-medium text-zinc-800 transition hover:text-emerald-700">
                         {item.title}
                       </a>
                     ) : (
                       <span class="text-base font-medium text-zinc-500">{item.title}</span>
                     )}
                   </div>
-                )
-              ))}
+                );
+              })}
             </div>
           </div>
         ))}
@@ -209,4 +210,17 @@ const withContent = sections.reduce((n, s) => n + s.items.filter(i => i.content)
       obs.observe(statsCard);
     }, { passive: true });
   }
+
+  // Auto-open <details> targeted by URL hash (e.g. /filmografia/#il-caso-martello)
+  function openFromHash() {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') {
+      (el as HTMLDetailsElement).open = true;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 </script>
