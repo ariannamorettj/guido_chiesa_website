@@ -146,9 +146,12 @@ export const sceneggiature: ScriptItem[] = [
     title: "Lavorare con lentezza",
     href: "/sceneggiature/lavorare-con-lentezza/",
     content: `<p>La sceneggiatura qui pubblicata è la quarta stesura, quella con cui siamo andati alle riprese.</p>
-<p>Dopo i primi incontri esplorativi tra i Wu Ming e il sottoscritto nell'inverno 2001–2002, il lavoro vero e proprio è iniziato con un brain storming nella primavera successiva. Si è delineata l'idea di un film con più storie parallele, nonché è maturata la scelta di utilizzare la storia della rapina come asse portante della narrazione.</p>
-<p>Al termine di questa fase abbiamo consegnato alla Fandango un trattamento di circa 30 pagine. Dopo l'approvazione abbiamo incominciato a lavorare sulla sceneggiatura nell'autunno del 2002 e siamo arrivati alla quarta stesura nel settembre dell'anno successivo, a un mese e mezzo dall'inizio della produzione.</p>
-<p>La sceneggiatura con cui siamo andati alle riprese differisce in molti punti dal film finito. A ogni fase della lavorazione hanno sempre partecipato sei persone: i cinque Wu Ming e il sottoscritto.</p>
+<p>Dopo i primi incontri esplorativi tra i Wu Ming e il sottoscritto nell&rsquo;inverno 2001&ndash;2002, il lavoro vero e proprio è iniziato con un brain storming nella primavera successiva. In questa fase si è delineata l&rsquo;idea di un film con più storie parallele, nonché è maturata la scelta di utilizzare la storia della rapina come asse portante della narrazione. Alcune delle storie su cui abbiamo lavorato in questo periodo erano emerse dalla lettura dei giornali dell&rsquo;epoca (come quella della rapina, nonché quella del pestaggio di un vecchietto da parte di un gruppetto di balordi). Altre dalle testimonianze raccolte per il documentario <a href="/filmografia/alice-e-paradiso/">Alice è in paradiso</a> (dalla telefonata ad Andreotti al triangolo &ldquo;amoroso&rdquo;, dal &ldquo;processo&rdquo; a Sergio/Scozzari alla discussione sulla pubblicità, ecc.). Altre, ovviamente, dalle vicende del marzo &rsquo;77 e correlati. Al termine di questa fase abbiamo consegnato alla Fandango un trattamento (o soggetto esteso, con anche alcuni dialoghi) di circa 30 pagine.</p>
+<p>Dopo l&rsquo;approvazione del trattamento abbiamo incominciato a lavorare sulla sceneggiatura nell&rsquo;autunno del 2002 e siamo arrivati alla quarta stesura nel settembre dell&rsquo;anno successivo, a un mese e mezzo dall&rsquo;inizio della produzione.</p>
+<p>La sceneggiatura con cui siamo andati alle riprese differisce in molti punti dal film finito. I primi cambiamenti sono avvenuti ancor prima dell&rsquo;inizio della vera e propria produzione. Ad esempio, il personaggio di Marta si è evoluto e ha subito mutamenti durante le prove a tavolino con Claudia Pandolfi (Marta) e Iacopo Bonvicini (Pigi). Alcune delle scene di Marta nel film, infatti, sono assai diverse da come erano state originariamente scritte, mentre altre erano del tutto assenti in sceneggiatura.</p>
+<p>Altre modifiche sono state realizzate in corso d&rsquo;opera. Il monologo di Pelo in radio dopo il litigio con la madre e la sorella, ad esempio, è stato scritto un paio di giorni prima di girare la scena. Al pari della scena in cui Pelo e Squalo trovano un pacchetto di sigarette nel tunnel. Altre ancora, come l&rsquo;annuncio dell&rsquo;uscita del libro <em>Alice è il diavolo</em>, sono state improvvisate sul set.</p>
+<p>Ulteriori cambiamenti, infine, soprattutto di ordine temporale e di incastro narrativo, sono stati apportati in fase di montaggio. Ad esempio, la sequenza d&rsquo;apertura (il film muto) era stata originariamente prevista come una serie di brevi scene separate, intercalate alla narrazione principale. In sede di montaggio, dopo varie ipotesi e altrettante proiezioni &ldquo;test&rdquo;, si è optato per la soluzione attuale.</p>
+<p>A ogni fase della lavorazione hanno sempre partecipato sei persone: i cinque Wu Ming e il sottoscritto.</p>
 <p><a href="/media/opera/guido-chiesa-e-wu-ming/lavorare-con-lentezza/Lavorare%20con%20lentezza.pdf">↓ Scarica PDF</a></p>`,
   },
   {
@@ -171,7 +174,7 @@ export const sceneggiature: ScriptItem[] = [
     title: "Io sono con te",
     href: "/sceneggiature/io-sono-con-te/",
     content: `<p>Questa è la versione della sceneggiatura con cui siamo andati alle riprese.</p>
-<p>Qui si racconta la <a href="/media/opera/guido-chiesa/sguardo-epico-partigiano-johnny/note-a-pj.pdf">genesi del film</a> ideato da Nicoletta Micheli, che ne ha anche curato la vasta ricerca storica, antropologica e teologica che ne è alla base.</p>
+<p>Qui si racconta la <a href="/testi/io-so/">genesi del film</a> ideato da Nicoletta Micheli, che ne ha anche curato la vasta ricerca storica, antropologica e teologica che ne è alla base.</p>
 <p><a href="/media/opera/nicoletta-micheli-guido-chiesa-e-filippo-kalomenidis/io-sono-con-te/LETITBE%20gen%202010.pdf">↓ Scarica PDF</a></p>`,
   },
   {
