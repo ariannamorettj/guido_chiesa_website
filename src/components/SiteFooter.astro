@@ -21,9 +21,12 @@ import { footerLinks } from "../data/navigation";
       </div>
     </div>
 
-    <div class="mt-8 flex items-center justify-between border-t border-zinc-200 pt-6 text-xs text-zinc-500">
-      <span>© {new Date().getFullYear()} Guido Chiesa</span>
-      <a href={import.meta.env.BASE_URL + "copyright/"} class="transition hover:text-zinc-700">Copyright</a>
+    <div class="mt-8 border-t border-zinc-200 pt-6 text-xs text-zinc-500">
+      <div class="flex items-center justify-between">
+        <span>© {new Date().getFullYear()} Guido Chiesa</span>
+        <a href={import.meta.env.BASE_URL + "copyright/"} class="transition hover:text-zinc-700">Copyright</a>
+      </div>
+      <p class="mt-2">Sviluppato da Arianna Moretti (<a href="https://github.com/ariannamorettj" target="_blank" rel="noopener" class="hover:text-zinc-700 transition">@ariannamorettj</a>)</p>
     </div>
   </div>
 </footer>
