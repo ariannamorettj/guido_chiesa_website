@@ -1,0 +1,164 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const categories = [
+  {
+    title: "Generale",
+    intro: "Siti di persone e organizzazioni il cui pensiero e attività mi accompagnano nel lavoro e nella vita.",
+    items: [
+      {
+        title: "Colloquium On Violence and Religion",
+        href: "http://violenceandreligion.com/",
+        description: "Sito di discussione sui temi e le ipotesi sollevate da René Girard.",
+      },
+      {
+        title: "Hansel e Gretel",
+        href: "http://www.cshg.it/",
+        description: "Il Centro Studi Hansel e Gretel è un'associazione privata senza fini di lucro che si sovvenziona grazie al lavoro dei soci e di quanti credono nell'importanza di costruire una cultura dell'infanzia più attenta ai bisogni dei bambini.",
+      },
+      {
+        title: "Continuum concept",
+        href: "http://www.continuum-concept.org/",
+        description: "Sito di Jean Liedloff, antropologa, terapeuta, autrice di un solo libro nella vita, ma basterebbe quello. Morta nel 2011, lasciando un vuoto tutto da riempire.",
+      },
+      {
+        title: "Alice Miller",
+        href: "http://www.alice-miller.com/",
+        description: "Sito della terapeuta, ex psicanalista capace di smontare Freud pur riconoscendone l'importanza. Morta nel 2010, per anni ha dedicato la sua attività e scritto libri sul tema della violenza, fisica e psicologica contro i bambini (cioè i futuri genitori, elettori, consumatori, ecc.)",
+      },
+      {
+        title: "Psychohistory",
+        href: "http://www.psychohistory.com/",
+        description: "Sito della Association For Psychohistory, per conoscere la storia della pedagogia e le sue conseguenze psichiche.",
+      },
+      {
+        title: "National Organization of Circumcision Information Resource Centers",
+        href: "http://www.nocirc.org/about.php",
+        description: "Sito sulla realtà fisica e psicologica della circoncisione: nessuna cultura, religione o scienza può giustificare una violenza gratuita su un bambino di pochi giorni. Dalla parte delle vittime, sempre.",
+      },
+      {
+        title: "Birthworks",
+        href: "http://www.birthworks.org/",
+        description: "Organizzazione no profit che si occupa di auto-determinazione delle donne in materia di maternità, parto, ecc.",
+      },
+      {
+        title: "Non togliermi il sorriso",
+        href: "http://nontogliermiilsorriso.org/drupal/",
+        description: "Sito su bambini e genitori, da una prospettiva di amore e rispetto, fisiologico e psicologico.",
+      },
+      {
+        title: "The Natural Child Project",
+        href: "http://www.naturalchild.org/",
+        description: "Sito su genitorialità e educazione nel rispetto dei bambini (cioè degli esseri umani).",
+      },
+      {
+        title: "La Leche League",
+        href: "http://www.lllitalia.org/",
+        description: "Organizzazione no-profit pioniera nella campagna per l'allattamento al seno e il rispetto della fisiologia della maternità.",
+      },
+      {
+        title: "René Girard",
+        href: "http://www.cottet.org/girard/index.en.htm",
+        description: "Antropologo, critico letterario, filosofo, ideatore della teoria del desiderio mimetico. Un passaggio chiave nella storia del pensiero.",
+      },
+    ],
+  },
+  {
+    title: "Compagni di viaggio (con sito)",
+    intro: null,
+    items: [
+      {
+        title: "Alexander Balanescu",
+        href: "http://www.balanescu.com/",
+        description: "Un grande violinista e compositore, di cui ho il privilegio di essere amico.",
+      },
+      {
+        title: "Gherardo Gossi",
+        href: "http://www.gherardogossi.com/",
+        description: "Il direttore della fotografia di tutti i miei film. E più.",
+      },
+      {
+        title: "Chico De Luigi",
+        href: "http://www.chicodeluigi.it/",
+        description: "Fotografo esuberante.",
+      },
+    ],
+  },
+  {
+    title: "Immagini",
+    intro: "Non sempre i più amati o influenti, ma tra i comunicatori per immagini attualmente in attività, quelli da cui ho imparato qualcosa.",
+    items: [
+      {
+        title: "James Nachtwey",
+        href: "http://www.jamesnachtwey.com/",
+        description: "Un cuore intelligente.",
+      },
+      {
+        title: "Danny Lyon",
+        href: "http://bleakbeauty.com/home.html",
+        description: "Fotografo e amico americano.",
+      },
+      {
+        title: "Chris Marker",
+        href: "http://www.chrismarker.org/",
+        description: "Cineasta francese.",
+      },
+      {
+        title: "Errol Morris",
+        href: "http://www.errolmorris.com/",
+        description: "Cineasta americano.",
+      },
+    ],
+  },
+  {
+    title: "Produzioni",
+    intro: "Fabbriche di immagini, parole e suoni che sento vicine.",
+    items: [
+      {
+        title: "Colorado Film",
+        href: "http://www.coloradofilm.it/",
+        description: "I produttori dei miei ultimi film, e altro.",
+      },
+    ],
+  },
+];
+---
+
+<MainLayout title="Links | Guido Chiesa" description="Link utili e risorse collegate a Guido Chiesa.">
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+
+    <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Links</h1>
+
+    <div class="mt-14 space-y-16">
+      {categories.map((cat) => (
+        <div>
+          <h2 class="text-2xl font-semibold tracking-[-0.04em] text-zinc-900">{cat.title}</h2>
+          {cat.intro && (
+            <p class="mt-2 text-sm italic text-zinc-500">{cat.intro}</p>
+          )}
+
+          <ul class="mt-6 divide-y divide-black/5">
+            {cat.items.map((item) => (
+              <li class="py-5">
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex flex-col gap-1"
+                >
+                  <span class="text-base font-semibold text-zinc-800 transition group-hover:text-emerald-700">
+                    {item.title} <span class="text-zinc-300 transition group-hover:text-emerald-400">↗</span>
+                  </span>
+                  {item.description && (
+                    <span class="text-sm leading-6 text-zinc-500">{item.description}</span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+  </section>
+</MainLayout>

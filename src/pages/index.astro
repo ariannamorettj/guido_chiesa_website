@@ -1,11 +1,132 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const news = [
+  {
+    date: "29 maggio 2025",
+    title: "Per amore di una donna in sala da oggi",
+    href: "/2025/may/29/amore-di-una-donna-sala-da-oggi/",
+    excerpt: "Una carrellata di recensioni e le sale in cui il film è proiettato, con una selezione di citazioni dalla stampa.",
+  },
+  {
+    date: "16 maggio 2025",
+    title: "PER AMORE DI UNA DONNA arriva in sala",
+    href: "/2025/may/16/amore-di-una-donna-arriva-sala/",
+    excerpt: "Dopo oltre due anni di attesa, il film arriva finalmente in sala con Fandango.",
+  },
+  {
+    date: "2 aprile 2025",
+    title: "PER AMORE DI UNA DONNA vince BIFEST di Bari",
+    href: "/2025/apr/2/amore-di-una-donna-vince-bifest-di-bari/",
+    excerpt: "Il film riceve il premio Bif&st “Per il Cinema Italiano” come miglior film.",
+  },
+  {
+    date: "19 agosto 2024",
+    title: "NUOVO FILM",
+    href: "/2024/aug/19/nuovo-film/",
+    excerpt: "Prime informazioni sul dodicesimo film di finzione, ancora senza titolo e data di uscita.",
+  },
+];
+
+const featuredSections = [
+  { title: "Filmografia", href: "/filmografia/", description: "Le opere filmiche, con accesso alle schede e ai materiali collegati." },
+  { title: "Sceneggiature", href: "/sceneggiature/", description: "Testi, script e materiali di scrittura collegati ai progetti." },
+  { title: "Testi", href: "/testi/", description: "Racconti, articoli, interviste e altri scritti autoriali." },
+  { title: "Foto e video", href: "/foto/", description: "Gallerie, backstage, stills e materiali audiovisivi." },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title="Guido Chiesa">
+  <section class="mx-auto max-w-7xl px-6 pb-10 pt-12 lg:pb-16 lg:pt-16">
+
+    <!-- Riga superiore: titolo a sinistra, foto a destra (piccola e fissa su desktop) -->
+    <div class="grid items-start gap-8 lg:grid-cols-[2fr_1fr]">
+      <div>
+        <div class="mb-4 inline-flex rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-700">
+          Regista e sceneggiatore
+        </div>
+        <h1 class="max-w-3xl text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl xl:text-7xl">
+          Archivio autoriale, notizie e opere.
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-zinc-600">
+          Sito personale di <strong class="text-zinc-900">Guido Chiesa</strong>, regista e sceneggiatore. Filmografia, sceneggiature, scritti, materiali visivi e archivio delle sue opere.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#news" class="inline-flex items-center rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800">
+            Leggi le news
+          </a>
+          <a href="/filmografia/" class="inline-flex items-center rounded-full border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50">
+            Vai alla filmografia
+          </a>
+        </div>
+      </div>
+
+      <!-- Foto: full-width su mobile, 180px fissa su desktop -->
+      <div class="aspect-square w-full overflow-hidden border border-black/5 bg-white shadow-[0_20px_80px_-20px_rgba(0,0,0,0.18)]">
+        <img
+          src="/guidochiesa_portrait.png"
+          alt="Guido Chiesa"
+          class="h-full w-full object-cover grayscale"
+        />
+      </div>
+    </div>
+
+    <!-- Bio sotto, piena larghezza -->
+    <div class="mt-8 rounded-2xl border border-black/5 bg-white/80 px-6 py-5 text-sm leading-7 text-zinc-600 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] backdrop-blur-sm">
+      Regista e sceneggiatore, ha diretto oltre dodici film di finzione e numerosi documentari,
+      partecipando in concorso alle Mostre di Venezia e ai Festival di Locarno e Roma.
+      Tra i riconoscimenti: il Premio Mastroianni a Venezia per <em>Lavorare con lentezza</em> (2004),
+      il Premio Fipresci a Torino per <em>Babylon</em> e il Premio Bif&st per
+      <em>Per amore di una donna</em> (2025). Ha pubblicato il
+      <em>Manuale di regia cinematografica</em> (UTET, 2011), vincitore del Premio Diego Fabbri.
+      <a href="/biografia/" class="ml-4 font-semibold text-emerald-700 hover:text-emerald-800">
+        Leggi la biografia completa →
+      </a>
+    </div>
+
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 pb-16">
+    <div class="mb-8" data-reveal>
+      <div class="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">Sezioni principali</div>
+      <h2 class="mt-2 text-3xl font-semibold tracking-[-0.05em] text-zinc-900">Accessi rapidi</h2>
+    </div>
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {featuredSections.map((section, i) => (
+        <a href={section.href} class="group rounded-[1.5rem] border border-black/5 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-[0_16px_50px_-18px_rgba(0,0,0,0.22)]" data-reveal data-delay={i * 80}>
+          <div class="text-lg font-semibold tracking-[-0.03em] text-zinc-900">{section.title}</div>
+          <p class="mt-2 text-sm leading-6 text-zinc-600">{section.description}</p>
+          <div class="mt-4 text-sm font-semibold text-emerald-700">Esplora →</div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="news" class="mx-auto max-w-7xl px-6 pb-24">
+    <div class="mb-8 flex items-end justify-between gap-6" data-reveal>
+      <div>
+        <div class="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">News</div>
+        <h2 class="mt-2 text-3xl font-semibold tracking-[-0.05em] text-zinc-900">Ultime notizie</h2>
+      </div>
+      <a href="/news/" class="hidden text-sm font-semibold text-zinc-600 transition hover:text-zinc-900 sm:inline">
+        Archivio news →
+      </a>
+    </div>
+    <div class="grid gap-6">
+      {news.map((item, i) => (
+        <article class="rounded-[1.75rem] border border-black/5 bg-white p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.20)]" data-reveal data-delay={i * 100}>
+          <div class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">{item.date}</div>
+          <h3 class="mt-3 text-2xl font-semibold tracking-[-0.04em] text-zinc-900">
+            <a href={item.href} class="transition hover:text-emerald-700">{item.title}</a>
+          </h3>
+          <p class="mt-3 max-w-3xl text-base leading-7 text-zinc-600">{item.excerpt}</p>
+          <div class="mt-5">
+            <a href={item.href} class="text-sm font-semibold text-emerald-700 transition hover:text-emerald-800">
+              Leggi tutto →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</MainLayout>

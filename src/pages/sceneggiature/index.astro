@@ -1,0 +1,178 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { type ScriptItem, sceneggiature } from '../../data/sceneggiature';
+
+const withContent = sceneggiature.filter(s => s.content).length;
+const primaAnno = Math.min(...sceneggiature.map(s => s.year));
+const ultimoAnno = Math.max(...sceneggiature.map(s => s.year));
+---
+
+<MainLayout title="Sceneggiature | Guido Chiesa" description="Sceneggiature di Guido Chiesa dal 1983 al 2019.">
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+
+    <div class="max-w-3xl">
+      <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Sceneggiature</h1>
+      <blockquote class="mt-8 space-y-3 border-l-2 border-zinc-200 pl-6 text-base italic leading-8 text-zinc-500">
+        <p>Temo i cinefili e sfuggo i cultori delle citazioni, i postmoderni con la locuzione pronta per tutte le occasioni.</p>
+        <p>Per cui sottoscrivo, a memoria, con un minimo di disagio, ma confortato dall'esperienza personale, quanto detto da Orson Welles: una buona storia e dei buoni attori possono fare un buon film, un bravo regista senza storia o cattivi attori no.</p>
+        <p>Scrivere mi costa sempre tanta fatica, ma mai quanto pensare che non c'è più niente da riscrivere.</p>
+      </blockquote>
+    </div>
+
+    <div class="mt-16 grid gap-12 lg:grid-cols-[1fr_280px]">
+
+      <div class="space-y-1">
+        {sceneggiature.map((item) => (
+          item.content ? (
+            <details class="group rounded-2xl border border-transparent transition hover:border-black/5 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.10)]">
+              <summary class="flex cursor-pointer list-none items-baseline gap-5 px-4 py-2.5">
+                <span class="w-10 shrink-0 text-sm tabular-nums text-zinc-400">{item.year}</span>
+                <span class="flex flex-1 items-center justify-between gap-4">
+                  <span class="text-base font-medium text-zinc-800">{item.title}</span>
+                  <svg
+                    class="h-4 w-4 shrink-0 text-zinc-300 transition duration-200 group-open:rotate-180"
+                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                  >
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.51a.75.75 0 0 1-1.08 0L5.21 8.27a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="script-content pb-5 pl-[3.75rem] pr-4 text-sm leading-7 text-zinc-600">
+                <Fragment set:html={item.content} />
+              </div>
+            </details>
+          ) : (
+            <div class="flex items-baseline gap-5 rounded-2xl px-4 py-2.5">
+              <span class="w-10 shrink-0 text-sm tabular-nums text-zinc-400">{item.year}</span>
+              <span class="flex flex-1 items-center justify-between gap-4">
+                {item.href ? (
+                  <span class="flex items-center gap-2">
+                    <a
+                      href={item.href}
+                      target={item.pdf ? "_blank" : undefined}
+                      rel={item.pdf ? "noopener" : undefined}
+                      class="text-base font-medium text-zinc-800 transition hover:text-emerald-700"
+                    >
+                      {item.title}
+                    </a>
+                    {item.pdf && (
+                      <span class="rounded-full border border-zinc-200 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">PDF</span>
+                    )}
+                  </span>
+                ) : (
+                  <span class="text-base font-medium text-zinc-500">{item.title}</span>
+                )}
+              </span>
+            </div>
+          )
+        ))}
+      </div>
+
+      <aside class="lg:pt-1">
+        <div class="sticky top-24 space-y-4">
+          <div id="stats-card" class="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.12)]">
+            <div class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">In cifre</div>
+            <div class="mt-5 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-zinc-600">Totale</span>
+                <span class="text-sm font-semibold tabular-nums text-emerald-700" data-counter>{sceneggiature.length}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-zinc-600">Con note d'autore</span>
+                <span class="text-sm font-semibold tabular-nums text-zinc-900" data-counter>{withContent}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-zinc-600">Script in PDF</span>
+                <span class="text-sm font-semibold tabular-nums text-zinc-900" data-counter>{sceneggiature.filter(s => s.pdf || (s.content && s.content.includes('Scarica PDF'))).length}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-zinc-600">Prima / ultima</span>
+                <span class="text-sm font-semibold tabular-nums text-zinc-900">{primaAnno} – {ultimoAnno}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            {[
+              { label: "Filmografia", href: "/filmografia/" },
+              { label: "Testi", href: "/testi/" },
+              { label: "Biografia", href: "/biografia/" },
+            ].map(({ label, href }) => (
+              <a
+                href={href}
+                class="group flex items-center justify-between rounded-2xl border border-black/5 bg-white px-5 py-3.5 text-sm font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px_rgba(0,0,0,0.16)]"
+              >
+                {label}
+                <span class="text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-emerald-700">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .script-content p { margin-bottom: 0.75rem; }
+  .script-content p:last-child { margin-bottom: 0; }
+  .script-content em { font-style: italic; }
+  .script-content strong { font-weight: 600; color: #18181b; }
+</style>
+
+<script>
+  function slotCounter(el: HTMLElement) {
+    const target = parseInt(el.textContent?.trim() ?? '0', 10);
+    if (isNaN(target)) return;
+
+    const isDouble = target >= 10;
+    let ticks = 0;
+    const maxTicks = 9;
+
+    const spin = setInterval(() => {
+      ticks++;
+      el.textContent = isDouble
+        ? String(Math.floor(Math.random() * 90 + 10))
+        : String(Math.floor(Math.random() * 10));
+
+      if (ticks >= maxTicks) {
+        clearInterval(spin);
+        const duration = 380;
+        const t0 = performance.now();
+        function countUp(now: number) {
+          const p = Math.min((now - t0) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 2);
+          el.textContent = String(Math.round(eased * target));
+          if (p < 1) requestAnimationFrame(countUp);
+          else el.textContent = String(target);
+        }
+        requestAnimationFrame(countUp);
+      }
+    }, 55);
+  }
+
+  const statsCard = document.getElementById('stats-card');
+  if (statsCard) {
+    let triggered = false;
+
+    function runSlot() {
+      if (triggered) return;
+      triggered = true;
+      const counters = statsCard.querySelectorAll<HTMLElement>('[data-counter]');
+      counters.forEach((el, i) => setTimeout(() => slotCounter(el), i * 110));
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        obs.disconnect();
+        runSlot();
+      }
+    }, { threshold: 0.5, rootMargin: '-40px 0px -40px 0px' });
+
+    window.addEventListener('scroll', function onFirstScroll() {
+      window.removeEventListener('scroll', onFirstScroll);
+      obs.observe(statsCard);
+    }, { passive: true });
+  }
+</script>

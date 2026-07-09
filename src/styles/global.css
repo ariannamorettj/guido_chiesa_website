@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+/* ── Self-hosted fonts ── */
+
+@font-face {
+  font-family: 'Agrandir';
+  src: url('/fonts/Agrandir-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Agrandir';
+  src: url('/fonts/Agrandir-TextBold.woff2') format('woff2');
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Agrandir';
+  src: url('/fonts/Agrandir-GrandHeavy.woff2') format('woff2');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('/fonts/GlacialIndifference-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('/fonts/GlacialIndifference-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Tailwind v4 theme ── */
+@theme {
+  --font-body:    'Agrandir',             system-ui, sans-serif;
+  --font-display: 'Lora',                 Georgia, serif;
+  --font-label:   'Glacial Indifference', system-ui, sans-serif;
+}
+
+/* ── Global font assignments ── */
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Titoli maggiori — Serif elegante */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Titoletti: h3-h6, nav, site title, elementi uppercase */
+h3,
+h4,
+h5,
+h6,
+nav a,
+header a,
+[class~="uppercase"] {
+  font-family: var(--font-label);
+}
+
+/* ── Pill links (inline badge-style links) ── */
+.link-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+  border-radius: 9999px;
+  padding: 0.1em 0.55em;
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-left: 0.3em;
+  border: 1px solid rgba(5, 150, 105, 0.22);
+  background: rgba(5, 150, 105, 0.07);
+  color: #059669;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.link-pill:hover {
+  background: rgba(5, 150, 105, 0.15);
+  border-color: rgba(5, 150, 105, 0.4);
+  color: #047857;
+}
+
+/* ── All links in film/script content — pill style ── */
+.film-content a,
+.script-content a {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.1em 0.55em;
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid rgba(5, 150, 105, 0.22);
+  background: rgba(5, 150, 105, 0.07);
+  color: #059669;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.film-content a:hover,
+.script-content a:hover {
+  background: rgba(5, 150, 105, 0.15);
+  border-color: rgba(5, 150, 105, 0.4);
+  color: #047857;
+}
+
+/* ── Link affordances ── */
+
+/* Inline text links in paragraphs, blockquotes and prose */
+p a,
+blockquote a,
+.prose-guido a {
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(5, 150, 105, 0.28);
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+
+p a:hover,
+blockquote a:hover,
+.prose-guido a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Simple list-row links (not block card links tagged with .group) */
+li > a:not(.group) {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+
+li > a:not(.group):hover {
+  text-decoration-line: underline;
+  text-decoration-color: rgba(5, 150, 105, 0.45);
+}
+
+/* ── Blockquotes ── */
+blockquote {
+  position: relative;
+  background: #ffffff;
+  border-left: 4px solid #18181b;
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 1.5rem 2.5rem 1.5rem 3.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 24px -8px rgba(0,0,0,0.10);
+}
+
+blockquote > * {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  font-style: italic;
+  font-weight: 600;
+  color: #3f3f46;
+  margin: 0;
+}
+
+blockquote > * + * {
+  margin-top: 1rem;
+}
+
+blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: 0.4rem;
+  left: 0.7rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 3.25rem;
+  line-height: 1;
+  font-style: normal;
+  font-weight: 700;
+  color: #18181b;
+}
+
+blockquote > *:last-child::after {
+  content: '\201D';
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-style: normal;
+  margin-left: 0.1rem;
+  color: #18181b;
+  vertical-align: -0.05em;
+}

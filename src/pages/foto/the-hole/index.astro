@@ -1,0 +1,157 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+const title = "The Hole";
+const year = 1988;
+
+const images = [
+  { src: "/images/foto/the-hole/zabriskie-point-death-valley-2.jpg",       alt: "Zabriskie Point, Death Valley" },
+  { src: "/images/foto/the-hole/zabriskie-point-death-valley.jpg",         alt: "Zabriskie Point, Death Valley" },
+  { src: "/images/foto/the-hole/twenty-mule-team-canyon-death-valley-2.jpg", alt: "Twenty Mule Team Canyon, Death Valley" },
+  { src: "/images/foto/the-hole/twenty-mule-team-canyon-death-valley.jpg", alt: "Twenty Mule Team Canyon, Death Valley" },
+  { src: "/images/foto/the-hole/pete-haskell-death-valley.jpg",            alt: "Pete Haskell nella Death Valley" },
+  { src: "/images/foto/the-hole/ballarat-death-valley-2.jpg",              alt: "Ballarat, Death Valley" },
+  { src: "/images/foto/the-hole/ballarat-death-valley-3.jpg",              alt: "Ballarat, Death Valley" },
+  { src: "/images/foto/the-hole/ballarat-death-valley-1.jpg",              alt: "Ballarat, Death Valley" },
+];
+---
+
+<MainLayout
+  title={`${title} (${year}) | Foto | Guido Chiesa`}
+  description={`Foto di scena dal film ${title} (${year}) di Guido Chiesa.`}
+>
+  <section class="mx-auto max-w-7xl px-6 py-12 lg:py-20">
+
+    <nav class="mb-8 flex items-center gap-2 text-sm text-zinc-400">
+      <a href="/foto/" class="transition hover:text-zinc-700">Foto</a>
+      <span>→</span>
+      <span class="text-zinc-700">{title} ({year})</span>
+    </nav>
+
+    <h1 class="text-4xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-5xl">
+      {title}
+      <span class="ml-2 text-3xl font-normal text-zinc-400 sm:text-4xl">({year})</span>
+    </h1>
+
+    <div class="mt-10" id="gallery">
+
+      <div class="relative overflow-hidden rounded-2xl bg-zinc-950 shadow-[0_32px_80px_-24px_rgba(0,0,0,0.55)]">
+        <div id="slides" class="relative aspect-[3/2] cursor-pointer select-none">
+          {images.map((img, i) => (
+            <img
+              src={img.src}
+              alt={img.alt}
+              data-slide={i}
+              class:list={[
+                "absolute inset-0 h-full w-full object-contain transition-opacity duration-500",
+                i === 0 ? "opacity-100" : "opacity-0 pointer-events-none"
+              ]}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
+        </div>
+
+        <a
+          href="/foto/"
+          aria-label="Torna alle gallerie"
+          class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/60 focus-visible:outline-none"
+        >
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+          </svg>
+        </a>
+
+        <button
+          id="btn-prev"
+          aria-label="Foto precedente"
+          class="absolute left-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/60 focus-visible:outline-none"
+        >
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <button
+          id="btn-next"
+          aria-label="Foto successiva"
+          class="absolute right-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/60 focus-visible:outline-none"
+        >
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <div class="absolute bottom-3 right-4 rounded-full bg-black/35 px-3 py-1 text-xs font-semibold tabular-nums text-white backdrop-blur-sm">
+          <span id="counter-current">1</span><span class="opacity-50"> / {images.length}</span>
+        </div>
+      </div>
+
+      <div
+        id="thumbstrip"
+        class="mt-3 flex gap-2 overflow-x-auto pb-1"
+        style="scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.12) transparent;"
+      >
+        {images.map((img, i) => (
+          <button
+            data-thumb={i}
+            aria-label={`Foto ${i + 1}`}
+            class:list={[
+              "relative shrink-0 overflow-hidden rounded-lg border-2 transition-all duration-200",
+              i === 0 ? "border-zinc-800 opacity-100" : "border-transparent opacity-50 hover:opacity-80"
+            ]}
+            style="width: 84px; height: 56px;"
+          >
+            <img src={img.src} alt="" aria-hidden="true" class="h-full w-full object-cover" loading="lazy" />
+          </button>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  const slides = document.querySelectorAll<HTMLElement>('[data-slide]');
+  const thumbBtns = document.querySelectorAll<HTMLButtonElement>('[data-thumb]');
+  const counterEl = document.getElementById('counter-current')!;
+  let current = 0;
+
+  function goTo(n: number) {
+    slides[current].classList.remove('opacity-100');
+    slides[current].classList.add('opacity-0', 'pointer-events-none');
+    thumbBtns[current].classList.remove('border-zinc-800', 'opacity-100');
+    thumbBtns[current].classList.add('border-transparent', 'opacity-50');
+
+    current = ((n % slides.length) + slides.length) % slides.length;
+
+    slides[current].classList.remove('opacity-0', 'pointer-events-none');
+    slides[current].classList.add('opacity-100');
+    thumbBtns[current].classList.remove('border-transparent', 'opacity-50');
+    thumbBtns[current].classList.add('border-zinc-800', 'opacity-100');
+
+    counterEl.textContent = String(current + 1);
+    thumbBtns[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  document.getElementById('btn-prev')!.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('btn-next')!.addEventListener('click', () => goTo(current + 1));
+  thumbBtns.forEach((btn) => btn.addEventListener('click', () => goTo(Number(btn.dataset.thumb))));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'Escape') { window.location.href = '/foto/'; }
+  });
+
+  let tx = 0;
+  const slidesEl = document.getElementById('slides')!;
+  slidesEl.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, { passive: true });
+  slidesEl.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+  }, { passive: true });
+  slidesEl.addEventListener('click', (e) => {
+    const rect = slidesEl.getBoundingClientRect();
+    (e.clientX - rect.left) < rect.width / 2 ? goTo(current - 1) : goTo(current + 1);
+  });
+</script>

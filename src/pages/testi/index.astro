@@ -1,0 +1,89 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+type TipoTesto = "articolo" | "racconto" | "libro" | "questionario";
+
+interface TestoItem {
+  year: number;
+  title: string;
+  href: string;
+  type: TipoTesto;
+}
+
+const testi: TestoItem[] = [
+  { year: 2016, title: "A che cosa serve contare le inquadrature di un film?", href: "/testi/gianni-rondolino-rip/", type: "articolo" },
+  { year: 2014, title: "L'occhio e il capro espiatorio. Buongiorno notte di Marco Bellocchio", href: "/testi/locchio-e-il-capro-espiatorio-buongiorno-notte-di-/", type: "articolo" },
+  { year: 2012, title: "L'abbaglio di Freud, Leonardo e la genealogia dell'amore", href: "/testi/labbaglio-di-freud-leonardo-e-la-genealogia-dellam/", type: "articolo" },
+  { year: 2012, title: "Io sono con te: genesi di un film", href: "/testi/io-so/", type: "articolo" },
+  { year: 2012, title: "Un pubblico senza mercato e i miei neuroni superstiti", href: "/testi/un-pubblico-senza-mercato-e-i-miei-neuroni-superst/", type: "articolo" },
+  { year: 2011, title: "Manuale di regia cinematografica", href: "/testi/manuale-di-regia-cinematografica/", type: "libro" },
+  { year: 2009, title: "Dove c'è sentimento c'è speranza", href: "/testi/dove-ce-sentimento-ce-speranza/", type: "articolo" },
+  { year: 2008, title: "La realtà torna al cinema", href: "/testi/la-realta-torna-al-cinema-questionario/", type: "questionario" },
+  { year: 2007, title: "Un attore completo, ricordo di Felice Andreasi", href: "/testi/un-attore-completo-ricordo-di-felice-andreasi/", type: "articolo" },
+  { year: 2007, title: "Beppe Fenoglio: un uomo verticale", href: "/testi/beppe-fenoglio-un-uomo-verticale/", type: "articolo" },
+  { year: 2006, title: "Estate 1975", href: "/testi/estate-1975/", type: "articolo" },
+  { year: 2005, title: "Lavorare con saggezza", href: "/testi/lavorare-con-saggezza/", type: "articolo" },
+  { year: 2005, title: "La guerra che verrà", href: "/testi/la-guerra-che-verra/", type: "articolo" },
+  { year: 2004, title: "Un cinefilo pentito", href: "/testi/un-cinefilo-pentito/", type: "articolo" },
+  { year: 2004, title: "Lavorare meno, lavorare tutti", href: "/testi/lavorare-meno-lavorare-tutti/", type: "racconto" },
+  { year: 2004, title: "Un film che non piace a tutte e tutti", href: "/testi/un-film-che-non-piace-tutte-e-tutti/", type: "articolo" },
+  { year: 2004, title: "Venezia 2004: moto ondoso in aumento", href: "/testi/venezia-2004-moto-ondoso-aumento/", type: "articolo" },
+  { year: 2003, title: "Un documentarista per caso", href: "/testi/un-documentarista-caso/", type: "articolo" },
+  { year: 2003, title: "L'importante è sbagliare", href: "/testi/limportante-e-sbagliare/", type: "articolo" },
+  { year: 2003, title: "Eravamo tanto punk", href: "/testi/eravamo-tanto-punk/", type: "articolo" },
+  { year: 2002, title: "Micromega — Tavola rotonda", href: "/testi/tavola-rotonda/", type: "articolo" },
+  { year: 2002, title: "Fenoglio", href: "/testi/fenoglio/", type: "articolo" },
+  { year: 2002, title: "Come si veste Patti Smith", href: "/testi/come-si-veste-patti-smith/", type: "articolo" },
+  { year: 2001, title: "Historia magistra vitae?", href: "/testi/historia-magistra-vitae/", type: "articolo" },
+  { year: 1999, title: "Salò", href: "/testi/salo/", type: "articolo" },
+  { year: 1996, title: "I figli maggiorenni di Frank Zappa", href: "/testi/i-figli-maggiorenni-di-frank-zappa/", type: "racconto" },
+  { year: 1996, title: "Quattro episodi su Spike", href: "/testi/quattro-episodi-su-spike/", type: "racconto" },
+  { year: 1995, title: "In canoa", href: "/testi/canoa/", type: "racconto" },
+  { year: 1994, title: "Charles Manson: stereotipo di un mito ambiguo", href: "/testi/charles-manson-stereotipo-di-un-mito-ambiguo/", type: "articolo" },
+  { year: 1994, title: "Diario di un porno set", href: "/testi/diario-di-un-porno-set/", type: "articolo" },
+  { year: 1994, title: "Verrà la morte e avrà i tuoi occhi (Lo scandalo dell'immagine della morte)", href: "/testi/verra-la-morte-e-avra-i-tuoi-occhi-lo-scandalo-del/", type: "articolo" },
+  { year: 1994, title: "A che cosa serve questo giornale? Note sulla stampa musicale italiana", href: "/testi/che-cosa-serve-questo-giornale-note-sulla-stampa-m/", type: "articolo" },
+  { year: 1993, title: "Il mito americano", href: "/testi/il-mito-americano-articolo/", type: "articolo" },
+  { year: 1993, title: "Il buco del diavolo (Viaggio nella Valle della Morte)", href: "/testi/il-buco-del-diavolo-viaggio-nella-valle-della-mort/", type: "articolo" },
+  { year: 1993, title: "Tra i Clash e Mozart", href: "/testi/tra-i-clash-e-mozart/", type: "articolo" },
+  { year: 1993, title: "Il cimitero del diavolo (sulle tracce di Paris, Texas)", href: "/testi/il-cimitero-del-diavolo-sulle-tracce-di-paris-texa/", type: "articolo" },
+  { year: 1989, title: "Newcastle Brown Ale", href: "/testi/newcastle-brown-ale/", type: "racconto" },
+  { year: 1988, title: "Il giorno in cui arrivai in America", href: "/testi/il-giorno-cui-arrivai-america/", type: "racconto" },
+];
+
+const typeStyle: Record<TipoTesto, string> = {
+  articolo:    "bg-zinc-100 text-zinc-500",
+  racconto:    "bg-violet-50 text-violet-600",
+  libro:       "bg-amber-50 text-amber-700",
+  questionario:"bg-sky-50 text-sky-600",
+};
+---
+<MainLayout title="Testi | Guido Chiesa" description="Racconti, articoli, interviste e scritti di Guido Chiesa.">
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+
+    <div class="max-w-3xl">
+      <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Testi</h1>
+      <blockquote class="mt-8">
+        <p>In questa sezione ho incluso racconti, scritti, interviste e articoli che testimoniano momenti importanti del mio percorso. Nulla di esaustivo: brandelli di pensieri che valeva la pena mettere nero su bianco.</p>
+      </blockquote>
+    </div>
+
+    <div class="mt-14 space-y-1">
+      {testi.map((item) => (
+        <a
+          href={item.href}
+          class="group flex items-baseline gap-4 rounded-xl px-4 py-3 transition hover:bg-zinc-50"
+        >
+          <span class="w-10 shrink-0 text-sm tabular-nums text-zinc-400">{item.year}</span>
+          <span class="flex-1 text-base font-medium text-zinc-800 transition group-hover:text-emerald-700">
+            {item.title}
+          </span>
+          <span class={`hidden shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] sm:inline-block ${typeStyle[item.type]}`}>
+            {item.type}
+          </span>
+        </a>
+      ))}
+    </div>
+
+  </section>
+</MainLayout>

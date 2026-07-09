@@ -1,0 +1,219 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+const title = "Lavorare con lentezza";
+const year = 2004;
+
+const images = [
+  { src: "/images/foto/lavorare-con-lentezza/54.jpg", alt: "Lavorare con lentezza – 1" },
+  { src: "/images/foto/lavorare-con-lentezza/56.jpg", alt: "Lavorare con lentezza – 2" },
+  { src: "/images/foto/lavorare-con-lentezza/55.jpg", alt: "Lavorare con lentezza – 3" },
+  { src: "/images/foto/lavorare-con-lentezza/57.jpg", alt: "Lavorare con lentezza – 4" },
+  { src: "/images/foto/lavorare-con-lentezza/58.jpg", alt: "Lavorare con lentezza – 5" },
+  { src: "/images/foto/lavorare-con-lentezza/59.jpg", alt: "Lavorare con lentezza – 6" },
+  { src: "/images/foto/lavorare-con-lentezza/61.jpg", alt: "Lavorare con lentezza – 7" },
+  { src: "/images/foto/lavorare-con-lentezza/60.jpg", alt: "Lavorare con lentezza – 8" },
+  { src: "/images/foto/lavorare-con-lentezza/62.jpg", alt: "Lavorare con lentezza – 9" },
+  { src: "/images/foto/lavorare-con-lentezza/64.jpg", alt: "Lavorare con lentezza – 10" },
+  { src: "/images/foto/lavorare-con-lentezza/63.jpg", alt: "Lavorare con lentezza – 11" },
+  { src: "/images/foto/lavorare-con-lentezza/65.jpg", alt: "Lavorare con lentezza – 12" },
+  { src: "/images/foto/lavorare-con-lentezza/67.jpg", alt: "Lavorare con lentezza – 13" },
+  { src: "/images/foto/lavorare-con-lentezza/66.jpg", alt: "Lavorare con lentezza – 14" },
+  { src: "/images/foto/lavorare-con-lentezza/68.jpg", alt: "Lavorare con lentezza – 15" },
+  { src: "/images/foto/lavorare-con-lentezza/69.jpg", alt: "Lavorare con lentezza – 16" },
+  { src: "/images/foto/lavorare-con-lentezza/70.jpg", alt: "Lavorare con lentezza – 17" },
+  { src: "/images/foto/lavorare-con-lentezza/37.jpg", alt: "Lavorare con lentezza – 18" },
+  { src: "/images/foto/lavorare-con-lentezza/36.jpg", alt: "Lavorare con lentezza – 19" },
+  { src: "/images/foto/lavorare-con-lentezza/38.jpg", alt: "Lavorare con lentezza – 20" },
+  { src: "/images/foto/lavorare-con-lentezza/40.jpg", alt: "Lavorare con lentezza – 21" },
+  { src: "/images/foto/lavorare-con-lentezza/39.jpg", alt: "Lavorare con lentezza – 22" },
+  { src: "/images/foto/lavorare-con-lentezza/41.jpg", alt: "Lavorare con lentezza – 23" },
+  { src: "/images/foto/lavorare-con-lentezza/42.jpg", alt: "Lavorare con lentezza – 24" },
+  { src: "/images/foto/lavorare-con-lentezza/43.jpg", alt: "Lavorare con lentezza – 25" },
+  { src: "/images/foto/lavorare-con-lentezza/45.jpg", alt: "Lavorare con lentezza – 26" },
+  { src: "/images/foto/lavorare-con-lentezza/44.jpg", alt: "Lavorare con lentezza – 27" },
+  { src: "/images/foto/lavorare-con-lentezza/47.jpg", alt: "Lavorare con lentezza – 28" },
+  { src: "/images/foto/lavorare-con-lentezza/46.jpg", alt: "Lavorare con lentezza – 29" },
+  { src: "/images/foto/lavorare-con-lentezza/48.jpg", alt: "Lavorare con lentezza – 30" },
+  { src: "/images/foto/lavorare-con-lentezza/50.jpg", alt: "Lavorare con lentezza – 31" },
+  { src: "/images/foto/lavorare-con-lentezza/49.jpg", alt: "Lavorare con lentezza – 32" },
+  { src: "/images/foto/lavorare-con-lentezza/52.jpg", alt: "Lavorare con lentezza – 33" },
+  { src: "/images/foto/lavorare-con-lentezza/51.jpg", alt: "Lavorare con lentezza – 34" },
+  { src: "/images/foto/lavorare-con-lentezza/53.jpg", alt: "Lavorare con lentezza – 35" },
+  { src: "/images/foto/lavorare-con-lentezza/18.jpg", alt: "Lavorare con lentezza – 36" },
+  { src: "/images/foto/lavorare-con-lentezza/20.jpg", alt: "Lavorare con lentezza – 37" },
+  { src: "/images/foto/lavorare-con-lentezza/19.jpg", alt: "Lavorare con lentezza – 38" },
+  { src: "/images/foto/lavorare-con-lentezza/21.jpg", alt: "Lavorare con lentezza – 39" },
+  { src: "/images/foto/lavorare-con-lentezza/23.jpg", alt: "Lavorare con lentezza – 40" },
+  { src: "/images/foto/lavorare-con-lentezza/22.jpg", alt: "Lavorare con lentezza – 41" },
+  { src: "/images/foto/lavorare-con-lentezza/24.jpg", alt: "Lavorare con lentezza – 42" },
+  { src: "/images/foto/lavorare-con-lentezza/26.jpg", alt: "Lavorare con lentezza – 43" },
+  { src: "/images/foto/lavorare-con-lentezza/25.jpg", alt: "Lavorare con lentezza – 44" },
+  { src: "/images/foto/lavorare-con-lentezza/28.jpg", alt: "Lavorare con lentezza – 45" },
+  { src: "/images/foto/lavorare-con-lentezza/27.jpg", alt: "Lavorare con lentezza – 46" },
+  { src: "/images/foto/lavorare-con-lentezza/30.jpg", alt: "Lavorare con lentezza – 47" },
+  { src: "/images/foto/lavorare-con-lentezza/29.jpg", alt: "Lavorare con lentezza – 48" },
+  { src: "/images/foto/lavorare-con-lentezza/31.jpg", alt: "Lavorare con lentezza – 49" },
+  { src: "/images/foto/lavorare-con-lentezza/32.jpg", alt: "Lavorare con lentezza – 50" },
+  { src: "/images/foto/lavorare-con-lentezza/34.jpg", alt: "Lavorare con lentezza – 51" },
+  { src: "/images/foto/lavorare-con-lentezza/33.jpg", alt: "Lavorare con lentezza – 52" },
+  { src: "/images/foto/lavorare-con-lentezza/35.jpg", alt: "Lavorare con lentezza – 53" },
+  { src: "/images/foto/lavorare-con-lentezza/17.jpg", alt: "Lavorare con lentezza – 54" },
+  { src: "/images/foto/lavorare-con-lentezza/15.jpg", alt: "Lavorare con lentezza – 55" },
+  { src: "/images/foto/lavorare-con-lentezza/16.jpg", alt: "Lavorare con lentezza – 56" },
+  { src: "/images/foto/lavorare-con-lentezza/13.jpg", alt: "Lavorare con lentezza – 57" },
+  { src: "/images/foto/lavorare-con-lentezza/14.jpg", alt: "Lavorare con lentezza – 58" },
+  { src: "/images/foto/lavorare-con-lentezza/11.jpg", alt: "Lavorare con lentezza – 59" },
+  { src: "/images/foto/lavorare-con-lentezza/12.jpg", alt: "Lavorare con lentezza – 60" },
+  { src: "/images/foto/lavorare-con-lentezza/09.jpg", alt: "Lavorare con lentezza – 61" },
+  { src: "/images/foto/lavorare-con-lentezza/10.jpg", alt: "Lavorare con lentezza – 62" },
+  { src: "/images/foto/lavorare-con-lentezza/07.jpg", alt: "Lavorare con lentezza – 63" },
+  { src: "/images/foto/lavorare-con-lentezza/08.jpg", alt: "Lavorare con lentezza – 64" },
+  { src: "/images/foto/lavorare-con-lentezza/05.jpg", alt: "Lavorare con lentezza – 65" },
+  { src: "/images/foto/lavorare-con-lentezza/06.jpg", alt: "Lavorare con lentezza – 66" },
+  { src: "/images/foto/lavorare-con-lentezza/03.jpg", alt: "Lavorare con lentezza – 67" },
+  { src: "/images/foto/lavorare-con-lentezza/04.jpg", alt: "Lavorare con lentezza – 68" },
+  { src: "/images/foto/lavorare-con-lentezza/01.jpg", alt: "Lavorare con lentezza – 69" },
+  { src: "/images/foto/lavorare-con-lentezza/02.jpg", alt: "Lavorare con lentezza – 70" },
+];
+---
+
+<MainLayout
+  title={`${title} (${year}) | Foto | Guido Chiesa`}
+  description={`Foto di scena dal film ${title} (${year}) di Guido Chiesa.`}
+>
+  <section class="mx-auto max-w-7xl px-6 py-12 lg:py-20">
+
+    <nav class="mb-8 flex items-center gap-2 text-sm text-zinc-400">
+      <a href="/foto/" class="transition hover:text-zinc-700">Foto</a>
+      <span>→</span>
+      <span class="text-zinc-700">{title} ({year})</span>
+    </nav>
+
+    <h1 class="text-4xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-5xl">
+      {title}
+      <span class="ml-2 text-3xl font-normal text-zinc-400 sm:text-4xl">({year})</span>
+    </h1>
+
+    <div class="mt-10" id="gallery">
+
+      <div class="relative overflow-hidden rounded-2xl bg-zinc-950 shadow-[0_32px_80px_-24px_rgba(0,0,0,0.55)]">
+        <div id="slides" class="relative aspect-[3/2] cursor-pointer select-none">
+          {images.map((img, i) => (
+            <img
+              src={img.src}
+              alt={img.alt}
+              data-slide={i}
+              class:list={[
+                "absolute inset-0 h-full w-full object-contain transition-opacity duration-500",
+                i === 0 ? "opacity-100" : "opacity-0 pointer-events-none"
+              ]}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
+        </div>
+
+        <a
+          href="/foto/"
+          aria-label="Torna alle gallerie"
+          class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/60 focus-visible:outline-none"
+        >
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+          </svg>
+        </a>
+
+        <button
+          id="btn-prev"
+          aria-label="Foto precedente"
+          class="absolute left-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/60 focus-visible:outline-none"
+        >
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <button
+          id="btn-next"
+          aria-label="Foto successiva"
+          class="absolute right-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/60 focus-visible:outline-none"
+        >
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <div class="absolute bottom-3 right-4 rounded-full bg-black/35 px-3 py-1 text-xs font-semibold tabular-nums text-white backdrop-blur-sm">
+          <span id="counter-current">1</span><span class="opacity-50"> / {images.length}</span>
+        </div>
+      </div>
+
+      <div
+        id="thumbstrip"
+        class="mt-3 flex gap-2 overflow-x-auto pb-1"
+        style="scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.12) transparent;"
+      >
+        {images.map((img, i) => (
+          <button
+            data-thumb={i}
+            aria-label={`Foto ${i + 1}`}
+            class:list={[
+              "relative shrink-0 overflow-hidden rounded-lg border-2 transition-all duration-200",
+              i === 0 ? "border-zinc-800 opacity-100" : "border-transparent opacity-50 hover:opacity-80"
+            ]}
+            style="width: 84px; height: 56px;"
+          >
+            <img src={img.src} alt="" aria-hidden="true" class="h-full w-full object-cover" loading="lazy" />
+          </button>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  const slides = document.querySelectorAll<HTMLElement>('[data-slide]');
+  const thumbBtns = document.querySelectorAll<HTMLButtonElement>('[data-thumb]');
+  const counterEl = document.getElementById('counter-current')!;
+  let current = 0;
+
+  function goTo(n: number) {
+    slides[current].classList.remove('opacity-100');
+    slides[current].classList.add('opacity-0', 'pointer-events-none');
+    thumbBtns[current].classList.remove('border-zinc-800', 'opacity-100');
+    thumbBtns[current].classList.add('border-transparent', 'opacity-50');
+
+    current = ((n % slides.length) + slides.length) % slides.length;
+
+    slides[current].classList.remove('opacity-0', 'pointer-events-none');
+    slides[current].classList.add('opacity-100');
+    thumbBtns[current].classList.remove('border-transparent', 'opacity-50');
+    thumbBtns[current].classList.add('border-zinc-800', 'opacity-100');
+
+    counterEl.textContent = String(current + 1);
+    thumbBtns[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  document.getElementById('btn-prev')!.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('btn-next')!.addEventListener('click', () => goTo(current + 1));
+  thumbBtns.forEach((btn) => btn.addEventListener('click', () => goTo(Number(btn.dataset.thumb))));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'Escape') { window.location.href = '/foto/'; }
+  });
+
+  let tx = 0;
+  const slidesEl = document.getElementById('slides')!;
+  slidesEl.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, { passive: true });
+  slidesEl.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+  }, { passive: true });
+  slidesEl.addEventListener('click', (e) => {
+    const rect = slidesEl.getBoundingClientRect();
+    (e.clientX - rect.left) < rect.width / 2 ? goTo(current - 1) : goTo(current + 1);
+  });
+</script>

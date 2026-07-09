@@ -1,0 +1,75 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Contatti | Guido Chiesa" description="Contatti di Guido Chiesa, regista e sceneggiatore.">
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+
+    <div class="max-w-2xl">
+      <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Contatti</h1>
+      <p class="mt-6 text-lg leading-8 text-zinc-600">
+        Per informazioni, collaborazioni o qualsiasi altra richiesta, compila il modulo qui sotto.
+      </p>
+
+      <form
+        action="."
+        method="post"
+        class="mt-10 space-y-6"
+      >
+        <div>
+          <label for="id_name" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
+            Nome
+          </label>
+          <input
+            id="id_name"
+            type="text"
+            name="name"
+            maxlength="100"
+            required
+            class="mt-2 block w-full border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
+            placeholder="Il tuo nome"
+          />
+        </div>
+
+        <div>
+          <label for="id_email" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
+            Email
+          </label>
+          <input
+            id="id_email"
+            type="email"
+            name="email"
+            maxlength="200"
+            required
+            class="mt-2 block w-full border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
+            placeholder="nome@esempio.com"
+          />
+        </div>
+
+        <div>
+          <label for="id_body" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
+            Messaggio
+          </label>
+          <textarea
+            id="id_body"
+            name="body"
+            rows="7"
+            required
+            class="mt-2 block w-full resize-none border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
+            placeholder="Scrivi qui il tuo messaggio…"
+          ></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button
+            type="submit"
+            class="inline-flex items-center rounded-full bg-zinc-900 px-7 py-3 text-sm font-semibold text-white transition hover:bg-zinc-700"
+          >
+            Invia
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </section>
+</MainLayout>

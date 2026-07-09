@@ -1,0 +1,76 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const galleries = [
+  { year: 2020, title: "Cambio tutto!", thumb: "/images/foto/cambio-tutto.jpg", href: "/foto/cambio-tutto/" },
+  { year: 2018, title: "Ti presento Sofia", thumb: "/images/foto/ti-presento-sofia.jpg", href: "/foto/ti-presento-sofia/" },
+  { year: 2017, title: "Classe Z", thumb: "/images/foto/classe-z.jpg", href: "/foto/classe-z/" },
+  { year: 2010, title: "Io sono con te", thumb: "/images/foto/io-sono-con-te.jpg", href: "/foto/io-sono-con-te/" },
+  { year: 2004, title: "Lavorare con lentezza", thumb: "/images/foto/lavorare-con-lentezza.jpg", href: "/foto/lavorare-con-lentezza/" },
+  { year: 2000, title: "Il partigiano Johnny", thumb: "/images/foto/il-partigiano-johnny.jpg", href: "/foto/il-partigiano-johnny/" },
+  { year: 1999, title: "Non mi basta mai", thumb: "/images/foto/non-mi-basta-mai.jpg", href: "/foto/non-mi-basta-mai/" },
+  { year: 1997, title: "Partigiani", thumb: "/images/foto/partigiani.jpg", href: "/foto/partigiani/" },
+  { year: 1994, title: "Babylon", thumb: "/images/foto/babylon.jpg", href: "/foto/babylon/" },
+  { year: 1991, title: "Il caso Martello", thumb: "/images/foto/il-caso-martello.jpg", href: "/foto/il-caso-martello/" },
+  { year: 1988, title: "The Hole", thumb: "/images/foto/the-hole.jpg", href: "/foto/the-hole/" },
+  { year: 1986, title: "Black Harvest", thumb: "/images/foto/black-harvest.jpg", href: "/foto/black-harvest/" },
+  { year: 1985, title: "Give Me a Spell", thumb: "/images/foto/give-me-a-spell.jpg", href: "/foto/give-me-a-spell/" },
+  { year: 1985, title: "Down by Law", thumb: "/images/foto/down-by-law.jpg", href: "/foto/down-by-law/" },
+];
+---
+
+<MainLayout title="Foto | Guido Chiesa" description="Gallerie fotografiche di Guido Chiesa: stills, backstage e ritratti.">
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+
+    <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Foto</h1>
+
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {galleries.map((g, i) => (
+        g.href ? (
+          <a
+            href={g.href}
+            class="group overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_8px_30px_-12px_rgba(0,0,0,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_50px_-18px_rgba(0,0,0,0.22)]"
+            data-reveal
+            data-delay={i * 60}
+          >
+            <div class="aspect-[4/3] w-full overflow-hidden bg-zinc-100">
+              <img
+                src={g.thumb}
+                alt={g.title}
+                class="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="px-4 py-3">
+              <div class="text-xs font-semibold tabular-nums text-zinc-400">{g.year}</div>
+              <div class="mt-0.5 flex items-center justify-between text-sm font-semibold text-zinc-800">
+                {g.title}
+                <span class="text-zinc-300 transition group-hover:translate-x-0.5 group-hover:text-emerald-600">→</span>
+              </div>
+            </div>
+          </a>
+        ) : (
+          <div
+            class="group overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_8px_30px_-12px_rgba(0,0,0,0.14)]"
+            data-reveal
+            data-delay={i * 60}
+          >
+            <div class="aspect-[4/3] w-full overflow-hidden bg-zinc-100">
+              <img
+                src={g.thumb}
+                alt={g.title}
+                class="h-full w-full object-cover grayscale"
+                loading="lazy"
+              />
+            </div>
+            <div class="px-4 py-3">
+              <div class="text-xs font-semibold tabular-nums text-zinc-400">{g.year}</div>
+              <div class="mt-0.5 text-sm font-semibold text-zinc-500">{g.title}</div>
+            </div>
+          </div>
+        )
+      ))}
+    </div>
+
+  </section>
+</MainLayout>

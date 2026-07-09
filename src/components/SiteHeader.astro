@@ -1,0 +1,65 @@
+---
+import { navGroups } from "../data/navigation";
+
+const pathname = Astro.url.pathname;
+
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<header class="sticky top-0 z-50 border-b border-black/5 bg-stone-50/90 backdrop-blur-xl">
+  <div class="mx-auto max-w-7xl px-6">
+
+    <!-- Logo row -->
+    <div class="flex min-h-[3.5rem] items-center justify-between gap-4">
+      <a
+        href="/"
+        class="shrink-0 text-xl font-semibold uppercase tracking-[-0.06em] text-zinc-800 transition hover:text-emerald-700 sm:text-2xl"
+      >
+        Guido Chiesa
+      </a>
+
+      <!-- Mobile toggle -->
+      <details class="lg:hidden">
+        <summary class="cursor-pointer list-none rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 hover:border-zinc-300">
+          Menu
+        </summary>
+        <div class="absolute inset-x-0 top-full border-b border-zinc-200 bg-white p-5 shadow-xl">
+          <div class="grid grid-cols-2 gap-1 sm:grid-cols-3">
+            {navGroups.map((item) => (
+              <a
+                href={item.href}
+                class:list={[
+                  "rounded-xl px-3 py-2 text-sm font-medium transition",
+                  isActive(item.href!)
+                    ? "bg-zinc-100 text-zinc-900"
+                    : "text-zinc-600 hover:bg-zinc-50 hover:text-emerald-700",
+                ]}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Desktop nav row -->
+    <nav class="hidden flex-wrap gap-x-0.5 gap-y-0.5 pb-2 lg:flex">
+      {navGroups.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            "rounded-full px-3 py-1.5 text-sm font-medium transition whitespace-nowrap",
+            isActive(item.href!)
+              ? "bg-zinc-900 text-white"
+              : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900",
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+  </div>
+</header>

@@ -1,0 +1,47 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const colonneSonore = [
+  { year: 2008, title: "Quo vadis baby?", href: "http://www.last.fm/music/Guido+Chiesa/QUO+VADIS+BABY%3F+-+MUSICHE+DI+TEHO+TEARDO+%282008%29" },
+  { year: 2007, title: "Le pere di Adamo", href: "http://www.last.fm/music/Guido+Chiesa/LE+PERE+DI+ADAMO+-+MUSICA+DI+TEHO+TEARDO+%282007%29" },
+  { year: 2006, title: "Il cuore del soldatino", href: "http://www.last.fm/music/Guido+Chiesa/IL+CUORE+DEL+SOLDATINO+-+MUSICHE+DI+TEHO+TEARDO+%282006%29" },
+  { year: 2000, title: "Provini per un massacro", href: "http://www.last.fm/music/Guido+Chiesa/PROVINI+PER+UN+MASSACRO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%282000%29" },
+  { year: 2000, title: "Il partigiano Johnny", href: "http://www.last.fm/music/Guido+Chiesa/IL+PARTIGIANO+JOHNNY+-+MUSICHE+DI+ALEXANDER+BALANESCU+%282000%29" },
+  { year: 1999, title: "Non mi basta mai", href: "http://www.last.fm/music/Guido+Chiesa/NON+MI+BASTA+MAI+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281999%29" },
+  { year: 1994, title: "Babylon (La paura è la miglior amica dell'uomo)", href: "http://www.last.fm/music/Guido+Chiesa/BABYLON+-+MUSICA+DI+GIUSEPPE+NAPOLI+%281994%29" },
+  { year: 1991, title: "Il caso Martello", href: "http://www.last.fm/music/Guido+Chiesa/IL+CASO+MARTELLO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281992%29" },
+];
+---
+
+<MainLayout title="Musica | Guido Chiesa" description="Musica e colonne sonore legate ai progetti di Guido Chiesa.">
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+
+    <div class="max-w-3xl">
+      <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Musica</h1>
+      <blockquote class="mt-8">
+        <p>La musica ha sempre rivestito un ruolo centrale nel mio lavoro. Pensare a una storia da raccontare, a un'immagine da realizzare significa evocare una musica da ascoltare.</p>
+        <p>Sono un musicista mancato più che fallito, ma non mi vergogno di dire che la musica mi ha salvato la vita. Nessun linguaggio combina con altrettanta felicità ragione e emozione, materialità e trascendenza.</p>
+      </blockquote>
+    </div>
+
+    <div class="mt-16">
+      <h2 class="text-2xl font-semibold tracking-[-0.04em] text-zinc-900">Colonne sonore</h2>
+      <ul class="mt-6 divide-y divide-black/5">
+        {colonneSonore.map((item) => (
+          <li class="flex items-baseline gap-4 py-4">
+            <span class="w-12 shrink-0 text-sm font-semibold tabular-nums text-zinc-400">{item.year}</span>
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-base font-medium text-zinc-800 transition hover:text-emerald-700"
+            >
+              {item.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </section>
+</MainLayout>

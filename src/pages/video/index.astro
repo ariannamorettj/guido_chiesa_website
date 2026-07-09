@@ -1,0 +1,91 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+type VideoItem = {
+  year: number;
+  title: string;
+  category: string;
+  type: 'youtube' | 'vimeo' | 'link';
+  id?: string;
+  href?: string;
+  note?: string;
+};
+
+const videos: VideoItem[] = [
+  // Lungometraggi
+  { year: 2020, title: "Cambio tutto!", category: "Lungometraggi", type: "youtube", id: "oq3ih74PO8E", note: "Trailer ufficiale" },
+
+  // Documentari
+  { year: 2002, title: "Il contratto", category: "Documentari", type: "youtube", id: "7ZqBqXpeLk8", note: "Film completo" },
+  { year: 2002, title: "Alice è in paradiso", category: "Documentari", type: "vimeo", id: "249293958", note: "Film completo" },
+  { year: 1999, title: "Non mi basta mai", category: "Documentari", type: "youtube", id: "MWFYh_7rAkQ", note: "Film completo" },
+
+  // Videoclip
+  { year: 2000, title: "Otto giorni — Mambassa", category: "Videoclip", type: "youtube", id: "JN5ETKp_uKk" },
+];
+
+const categories = ["Lungometraggi", "Documentari", "Videoclip"];
+
+function embedSrc(v: VideoItem): string {
+  if (v.type === 'youtube' && v.id) return `https://www.youtube-nocookie.com/embed/${v.id}`;
+  if (v.type === 'vimeo' && v.id) return `https://player.vimeo.com/video/${v.id}`;
+  return '';
+}
+---
+
+<MainLayout title="Video | Guido Chiesa" description="Video e materiali audiovisivi di Guido Chiesa, regista e sceneggiatore.">
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+
+    <div class="max-w-2xl" data-reveal>
+      <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Video</h1>
+      <blockquote class="mt-8">
+        <p>Questa galleria ospita frammenti dei miei lavori, molti dei quali non reperibili sul mercato. Sostengo il diritto a procurarseli con ogni mezzo necessario, anche non legalmente autorizzato.</p>
+      </blockquote>
+    </div>
+
+    <div class="mt-16 space-y-16">
+      {categories.map((cat) => {
+        const items = videos.filter((v) => v.category === cat);
+        if (items.length === 0) return null;
+        return (
+          <div>
+            <div class="mb-8 flex items-center gap-4" data-reveal>
+              <h2 class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">{cat}</h2>
+              <div class="h-px flex-1 bg-zinc-100"></div>
+            </div>
+
+            <div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+              {items.map((v, i) => (
+                <div class="overflow-hidden rounded-3xl border border-black/5 bg-white shadow-[0_12px_40px_-24px_rgba(0,0,0,0.15)]" data-reveal data-delay={i * 80}>
+                  <div class="relative aspect-video w-full bg-zinc-100">
+                    <iframe
+                      src={embedSrc(v)}
+                      title={v.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                      loading="lazy"
+                      class="absolute inset-0 h-full w-full border-0"
+                    ></iframe>
+                  </div>
+                  <div class="px-5 py-4">
+                    <div class="text-xs font-semibold tabular-nums text-zinc-400">{v.year}</div>
+                    <div class="mt-1 text-base font-semibold text-zinc-900">{v.title}</div>
+                    {v.note && (
+                      <div class="mt-1 text-xs text-zinc-400">{v.note}</div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="mt-16 rounded-3xl border border-black/5 bg-white/70 px-8 py-7 text-sm leading-7 text-zinc-500 backdrop-blur-sm" data-reveal>
+      Per la filmografia completa con note d'autore, schede tecniche e materiali collegati,
+      visita la pagina <a href="/filmografia/" class="font-semibold text-emerald-700 hover:text-emerald-800">Filmografia →</a>
+    </div>
+
+  </section>
+</MainLayout>
