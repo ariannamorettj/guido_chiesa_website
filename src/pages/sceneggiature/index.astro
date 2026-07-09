@@ -22,9 +22,10 @@ const ultimoAnno = Math.max(...sceneggiature.map(s => s.year));
     <div class="mt-16 grid gap-12 lg:grid-cols-[1fr_280px]">
 
       <div class="space-y-1">
-        {sceneggiature.map((item) => (
-          item.content ? (
-            <details class="group rounded-2xl border border-transparent transition hover:border-black/5 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.10)]">
+        {sceneggiature.map((item) => {
+          const slug = item.href ? item.href.replace('/sceneggiature/', '').replace(/\/$/, '') : null;
+          return item.content ? (
+            <details id={slug ?? undefined} class="group rounded-2xl border border-transparent transition hover:border-black/5 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.10)]">
               <summary class="flex cursor-pointer list-none items-baseline gap-5 px-4 py-2.5">
                 <span class="w-10 shrink-0 text-sm tabular-nums text-zinc-400">{item.year}</span>
                 <span class="flex flex-1 items-center justify-between gap-4">
@@ -45,27 +46,22 @@ const ultimoAnno = Math.max(...sceneggiature.map(s => s.year));
             <div class="flex items-baseline gap-5 rounded-2xl px-4 py-2.5">
               <span class="w-10 shrink-0 text-sm tabular-nums text-zinc-400">{item.year}</span>
               <span class="flex flex-1 items-center justify-between gap-4">
-                {item.href ? (
+                {slug ? (
                   <span class="flex items-center gap-2">
                     <a
-                      href={item.href.startsWith('http') ? item.href : import.meta.env.BASE_URL + item.href.slice(1)}
-                      target={item.pdf ? "_blank" : undefined}
-                      rel={item.pdf ? "noopener" : undefined}
+                      href={'#' + slug}
                       class="text-base font-medium text-zinc-800 transition hover:text-emerald-700"
                     >
                       {item.title}
                     </a>
-                    {item.pdf && (
-                      <span class="rounded-full border border-zinc-200 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">PDF</span>
-                    )}
                   </span>
                 ) : (
                   <span class="text-base font-medium text-zinc-500">{item.title}</span>
                 )}
               </span>
             </div>
-          )
-        ))}
+          );
+        })}
       </div>
 
       <aside class="lg:pt-1">
@@ -175,4 +171,16 @@ const ultimoAnno = Math.max(...sceneggiature.map(s => s.year));
       obs.observe(statsCard);
     }, { passive: true });
   }
+
+  function openFromHash() {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') {
+      (el as HTMLDetailsElement).open = true;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 </script>
