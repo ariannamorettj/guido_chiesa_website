@@ -42,6 +42,17 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
         <path fill-rule="evenodd" d="M10 17a.75.75 0 0 1-.75-.75V5.612L5.29 9.77a.75.75 0 0 1-1.08-1.04l5.25-5.5a.75.75 0 0 1 1.08 0l5.25 5.5a.75.75 0 1 1-1.08 1.04L10.75 5.612V16.25A.75.75 0 0 1 10 17Z" clip-rule="evenodd" />
       </svg>
     </button>
+
+    <!-- Back button — mobile only -->
+    <button
+      id="back-btn"
+      aria-label="Torna indietro"
+      class="fixed bottom-5 right-4 z-50 flex h-9 w-9 items-center justify-center rounded-full bg-white/60 text-zinc-500 shadow-sm backdrop-blur-sm transition-all duration-300 sm:hidden opacity-0 pointer-events-none"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+        <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+      </svg>
+    </button>
   </body>
 </html>
 
@@ -144,5 +155,13 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
     scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  }
+
+  // ── Back button ──
+  const backBtn = document.getElementById('back-btn');
+  if (backBtn && history.length > 1) {
+    backBtn.classList.remove('opacity-0', 'pointer-events-none');
+    backBtn.classList.add('opacity-100');
+    backBtn.addEventListener('click', () => history.back());
   }
 </script>
