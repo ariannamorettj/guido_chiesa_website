@@ -2,9 +2,9 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 
 interface PressItem {
-  href: string;
   title: string;
   source: string;
+  download?: string;
 }
 
 interface FilmGroup {
@@ -24,12 +24,12 @@ const years: YearGroup[] = [
       {
         film: "Classe Z",
         items: [
-          { href: "/rassegna-stampa/2017/mar/17/capitano-mio-capitano/", title: "Capitano mio capitano", source: "Arianna Finos, La Repubblica" },
-          { href: "/rassegna-stampa/2017/mar/24/un-anno-scolastico-vissuto-pericolasamente/", title: "Un anno scolastico vissuto pericolosamente", source: "Francesco Alò, Il Messaggero" },
-          { href: "/rassegna-stampa/2017/mar/26/la-missione-del-cinema-farsi-ascoltare-dai-giovani/", title: "La missione del cinema: farsi ascoltare dai giovani", source: "Guido Chiesa, La Stampa" },
-          { href: "/rassegna-stampa/2017/mar/26/rassegna-stampa/", title: "Rassegna stampa", source: "Genovese, Caprara, Avvenire, La Stampa" },
-          { href: "/rassegna-stampa/2017/mar/30/classe-z/", title: "Classe Z", source: "Anna Maria Pasetti, Il Fatto Quotidiano" },
-          { href: "/rassegna-stampa/2017/mar/30/i-peggiori-allesame-di-maturit/", title: "I peggiori all'esame di maturità", source: "Claudio Trionfera, Panorama" },
+          { title: "Capitano mio capitano", source: "Arianna Finos, La Repubblica", download: "http://guidochiesa.net/media/pressreview/classe-z/2017/2017.03.17%20-%20la%20Repubblica.pdf" },
+          { title: "Un anno scolastico vissuto pericolosamente", source: "Francesco Alò, Il Messaggero", download: "http://guidochiesa.net/media/pressreview/classe-z/2017/2017.03.24%20-%20il%20Messaggero.Roma.pdf" },
+          { title: "La missione del cinema: farsi ascoltare dai giovani", source: "Guido Chiesa, La Stampa", download: "http://guidochiesa.net/media/pressreview/classe-z/2017/La%20stampa%2020170326.jpg" },
+          { title: "Rassegna stampa", source: "Genovese, Caprara, Avvenire, La Stampa", download: "http://guidochiesa.net/media/pressreview/classe-z/2017/201703260900515196.pdf" },
+          { title: "Classe Z", source: "Anna Maria Pasetti, Il Fatto Quotidiano", download: "http://guidochiesa.net/media/pressreview/classe-z/2017/Il%20Fatto%20quotidiano_30.032017.pdf" },
+          { title: "I peggiori all'esame di maturità", source: "Claudio Trionfera, Panorama" },
         ],
       },
     ],
@@ -40,11 +40,11 @@ const years: YearGroup[] = [
       {
         film: "Belli di papà",
         items: [
-          { href: "/rassegna-stampa/2015/aug/1/intervista-su-alias/", title: "Intervista su Alias", source: "Gemma Lanzo, Manifesto Alias" },
-          { href: "/rassegna-stampa/2015/oct/25/belli-di-papa-video-recensione/", title: "Belli di papà — video recensione", source: "Francesco D'Alò, Bad Taste" },
-          { href: "/rassegna-stampa/2015/oct/27/belli-di-papa/", title: "Belli di papà", source: "Massimo Giraldi, Cinematografo" },
-          { href: "/rassegna-stampa/2015/oct/27/la-commedia-italiana-che-non-delude/", title: "La commedia italiana che non delude", source: "Paolo D'Agostini, La Repubblica" },
-          { href: "/rassegna-stampa/2015/oct/28/andare-finalmente-lavorare/", title: "Andare (finalmente) a lavorare", source: "Claudio Trionfera, Panorama" },
+          { title: "Intervista su Alias", source: "Gemma Lanzo, Manifesto Alias", download: "http://guidochiesa.net/media/pressreview/belli-di-papa/2015/2015080130910666.jpg" },
+          { title: "Belli di papà — video recensione", source: "Francesco D'Alò, Bad Taste" },
+          { title: "Belli di papà", source: "Massimo Giraldi, Cinematografo" },
+          { title: "La commedia italiana che non delude", source: "Paolo D'Agostini, La Repubblica" },
+          { title: "Andare (finalmente) a lavorare", source: "Claudio Trionfera, Panorama" },
         ],
       },
     ],
@@ -55,7 +55,7 @@ const years: YearGroup[] = [
       {
         film: "Io sono con te",
         items: [
-          { href: "/rassegna-stampa/2012/jan/31/io-sono-con-te-2010/", title: "Io sono con te (2010)", source: "Adriano Piccardi, Cineforum" },
+          { title: "Io sono con te (2010)", source: "Adriano Piccardi, Cineforum", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2012/io%20sono%20con%20te.pdf" },
         ],
       },
     ],
@@ -66,8 +66,8 @@ const years: YearGroup[] = [
       {
         film: "Io sono con te",
         items: [
-          { href: "/rassegna-stampa/2011/nov/15/ci-meritiamo-davvero-il-nome-di-homo-sapiens/", title: "Ci meritiamo davvero il nome di Homo Sapiens?", source: "Michel Odent, Terra Nuova" },
-          { href: "/rassegna-stampa/2011/dec/24/dialogo-piu-voci-su-maria-di-nazaret/", title: "Dialogo a più voci su Maria di Nazaret", source: "Maria Grosso, Alias — Il Manifesto" },
+          { title: "Ci meritiamo davvero il nome di Homo Sapiens?", source: "Michel Odent, Terra Nuova", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2011/odent%202.pdf" },
+          { title: "Dialogo a più voci su Maria di Nazaret", source: "Maria Grosso, Alias — Il Manifesto", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2011/pagine%20da%20ALIAS.pdf" },
         ],
       },
     ],
@@ -78,26 +78,26 @@ const years: YearGroup[] = [
       {
         film: "Io sono con te",
         items: [
-          { href: "/rassegna-stampa/2010/apr/17/la-madre-perfetta-maria-con-il-piccolo-gesu/", title: "La madre perfetta? Maria con il piccolo Gesù", source: "Simonetta Robiony, La Stampa, 17 aprile 2010" },
-          { href: "/rassegna-stampa/2010/apr/17/una-nuova-maria-nel-cinema/", title: "Una nuova Maria nel cinema", source: "Giuseppina Manin, Corriere della sera, 17 aprile 2010" },
-          { href: "/rassegna-stampa/2010/oct/19/intervista-avvenire/", title: "Intervista a L'Avvenire", source: "Tiziana Lupi, Avvenire, 19 ottobre 2010" },
-          { href: "/rassegna-stampa/2010/oct/26/intervista-corriere-della-sera/", title: "Intervista a Corriere della Sera", source: "Giuseppina Manin, Corriere della Sera, 26 ottobre 2010" },
-          { href: "/rassegna-stampa/2010/nov/3/gesu-il-bambino-di-nazareth-educato-cambiare-il-mo/", title: "Gesù, il bambino di Nazareth educato per cambiare il mondo. Capolavoro di Guido Chiesa", source: "Boris Sollazzo, Sole 24 ore" },
-          { href: "/rassegna-stampa/2010/nov/3/tutte-belle-le-mamme-del-festival/", title: "Tutte belle le mamme del Festival", source: "Lietta Tornabuoni, La Stampa" },
-          { href: "/rassegna-stampa/2010/nov/4/Maria/", title: "Così Maria di Nazareth educò il piccolo Gesù", source: "Paolo D'Agostini, La Repubblica" },
-          { href: "/rassegna-stampa/2010/nov/4/da-questa-vergine-scandalosa/", title: "Da questa Vergine «scandalosa»", source: "Alberto Crespi, L'Unità" },
-          { href: "/rassegna-stampa/2010/nov/4/linsolita-pregevole-maria-di-guido-chiesa/", title: "L'insolita, pregevole Maria di Guido Chiesa", source: "Federico Pontiggia, Cinematografo.it" },
-          { href: "/rassegna-stampa/2010/nov/4/quando-gesu-disse-mamma-un-film-che-fara-discutere/", title: "Quando Gesù disse mamma. Un film che farà discutere", source: "Maricla Tagliaferri, Il Secolo XIX" },
-          { href: "/rassegna-stampa/2010/nov/5/il-miracolo-e-fatto-di-saggezza/", title: "Il miracolo è fatto di saggezza", source: "Cristina Sabatini, Il Manifesto" },
-          { href: "/rassegna-stampa/2010/nov/18/cosa-ti-dice-il-cuore/", title: "Cosa ti dice il cuore", source: "Gabriele Pedrina, Sale della Comunità" },
-          { href: "/rassegna-stampa/2010/nov/19/ce-molto-rispetto-questa-nativita/", title: "C'è molto rispetto in questa Natività", source: "Lietta Tornabuoni, La Stampa" },
-          { href: "/rassegna-stampa/2010/nov/19/il-vangelo-secondo-guido/", title: "Il Vangelo secondo Guido", source: "Alberto Crespi, L'Unità" },
-          { href: "/rassegna-stampa/2010/nov/19/linfanzia-di-gesu/", title: "L'infanzia di Gesù", source: "Cristina Piccino, Il Manifesto" },
-          { href: "/rassegna-stampa/2010/nov/20/anteprima-recensione-io-sono-con-te/", title: "Anteprima recensione: Io sono con te", source: "Pasquale Mesiano, Cinemio" },
-          { href: "/rassegna-stampa/2010/nov/20/il-maternage-di-guido-chiesa/", title: "Il 'maternage' di Guido Chiesa", source: "Adriana Predevello, Sale della Comunità" },
-          { href: "/rassegna-stampa/2010/nov/20/storia-di-maria-sposa-bambina/", title: "Storia di Maria, sposa bambina", source: "Paolo D'Agostini, La Repubblica" },
-          { href: "/rassegna-stampa/2010/nov/25/tutto-lamore-di-maria/", title: "Tutto l'amore di Maria", source: "Lietta Tornabuoni, L'Espresso" },
-          { href: "/rassegna-stampa/2010/dec/8/come-ho-scoperto-che-siamo-tutti-figli-di-maria/", title: "Come ho scoperto che siamo tutti figli di Maria", source: "Melissa P., GQ" },
+          { title: "La madre perfetta? Maria con il piccolo Gesù", source: "Simonetta Robiony, La Stampa", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/LA%20STAMPA%20IO%20SONO%20CON%20TE.pdf" },
+          { title: "Una nuova Maria nel cinema", source: "Giuseppina Manin, Corriere della Sera", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/CORSERA%20IO%20SONO%20CON%20TE.pdf" },
+          { title: "Intervista a L'Avvenire", source: "Tiziana Lupi, Avvenire", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/20101019_16932164.pdf" },
+          { title: "Intervista a Corriere della Sera", source: "Giuseppina Manin, Corriere della Sera", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/20101026_16989374.pdf" },
+          { title: "Gesù, il bambino di Nazareth educato per cambiare il mondo. Capolavoro di Guido Chiesa", source: "Boris Sollazzo, Sole 24 ore" },
+          { title: "Tutte belle le mamme del Festival", source: "Lietta Tornabuoni, La Stampa", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/La%20Stampa.pdf" },
+          { title: "Così Maria di Nazareth educò il piccolo Gesù", source: "Paolo D'Agostini, La Repubblica", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/La%20Repubblica.pdf" },
+          { title: "Da questa Vergine «scandalosa»", source: "Alberto Crespi, L'Unità", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/Unit%C3%A0.pdf" },
+          { title: "L'insolita, pregevole Maria di Guido Chiesa", source: "Federico Pontiggia, Cinematografo.it" },
+          { title: "Quando Gesù disse mamma. Un film che farà discutere", source: "Maricla Tagliaferri, Il Secolo XIX", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/SECOLO%20XIX.pdf" },
+          { title: "Il miracolo è fatto di saggezza", source: "Cristina Sabatini, Il Manifesto", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/manifesto.pdf" },
+          { title: "Cosa ti dice il cuore", source: "Gabriele Pedrina, Sale della Comunità" },
+          { title: "C'è molto rispetto in questa Natività", source: "Lietta Tornabuoni, La Stampa", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/20101119_17203324.pdf" },
+          { title: "Il Vangelo secondo Guido", source: "Alberto Crespi, L'Unità", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/20101119_17203105__.pdf" },
+          { title: "L'infanzia di Gesù", source: "Cristina Piccino, Il Manifesto", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/20101119_17202087_.pdf" },
+          { title: "Anteprima recensione: Io sono con te", source: "Pasquale Mesiano, Cinemio" },
+          { title: "Il 'maternage' di Guido Chiesa", source: "Adriana Predevello, Sale della Comunità" },
+          { title: "Storia di Maria, sposa bambina", source: "Paolo D'Agostini, La Repubblica", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/20101120_17212782.pdf" },
+          { title: "Tutto l'amore di Maria", source: "Lietta Tornabuoni, L'Espresso" },
+          { title: "Come ho scoperto che siamo tutti figli di Maria", source: "Melissa P., GQ", download: "http://guidochiesa.net/media/pressreview/io-sono-con-te/2010/Melissa%20P%20per%20GQ_.pdf" },
         ],
       },
     ],
@@ -108,12 +108,12 @@ const years: YearGroup[] = [
       {
         film: "Quo Vadis, Baby?",
         items: [
-          { href: "/rassegna-stampa/2008/may/13/un-pugno-alla-vecchia-fiction/", title: "Un pugno alla vecchia fiction", source: "Micaela Urbano, Il Messaggero, 13 Maggio 2008" },
-          { href: "/rassegna-stampa/2008/may/15/quo-vadis-sky-cosi-la-fiction-sposa-il-cinema/", title: "Quo vadis Sky, così la fiction sposa il cinema", source: "Claudio Moriconi, E Polis, 15 Maggio 2008" },
-          { href: "/rassegna-stampa/2008/may/16/quo-vadis-salvatores/", title: "Quo vadis, Salvatores?", source: "Alessandra Comazzi, La Stampa, 16 Maggio 2008" },
-          { href: "/rassegna-stampa/2008/may/17/sky-e-la-fiction-senza-ideologia/", title: "Sky e la fiction senza ideologia", source: "Aldo Grasso, Corriere della sera, 17 Maggio 2008" },
-          { href: "/rassegna-stampa/2008/may/17/quo-vadis-baby-il-serial-suggestivo/", title: "«Quo vadis, baby?» Il serial suggestivo", source: "Roberto Levi, Il Giornale, 17 Maggio 2008" },
-          { href: "/rassegna-stampa/2008/sep/7/la-politica-e-una-gabbia-meglio-la-vita/", title: "«La politica è una gabbia, meglio la vita»", source: "Franco Giubilei, La Stampa" },
+          { title: "Un pugno alla vecchia fiction", source: "Micaela Urbano, Il Messaggero", download: "http://guidochiesa.net/media/pressreview/quo-vadis-baby/2008/QUO%20VADIS%20%206a.jpg" },
+          { title: "Quo vadis Sky, così la fiction sposa il cinema", source: "Claudio Moriconi, E Polis", download: "http://guidochiesa.net/media/pressreview/quo-vadis-baby/2008/QUO%20VADIS%204%20.jpg" },
+          { title: "Quo vadis, Salvatores?", source: "Alessandra Comazzi, La Stampa", download: "http://guidochiesa.net/media/pressreview/quo-vadis-baby/2008/QUO%20VADIS%203.jpg" },
+          { title: "Sky e la fiction senza ideologia", source: "Aldo Grasso, Corriere della Sera", download: "http://guidochiesa.net/media/pressreview/quo-vadis-baby/2008/QUO%20VADIS%202.jpg" },
+          { title: "«Quo vadis, baby?» Il serial suggestivo", source: "Roberto Levi, Il Giornale", download: "http://guidochiesa.net/media/pressreview/quo-vadis-baby/2008/QUO%20VADIS%207.jpg" },
+          { title: "«La politica è una gabbia, meglio la vita»", source: "Franco Giubilei, La Stampa", download: "http://guidochiesa.net/media/pressreview/quo-vadis-baby/2007/QUO%20VADIS%201.jpg" },
         ],
       },
     ],
@@ -124,9 +124,9 @@ const years: YearGroup[] = [
       {
         film: "Le pere di Adamo",
         items: [
-          { href: "/rassegna-stampa/2007/jan/1/le-pere-di-adamo-pierpaolo-simone/", title: "Simone P. — Le pere di Adamo — My Movies", source: "Pierpaolo Simone, mymovies.it" },
-          { href: "/rassegna-stampa/2007/oct/22/le-pere-di-adamo-i-movimenti-sociali-son-come-le-n/", title: "«Le pere di Adamo» I movimenti sociali? Son come le nuvole", source: "D.Z., L'Unità, 22 Ottobre 2007" },
-          { href: "/rassegna-stampa/2007/nov/24/i-precari-sono-come-le-nuvole/", title: "I precari sono come le nuvole", source: "Giovanni De Luna, Stampa Tuttolibri, 24 Novembre 2007" },
+          { title: "Simone P. — Le pere di Adamo — My Movies", source: "Pierpaolo Simone, mymovies.it" },
+          { title: "«Le pere di Adamo» I movimenti sociali? Son come le nuvole", source: "D.Z., L'Unità", download: "http://guidochiesa.net/media/pressreview/le-pere-di-adamo/2007/LE%20PERE%20DI%20ADAMO%203.jpg" },
+          { title: "I precari sono come le nuvole", source: "Giovanni De Luna, Stampa Tuttolibri", download: "http://guidochiesa.net/media/pressreview/le-pere-di-adamo/2007/LE%20PERE%20DI%20ADAMO%201.jpg" },
         ],
       },
     ],
@@ -137,10 +137,10 @@ const years: YearGroup[] = [
       {
         film: "Lavorare con lentezza",
         items: [
-          { href: "/rassegna-stampa/2004/jun/9/un-sogno-impossibile/", title: "Un sogno impossibile", source: "Federico Ferrone, Drammaturgia" },
-          { href: "/rassegna-stampa/2004/sep/5/gli-anni-terribili-e-creativi-di-bologna-e-radio-a/", title: "Gli anni terribili e creativi di Bologna e Radio Alice", source: "Roberto Nepoti, La Repubblica, 05 Settembre 2004" },
-          { href: "/rassegna-stampa/2004/sep/5/la-generazione-derubata/", title: "La generazione derubata", source: "Federico Chiacchiari, Sentieri Selvaggi" },
-          { href: "/rassegna-stampa/2004/oct/9/il-film-del-1977-lanno-che-seppelli-il-68/", title: "Il film del 1977, l'anno che seppellì il '68", source: "Giovanni De Luna, Tuttolibri, 09 Ottobre 2004" },
+          { title: "Un sogno impossibile", source: "Federico Ferrone, Drammaturgia" },
+          { title: "Gli anni terribili e creativi di Bologna e Radio Alice", source: "Roberto Nepoti, La Repubblica", download: "http://guidochiesa.net/media/pressreview/lavorare-con-lentezza/2004/repubblica.TIF" },
+          { title: "La generazione derubata", source: "Federico Chiacchiari, Sentieri Selvaggi" },
+          { title: "Il film del 1977, l'anno che seppellì il '68", source: "Giovanni De Luna, Tuttolibri", download: "http://guidochiesa.net/media/pressreview/lavorare-con-lentezza/2004/tuttolibri.pdf" },
         ],
       },
     ],
@@ -151,9 +151,9 @@ const years: YearGroup[] = [
       {
         film: "Sono stati loro",
         items: [
-          { href: "/rassegna-stampa/2003/mar/18/erica-e-omar-arrivano-in-tv/", title: "Erica e Omar arrivano in tv", source: "S.N., La Stampa, 18 Marzo 2003" },
-          { href: "/rassegna-stampa/2003/mar/24/erika-e-omar-documentario-fiction-dun-massacro/", title: "Erika e Omar, documentario-fiction d'un massacro", source: "Marco Menduni, Il Secolo XIX, 24 Marzo 2003" },
-          { href: "/rassegna-stampa/2003/mar/25/due-giorni-unaltra-citta-e-nellinferno-dei-media/", title: "Due giorni in un'altra città. E nell'inferno dei media", source: "Mazzino Montinari, Kataweb Cinema, 25 Marzo 2003" },
+          { title: "Erica e Omar arrivano in tv", source: "S.N., La Stampa", download: "http://guidochiesa.net/media/pressreview/sono-stati-loro/2003/sono%20stati%20loro1.jpg" },
+          { title: "Erika e Omar, documentario-fiction d'un massacro", source: "Marco Menduni, Il Secolo XIX", download: "http://guidochiesa.net/media/pressreview/sono-stati-loro/2003/sono%20stati%20loro3.jpg" },
+          { title: "Due giorni in un'altra città. E nell'inferno dei media", source: "Mazzino Montinari, Kataweb Cinema", download: "http://guidochiesa.net/media/pressreview/sono-stati-loro/2003/sono%20stati%20loro.jpg" },
         ],
       },
     ],
@@ -164,17 +164,17 @@ const years: YearGroup[] = [
       {
         film: "Alice è in paradiso",
         items: [
-          { href: "/rassegna-stampa/2002/oct/2/recensione-alice-e-paradiso/", title: "Recensione «Alice è in paradiso»", source: "Mauro Ravarino, Gli Spietati" },
-          { href: "/rassegna-stampa/2002/nov/11/recensione-alice-e-paradiso/", title: "Recensione «Alice è in paradiso»", source: "Adriano Boano, Near Dark, 11 Novembre 2002" },
+          { title: "Recensione «Alice è in paradiso»", source: "Mauro Ravarino, Gli Spietati" },
+          { title: "Recensione «Alice è in paradiso»", source: "Adriano Boano, Near Dark" },
         ],
       },
       {
         film: "Il contratto",
         items: [
-          { href: "/rassegna-stampa/2002/aug/28/guido-chiesa-racconta-limmigrato-scrittore/", title: "Guido Chiesa racconta l'immigrato scrittore", source: "L'Unità, 28 Agosto 2002" },
-          { href: "/rassegna-stampa/2002/sep/3/contratto-nero/", title: "«Contratto» in nero", source: "Il Tirreno, 03 Settembre 2002" },
-          { href: "/rassegna-stampa/2002/sep/4/jadelin-lo-scrittore-del-congo-che-non-ha-piu-patr/", title: "Jadelin, lo scrittore del Congo che non ha più patria", source: "Il Manifesto, 04 Settembre 2002" },
-          { href: "/rassegna-stampa/2002/oct/2/luci-di-brindisi/", title: "Luci di Brindisi", source: "F.F., Drammaturgia" },
+          { title: "Guido Chiesa racconta l'immigrato scrittore", source: "L'Unità", download: "http://guidochiesa.net/media/pressreview/il-contratto/2002/IL%20CONTRATTO%201.jpg" },
+          { title: "«Contratto» in nero", source: "Il Tirreno", download: "http://guidochiesa.net/media/pressreview/il-contratto/2002/IL%20CONTRATTO%202.jpg" },
+          { title: "Jadelin, lo scrittore del Congo che non ha più patria", source: "Il Manifesto", download: "http://guidochiesa.net/media/pressreview/il-contratto/2002/IL%20CONTRATTO%203.jpg" },
+          { title: "Luci di Brindisi", source: "F.F., Drammaturgia" },
         ],
       },
     ],
@@ -185,12 +185,12 @@ const years: YearGroup[] = [
       {
         film: "Non mi basta mai",
         items: [
-          { href: "/rassegna-stampa/2001/jan/1/al-cinema-le-lotte-operarie-fiat/", title: "Al cinema, le lotte operarie Fiat", source: "Alberto Crespi, Il Nuovo" },
-          { href: "/rassegna-stampa/2001/jan/1/da-johnny-alla-fiat-il-cinema-non-dimentica/", title: "Da Johnny alla Fiat, il cinema non dimentica", source: "Alberto Crespi" },
-          { href: "/rassegna-stampa/2001/jan/1/uno-struggente-documento-sulla-fine-del-fordismo/", title: "Uno struggente documento sulla fine del «fordismo»", source: "Aldo Fittante, Film TV" },
-          { href: "/rassegna-stampa/2001/feb/3/le-varie-forme-dellutopia/", title: "Le varie forme dell'utopia", source: "Massimo Calanca, Cinemavvenire, 03 Febbraio 2001" },
-          { href: "/rassegna-stampa/2001/feb/16/non-mi-basta-mai-vita-vera-senza-rabbia-e-senza-no/", title: "«Non mi basta mai», vita vera senza rabbia e senza nostalgia", source: "Il Messaggero, 16 Febbraio 2001" },
-          { href: "/rassegna-stampa/2001/feb/24/postfordisti-di-classe/", title: "Postfordisti di classe", source: "Roberto Silvestri, Il Manifesto, 24 Febbraio 2001" },
+          { title: "Al cinema, le lotte operarie Fiat", source: "Alberto Crespi, Il Nuovo" },
+          { title: "Da Johnny alla Fiat, il cinema non dimentica", source: "Alberto Crespi", download: "http://guidochiesa.net/media/pressreview/non-mi-basta-mai/2001/Non%20mi%20basta%20mai%203.jpg" },
+          { title: "Uno struggente documento sulla fine del «fordismo»", source: "Aldo Fittante, Film TV" },
+          { title: "Le varie forme dell'utopia", source: "Massimo Calanca, Cinemavvenire" },
+          { title: "«Non mi basta mai», vita vera senza rabbia e senza nostalgia", source: "Il Messaggero", download: "http://guidochiesa.net/media/pressreview/non-mi-basta-mai/2001/Non%20mi%20basta%20mai2.jpg" },
+          { title: "Postfordisti di classe", source: "Roberto Silvestri, Il Manifesto", download: "http://guidochiesa.net/media/pressreview/non-mi-basta-mai/2001/Non%20mi%20basta%20mai1.jpg" },
         ],
       },
     ],
@@ -201,26 +201,26 @@ const years: YearGroup[] = [
       {
         film: "Il partigiano Johnny",
         items: [
-          { href: "/rassegna-stampa/2000/jan/1/johnny-nella-nebbia/", title: "Johnny nella nebbia", source: "Lorenzo Mondo" },
-          { href: "/rassegna-stampa/2000/jan/1/johnny-un-intellettuale-tra-i-partigiani-delle-lan/", title: "Johnny, un intellettuale tra i partigiani delle Langhe", source: "Roberto Nepoti, La Repubblica" },
-          { href: "/rassegna-stampa/2000/sep/5/cuba-oppressiva-ma-senza-carisma-il-partigiano-joh/", title: "Cuba oppressiva ma senza carisma. Il partigiano Johnny una felice tensione", source: "Gian Luigi Rondi, Il Tempo, 05 Settembre 2000" },
-          { href: "/rassegna-stampa/2000/sep/7/un-certain-cinema-italien-du-sud-et-tourne-vers-so/", title: "Un certain cinéma italien, du Sud et tourné vers son passé", source: "Thomas Sotinel, Le Monde, 07 Settembre 2000" },
-          { href: "/rassegna-stampa/2000/sep/8/un-certain-cinema-italien-du-sud-et-tourne-vers-so/", title: "Un certain cinéma italien, du Sud et tourné vers son passé", source: "Thomas Sotinel, Le Monde, 08 Settembre 2000" },
-          { href: "/rassegna-stampa/2000/sep/9/struggle-italian-partisan/", title: "The Struggle of an Italian Partisan", source: "Roderick Conway Morris, International Herald Tribune, 09 Settembre 2000" },
-          { href: "/rassegna-stampa/2000/sep/11/recensione-il-partigiano-johnny/", title: "Recensione «Il Partigiano Johnny»", source: "Riccardo Ventrella, ReVision, 11 Settembre 2000" },
-          { href: "/rassegna-stampa/2000/oct/10/recensione-il-partigiano-johnny/", title: "Recensione «Il Partigiano Johnny»", source: "Alberto Farassino, Kataweb cinema" },
-          { href: "/rassegna-stampa/2000/oct/21/il-partigiano-johnny/", title: "Il partigiano Johnny", source: "Paolo Mereghetti, Io donna, 21 Ottobre 2000" },
-          { href: "/rassegna-stampa/2000/nov/10/dal-libro-al-film-ovvero-larte-della-sottrazione/", title: "Dal libro al film ovvero l'arte della sottrazione", source: "Stefano Della Casa, Kataweb cinema" },
-          { href: "/rassegna-stampa/2000/nov/10/il-partigiano-della-nostalgia/", title: "Il partigiano della nostalgia", source: "Lietta Tornabuoni, La Stampa, 10 Novembre 2000" },
-          { href: "/rassegna-stampa/2000/nov/18/nel-freddo-estremo-della-guerra/", title: "Nel freddo estremo della guerra", source: "Tullio Kezich, Corriere della sera, 18 Novembre 2000" },
-          { href: "/rassegna-stampa/2000/nov/21/recensione-il-partigiano-johnny/", title: "Recensione «Il Partigiano Johnny»", source: "Alberto Corsani, Near Dark, 11 Novembre 2000" },
-          { href: "/rassegna-stampa/2000/nov/30/lezione-da-fenoglio/", title: "A lezione da Fenoglio", source: "Goffredo Fofi, Panorama, 30 Novembre 2000" },
+          { title: "Johnny nella nebbia", source: "Lorenzo Mondo", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%205.jpg" },
+          { title: "Johnny, un intellettuale tra i partigiani delle Langhe", source: "Roberto Nepoti, La Repubblica", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%206.jpg" },
+          { title: "Cuba oppressiva ma senza carisma. Il partigiano Johnny una felice tensione", source: "Gian Luigi Rondi, Il Tempo", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%201.jpg" },
+          { title: "Un certain cinéma italien, du Sud et tourné vers son passé", source: "Thomas Sotinel, Le Monde, 07 Settembre 2000" },
+          { title: "Un certain cinéma italien, du Sud et tourné vers son passé", source: "Thomas Sotinel, Le Monde, 08 Settembre 2000", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%202a.jpg" },
+          { title: "The Struggle of an Italian Partisan", source: "Roderick Conway Morris, International Herald Tribune", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%209_.jpg" },
+          { title: "Recensione «Il Partigiano Johnny»", source: "Riccardo Ventrella, ReVision" },
+          { title: "Recensione «Il Partigiano Johnny»", source: "Alberto Farassino, Kataweb cinema" },
+          { title: "Il partigiano Johnny", source: "Paolo Mereghetti, Io donna", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%203.jpg" },
+          { title: "Dal libro al film ovvero l'arte della sottrazione", source: "Stefano Della Casa, Kataweb cinema" },
+          { title: "Il partigiano della nostalgia", source: "Lietta Tornabuoni, La Stampa", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%204.jpg" },
+          { title: "Nel freddo estremo della guerra", source: "Tullio Kezich, Corriere della Sera", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%207.jpg" },
+          { title: "Recensione «Il Partigiano Johnny»", source: "Alberto Corsani, Near Dark" },
+          { title: "A lezione da Fenoglio", source: "Goffredo Fofi, Panorama", download: "http://guidochiesa.net/media/pressreview/il-partigiano-johnny/2000/IL%20PARTIGIANO%20JOHNNY%208.jpg" },
         ],
       },
       {
         film: "Provini per un massacro",
         items: [
-          { href: "/rassegna-stampa/2000/jan/1/pagine-corsare/", title: "Pagine corsare", source: "Franco Berardi Bifo, Liberazione, 15 Ottobre 2005" },
+          { title: "Pagine corsare", source: "Franco Berardi Bifo, Liberazione" },
         ],
       },
     ],
@@ -231,10 +231,10 @@ const years: YearGroup[] = [
       {
         film: "Una questione privata",
         items: [
-          { href: "/rassegna-stampa/1998/apr/9/beppe-fenoglio-partigiano-segreto/", title: "Beppe Fenoglio partigiano segreto", source: "Francesco Erbani, La Repubblica, 09 Aprile 1998" },
-          { href: "/rassegna-stampa/1998/apr/9/fenoglio-calvinista-partigiano/", title: "Fenoglio, calvinista partigiano", source: "Lorenzo Mondo, La Stampa, 09 Aprile 1998" },
-          { href: "/rassegna-stampa/1998/apr/12/affascina-la-crucis-del-papa-nel-bel-venerdi-di-bi/", title: "Affascina la Via Crucis del Papa nel bel venerdì di Biagi e Chiesa", source: "Alessandra Comazzi, La Stampa, 12 Aprile 1998" },
-          { href: "/rassegna-stampa/1998/apr/12/il-tele-ritratto-di-fenoglio-infrange-un-tabu/", title: "Il tele-ritratto di Fenoglio infrange un tabù", source: "Aldo Grasso, Corriere della sera, 12 Marzo 1998" },
+          { title: "Beppe Fenoglio partigiano segreto", source: "Francesco Erbani, La Repubblica" },
+          { title: "Fenoglio, calvinista partigiano", source: "Lorenzo Mondo, La Stampa", download: "http://guidochiesa.net/media/pressreview/questione-privata/1998/questione%20privata2.jpg" },
+          { title: "Affascina la Via Crucis del Papa nel bel venerdì di Biagi e Chiesa", source: "Alessandra Comazzi, La Stampa", download: "http://guidochiesa.net/media/pressreview/questione-privata/1998/Questione%20privata3.jpg" },
+          { title: "Il tele-ritratto di Fenoglio infrange un tabù", source: "Aldo Grasso, Corriere della Sera", download: "http://guidochiesa.net/media/pressreview/questione-privata/1998/questione%20privata4.jpg" },
         ],
       },
     ],
@@ -245,16 +245,16 @@ const years: YearGroup[] = [
       {
         film: "Partigiani",
         items: [
-          { href: "/rassegna-stampa/1997/jan/1/il-nonno-partigiano-di-ligabue/", title: "Il nonno partigiano di Ligabue", source: "Alberto Farassino" },
-          { href: "/rassegna-stampa/1997/jan/1/partigiani-i-ricordi-diventano-un-film/", title: "«Partigiani»: i ricordi diventano un film", source: "Giuseppe Culicchia" },
-          { href: "/rassegna-stampa/1997/nov/18/immagini-resistenti/", title: "Immagini resistenti", source: "Roberta Ronconi, Liberazione, 18 Novembre 1997" },
-          { href: "/rassegna-stampa/1997/nov/18/partigiani-una-nuova-resistenza/", title: "«Partigiani» per una nuova Resistenza", source: "Cristina Piccino, Il Manifesto, 18 Novembre 1997" },
+          { title: "Il nonno partigiano di Ligabue", source: "Alberto Farassino", download: "http://guidochiesa.net/media/pressreview/partigiani/1997/PARTIGIANI%205.jpg" },
+          { title: "«Partigiani»: i ricordi diventano un film", source: "Giuseppe Culicchia", download: "http://guidochiesa.net/media/pressreview/partigiani/1997/PARTIGIANI%202.jpg" },
+          { title: "Immagini resistenti", source: "Roberta Ronconi, Liberazione", download: "http://guidochiesa.net/media/pressreview/partigiani/1997/PARTIGIANI%201.jpg" },
+          { title: "«Partigiani» per una nuova Resistenza", source: "Cristina Piccino, Il Manifesto", download: "http://guidochiesa.net/media/pressreview/partigiani/1997/PARTIGIANI%203.jpg" },
         ],
       },
       {
         film: "Nascita di una democrazia",
         items: [
-          { href: "/rassegna-stampa/1997/jul/8/lalba-della-prima-repubblica/", title: "L'alba della prima Repubblica", source: "Franco Montini, La Repubblica, 08 Luglio 1997" },
+          { title: "L'alba della prima Repubblica", source: "Franco Montini, La Repubblica", download: "http://guidochiesa.net/media/pressreview/nascita-di-una-democrazia/1997/NASCITA%20DI%20UNA%20DEMOCRAZIA%201.jpg" },
         ],
       },
     ],
@@ -265,16 +265,16 @@ const years: YearGroup[] = [
       {
         film: "Materiale resistente",
         items: [
-          { href: "/rassegna-stampa/1995/jan/20/chitarristi-e-resistenti/", title: "Chitarristi e resistenti", source: "Filippo D'Angelo, Cuore, 20 Gennaio 1996" },
-          { href: "/rassegna-stampa/1995/aug/1/bella-ciao/", title: "Bella ciao", source: "David Rooney, Variety, 01 Agosto 1995" },
-          { href: "/rassegna-stampa/1995/nov/14/va-dove-ti-porta-il-mitra-il-videoclip-del-partigi/", title: "Va' dove ti porta il mitra, il videoclip del partigiano", source: "Fabrizio De Stefani, Il Manifesto" },
-          { href: "/rassegna-stampa/1995/dec/1/perche-la-memoria-non-muoia/", title: "Perché la memoria non muoia", source: "Alberto Crespi, Cineforum, Dicembre 1995" },
+          { title: "Chitarristi e resistenti", source: "Filippo D'Angelo, Cuore", download: "http://guidochiesa.net/media/pressreview/materiale-resistente/1996/MATERIALE%20RESISTENTE%201.jpg" },
+          { title: "Bella ciao", source: "David Rooney, Variety", download: "http://guidochiesa.net/media/pressreview/materiale-resistente/1996/MATERIALE%20RESISTENTE%204.jpg" },
+          { title: "Va' dove ti porta il mitra, il videoclip del partigiano", source: "Fabrizio De Stefani, Il Manifesto", download: "http://guidochiesa.net/media/pressreview/materiale-resistente/1995/MATERIALE%20RESISTENTE%202.jpg" },
+          { title: "Perché la memoria non muoia", source: "Alberto Crespi, Cineforum", download: "http://guidochiesa.net/media/pressreview/materiale-resistente/1995/MATERIALE%20RESISTENTE%203a.jpg" },
         ],
       },
       {
         film: "25 Aprile — Memoria inquieta",
         items: [
-          { href: "/rassegna-stampa/1995/apr/25/memoria-inquieta-del-passato-schegge-storiche-senz/", title: "«Memoria inquieta» del passato — schegge storiche senza commenti", source: "Alessandra Comazzi, La Stampa, 25 Aprile 1995" },
+          { title: "«Memoria inquieta» del passato — schegge storiche senza commenti", source: "Alessandra Comazzi, La Stampa", download: "http://guidochiesa.net/media/pressreview/25-aprile-memoria-inquieta/1995/25%20APRILE%201.jpg" },
         ],
       },
     ],
@@ -285,15 +285,15 @@ const years: YearGroup[] = [
       {
         film: "Babylon",
         items: [
-          { href: "/rassegna-stampa/1994/may/1/alla-fine-era-il-caos/", title: "Alla fine era il caos", source: "Alberto M. Castagna, PrimaVisione, 01 Maggio 1994" },
-          { href: "/rassegna-stampa/1994/jun/1/altri-sguardi-italiani/", title: "Altri sguardi italiani", source: "Gianni Canova, Duel, 01 Giugno 1994" },
-          { href: "/rassegna-stampa/1994/jun/1/babylon-la-paura-e-la-migliore-amica-delluomo/", title: "Babylon — La paura è la migliore amica dell'uomo", source: "Giona A. Nazzaro, Rumore, 01 Giugno 1994" },
-          { href: "/rassegna-stampa/1994/jul/1/babylon/", title: "Babylon", source: "P.D., Ciak, Luglio 1994" },
-          { href: "/rassegna-stampa/1994/aug/10/alta-tensione-e-folle-gelosia-e-babylon/", title: "Alta tensione e folle gelosia. È «Babylon»", source: "Gian Luigi Rondi, Il Tempo, 10 Agosto 1994" },
-          { href: "/rassegna-stampa/1994/aug/10/bie-irrlichter-babylons/", title: "Die Irrlichter Babylons", source: "Josef Bossart, Berner Zeitung, 10 Agosto 1994" },
-          { href: "/rassegna-stampa/1994/aug/10/litalia-che-babilonia/", title: "L'Italia, che Babilonia", source: "Michele Anselmi, L'Unità, 10 Agosto 1994" },
-          { href: "/rassegna-stampa/1994/aug/11/babylon-interessante-basta-rifarlo/", title: "«Babylon»: interessante, basta rifarlo", source: "Morando Morandini, Il Giorno, 11 Agosto 1994" },
-          { href: "/rassegna-stampa/1994/nov/18/babylon-tapping-emotions-reflect-disaffected-socie/", title: "«Babylon»: Tapping Emotions to Reflect Disaffected Society", source: "Kevin Thomas, Los Angeles Times, 18 Novembre 1994" },
+          { title: "Alla fine era il caos", source: "Alberto M. Castagna, PrimaVisione", download: "http://guidochiesa.net/media/pressreview/babylon/1994/BABYLON%206A.jpg" },
+          { title: "Altri sguardi italiani", source: "Gianni Canova, Duel", download: "http://guidochiesa.net/media/pressreview/babylon/1994/BABYLON%209.jpg" },
+          { title: "Babylon — La paura è la migliore amica dell'uomo", source: "Giona A. Nazzaro, Rumore", download: "http://guidochiesa.net/media/pressreview/babylon/1995/BABYLON%2010.jpg" },
+          { title: "Babylon", source: "P.D., Ciak", download: "http://guidochiesa.net/media/pressreview/babylon/1994/BABYLON%201.jpg" },
+          { title: "Alta tensione e folle gelosia. È «Babylon»", source: "Gian Luigi Rondi, Il Tempo", download: "http://guidochiesa.net/media/pressreview/babylon/1994/BABYLON%202.jpg" },
+          { title: "Die Irrlichter Babylons", source: "Josef Bossart, Berner Zeitung", download: "http://guidochiesa.net/media/pressreview/babylon/1994/BABYLON%207.jpg" },
+          { title: "L'Italia, che Babilonia", source: "Michele Anselmi, L'Unità", download: "http://guidochiesa.net/media/pressreview/babylon/1994/BABYLON%204.jpg" },
+          { title: "«Babylon»: interessante, basta rifarlo", source: "Morando Morandini, Il Giorno", download: "http://guidochiesa.net/media/pressreview/babylon/1994/BABYLON%205.jpg" },
+          { title: "«Babylon»: Tapping Emotions to Reflect Disaffected Society", source: "Kevin Thomas, Los Angeles Times", download: "http://guidochiesa.net/media/pressreview/babylon/1994/BABYLON%203.jpg" },
         ],
       },
     ],
@@ -304,13 +304,13 @@ const years: YearGroup[] = [
       {
         film: "Il caso Martello",
         items: [
-          { href: "/rassegna-stampa/1991/mar/1/il-caso-martello-tra-passato-e-presente/", title: "«Il caso Martello» tra passato e presente", source: "Renzo Gilodi, Cinemasessanta, 01 Marzo 1992" },
-          { href: "/rassegna-stampa/1991/may/1/il-caso-martello/", title: "Il caso Martello", source: "Umberto Mosca, Cineforum, 01 Maggio 1992" },
-          { href: "/rassegna-stampa/1991/may/22/lo-yuppie-travolto-dalla-complessita-il-cinema-ita/", title: "Lo yuppie travolto dalla complessità. Il cinema italiano torna alla resistenza", source: "Roberto Silvestri, Il Manifesto, 22 Maggio 1992" },
-          { href: "/rassegna-stampa/1991/jun/12/il-giovane-carrierista-scopre-la-resistenza/", title: "Il giovane carrierista scopre la resistenza", source: "Fabio Bo, Il Messaggero, 12 Giugno 1992" },
-          { href: "/rassegna-stampa/1991/jun/12/la-guerra-dimenticata-del-partigiano-martello/", title: "La guerra «dimenticata» del partigiano Martello", source: "Alberto Crespi, L'Unità, 12 Giugno 1992" },
-          { href: "/rassegna-stampa/1991/sep/6/lassicuratore-e-i-contadini/", title: "L'assicuratore e i contadini", source: "Alessandra Levantesi, La Stampa, 06 Settembre 1991" },
-          { href: "/rassegna-stampa/1991/sep/6/col-manager-rampante-del-suo-caso-martello-fa-cent/", title: "Col manager rampante del suo «Caso Martello» fa centro il «deb» Chiesa, allievo di Jarmusch", source: "Maurizio Porro, Corriere della sera, 6 Settembre 1991" },
+          { title: "«Il caso Martello» tra passato e presente", source: "Renzo Gilodi, Cinemasessanta", download: "http://guidochiesa.net/media/pressreview/il-caso-martello/1992/IL%20CASO%20MARTELLO%201a.jpg" },
+          { title: "Il caso Martello", source: "Umberto Mosca, Cineforum", download: "http://guidochiesa.net/media/pressreview/il-caso-martello/1992/IL%20CASO%20MARTELLO%203a.jpg" },
+          { title: "Lo yuppie travolto dalla complessità. Il cinema italiano torna alla resistenza", source: "Roberto Silvestri, Il Manifesto", download: "http://guidochiesa.net/media/pressreview/il-caso-martello/1992/IL%20CASO%20MARTELLO%202.jpg" },
+          { title: "Il giovane carrierista scopre la resistenza", source: "Fabio Bo, Il Messaggero", download: "http://guidochiesa.net/media/pressreview/il-caso-martello/1992/IL%20CASO%20MARTELLO%205%20.jpg" },
+          { title: "La guerra «dimenticata» del partigiano Martello", source: "Alberto Crespi, L'Unità", download: "http://guidochiesa.net/media/pressreview/il-caso-martello/1992/IL%20CASO%20MARTELLO%204%20.jpg" },
+          { title: "L'assicuratore e i contadini", source: "Alessandra Levantesi, La Stampa", download: "http://guidochiesa.net/media/pressreview/il-caso-martello/1991/IL%20CASO%20MARTELLO%20%207.jpg" },
+          { title: "Col manager rampante del suo «Caso Martello» fa centro il «deb» Chiesa, allievo di Jarmusch", source: "Maurizio Porro, Corriere della Sera", download: "http://guidochiesa.net/media/pressreview/il-caso-martello/1991/IL%20CASO%20MARTELLO%20%206.jpg" },
         ],
       },
     ],
@@ -321,9 +321,9 @@ const years: YearGroup[] = [
       {
         film: "Black Harvest",
         items: [
-          { href: "/rassegna-stampa/1986/apr/18/un-torinese-new-york/", title: "Un torinese a New York", source: "S. Della Casa, Città, 18 Aprile 1986" },
-          { href: "/rassegna-stampa/1986/oct/1/and-out-production/", title: "In and Out of Production", source: "Robert Aaronson, The Independent, Ottobre 1986" },
-          { href: "/rassegna-stampa/1986/nov/1/what-are-friends/", title: "What Are Friends For?", source: "Roy Hernandez, Say! Cover New York, 01 Novembre 1986" },
+          { title: "Un torinese a New York", source: "S. Della Casa, Città", download: "http://guidochiesa.net/media/pressreview/black-harvest/1996/BLACK%20HARVEST%203.jpg" },
+          { title: "In and Out of Production", source: "Robert Aaronson, The Independent", download: "http://guidochiesa.net/media/pressreview/black-harvest/1986/BLACK%20HARVEST%201.jpg" },
+          { title: "What Are Friends For?", source: "Roy Hernandez, Say! Cover New York", download: "http://guidochiesa.net/media/pressreview/black-harvest/1996/BL%20ACK%20HARVEST%202.jpg" },
         ],
       },
     ],
@@ -334,9 +334,9 @@ const years: YearGroup[] = [
       {
         film: "Give Me a Spell",
         items: [
-          { href: "/rassegna-stampa/1985/apr/7/un-film-maker-e-lamore-abbandonarsi-mezzanotte/", title: "Un film-maker e l'amore: abbandonarsi a mezzanotte", source: "La Repubblica, 07 Aprile 1986" },
-          { href: "/rassegna-stampa/1985/jun/1/salso-film-tv-fest/", title: "Salso Film & TV Fest", source: "Davide Ferrario, Rockerilla, Giugno 1985" },
-          { href: "/rassegna-stampa/1985/jul/1/give-me-spell/", title: "Give Me a Spell", source: "" },
+          { title: "Un film-maker e l'amore: abbandonarsi a mezzanotte", source: "La Repubblica", download: "http://guidochiesa.net/media/pressreview/give-me-spell/1986/GIVE%20ME%20A%20SPELL%202.jpg" },
+          { title: "Salso Film & TV Fest", source: "Davide Ferrario, Rockerilla", download: "http://guidochiesa.net/media/pressreview/give-me-spell/1985/GIVE%20ME%20A%20SPELL%203.jpg" },
+          { title: "Give Me a Spell", source: "", download: "http://guidochiesa.net/media/pressreview/give-me-spell/1985/GIVE%20ME%20A%20SPELL%201.jpg" },
         ],
       },
     ],
@@ -360,21 +360,41 @@ const years: YearGroup[] = [
           <div class="space-y-8">
             {yearGroup.groups.map((filmGroup) => (
               <div>
-                <h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">{filmGroup.film}</h3>
-                <ul class="space-y-0.5">
+                <h3 class="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">{filmGroup.film}</h3>
+                <ul class="space-y-0">
                   {filmGroup.items.map((item) => (
                     <li>
-                      <a
-                        href={import.meta.env.BASE_URL + item.href.slice(1)}
-                        class="group flex items-baseline gap-3 rounded-lg px-3 py-2 transition hover:bg-zinc-50"
-                      >
-                        <span class="flex-1 text-sm font-medium text-zinc-800 transition group-hover:text-emerald-700">
-                          {item.title}
-                        </span>
-                        {item.source && (
-                          <span class="hidden shrink-0 text-xs text-zinc-400 sm:block">{item.source}</span>
-                        )}
-                      </a>
+                      {item.download ? (
+                        <details class="group">
+                          <summary class="flex cursor-pointer list-none items-center gap-3 rounded-lg px-3 py-2.5 transition hover:bg-zinc-50">
+                            <svg class="h-3 w-3 shrink-0 text-zinc-300 transition duration-200 group-open:rotate-90" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="flex-1 text-sm font-medium text-zinc-800">{item.title}</span>
+                            {item.source && (
+                              <span class="hidden shrink-0 text-xs text-zinc-400 sm:block">{item.source}</span>
+                            )}
+                          </summary>
+                          <div class="pb-2 pl-9 pr-3 pt-1">
+                            <a
+                              href={item.download}
+                              target="_blank"
+                              rel="noopener"
+                              class="inline-flex items-center gap-1.5 rounded-full bg-emerald-700 px-3.5 py-1 text-xs font-semibold text-white transition hover:bg-emerald-800"
+                            >
+                              ↓ Scarica
+                            </a>
+                          </div>
+                        </details>
+                      ) : (
+                        <div class="flex items-center gap-3 rounded-lg px-3 py-2.5">
+                          <span class="h-3 w-3 shrink-0"></span>
+                          <span class="flex-1 text-sm font-medium text-zinc-500">{item.title}</span>
+                          {item.source && (
+                            <span class="hidden shrink-0 text-xs text-zinc-400 sm:block">{item.source}</span>
+                          )}
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>
