@@ -16,6 +16,7 @@ function clean(html: string): string {
     .replace(/<p>\s*<h3>[^<]*<\/h3>\s*<\/p>/g, '')
     .replace(/(<br>\s*)+$/g, '')
     .replace(/href="\.\.\/\.\.\/\.\.\/\.\.\//g, `href="${import.meta.env.BASE_URL}`)
+    .replace(/href="\/(?!\/)/g, `href="${import.meta.env.BASE_URL}`)
     .replace(/<a([^>]*)>\s*Link esterno\s*<\/a>/g, (_, attrs) => {
       const hasTarget = /target=/.test(attrs);
       const hasRel = /rel=/.test(attrs);
