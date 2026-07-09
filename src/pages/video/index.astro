@@ -18,7 +18,7 @@ const videos: VideoItem[] = [
   // Documentari
   { year: 2002, title: "Il contratto", category: "Documentari", type: "youtube", id: "7ZqBqXpeLk8", note: "Film completo" },
   { year: 2002, title: "Alice è in paradiso", category: "Documentari", type: "vimeo", id: "249293958", note: "Film completo" },
-  { year: 1999, title: "Non mi basta mai", category: "Documentari", type: "youtube", id: "MWFYh_7rAkQ", note: "Film completo" },
+  { year: 1999, title: "Non mi basta mai", category: "Documentari", type: "youtube", note: "Film completo (non disponibile)" },
 
   // Videoclip
   { year: 2000, title: "Otto giorni — Mambassa", category: "Videoclip", type: "youtube", id: "JN5ETKp_uKk" },
@@ -57,16 +57,18 @@ function embedSrc(v: VideoItem): string {
             <div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
               {items.map((v, i) => (
                 <div class="overflow-hidden rounded-3xl border border-black/5 bg-white shadow-[0_12px_40px_-24px_rgba(0,0,0,0.15)]" data-reveal data-delay={i * 80}>
-                  <div class="relative aspect-video w-full bg-zinc-100">
-                    <iframe
-                      src={embedSrc(v)}
-                      title={v.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
-                      loading="lazy"
-                      class="absolute inset-0 h-full w-full border-0"
-                    ></iframe>
-                  </div>
+                  {embedSrc(v) && (
+                    <div class="relative aspect-video w-full bg-zinc-100">
+                      <iframe
+                        src={embedSrc(v)}
+                        title={v.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy"
+                        class="absolute inset-0 h-full w-full border-0"
+                      ></iframe>
+                    </div>
+                  )}
                   <div class="px-5 py-4">
                     <div class="text-xs font-semibold tabular-nums text-zinc-400">{v.year}</div>
                     <div class="mt-1 text-base font-semibold text-zinc-900">{v.title}</div>
