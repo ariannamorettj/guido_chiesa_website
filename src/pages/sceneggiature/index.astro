@@ -48,7 +48,7 @@ const ultimoAnno = Math.max(...sceneggiature.map(s => s.year));
                 {item.href ? (
                   <span class="flex items-center gap-2">
                     <a
-                      href={import.meta.env.BASE_URL + item.href.slice(1)}
+                      href={item.href.startsWith('http') ? item.href : import.meta.env.BASE_URL + item.href.slice(1)}
                       target={item.pdf ? "_blank" : undefined}
                       rel={item.pdf ? "noopener" : undefined}
                       class="text-base font-medium text-zinc-800 transition hover:text-emerald-700"
@@ -94,9 +94,9 @@ const ultimoAnno = Math.max(...sceneggiature.map(s => s.year));
 
           <div class="flex flex-col gap-3">
             {[
-              { label: "Filmografia", href: "/filmografia/" },
-              { label: "Testi", href: "/testi/" },
-              { label: "Biografia", href: "/biografia/" },
+              { label: "Filmografia", href: import.meta.env.BASE_URL + "filmografia/" },
+              { label: "Testi", href: import.meta.env.BASE_URL + "testi/" },
+              { label: "Biografia", href: import.meta.env.BASE_URL + "biografia/" },
             ].map(({ label, href }) => (
               <a
                 href={href}
