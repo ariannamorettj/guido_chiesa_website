@@ -1,74 +1,149 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+
+const profili = [
+  {
+    label: "Instagram",
+    handle: "@guidochiesa_regista",
+    href: "https://www.instagram.com/guidochiesa_regista/",
+  },
+  {
+    label: "LinkedIn",
+    handle: "Guido Chiesa",
+    href: "https://www.linkedin.com/in/guido-chiesa-7337092b/",
+  },
+];
+
+const sitiCollegati = [
+  { label: "IMDb",          href: "https://www.imdb.com/it/name/nm0157337/" },
+  { label: "ANICA Academy", href: "https://www.anicaacademy.org/docenti/guido-chiesa/" },
+  { label: "Vivofilm",      href: "https://vivofilm.it/directors/guidochiesa/" },
+  { label: "MyMovies",      href: "https://www.mymovies.it/persone/guido-chiesa/49903/" },
+  { label: "Filmitalia",    href: "https://filmitalia.org/it/filmography/0/8213/" },
+  { label: "Movieplayer",   href: "https://movieplayer.it/personaggi/guido-chiesa_22522/" },
+];
 ---
 
 <MainLayout title="Contatti | Guido Chiesa" description="Contatti di Guido Chiesa, regista e sceneggiatore.">
   <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
 
-    <div class="max-w-2xl">
-      <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Contatti</h1>
-      <p class="mt-6 text-lg leading-8 text-zinc-600">
-        Per informazioni, collaborazioni o qualsiasi altra richiesta, compila il modulo qui sotto.
-      </p>
+    <div class="grid gap-16 lg:grid-cols-[2fr_1fr]">
 
-      <form
-        action="."
-        method="post"
-        class="mt-10 space-y-6"
-      >
-        <div>
-          <label for="id_name" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
-            Nome
-          </label>
-          <input
-            id="id_name"
-            type="text"
-            name="name"
-            maxlength="100"
-            required
-            class="mt-2 block w-full border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
-            placeholder="Il tuo nome"
-          />
+      <!-- Form -->
+      <div>
+        <h1 class="text-5xl font-semibold tracking-[-0.07em] text-zinc-900 sm:text-6xl">Contatti</h1>
+        <p class="mt-6 text-lg leading-8 text-zinc-600">
+          Per informazioni, collaborazioni o qualsiasi altra richiesta, compila il modulo qui sotto.
+        </p>
+
+        <form
+          action="."
+          method="post"
+          class="mt-10 space-y-6"
+        >
+          <div>
+            <label for="id_name" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
+              Nome
+            </label>
+            <input
+              id="id_name"
+              type="text"
+              name="name"
+              maxlength="100"
+              required
+              class="mt-2 block w-full border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
+              placeholder="Il tuo nome"
+            />
+          </div>
+
+          <div>
+            <label for="id_email" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
+              Email
+            </label>
+            <input
+              id="id_email"
+              type="email"
+              name="email"
+              maxlength="200"
+              required
+              class="mt-2 block w-full border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
+              placeholder="nome@esempio.com"
+            />
+          </div>
+
+          <div>
+            <label for="id_body" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
+              Messaggio
+            </label>
+            <textarea
+              id="id_body"
+              name="body"
+              rows="7"
+              required
+              class="mt-2 block w-full resize-none border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
+              placeholder="Scrivi qui il tuo messaggio…"
+            ></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button
+              type="submit"
+              class="inline-flex items-center rounded-full bg-zinc-900 px-7 py-3 text-sm font-semibold text-white transition hover:bg-zinc-700"
+            >
+              Invia
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+
+        <!-- Profili social -->
+        <div class="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.12)]">
+          <div class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">Profili</div>
+          <ul class="mt-4 space-y-3">
+            {profili.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex items-center justify-between"
+                >
+                  <span>
+                    <span class="block text-sm font-semibold text-zinc-800 transition group-hover:text-emerald-700">{item.label}</span>
+                    <span class="block text-xs text-zinc-400">{item.handle}</span>
+                  </span>
+                  <span class="shrink-0 text-zinc-300 transition group-hover:translate-x-0.5 group-hover:text-emerald-500">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div>
-          <label for="id_email" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
-            Email
-          </label>
-          <input
-            id="id_email"
-            type="email"
-            name="email"
-            maxlength="200"
-            required
-            class="mt-2 block w-full border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
-            placeholder="nome@esempio.com"
-          />
+        <!-- Siti web collegati -->
+        <div class="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.12)]">
+          <div class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">Siti web collegati</div>
+          <ul class="mt-4 divide-y divide-black/5">
+            {sitiCollegati.map((item) => (
+              <li class="py-2.5">
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex items-center justify-between"
+                >
+                  <span class="text-sm font-medium text-zinc-700 transition group-hover:text-emerald-700">{item.label}</span>
+                  <span class="shrink-0 text-zinc-300 transition group-hover:translate-x-0.5 group-hover:text-emerald-500">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div>
-          <label for="id_body" class="block text-sm font-semibold uppercase tracking-[0.12em] text-zinc-500">
-            Messaggio
-          </label>
-          <textarea
-            id="id_body"
-            name="body"
-            rows="7"
-            required
-            class="mt-2 block w-full resize-none border-b border-zinc-300 bg-transparent pb-2 text-base text-zinc-900 placeholder-zinc-300 outline-none transition focus:border-zinc-900"
-            placeholder="Scrivi qui il tuo messaggio…"
-          ></textarea>
-        </div>
+      </aside>
 
-        <div class="pt-2">
-          <button
-            type="submit"
-            class="inline-flex items-center rounded-full bg-zinc-900 px-7 py-3 text-sm font-semibold text-white transition hover:bg-zinc-700"
-          >
-            Invia
-          </button>
-        </div>
-      </form>
     </div>
 
   </section>
