@@ -10,33 +10,36 @@ export type NavGroup = {
   items?: NavItem[];
 };
 
+const base = import.meta.env.BASE_URL;
+const b = (path: string) => base + path.replace(/^\//, '');
+
 export const navGroups: NavGroup[] = [
-  { label: "News", href: "/" },
-  { label: "Biografia", href: "/biografia/" },
-  { label: "Filmografia", href: "/filmografia/" },
-  { label: "Sceneggiature", href: "/sceneggiature/" },
-  { label: "Testi", href: "/testi/" },
-  { label: "Bibliografia", href: "/bibliografia/" },
-  { label: "Progetti", href: "/progetti/" },
-  { label: "Musica", href: "/musica/" },
-  { label: "Foto", href: "/foto/" },
-  { label: "Video", href: "/video/" },
-  { label: "Rassegna stampa", href: "/rassegna-stampa/" },
-  { label: "Links", href: "/links/" },
-  { label: "Contatti", href: "/contatti/" },
+  { label: "News",             href: base },
+  { label: "Biografia",        href: b("/biografia/") },
+  { label: "Filmografia",      href: b("/filmografia/") },
+  { label: "Sceneggiature",    href: b("/sceneggiature/") },
+  { label: "Testi",            href: b("/testi/") },
+  { label: "Bibliografia",     href: b("/bibliografia/") },
+  { label: "Progetti",         href: b("/progetti/") },
+  { label: "Musica",           href: b("/musica/") },
+  { label: "Foto",             href: b("/foto/") },
+  { label: "Video",            href: b("/video/") },
+  { label: "Rassegna stampa",  href: b("/rassegna-stampa/") },
+  { label: "Links",            href: b("/links/") },
+  { label: "Contatti",         href: b("/contatti/") },
 ];
 
 export const footerLinks: NavItem[] = [
-  { label: "Biografia", href: "/biografia/" },
-  { label: "Filmografia", href: "/filmografia/" },
-  { label: "Sceneggiature", href: "/sceneggiature/" },
-  { label: "Testi", href: "/testi/" },
-  { label: "Bibliografia", href: "/bibliografia/" },
-  { label: "Progetti", href: "/progetti/" },
-  { label: "Musica", href: "/musica/" },
-  { label: "Foto", href: "/foto/" },
-  { label: "Video", href: "/video/" },
-  { label: "Rassegna stampa", href: "/rassegna-stampa/" },
-  { label: "Links", href: "/links/" },
-  { label: "Contatti", href: "/contatti/" },
+  { label: "Biografia",        href: b("/biografia/") },
+  { label: "Filmografia",      href: b("/filmografia/") },
+  { label: "Sceneggiature",    href: b("/sceneggiature/") },
+  { label: "Testi",            href: b("/testi/") },
+  { label: "Bibliografia",     href: b("/bibliografia/") },
+  { label: "Progetti",         href: b("/progetti/") },
+  { label: "Musica",           href: b("/musica/") },
+  { label: "Foto",             href: b("/foto/") },
+  { label: "Video",            href: b("/video/") },
+  { label: "Rassegna stampa",  href: b("/rassegna-stampa/") },
+  { label: "Links",            href: b("/links/") },
+  { label: "Contatti",         href: b("/contatti/") },
 ];

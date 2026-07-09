@@ -22,7 +22,7 @@ const images = [
   <section class="mx-auto max-w-7xl px-6 py-12 lg:py-20">
 
     <nav class="mb-8 flex items-center gap-2 text-sm text-zinc-400">
-      <a href="/foto/" class="transition hover:text-zinc-700">Foto</a>
+      <a href={import.meta.env.BASE_URL + "foto/"} class="transition hover:text-zinc-700">Foto</a>
       <span>→</span>
       <span class="text-zinc-700">{title} ({year})</span>
     </nav>
@@ -38,7 +38,7 @@ const images = [
         <div id="slides" class="relative aspect-[3/2] cursor-pointer select-none">
           {images.map((img, i) => (
             <img
-              src={img.src}
+              src={import.meta.env.BASE_URL + img.src.slice(1)}
               alt={img.alt}
               data-slide={i}
               class:list={[
@@ -51,7 +51,7 @@ const images = [
         </div>
 
         <a
-          href="/foto/"
+          href={import.meta.env.BASE_URL + "foto/"}
           aria-label="Torna alle gallerie"
           class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/60 focus-visible:outline-none"
         >
@@ -100,7 +100,7 @@ const images = [
             ]}
             style="width: 84px; height: 56px;"
           >
-            <img src={img.src} alt="" aria-hidden="true" class="h-full w-full object-cover" loading="lazy" />
+            <img src={import.meta.env.BASE_URL + img.src.slice(1)} alt="" aria-hidden="true" class="h-full w-full object-cover" loading="lazy" />
           </button>
         ))}
       </div>
@@ -139,7 +139,7 @@ const images = [
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
     if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
-    if (e.key === 'Escape') { window.location.href = '/foto/'; }
+    if (e.key === 'Escape') { window.location.href = import.meta.env.BASE_URL + 'foto/'; }
   });
 
   let tx = 0;

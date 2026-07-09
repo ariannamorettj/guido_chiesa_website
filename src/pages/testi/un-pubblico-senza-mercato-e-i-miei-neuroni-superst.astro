@@ -18,7 +18,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 </ul>
     </div>
     <div class="mt-16 border-t border-zinc-100 pt-8">
-      <a href="/testi/" class="text-sm font-semibold text-emerald-700 transition hover:text-emerald-800">&larr; Torna ai testi</a>
+      <a href={import.meta.env.BASE_URL + "testi/"} class="text-sm font-semibold text-emerald-700 transition hover:text-emerald-800">&larr; Torna ai testi</a>
     </div>
   </article>
 </MainLayout>

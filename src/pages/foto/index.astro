@@ -28,14 +28,14 @@ const galleries = [
       {galleries.map((g, i) => (
         g.href ? (
           <a
-            href={g.href}
+            href={import.meta.env.BASE_URL + g.href!.slice(1)}
             class="group overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_8px_30px_-12px_rgba(0,0,0,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_50px_-18px_rgba(0,0,0,0.22)]"
             data-reveal
             data-delay={i * 60}
           >
             <div class="aspect-[4/3] w-full overflow-hidden bg-zinc-100">
               <img
-                src={g.thumb}
+                src={import.meta.env.BASE_URL + g.thumb.slice(1)}
                 alt={g.title}
                 class="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0 group-hover:scale-105"
                 loading="lazy"
@@ -57,7 +57,7 @@ const galleries = [
           >
             <div class="aspect-[4/3] w-full overflow-hidden bg-zinc-100">
               <img
-                src={g.thumb}
+                src={import.meta.env.BASE_URL + g.thumb.slice(1)}
                 alt={g.title}
                 class="h-full w-full object-cover grayscale"
                 loading="lazy"

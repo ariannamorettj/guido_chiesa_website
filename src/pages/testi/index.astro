@@ -71,7 +71,7 @@ const typeStyle: Record<TipoTesto, string> = {
     <div class="mt-14 space-y-1">
       {testi.map((item) => (
         <a
-          href={item.href}
+          href={import.meta.env.BASE_URL + item.href.slice(1)}
           class="group flex items-baseline gap-4 rounded-xl px-4 py-3 transition hover:bg-zinc-50"
         >
           <span class="w-10 shrink-0 text-sm tabular-nums text-zinc-400">{item.year}</span>
