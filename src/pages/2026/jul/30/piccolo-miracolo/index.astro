@@ -1,0 +1,23 @@
+---
+import MainLayout from '../../../../../layouts/MainLayout.astro';
+---
+<MainLayout title="Piccolo Miracolo | Guido Chiesa" description="30 luglio 2026 — news">
+  <article class="mx-auto max-w-3xl px-6 py-16 lg:py-24">
+    <div class="mb-8">
+      <div class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">30 luglio 2026</div>
+      <h1 class="mt-3 text-4xl font-semibold tracking-[-0.06em] text-zinc-900 sm:text-5xl">Piccolo Miracolo</h1>
+    </div>
+    <div class="prose-guido space-y-5 text-base leading-8 text-zinc-700">
+
+      <p>Il mio <strong>dodicesimo film di finzione</strong> ha finalmente un titolo: <em>Piccolo Miracolo</em>, liberamente ispirato al romanzo <em>«La grazia del demolitore»</em> di Fabio Bartolomei (Edizioni E/O).</p>
+
+      <p>Il film è prodotto da No Name Entertainment, Alea Film e Rai Cinema, con la distribuzione di 01 Distribution. Nel cast Marco D'Amore, Greta Scarano, Laura Adriani, Giorgio Colangeli, Mariangela D'Abbraccio, Gianmarco Tognazzi e molti altri.</p>
+
+      <p>La scheda tecnica completa e la sinossi sono disponibili nella <a href={import.meta.env.BASE_URL + "filmografia/piccolo-miracolo/"}>scheda del film</a>.</p>
+
+    </div>
+    <div class="mt-16 border-t border-zinc-100 pt-8">
+      <a href={import.meta.env.BASE_URL} class="text-sm font-semibold text-emerald-700 transition hover:text-emerald-800">&larr; Torna alla home</a>
+    </div>
+  </article>
+</MainLayout>

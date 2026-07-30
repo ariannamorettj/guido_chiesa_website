@@ -3,6 +3,12 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 const news = [
   {
+    date: "30 luglio 2026",
+    title: "Piccolo Miracolo",
+    href: "/2026/jul/30/piccolo-miracolo/",
+    excerpt: "Il dodicesimo film di finzione ha un titolo: liberamente ispirato al romanzo «La grazia del demolitore» di Fabio Bartolomei, con Marco D'Amore e Greta Scarano.",
+  },
+  {
     date: "29 maggio 2025",
     title: "Per amore di una donna in sala da oggi",
     href: "/2025/may/29/amore-di-una-donna-sala-da-oggi/",
@@ -114,9 +120,6 @@ const featuredSections = [
         <div class="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">News</div>
         <h2 class="mt-2 text-3xl font-semibold tracking-[-0.05em] text-zinc-900">Ultime notizie</h2>
       </div>
-      <a href={import.meta.env.BASE_URL + "news/"} class="hidden text-sm font-semibold text-zinc-600 transition hover:text-zinc-900 sm:inline">
-        Archivio news →
-      </a>
     </div>
     <div class="grid gap-6">
       {news.map((item, i) => (
