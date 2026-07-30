@@ -35,6 +35,11 @@ src/components/Welcome.astro
 public/media/photologue/
 public/images/
 
+# eccezioni: file piccoli necessari per il sito pubblicato
+!public/images/home-hero.jpg
+!public/images/locandine/
+!public/images/foto/*.jpg
+
 # originali ad alta definizione (backup locale pre-compressione)
 public/images-hd/
 
