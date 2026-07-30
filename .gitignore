@@ -35,4 +35,7 @@ src/components/Welcome.astro
 public/media/photologue/
 public/images/
 
+# originali ad alta definizione (backup locale pre-compressione)
+public/images-hd/
+
 src/pages/README.md
