@@ -79,37 +79,39 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
   .hb {
     position: absolute;
     border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    filter: blur(55px);
     will-change: transform;
   }
 
   #hb1 {
-    width: 70%; height: 65%;
-    right: -15%; top: -20%;
-    background: radial-gradient(circle, hsla(10, 100%, 55%, 0.82) 0%, hsla(10, 100%, 55%, 0.30) 40%, transparent 65%);
+    width: 65vw;
+    right: -20vw; top: -15vw;
+    background: radial-gradient(circle, hsla(10, 100%, 55%, 0.50) 0%, hsla(10, 100%, 55%, 0.12) 55%, transparent 85%);
     animation: hb1 20s ease-in-out infinite alternate;
   }
   #hb2 {
-    width: 60%; height: 60%;
-    right: -10%; bottom: -15%;
-    background: radial-gradient(circle, hsla(28, 100%, 52%, 0.75) 0%, hsla(28, 100%, 52%, 0.25) 40%, transparent 65%);
+    width: 55vw;
+    right: -12vw; bottom: -12vw;
+    background: radial-gradient(circle, hsla(28, 100%, 52%, 0.45) 0%, hsla(28, 100%, 52%, 0.10) 55%, transparent 85%);
     animation: hb2 26s ease-in-out infinite alternate;
   }
   #hb3 {
-    width: 52%; height: 52%;
-    right: 5%; top: -10%;
-    background: radial-gradient(circle, hsla(18, 100%, 60%, 0.70) 0%, hsla(18, 100%, 60%, 0.22) 40%, transparent 65%);
+    width: 48vw;
+    right: 8vw; top: -8vw;
+    background: radial-gradient(circle, hsla(18, 100%, 60%, 0.42) 0%, hsla(18, 100%, 60%, 0.10) 55%, transparent 85%);
     animation: hb3 17s ease-in-out infinite alternate;
   }
   #hb4 {
-    width: 48%; height: 55%;
-    right: -5%; top: 25%;
-    background: radial-gradient(circle, hsla(4, 100%, 58%, 0.68) 0%, hsla(4, 100%, 58%, 0.20) 40%, transparent 65%);
+    width: 44vw;
+    right: -6vw; top: 20vw;
+    background: radial-gradient(circle, hsla(4, 100%, 58%, 0.40) 0%, hsla(4, 100%, 58%, 0.09) 55%, transparent 85%);
     animation: hb4 22s ease-in-out infinite alternate;
   }
   #hb5 {
-    width: 45%; height: 45%;
-    right: 15%; bottom: -15%;
-    background: radial-gradient(circle, hsla(33, 95%, 54%, 0.65) 0%, hsla(33, 95%, 54%, 0.20) 40%, transparent 65%);
+    width: 42vw;
+    right: 12vw; bottom: -10vw;
+    background: radial-gradient(circle, hsla(33, 95%, 54%, 0.38) 0%, hsla(33, 95%, 54%, 0.08) 55%, transparent 85%);
     animation: hb5 30s ease-in-out infinite alternate;
   }
 
