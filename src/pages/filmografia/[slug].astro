@@ -1,0 +1,227 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import {
+  lungometraggi,
+  cortometraggi,
+  serial,
+  documentari,
+  videoclip,
+  type FilmItem,
+} from '../../data/filmografia';
+import { filmMetadata } from '../../data/filmMetadata';
+
+type FilmEntry = FilmItem & { categoria: string };
+
+export async function getStaticPaths() {
+  const all: FilmEntry[] = [
+    ...lungometraggi.map(f => ({ ...f, categoria: 'Lungometraggio' as const })),
+    ...cortometraggi.map(f => ({ ...f, categoria: 'Cortometraggio' as const })),
+    ...serial.map(f => ({ ...f, categoria: 'Serial' as const })),
+    ...documentari.map(f => ({ ...f, categoria: 'Documentario' as const })),
+    ...videoclip.map(f => ({ ...f, categoria: 'Videoclip' as const })),
+  ];
+  return all
+    .filter(f => f.href)
+    .map(f => {
+      const slug = f.href!.replace('/filmografia/', '').replace(/\/$/, '');
+      return { params: { slug }, props: { film: f, slug } };
+    });
+}
+
+const { film, slug } = Astro.props as { film: FilmEntry; slug: string };
+const meta = filmMetadata[slug] ?? {};
+
+function clean(html: string): string {
+  return html
+    .replace(/<p>\s*<h3>([^<]*)<\/h3>\s*(https?:\/\/[^\s<]+)\s*<\/p>/g,
+      (_, label, url) => `<p><a href="${url.trim()}" target="_blank" rel="noopener">▶ ${label.trim() || 'Guarda'}</a></p>`)
+    .replace(/<p>\s*<h3>[^<]*<\/h3>\s*<\/p>/g, '')
+    .replace(/(<br>\s*)+$/g, '')
+    .replace(/href="\.\.\/\.\.\/\.\.\/\.\.\//g, `href="${import.meta.env.BASE_URL}`)
+    .replace(/href="\/(?!\/)/g, `href="${import.meta.env.BASE_URL}`)
+    .replace(/<a([^>]*)>\s*Link esterno\s*<\/a>/g, (_, attrs) => {
+      const hasTarget = /target=/.test(attrs);
+      const hasRel = /rel=/.test(attrs);
+      return `<a${attrs} class="ext-pill"${hasTarget ? '' : ' target="_blank"'}${hasRel ? '' : ' rel="noopener"'}>↗ Link esterno</a>`;
+    })
+    .trim();
+}
+
+const content = film.content ? clean(film.content) : null;
+
+const schedaRows = meta.scheda
+  ? Object.entries({
+      Regia:          meta.scheda.regia,
+      Soggetto:       meta.scheda.soggetto,
+      Sceneggiatura:  meta.scheda.sceneggiatura,
+      Produzione:     meta.scheda.produzione,
+      Produttore:     meta.scheda.produttore,
+      Interpreti:     meta.scheda.interpreti,
+      Fotografia:     meta.scheda.fotografia,
+      Scenografia:    meta.scheda.scenografia,
+      Costumi:        meta.scheda.costumi,
+      Montaggio:      meta.scheda.montaggio,
+      Musiche:        meta.scheda.musiche,
+      Durata:         meta.scheda.durata,
+      Distribuzione:  meta.scheda.distribuzione,
+      Genere:         meta.scheda.genere,
+    }).filter(([, v]) => v !== undefined && v !== '')
+  : [];
+
+---
+
+<MainLayout
+  title={`${film.title} (${film.year}) | Filmografia | Guido Chiesa`}
+  description={`${film.title} (${film.year}) — ${film.categoria} di Guido Chiesa.`}
+>
+  <section class="mx-auto max-w-5xl px-6 py-14 lg:py-20">
+
+    <!-- Breadcrumb -->
+    <nav class="mb-10 flex items-center gap-2 text-sm text-zinc-400">
+      <a href={import.meta.env.BASE_URL + "filmografia/"} class="transition hover:text-zinc-700">Filmografia</a>
+      <span>→</span>
+      <span class="text-zinc-700">{film.title}</span>
+    </nav>
+
+    <!-- Title -->
+    <div class="mb-10">
+      <div class="mb-3 flex flex-wrap items-center gap-3">
+        <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">
+          {film.categoria}
+        </span>
+        <span class="text-sm tabular-nums text-zinc-400">{film.year}</span>
+      </div>
+      <h1 class="text-4xl font-semibold tracking-[-0.06em] text-zinc-900 sm:text-5xl">
+        {film.title}
+      </h1>
+    </div>
+
+    <!-- Foto + Locandina: griglia affiancata quando c'è la foto -->
+    {meta.foto && (
+      <div class:list={[
+        "mb-12 grid gap-5 items-center",
+        meta.locandina ? "grid-cols-1 sm:grid-cols-[1fr_auto]" : "grid-cols-1"
+      ]}>
+        <div class="overflow-hidden rounded-2xl bg-zinc-950 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.40)]">
+          <img
+            src={import.meta.env.BASE_URL + meta.foto.slice(1)}
+            alt={`${film.title} – foto di scena`}
+            class="aspect-[3/2] w-full object-cover"
+            loading="eager"
+          />
+        </div>
+        {meta.locandina && (
+          <div class="flex flex-col gap-3" style="width:200px;flex-shrink:0;">
+            <div class="overflow-hidden rounded-xl shadow-[0_12px_40px_-16px_rgba(0,0,0,0.35)]">
+              <img
+                src={import.meta.env.BASE_URL + meta.locandina.slice(1)}
+                alt={`${film.title} – locandina`}
+                class="w-full object-cover"
+                loading="eager"
+              />
+            </div>
+            {meta.didascalia && (
+              <p class="text-xs leading-relaxed text-zinc-400 italic">{meta.didascalia}</p>
+            )}
+          </div>
+        )}
+      </div>
+    )}
+
+    <!-- Main content: sinossi + note di regia -->
+    <!-- Locandina senza foto: galleggia nel testo su desktop, centrata su mobile -->
+    {(content || (!meta.foto && meta.locandina)) && (
+      <div class="film-content mb-12 max-w-3xl text-base leading-8 text-zinc-700">
+        {!meta.foto && meta.locandina && (
+          <div class="mb-6 flex justify-center sm:float-right sm:mb-4 sm:ml-6 sm:block">
+            <div class="overflow-hidden rounded-xl shadow-[0_12px_40px_-16px_rgba(0,0,0,0.35)]" style="width:200px;">
+              <img
+                src={import.meta.env.BASE_URL + meta.locandina.slice(1)}
+                alt={`${film.title} – locandina`}
+                class="w-full object-cover"
+                loading="eager"
+              />
+            </div>
+            {meta.didascalia && (
+              <p class="mt-3 text-xs leading-relaxed text-zinc-400 italic" style="max-width:200px;">{meta.didascalia}</p>
+            )}
+          </div>
+        )}
+        {content && <Fragment set:html={content} />}
+        <div class="clear-both"></div>
+      </div>
+    )}
+
+    <!-- Scheda tecnica -->
+    {schedaRows.length > 0 && (
+      <div class="mb-12">
+        <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Scheda tecnica</h2>
+        <dl class="divide-y divide-zinc-100 rounded-2xl border border-zinc-100 bg-white shadow-sm">
+          {schedaRows.map(([label, value]) => (
+            <div class="grid grid-cols-[140px_1fr] gap-4 px-5 py-3">
+              <dt class="text-sm font-medium text-zinc-500">{label}</dt>
+              <dd class="text-sm text-zinc-800">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    )}
+
+    <!-- Trailer -->
+    {meta.trailer && (
+      <div class="mb-12">
+        <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Trailer</h2>
+        <div class="overflow-hidden rounded-2xl bg-zinc-950 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.40)]">
+          <div class="relative aspect-video">
+            <iframe
+              src={meta.trailer}
+              title={`Trailer – ${film.title}`}
+              class="absolute inset-0 h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Bottom links: foto gallery + back -->
+    <div class="flex flex-wrap items-center gap-4">
+      {meta.fotoGallery && (
+        <a
+          href={import.meta.env.BASE_URL + meta.fotoGallery.slice(1)}
+          class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-medium text-zinc-700 transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_-8px_rgba(0,0,0,0.18)]"
+        >
+          <svg class="h-4 w-4 text-zinc-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 0 1 3.25 3h13.5A2.25 2.25 0 0 1 19 5.25v9.5A2.25 2.25 0 0 1 16.75 17H3.25A2.25 2.25 0 0 1 1 14.75v-9.5Zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75v-2.69l-2.22-2.219a.75.75 0 0 0-1.06 0l-1.91 1.909.47.47a.75.75 0 1 1-1.06 1.06L6.53 11.091a.75.75 0 0 0-1.06 0l-2.97 2.97ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd" />
+          </svg>
+          Galleria fotografica
+        </a>
+      )}
+      <a
+        href={import.meta.env.BASE_URL + "filmografia/"}
+        class="inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-zinc-700"
+      >
+        ← Torna alla filmografia
+      </a>
+    </div>
+
+  </section>
+</MainLayout>
+
+<style>
+  .film-content p { margin-bottom: 1rem; }
+  .film-content p:last-child { margin-bottom: 0; }
+  .film-content a { color: #059669; text-decoration: underline; text-underline-offset: 3px; }
+  .film-content a:hover { color: #047857; }
+  .film-content a.ext-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 9999px; border: 1px solid #a7f3d0; background: #f0fdf4;
+    padding: 3px 12px; font-size: 0.75rem; font-weight: 600;
+    color: #059669; text-decoration: none;
+  }
+  .film-content a.ext-pill:hover { background: #d1fae5; color: #047857; }
+  .film-content em { font-style: italic; }
+  .film-content strong { font-weight: 600; color: #18181b; }
+</style>

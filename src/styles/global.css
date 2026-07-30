@@ -41,8 +41,17 @@
 
 /* ── Tailwind v4 theme ── */
 @theme {
-  --font-body:    'Agrandir',             system-ui, sans-serif;
-  --font-display: 'Lora',                 Georgia, serif;
+  /* --font-body:    'Agrandir',             system-ui, sans-serif; */
+  --font-body:    'Nunito Sans',          system-ui, sans-serif;
+  /* --font-display: 'Lora', Georgia, serif; */
+  /* --font-display: 'Cormorant',             Georgia, serif; */
+  /* --font-display: 'Kavoon',               Georgia, serif; */
+  /* --font-display: 'BioRhyme',             Georgia, serif; */
+  /* --font-display: 'Agbalumo',             Georgia, serif; */
+  /* --font-display: 'Vampiro One',          Georgia, serif; */
+  --font-display: 'Rammetto One',         Georgia, serif;
+  /* --font-display: 'Sarina',               Georgia, serif; */
+  /* --font-display: 'Trade Winds',          Georgia, serif; */
   --font-label:   'Glacial Indifference', system-ui, sans-serif;
 }
 
@@ -176,7 +185,8 @@ blockquote {
 }
 
 blockquote > * {
-  font-family: 'Lora', Georgia, serif;
+  /* font-family: 'Lora', Georgia, serif; */
+  font-family: 'Cormorant', Georgia, serif;
   font-size: 1.25rem;
   line-height: 1.8;
   font-style: italic;
@@ -194,7 +204,8 @@ blockquote::before {
   position: absolute;
   top: 0.4rem;
   left: 0.7rem;
-  font-family: 'Lora', Georgia, serif;
+  /* font-family: 'Lora', Georgia, serif; */
+  font-family: 'Cormorant', Georgia, serif;
   font-size: 3.25rem;
   line-height: 1;
   font-style: normal;
@@ -204,7 +215,8 @@ blockquote::before {
 
 blockquote > *:last-child::after {
   content: '\201D';
-  font-family: 'Lora', Georgia, serif;
+  /* font-family: 'Lora', Georgia, serif; */
+  font-family: 'Cormorant', Georgia, serif;
   font-size: 1.25rem;
   font-weight: 700;
   font-style: normal;

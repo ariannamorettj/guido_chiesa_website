@@ -21,11 +21,18 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
     <link rel="icon" type="image/png" href={import.meta.env.BASE_URL + "favicon_round.png"} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=BioRhyme:wght@300;400;700;800&family=Cormorant:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Kavoon&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,700&family=Rammetto+One&family=Sarina&family=Trade+Winds&family=Vampiro+One&display=swap" rel="stylesheet" />
   </head>
   <body class="bg-stone-50 text-zinc-900 antialiased">
     <!-- Full-page holographic background -->
-    <div id="holo-bg"></div>
+    <div id="holo-bg" aria-hidden="true">
+      <div class="hb" id="hb1"></div>
+      <div class="hb" id="hb2"></div>
+      <div class="hb" id="hb3"></div>
+      <div class="hb" id="hb4"></div>
+      <div class="hb" id="hb5"></div>
+    </div>
     <SiteHeader />
     <main>
       <slot />
@@ -62,14 +69,77 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
     position: fixed;
     inset: 0;
     z-index: -10;
-    background:
-      radial-gradient(ellipse 75% 55% at 12% 20%, hsla(280, 70%, 72%, 0.18) 0%, transparent 65%),
-      radial-gradient(ellipse 60% 50% at 88% 72%, hsla(155, 70%, 62%, 0.14) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 45% at 55% 2%,  hsla(35,  80%, 76%, 0.12) 0%, transparent 55%),
-      radial-gradient(ellipse 55% 45% at 78% 18%, hsla(210, 70%, 68%, 0.11) 0%, transparent 52%),
-      radial-gradient(ellipse 50% 40% at 20% 85%, hsla(320, 65%, 68%, 0.10) 0%, transparent 52%);
+    overflow: hidden;
     filter: hue-rotate(var(--holo-hue, 0deg));
     transition: filter 0.15s ease-out;
+    mask-image: linear-gradient(to right, transparent 20%, rgba(0,0,0,0.4) 45%, black 68%);
+    -webkit-mask-image: linear-gradient(to right, transparent 20%, rgba(0,0,0,0.4) 45%, black 68%);
+  }
+
+  .hb {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+  }
+
+  #hb1 {
+    width: 70%; height: 65%;
+    right: -15%; top: -20%;
+    background: radial-gradient(circle, hsla(10, 100%, 55%, 0.82) 0%, hsla(10, 100%, 55%, 0.30) 40%, transparent 65%);
+    animation: hb1 20s ease-in-out infinite alternate;
+  }
+  #hb2 {
+    width: 60%; height: 60%;
+    right: -10%; bottom: -15%;
+    background: radial-gradient(circle, hsla(28, 100%, 52%, 0.75) 0%, hsla(28, 100%, 52%, 0.25) 40%, transparent 65%);
+    animation: hb2 26s ease-in-out infinite alternate;
+  }
+  #hb3 {
+    width: 52%; height: 52%;
+    right: 5%; top: -10%;
+    background: radial-gradient(circle, hsla(18, 100%, 60%, 0.70) 0%, hsla(18, 100%, 60%, 0.22) 40%, transparent 65%);
+    animation: hb3 17s ease-in-out infinite alternate;
+  }
+  #hb4 {
+    width: 48%; height: 55%;
+    right: -5%; top: 25%;
+    background: radial-gradient(circle, hsla(4, 100%, 58%, 0.68) 0%, hsla(4, 100%, 58%, 0.20) 40%, transparent 65%);
+    animation: hb4 22s ease-in-out infinite alternate;
+  }
+  #hb5 {
+    width: 45%; height: 45%;
+    right: 15%; bottom: -15%;
+    background: radial-gradient(circle, hsla(33, 95%, 54%, 0.65) 0%, hsla(33, 95%, 54%, 0.20) 40%, transparent 65%);
+    animation: hb5 30s ease-in-out infinite alternate;
+  }
+
+  @keyframes hb1 {
+    0%   { transform: translate(0,   0); }
+    33%  { transform: translate(-18%, 28%); }
+    66%  { transform: translate(-8%,  55%); }
+    100% { transform: translate(-28%, 15%); }
+  }
+  @keyframes hb2 {
+    0%   { transform: translate(0,    0); }
+    33%  { transform: translate(-20%, -30%); }
+    66%  { transform: translate(-5%,  -55%); }
+    100% { transform: translate(-30%, -18%); }
+  }
+  @keyframes hb3 {
+    0%   { transform: translate(0,   0); }
+    50%  { transform: translate(-15%, 50%); }
+    100% { transform: translate(-30%, 20%); }
+  }
+  @keyframes hb4 {
+    0%   { transform: translate(0,    0); }
+    50%  { transform: translate(-25%, 35%); }
+    100% { transform: translate(-10%, 60%); }
+  }
+  @keyframes hb5 {
+    0%   { transform: translate(0,   0); }
+    33%  { transform: translate(-20%, -25%); }
+    66%  { transform: translate(10%,  -40%); }
+    100% { transform: translate(-15%, -15%); }
   }
 
   /* ── Page-enter animation ── */
@@ -98,29 +168,30 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
 
 <script>
   // ── Holographic engine — all pages ──
-  let baseHue = 0;
+  // Oscillates within warm hues only (reds, oranges, pinks — no blues or greens)
+  let time = 0;
   let scrollHue = 0;
   let rafId: number;
-  const SPEED = 0.18; // medium drift (~35s per full cycle)
+  const SPEED = 0.004; // radians per frame
+  const WARM_RANGE = 12; // ± degrees — strictly red/orange/amber, never green
 
   function applyHue() {
-    const combined = (baseHue + scrollHue) % 360;
-    document.documentElement.style.setProperty('--holo-hue', `${combined}deg`);
+    const hue = Math.sin(time) * WARM_RANGE + scrollHue;
+    document.documentElement.style.setProperty('--holo-hue', `${hue}deg`);
   }
 
   function tick() {
-    baseHue = (baseHue + SPEED) % 360;
+    time += SPEED;
     applyHue();
     rafId = requestAnimationFrame(tick);
   }
   rafId = requestAnimationFrame(tick);
 
-  // Scroll adds a position-based hue offset (scrollytelling)
+  // Scroll adds a tiny warm offset (max ±12°)
   window.addEventListener('scroll', () => {
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight);
     const progress = window.scrollY / maxScroll;
-    // 0→180° extra hue shift from top to bottom of page
-    scrollHue = progress * 180;
+    scrollHue = (progress - 0.5) * 24;
     applyHue();
   }, { passive: true });
 
