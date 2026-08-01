@@ -72,76 +72,91 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
     overflow: hidden;
     filter: hue-rotate(var(--holo-hue, 0deg));
     transition: filter 0.15s ease-out;
-    mask-image: linear-gradient(to right, transparent 20%, rgba(0,0,0,0.4) 45%, black 68%);
-    -webkit-mask-image: linear-gradient(to right, transparent 20%, rgba(0,0,0,0.4) 45%, black 68%);
+    mask-image: linear-gradient(to right, transparent 73%, rgba(0,0,0,0.5) 83%, black 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 73%, rgba(0,0,0,0.5) 83%, black 100%);
+  }
+
+  /* Gradiente base continuo — evita buchi bianchi in qualsiasi momento */
+  #holo-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to left,
+      hsla(0, 90%, 60%, 0.22) 0%,
+      hsla(0, 80%, 65%, 0.08) 20%,
+      transparent 35%);
+    pointer-events: none;
   }
 
   .hb {
     position: absolute;
     border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    filter: blur(55px);
+    filter: blur(45px);
     will-change: transform;
   }
 
+  /* Blob con tinte distribuite su tutto lo spettro per effetto arcobaleno */
   #hb1 {
-    width: 65vw;
-    right: -20vw; top: -15vw;
-    background: radial-gradient(circle, hsla(10, 100%, 55%, 0.50) 0%, hsla(10, 100%, 55%, 0.12) 55%, transparent 85%);
-    animation: hb1 20s ease-in-out infinite alternate;
+    width: 38vw; height: 85vh;
+    right: -12vw; top: -20vh;
+    background: radial-gradient(ellipse, hsla(0, 100%, 60%, 0.82) 0%, hsla(0, 100%, 60%, 0.35) 50%, transparent 78%);
+    animation: hb1 13s ease-in-out infinite alternate;
+    animation-delay: -4s;
   }
   #hb2 {
-    width: 55vw;
-    right: -12vw; bottom: -12vw;
-    background: radial-gradient(circle, hsla(28, 100%, 52%, 0.45) 0%, hsla(28, 100%, 52%, 0.10) 55%, transparent 85%);
-    animation: hb2 26s ease-in-out infinite alternate;
+    width: 32vw; height: 80vh;
+    right: -10vw; bottom: -25vh;
+    background: radial-gradient(ellipse, hsla(72, 100%, 50%, 0.78) 0%, hsla(72, 100%, 50%, 0.30) 50%, transparent 78%);
+    animation: hb2 17s ease-in-out infinite alternate;
+    animation-delay: -10s;
   }
   #hb3 {
-    width: 48vw;
-    right: 8vw; top: -8vw;
-    background: radial-gradient(circle, hsla(18, 100%, 60%, 0.42) 0%, hsla(18, 100%, 60%, 0.10) 55%, transparent 85%);
-    animation: hb3 17s ease-in-out infinite alternate;
+    width: 28vw; height: 75vh;
+    right: 2vw; top: 5vh;
+    background: radial-gradient(ellipse, hsla(144, 90%, 48%, 0.76) 0%, hsla(144, 90%, 48%, 0.28) 50%, transparent 78%);
+    animation: hb3 11s ease-in-out infinite alternate;
+    animation-delay: -3s;
   }
   #hb4 {
-    width: 44vw;
-    right: -6vw; top: 20vw;
-    background: radial-gradient(circle, hsla(4, 100%, 58%, 0.40) 0%, hsla(4, 100%, 58%, 0.09) 55%, transparent 85%);
-    animation: hb4 22s ease-in-out infinite alternate;
+    width: 24vw; height: 70vh;
+    right: -5vw; top: 30vh;
+    background: radial-gradient(ellipse, hsla(216, 100%, 62%, 0.76) 0%, hsla(216, 100%, 62%, 0.28) 50%, transparent 78%);
+    animation: hb4 15s ease-in-out infinite alternate;
+    animation-delay: -7s;
   }
   #hb5 {
-    width: 42vw;
-    right: 12vw; bottom: -10vw;
-    background: radial-gradient(circle, hsla(33, 95%, 54%, 0.38) 0%, hsla(33, 95%, 54%, 0.08) 55%, transparent 85%);
-    animation: hb5 30s ease-in-out infinite alternate;
+    width: 30vw; height: 72vh;
+    right: 5vw; bottom: -15vh;
+    background: radial-gradient(ellipse, hsla(288, 95%, 65%, 0.76) 0%, hsla(288, 95%, 65%, 0.28) 50%, transparent 78%);
+    animation: hb5 19s ease-in-out infinite alternate;
+    animation-delay: -13s;
   }
 
+  /* Scorrimento verticale — il range copre sempre l'intera altezza schermo */
   @keyframes hb1 {
-    0%   { transform: translate(0,   0); }
-    33%  { transform: translate(-18%, 28%); }
-    66%  { transform: translate(-8%,  55%); }
-    100% { transform: translate(-28%, 15%); }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(35vh); }
+    100% { transform: translateY(10vh); }
   }
   @keyframes hb2 {
-    0%   { transform: translate(0,    0); }
-    33%  { transform: translate(-20%, -30%); }
-    66%  { transform: translate(-5%,  -55%); }
-    100% { transform: translate(-30%, -18%); }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-40vh); }
+    100% { transform: translateY(-15vh); }
   }
   @keyframes hb3 {
-    0%   { transform: translate(0,   0); }
-    50%  { transform: translate(-15%, 50%); }
-    100% { transform: translate(-30%, 20%); }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(40vh); }
+    100% { transform: translateY(15vh); }
   }
   @keyframes hb4 {
-    0%   { transform: translate(0,    0); }
-    50%  { transform: translate(-25%, 35%); }
-    100% { transform: translate(-10%, 60%); }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-35vh); }
+    100% { transform: translateY(-10vh); }
   }
   @keyframes hb5 {
-    0%   { transform: translate(0,   0); }
-    33%  { transform: translate(-20%, -25%); }
-    66%  { transform: translate(10%,  -40%); }
-    100% { transform: translate(-15%, -15%); }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-45vh); }
+    100% { transform: translateY(-20vh); }
   }
 
   /* ── Page-enter animation ── */
@@ -170,30 +185,28 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
 
 <script>
   // ── Holographic engine — all pages ──
-  // Oscillates within warm hues only (reds, oranges, pinks — no blues or greens)
-  let time = 0;
+  // Continuously rotates through full rainbow spectrum (~24s per full cycle)
+  let hue = 0;
   let scrollHue = 0;
   let rafId: number;
-  const SPEED = 0.004; // radians per frame
-  const WARM_RANGE = 12; // ± degrees — strictly red/orange/amber, never green
+  const SPEED = 0.45; // degrees per frame at 60fps → 360° in ~13s
 
   function applyHue() {
-    const hue = Math.sin(time) * WARM_RANGE + scrollHue;
-    document.documentElement.style.setProperty('--holo-hue', `${hue}deg`);
+    document.documentElement.style.setProperty('--holo-hue', `${(hue + scrollHue) % 360}deg`);
   }
 
   function tick() {
-    time += SPEED;
+    hue = (hue + SPEED) % 360;
     applyHue();
     rafId = requestAnimationFrame(tick);
   }
   rafId = requestAnimationFrame(tick);
 
-  // Scroll adds a tiny warm offset (max ±12°)
+  // Scroll accelerates the rainbow shift (±60°)
   window.addEventListener('scroll', () => {
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight);
     const progress = window.scrollY / maxScroll;
-    scrollHue = (progress - 0.5) * 24;
+    scrollHue = (progress - 0.5) * 120;
     applyHue();
   }, { passive: true });
 
