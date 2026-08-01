@@ -89,7 +89,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   },
 
   'una-notte-da-dottore': {
-    // locandina FILE CORROTTO – da richiedere al cliente
+    locandina: '/images/locandine/una-notte-da-dottore.jpg',
     // foto da aggiungere
     scheda: {
       regia: 'Guido Chiesa',
@@ -239,8 +239,8 @@ export const filmMetadata: Record<string, FilmMetadata> = {
 
   'non-mi-basta-mai': {
     foto: '/images/foto/non-mi-basta-mai.jpg',
+    locandina: '/images/locandine/non-mi-basta-mai.jpg',
     fotoGallery: '/foto/non-mi-basta-mai/',
-    // locandina FILE CORROTTO – da richiedere al cliente
     scheda: {
       regia: 'Guido Chiesa, Daniele Vicari',
       durata: '78 minuti',
@@ -249,7 +249,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   },
 
   'materiale-resistente': {
-    // locandina FILE CORROTTO – da richiedere al cliente
+    locandina: '/images/locandine/materiale-resistente.jpg',
     // foto da aggiungere
     scheda: {
       regia: 'Guido Chiesa, Davide Ferrario',
@@ -322,7 +322,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   /* ─── Serial ─── */
 
   'quo-vadis-baby': {
-    // locandina FILE CORROTTO – da richiedere al cliente
+    locandina: '/images/locandine/quo-vadis-baby.jpg',
     scheda: {
       sceneggiatura: 'Marco Videtta, Fabio Scamoni',
       produzione: 'Colorado Film, Sky Italia',
