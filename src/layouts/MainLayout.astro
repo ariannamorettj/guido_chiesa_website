@@ -192,11 +192,11 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
   const SPEED = 0.45; // degrees per frame at 60fps → 360° in ~13s
 
   function applyHue() {
-    document.documentElement.style.setProperty('--holo-hue', `${(hue + scrollHue) % 360}deg`);
+    document.documentElement.style.setProperty('--holo-hue', `${hue + scrollHue}deg`);
   }
 
   function tick() {
-    hue = (hue + SPEED) % 360;
+    hue += SPEED;
     applyHue();
     rafId = requestAnimationFrame(tick);
   }
