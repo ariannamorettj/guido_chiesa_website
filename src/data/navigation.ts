@@ -25,7 +25,6 @@ export const navGroups: NavGroup[] = [
   { label: "Foto",             href: b("/foto/") },
   { label: "Video",            href: b("/video/") },
   { label: "Rassegna stampa",  href: b("/rassegna-stampa/") },
-  { label: "Links",            href: b("/links/") },
   { label: "Contatti",         href: b("/contatti/") },
 ];
 
@@ -40,6 +39,5 @@ export const footerLinks: NavItem[] = [
   { label: "Foto",             href: b("/foto/") },
   { label: "Video",            href: b("/video/") },
   { label: "Rassegna stampa",  href: b("/rassegna-stampa/") },
-  { label: "Links",            href: b("/links/") },
   { label: "Contatti",         href: b("/contatti/") },
 ];
