@@ -1,3 +1,26 @@
+// ─── DOMANDE APERTE (non risolvere senza conferma dell'autore) ──────────────
+// 1. FOTO POSIZIONE: il documento dice "foto SOPRA il titolo", lo schema
+//    concordato diceva "sotto". Campo heroPhoto è neutro; la posizione
+//    è fissata nel template. Confermare prima di cambiare.
+// 2. FOTO ESTRATTE DAL DOC: due immagini (foto-1_IMG_3123.jpg,
+//    foto-2_MG_5766.jpg) vanno assegnate a Ti presento Sofia e Belli di papà.
+//    Non ancora abbinate — attendere conferma.
+// 3. BABYLON rassegna stampa: brief indica 1991, film è del 1994.
+//    Usato 1994 provvisoriamente — verificare.
+// 4. IL PARTIGIANO JOHNNY rassegna stampa: brief indica 2001, film è del 2000.
+//    Usato 2001 come da brief — verificare se voluto (copertura uscita) o refuso.
+// 5. MATERIALE RESISTENTE e NON MI BASTA MAI: documentari che compaiono
+//    in questa lista — confermare se restano tra i lungometraggi o migrano.
+// 6. 30 NOTTI CON IL MIO EX: presentazione mancante (nel documento c'era
+//    per errore quella di Per amore di una donna). Campo lasciato vuoto.
+// 7. CLASSE Z: la presentazione nel documento conteneva una riga finale
+//    ("Ho tre figli…") presa da Ti presento Sofia. Riga esclusa.
+// 8. UNA NOTTE DA DOTTORE: blocco rassegna stampa duplicato nel documento,
+//    la seconda copia rimanda al 2025. Usato solo 2021.
+// 9. CAMBIO TUTTO / BELLI DI PAPÀ: hanno due link esterni — confermare
+//    quale è il principale e quale l'aggiuntivo.
+// ────────────────────────────────────────────────────────────────────────────
+
 export type SchedaTecnica = {
   regia?: string;
   soggetto?: string;
@@ -15,23 +38,71 @@ export type SchedaTecnica = {
   genere?: string;
 };
 
+export interface VideoLink {
+  label: string;
+  url: string;
+  lang?: 'it' | 'en';
+  note?: string;
+}
+
+export interface ExternalLink {
+  label: string;
+  url?: string;
+  type?: 'pressbook' | 'site';
+  pending?: boolean;
+}
+
 export type FilmMetadata = {
+  // ── campi originali (backward compat) ──
   foto?: string;
   locandina?: string;
   didascalia?: string;
   trailer?: string;
   scheda?: SchedaTecnica;
   fotoGallery?: string;
+  // ── campi aggiunti in step C ──
+  stills?: { src: string; alt: string; caption?: string }[];
+  poster?: { src: string; alt: string };
+  posterEn?: { src: string; alt: string };      // locandina EN (solo dove esiste versione diversa)
+  presentazione?: string;
+  linkEsterni?: ExternalLink[];
+  videoUrl?: string;
+  rassegnaStampaUrl?: string;
+  fotoUrl?: string;
+  // ── campi nuovi ──
+  heroPhoto?: { src: string; alt: string };   // foto singola hero (PENDING per molti film)
+  presentazioneEn?: string;                   // solo dove esiste versione EN
+  titoloEn?: string;
+  annoEn?: number;                            // anno uscita internazionale
+  video?: VideoLink[];
+  rassegnaStampaAnno?: number;
+  rassegnaStampaAnnoEn?: number;
+  fotoGalleria?: boolean;                     // true = esiste /foto/<slug>/
 };
 
 export const filmMetadata: Record<string, FilmMetadata> = {
 
-  /* ─── Lungometraggi ─── */
+  /* ═══════════════════════════════════════════════════════
+     LUNGOMETRAGGI
+  ═══════════════════════════════════════════════════════ */
 
   'piccolo-miracolo': {
     foto: '/images/foto/piccolo-miracolo.jpg',
     locandina: '/images/locandine/piccolo-miracolo.jpg',
+    stills: [{ src: '/images/foto/piccolo-miracolo.jpg', alt: 'Piccolo Miracolo – foto di scena' }],
+    poster: { src: '/images/locandine/piccolo-miracolo.jpg', alt: 'Piccolo Miracolo – locandina' },
     trailer: 'https://www.youtube-nocookie.com/embed/p0TK6WQMuuY',
+    presentazione: 'Arrivato tra capo e collo quando sembrava ormai sepolto, manco il tempo di riflettere e già eravamo al montaggio (meno di 5 mesi dalla scrittura della prima stesura della sceneggiatura alla fine delle riprese), buttato in sala in piena canicola estiva. Bel cast e Greta Scarano vincitrice a Taormina. Un film di transizione perché servono anche questi.',
+    linkEsterni: [
+      { label: 'Pressbook', pending: true, type: 'pressbook' },
+    ],
+    video: [
+      { label: 'Trailer', url: 'https://www.youtube.com/watch?v=p0TK6WQMuuY' },
+      { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=Qz1dgM8oHv0' },
+      { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=i8vC5kapGPg' },
+    ],
+    rassegnaStampaAnno: 2026,
+    fotoGalleria: true, // PENDING
     scheda: {
       regia: 'Guido Chiesa',
       soggetto: 'Edoardo Leo, Nicoletta Micheli',
@@ -52,7 +123,29 @@ export const filmMetadata: Record<string, FilmMetadata> = {
 
   'amore-di-una-donna': {
     locandina: '/images/locandine/amore-di-una-donna.jpg',
-    // foto da aggiungere
+    poster: { src: '/images/locandine/amore-di-una-donna.jpg', alt: 'Per amore di una donna – locandina' },
+    // posterEn: { src: '/images/locandine/for-the-love-of-a-woman.jpg', alt: 'For the Love of a Woman – poster' }, // PENDING SwissTransfer
+    // heroPhoto: PENDING (1 foto dalla galleria)
+    titoloEn: 'For the Love of a Woman',
+    annoEn: 2026,
+    presentazione: 'Quattro anni di gestazione, tra riscritture e casting in tre continenti con centinaia di attori visionati. Girato in inglese ed ebraico tra Sicilia e Israele nell\'autunno-inverno 2022, pronto nel settembre 2023 alla vigilia del pogrom del 7 ottobre e della successiva tragedia della guerra a Gaza. Bloccato per quasi due anni nel timore di proteste, o per pregiudizio, o mera codardia. Uscito nel 2025, vincitore del BiFest e distribuito negli USA nel 2026. È un film a cui tengo molto e che mi sembra venuto particolarmente bene.',
+    presentazioneEn: 'Four years in the making, through rewrites and casting across three continents, with hundreds of actors seen. Shot in English and Hebrew between Sicily and Israel in the autumn and winter of 2022, it was ready by September 2023, on the eve of the 7 October pogrom and of the tragedy of the war in Gaza that followed. It was held back for almost two years — for fear of protests, out of prejudice, or from sheer cowardice. Released in 2025, it won the BiFest and was distributed in the United States in 2026. It\'s a film I care deeply about, and one I think came out particularly well.',
+    linkEsterni: [
+      { label: 'Pressbook IT', pending: true, type: 'pressbook' },
+      { label: 'Pressbook EN', pending: true, type: 'pressbook' },
+    ],
+    video: [
+      { label: 'Trailer', url: 'https://www.youtube.com/watch?v=_ZWk0_vm_A8', lang: 'it' },
+      { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=Oay16Ng7E-E&t=50s', lang: 'it' },
+      { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=LdYlFKEvfIY', lang: 'it' },
+      { label: 'Scena 3', url: 'https://youtu.be/tPZyLR7nG7E', lang: 'it' },
+      { label: 'Trailer (English)', url: 'https://www.youtube.com/watch?v=_f9MBTQDsYE', lang: 'en' },
+      { label: 'Scene 1', url: 'https://www.youtube.com/watch?v=Oay16Ng7E-E&t=50s', lang: 'en' },
+      { label: 'Scene 2', url: 'https://youtu.be/tPZyLR7nG7E', lang: 'en' },
+    ],
+    rassegnaStampaAnno: 2025,
+    rassegnaStampaAnnoEn: 2026,
+    fotoGalleria: true, // PENDING
     scheda: {
       regia: 'Guido Chiesa',
       soggetto: 'Meir Shalev',
@@ -71,7 +164,18 @@ export const filmMetadata: Record<string, FilmMetadata> = {
 
   '30-notti-con-il-mio-ex': {
     locandina: '/images/locandine/30-notti-con-il-mio-ex.jpg',
-    // foto da aggiungere
+    poster: { src: '/images/locandine/30-notti-con-il-mio-ex.jpg', alt: '30 notti con il mio ex – locandina' },
+    // heroPhoto: PENDING
+    presentazione: 'Un tentativo di andare oltre le definizioni pre-confezionate, mescolando generi e aspettative. E di affrontare la malattia mentale con leggerezza e ironia. Eppure è stato venduto come la commedia romantica che non era. A partire dal titolo fuori tempo massimo.',
+    linkEsterni: [
+      { label: 'Pressbook', pending: true, type: 'pressbook' },
+    ],
+    video: [
+      { label: 'Trailer', url: 'https://www.youtube.com/watch?v=t1s3jrvD8KI' },
+      { label: 'Backstage', url: 'https://www.youtube.com/watch?v=G4Myfivtp6Q' },
+    ],
+    rassegnaStampaAnno: 2025,
+    fotoGalleria: true, // PENDING
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Nicoletta Micheli',
@@ -90,7 +194,19 @@ export const filmMetadata: Record<string, FilmMetadata> = {
 
   'una-notte-da-dottore': {
     locandina: '/images/locandine/una-notte-da-dottore.jpg',
-    // foto da aggiungere
+    poster: { src: '/images/locandine/una-notte-da-dottore.jpg', alt: 'Una notte da dottore – locandina' },
+    // heroPhoto: PENDING
+    presentazione: 'Girato durante il lockdown, malinconico come le strade vuote di Roma e le vite dei due protagonisti. Una delle mie commedie preferite (tranne la locandina).',
+    linkEsterni: [
+      { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/unanottedadottore', type: 'site' },
+    ],
+    video: [
+      { label: 'Trailer', url: 'https://www.youtube.com/watch?v=ifhfVPO9Onc' },
+      { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=94V6tCSGs6Q' },
+      { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=9n1Mkd7wnk8' },
+    ],
+    rassegnaStampaAnno: 2021,
+    fotoGalleria: true, // PENDING
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Nicoletta Micheli',
@@ -106,17 +222,23 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     },
   },
 
-  'belli-di-papa': {
-    locandina: '/images/locandine/belli-di-papa.jpg',
-    // foto e trailer da aggiungere
-    // scheda da aggiungere (non presente nel documento crediti)
-  },
-
   'cambio-tutto': {
     foto: '/images/foto/cambio-tutto.jpg',
     fotoGallery: '/foto/cambio-tutto/',
     locandina: '/images/locandine/cambio-tutto.jpg',
+    stills: [{ src: '/images/foto/cambio-tutto.jpg', alt: 'Cambio tutto! – foto di scena' }],
+    poster: { src: '/images/locandine/cambio-tutto.jpg', alt: 'Cambio tutto! – locandina' },
     trailer: 'https://www.youtube-nocookie.com/embed/oq3ih74PO8E',
+    presentazione: 'Un film fortemente voluto da Maurizio Totti, produttore a cui devo molto. Non mi piaceva il film spagnolo a cui era ispirato e il tono grottesco non fa per me. Ma ci sono momenti della vita in cui lavorare aiuta a non pensare troppo. Doveva uscire al cinema l\'8 marzo 2020, poi è arrivato il Covid, il lockdown ed è finito su Prime Video.',
+    linkEsterni: [
+      { label: 'Filmitalia', url: 'https://filmitalia.org/it/film/133968/', type: 'site' },
+      { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/cambiotuttochiesa', type: 'site' },
+    ],
+    video: [
+      { label: 'Trailer', url: 'https://www.youtube.com/watch?v=oq3ih74PO8E' },
+    ],
+    rassegnaStampaAnno: 2020,
+    fotoGalleria: true, // PENDING
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Nicoletta Micheli, Giovanni Bognetti, Guido Chiesa',
@@ -137,15 +259,38 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     foto: '/images/foto/ti-presento-sofia.jpg',
     fotoGallery: '/foto/ti-presento-sofia/',
     locandina: '/images/locandine/ti-presento-sofia.jpg',
-    // trailer da aggiungere
-    // scheda da aggiungere (non presente nel documento crediti)
+    stills: [{ src: '/images/foto/ti-presento-sofia.jpg', alt: 'Ti presento Sofia – foto di scena' }],
+    poster: { src: '/images/locandine/ti-presento-sofia.jpg', alt: 'Ti presento Sofia – locandina' },
+    heroPhoto: { src: '/images/foto/ti-presento-sofia/foto-scena.jpg', alt: 'Ti presento Sofia – foto di scena' },
+    presentazione: 'Ho tre figli e tornando indietro ne avrei voluti anche altri. Forse è per questo che mi ha intrigato raccontare di una donna che non vuole bambini. O probabilmente mi sono immedesimato in un personaggio maschile goffo ed eternamente in difetto. Specie con la figlia. L\'importante era non giudicare, né lei, né lui.',
+    linkEsterni: [
+      { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/tipresentosofia', type: 'site' },
+    ],
+    video: [
+      { label: 'Trailer', url: 'https://www.youtube.com/watch?v=ullqRK2jFVA' },
+      { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=b_6lY7VGgqI' },
+      { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=IKgaErpNvto' },
+    ],
+    rassegnaStampaAnno: 2018,
+    fotoGalleria: true, // PENDING
   },
 
   'classe-z': {
     foto: '/images/foto/classe-z.jpg',
     fotoGallery: '/foto/classe-z/',
     locandina: '/images/locandine/classe-z.jpg',
-    // trailer locale .mov – non embeddabile
+    stills: [{ src: '/images/foto/classe-z.jpg', alt: 'Classe Z – foto di scena' }],
+    poster: { src: '/images/locandine/classe-z.jpg', alt: 'Classe Z – locandina' },
+    presentazione: 'Basso budget, attori giovani, tanta energia. Anche qui, molto divertimento e la voglia di provare qualcosa di diverso, tra angst generazionale e la commedia teen.',
+    linkEsterni: [
+      { label: 'Pressbook', pending: true, type: 'pressbook' },
+    ],
+    video: [
+      { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=5A5djIicXsA' },
+      { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=edSW2FuQwpY' },
+    ],
+    rassegnaStampaAnno: 2017,
+    fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Alessandro Aronadio, Guido Chiesa, Renato Sannio',
@@ -160,6 +305,23 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       durata: '90 minuti',
       genere: 'Lungometraggio',
     },
+  },
+
+  'belli-di-papa': {
+    locandina: '/images/locandine/belli-di-papa.jpg',
+    poster: { src: '/images/locandine/belli-di-papa.jpg', alt: 'Belli di papà – locandina' },
+    heroPhoto: { src: '/images/foto/belli-di-papa.jpg', alt: 'Belli di papà – foto di scena' },
+    presentazione: 'Prima commedia, prima volta in testa al box office. Ci sono arrivato quasi per caso (doveva farlo un altro regista, ma i produttori non erano convinti del suo approccio), ma si vede che era destino. Anche qui battutine impacciate e accuse neanche troppo sussurrate: "si è venduto", "lo fa per i soldi". Mi sono divertito e, per quanto sia stato difficile prendergli le misure, Diego Abatantuono è un attore straordinario.',
+    linkEsterni: [
+      { label: 'Pressbook', pending: true, type: 'pressbook' },
+      { label: 'Filmitalia', url: 'https://filmitalia.org/it/film/81409/', type: 'site' },
+    ],
+    video: [
+      { label: 'Trailer', url: 'https://www.youtube.com/watch?v=G6h9aO306eY' },
+      { label: 'Scene (playlist)', url: 'https://www.youtube.com/playlist?list=PLp4AC-K3ElaPjL293ZPQ3nQ7gTHeNEiNB' },
+    ],
+    rassegnaStampaAnno: 2015,
+    fotoGalleria: true, // PENDING
   },
 
   'i-am-you': {
@@ -180,6 +342,24 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     foto: '/images/foto/io-sono-con-te.jpg',
     fotoGallery: '/foto/io-sono-con-te/',
     locandina: '/images/locandine/io-sono-con-te.jpg',
+    stills: [{ src: '/images/foto/io-sono-con-te.jpg', alt: 'Io sono con te – foto di scena' }],
+    poster: { src: '/images/locandine/io-sono-con-te.jpg', alt: 'Io sono con te – locandina' },
+    titoloEn: 'I Am With You',
+    presentazione: 'Primo film scritto con Nicoletta Micheli, da una sua idea (di cui ha anche curato la vasta ricerca storica, antropologica e teologica che ne è alla base). Quando lei mi propose di realizzare un film su Maria, la mia prima reazione fu tutt\'altro che positiva: "Sei pazza. A chi vuoi che interessi una storia del genere?". A suscitare la mia avversione fu soprattutto l\'implicazione religiosa: pur non essendomi mai dichiarato ateo, la semplice menzione del divino mi richiamava alla mente credenze irrazionali tra il bigottismo e la superstizione. Per quanto sia stato poco visto, spesso per pregiudizio ("avrà avuto una crisi mistica?", "dai partigiani alla sagrestia", "hai visto la Madonna in technicolor?" erano le battute imbarazzate e scettiche di amici e colleghi) Io sono con te è un progetto che mi ha cambiato la vita. Se dal punto di vista professionale è stato un fiasco, ne sono serenamente orgoglioso.',
+    presentazioneEn: 'The first film I wrote with Nicoletta Micheli, from an idea of hers — she also carried out the extensive historical, anthropological and theological research behind it. When Nicoletta suggested making a film about Mary, my first reaction was anything but positive: "You\'re out of your mind. Who on earth would care about a story like that?" What put me off most was the religious implication: though I had never called myself an atheist, the mere mention of the divine brought to mind irrational beliefs somewhere between bigotry and superstition. Little seen as it was, often out of prejudice — "did you have a mystical crisis?", "have you seen the Madonna in Technicolor?" were the embarrassed, sceptical jokes of friends and colleagues — I Am With You remains a project that changed my life. If professionally it was a flop, I am serenely proud of it.',
+    video: [
+      { label: 'Trailer', url: 'https://youtu.be/BrXSKYkxm2E', lang: 'it' },
+      { label: 'Scena 1', url: 'https://youtu.be/398_9ou90tk', lang: 'it' },
+      { label: 'Scena 2', url: 'https://youtu.be/3YJOuRqSZkI', lang: 'it' },
+      { label: 'Scena 3', url: 'https://youtu.be/LzIGp0ChzNg', lang: 'it' },
+      { label: 'Scena 4', url: 'https://youtu.be/N_1q8Wxjg_0', lang: 'it' },
+      { label: 'Scene 1', url: 'https://youtu.be/D3YmctR4BJI', lang: 'en' },
+      { label: 'Scene 2', url: 'https://youtu.be/14yDhHPGVF0', lang: 'en' },
+      { label: 'Scene 3', url: 'https://youtu.be/BldZ7UzBkuw', lang: 'en' },
+      { label: 'Scene 4', url: 'https://youtu.be/pDpn8Hu0O_A', lang: 'en' },
+    ],
+    rassegnaStampaAnno: 2010,
+    fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Nicoletta Micheli, Filippo Kalomenidis, Guido Chiesa',
@@ -192,7 +372,14 @@ export const filmMetadata: Record<string, FilmMetadata> = {
 
   'le-pere-di-adamo': {
     locandina: '/images/locandine/le-pere-di-adamo.jpg',
-    // foto da aggiungere
+    poster: { src: '/images/locandine/le-pere-di-adamo.jpg', alt: 'Le pere di Adamo – locandina' },
+    // heroPhoto: PENDING
+    video: [
+      { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
+      { label: 'Film (English subtitles)', url: 'https://youtu.be/4N_9OpuVwWo', lang: 'en' },
+    ],
+    rassegnaStampaAnno: 2007,
+    fotoGalleria: true, // PENDING
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Luca Di Meo (Wu Ming 3)',
@@ -209,7 +396,20 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   'lavorare-con-lentezza': {
     foto: '/images/foto/lavorare-con-lentezza.jpg',
     fotoGallery: '/foto/lavorare-con-lentezza/',
-    // locandina – nessuna nel materiale ricevuto; da richiedere al cliente
+    stills: [{ src: '/images/foto/lavorare-con-lentezza.jpg', alt: 'Lavorare con lentezza – foto di scena' }],
+    // locandina: PENDING
+    // poster: PENDING
+    presentazione: 'Avevo in mente un film su Radio Alice da quando, più di 20 anni prima, Franco "Bifo" Berardi mi aveva consegnato una scatola di audio-cassette con registrazioni dell\'emittente degli anni \'76-\'78 che gli erano state sequestrate (e riconsegnate) dai giudici durante una delle tante inchieste che lo avevano riguardato. Per me, allora 17enne, il \'77 bolognese era stata la morte di Francesco Lo Russo, l\'irruzione della polizia nella sede della radio e i carri armati in piazza. Ma anche gli indiani metropolitani e la (ri)scoperta della creatività (artistica e non) contrapposta alla seriosità della militanza. Poi scoprii che c\'era dentro tanto altro: fine delle ideologie e crisi della politica, linguaggi del desiderio e scenari prossimi futuri della comunicazione. Quando lo girammo, c\'era stata Genova 2001 e un velleitario sussulto di protagonismo dal basso. Scritto con Wu Ming, per molti aspetti un film ancora contemporaneo.',
+    linkEsterni: [
+      { label: 'Pressbook', pending: true, type: 'pressbook' },
+    ],
+    video: [
+      { label: 'Film integrale', url: 'https://archive.org/details/lavorare_con_lentezza_radio_alice' },
+      { label: 'Trailer', url: 'https://www.youtube.com/watch?v=vQopMM2uplg' },
+      { label: 'Backstage parte 1', url: 'https://youtu.be/32b3DBYdwH4' },
+      { label: 'Backstage parte 2', url: 'https://youtu.be/samOkriJHjE' },
+    ],
+    rassegnaStampaAnno: 2004,
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Wu Ming 1',
@@ -221,6 +421,16 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     foto: '/images/foto/il-partigiano-johnny.jpg',
     fotoGallery: '/foto/il-partigiano-johnny/',
     locandina: '/images/locandine/il-partigiano-johnny.jpg',
+    stills: [{ src: '/images/foto/il-partigiano-johnny.jpg', alt: 'Il partigiano Johnny – foto di scena' }],
+    poster: { src: '/images/locandine/il-partigiano-johnny.jpg', alt: 'Il partigiano Johnny – locandina' },
+    heroPhoto: { src: '/images/foto/il-partigiano-johnny/guido-chiesa-e-stefano-dionisi-sul-set.jpg', alt: 'Il partigiano Johnny – foto di scena' },
+    video: [
+      { label: 'Backstage parte 1', url: 'https://youtu.be/ACbmHGbgd5Y' },
+      { label: 'Backstage parte 2', url: 'https://youtu.be/Rt8V98axWA0' },
+      { label: 'Scena', url: 'https://www.youtube.com/watch?v=3FwiSl4Anno' },
+    ],
+    rassegnaStampaAnno: 2001, // ⚠️ film del 2000 — verificare se voluto (copertura uscita 2001) o refuso
+    fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
       soggetto: 'Beppe Fenoglio (dall\'omonimo romanzo)',
@@ -241,6 +451,11 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     foto: '/images/foto/non-mi-basta-mai.jpg',
     locandina: '/images/locandine/non-mi-basta-mai.jpg',
     fotoGallery: '/foto/non-mi-basta-mai/',
+    stills: [{ src: '/images/foto/non-mi-basta-mai.jpg', alt: 'Non mi basta mai – foto di scena' }],
+    poster: { src: '/images/locandine/non-mi-basta-mai.jpg', alt: 'Non mi basta mai – locandina' },
+    heroPhoto: { src: '/images/foto/non-mi-basta-mai/ebe-matta.jpg', alt: 'Non mi basta mai – foto di scena' },
+    rassegnaStampaAnno: 1999,
+    fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa, Daniele Vicari',
       durata: '78 minuti',
@@ -250,7 +465,10 @@ export const filmMetadata: Record<string, FilmMetadata> = {
 
   'materiale-resistente': {
     locandina: '/images/locandine/materiale-resistente.jpg',
-    // foto da aggiungere
+    poster: { src: '/images/locandine/materiale-resistente.jpg', alt: 'Materiale resistente – locandina' },
+    video: [
+      { label: 'Film', url: 'https://www.youtube.com/watch?v=e2R-8PdMqwM' },
+    ],
     scheda: {
       regia: 'Guido Chiesa, Davide Ferrario',
       sceneggiatura: 'Guido Chiesa, Davide Ferrario',
@@ -268,10 +486,17 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     foto: '/images/foto/babylon.jpg',
     fotoGallery: '/foto/babylon/',
     locandina: '/images/locandine/babylon-la-paura-e-la-miglior-amica-delluomo.jpg',
+    stills: [{ src: '/images/foto/babylon.jpg', alt: 'Babylon – foto di scena' }],
+    poster: { src: '/images/locandine/babylon-la-paura-e-la-miglior-amica-delluomo.jpg', alt: 'Babylon – locandina' },
+    video: [
+      { label: 'Film', url: 'https://www.youtube.com/watch?v=bbR_a_ao1vE' },
+    ],
+    rassegnaStampaAnno: 1994, // ⚠️ brief indicava 1991, ma il film è del 1994 — usato 1994 provvisoriamente
+    fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
       durata: '94 minuti',
-      genere: 'Documentario',
+      genere: 'Lungometraggio',
     },
   },
 
@@ -279,6 +504,15 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     foto: '/images/foto/il-caso-martello.jpg',
     fotoGallery: '/foto/il-caso-martello/',
     locandina: '/images/locandine/il-caso-martello.jpg',
+    stills: [{ src: '/images/foto/il-caso-martello.jpg', alt: 'Il caso Martello – foto di scena' }],
+    poster: { src: '/images/locandine/il-caso-martello.jpg', alt: 'Il caso Martello – locandina' },
+    // presentazione: da richiedere al cliente (2-4 frasi di sinossi)
+    linkEsterni: [
+      { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=99', type: 'site' },
+    ],
+    rassegnaStampaAnno: 1991,
+    fotoUrl: '/foto/il-caso-martello/',
+    fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Antonio Leotti',
@@ -293,36 +527,36 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     },
   },
 
-  /* ─── Cortometraggi ─── */
+  /* ═══════════════════════════════════════════════════════
+     CORTOMETRAGGI
+  ═══════════════════════════════════════════════════════ */
 
-  'il-cuore-del-soldatino': {
-    // foto e locandina da aggiungere
-  },
-
-  'quei-momenti-eroici': {
-    // foto e locandina da aggiungere
-  },
-
-  'civilta': {
-    // foto e locandina da aggiungere
-  },
+  'il-cuore-del-soldatino': {},
+  'quei-momenti-eroici': {},
+  'civilta': {},
 
   'black-harvest': {
     foto: '/images/foto/black-harvest.jpg',
     fotoGallery: '/foto/black-harvest/',
     trailer: 'https://www.youtube-nocookie.com/embed/nvEv3APs6Ko',
+    stills: [{ src: '/images/foto/black-harvest.jpg', alt: 'Black Harvest – foto di scena' }],
+    fotoGalleria: true,
   },
 
   'give-me-spell': {
     foto: '/images/foto/give-me-a-spell.jpg',
     fotoGallery: '/foto/give-me-a-spell/',
-    // locandina da aggiungere
+    stills: [{ src: '/images/foto/give-me-a-spell.jpg', alt: 'Give Me A Spell – foto di scena' }],
+    fotoGalleria: true,
   },
 
-  /* ─── Serial ─── */
+  /* ═══════════════════════════════════════════════════════
+     SERIAL
+  ═══════════════════════════════════════════════════════ */
 
   'quo-vadis-baby': {
     locandina: '/images/locandine/quo-vadis-baby.jpg',
+    poster: { src: '/images/locandine/quo-vadis-baby.jpg', alt: 'Quo Vadis, Baby? – locandina' },
     scheda: {
       sceneggiatura: 'Marco Videtta, Fabio Scamoni',
       produzione: 'Colorado Film, Sky Italia',
@@ -336,22 +570,23 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     },
   },
 
-  /* ─── Documentari ─── */
+  /* ═══════════════════════════════════════════════════════
+     DOCUMENTARI
+  ═══════════════════════════════════════════════════════ */
 
   'partigiani': {
     foto: '/images/foto/partigiani.jpg',
     fotoGallery: '/foto/partigiani/',
-    // locandina da aggiungere
+    stills: [{ src: '/images/foto/partigiani.jpg', alt: 'Partigiani – foto di scena' }],
+    fotoGalleria: true,
   },
 
   'il-contratto': {
     trailer: 'https://www.youtube-nocookie.com/embed/7ZqBqXpeLk8',
-    // foto e locandina da aggiungere
   },
 
   'alice-e-paradiso': {
     trailer: 'https://player.vimeo.com/video/249293958',
-    // foto e locandina da aggiungere
   },
 
 };
