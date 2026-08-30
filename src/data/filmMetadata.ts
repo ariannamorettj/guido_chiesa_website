@@ -50,6 +50,7 @@ export interface ExternalLink {
   url?: string;
   type?: 'pressbook' | 'site';
   pending?: boolean;
+  lang?: 'it' | 'en';
 }
 
 export type FilmMetadata = {
@@ -124,15 +125,15 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   'amore-di-una-donna': {
     locandina: '/images/locandine/amore-di-una-donna.jpg',
     poster: { src: '/images/locandine/amore-di-una-donna.jpg', alt: 'Per amore di una donna – locandina' },
-    // posterEn: { src: '/images/locandine/for-the-love-of-a-woman.jpg', alt: 'For the Love of a Woman – poster' }, // PENDING SwissTransfer
+    posterEn: { src: '/images/locandine/for-the-love-of-a-woman.jpg', alt: 'For the Love of a Woman – poster' },
     // heroPhoto: PENDING (1 foto dalla galleria)
     titoloEn: 'For the Love of a Woman',
     annoEn: 2026,
     presentazione: 'Quattro anni di gestazione, tra riscritture e casting in tre continenti con centinaia di attori visionati. Girato in inglese ed ebraico tra Sicilia e Israele nell\'autunno-inverno 2022, pronto nel settembre 2023 alla vigilia del pogrom del 7 ottobre e della successiva tragedia della guerra a Gaza. Bloccato per quasi due anni nel timore di proteste, o per pregiudizio, o mera codardia. Uscito nel 2025, vincitore del BiFest e distribuito negli USA nel 2026. È un film a cui tengo molto e che mi sembra venuto particolarmente bene.',
     presentazioneEn: 'Four years in the making, through rewrites and casting across three continents, with hundreds of actors seen. Shot in English and Hebrew between Sicily and Israel in the autumn and winter of 2022, it was ready by September 2023, on the eve of the 7 October pogrom and of the tragedy of the war in Gaza that followed. It was held back for almost two years — for fear of protests, out of prejudice, or from sheer cowardice. Released in 2025, it won the BiFest and was distributed in the United States in 2026. It\'s a film I care deeply about, and one I think came out particularly well.',
     linkEsterni: [
-      { label: 'Pressbook IT', pending: true, type: 'pressbook' },
-      { label: 'Pressbook EN', pending: true, type: 'pressbook' },
+      { label: 'Pressbook', url: '/pressbooks/amore-di-una-donna-pressbook-it.pdf', type: 'pressbook', lang: 'it' },
+      { label: 'Pressbook', url: '/pressbooks/amore-di-una-donna-pressbook-en.pdf', type: 'pressbook', lang: 'en' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=_ZWk0_vm_A8', lang: 'it' },
@@ -168,7 +169,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     // heroPhoto: PENDING
     presentazione: 'Un tentativo di andare oltre le definizioni pre-confezionate, mescolando generi e aspettative. E di affrontare la malattia mentale con leggerezza e ironia. Eppure è stato venduto come la commedia romantica che non era. A partire dal titolo fuori tempo massimo.',
     linkEsterni: [
-      { label: 'Pressbook', pending: true, type: 'pressbook' },
+      { label: 'Pressbook', url: '/pressbooks/30-notti-con-il-mio-ex-pressbook.pdf', type: 'pressbook' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=t1s3jrvD8KI' },
@@ -283,7 +284,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     poster: { src: '/images/locandine/classe-z.jpg', alt: 'Classe Z – locandina' },
     presentazione: 'Basso budget, attori giovani, tanta energia. Anche qui, molto divertimento e la voglia di provare qualcosa di diverso, tra angst generazionale e la commedia teen.',
     linkEsterni: [
-      { label: 'Pressbook', pending: true, type: 'pressbook' },
+      { label: 'Pressbook', url: '/pressbooks/classe-z-pressbook.pdf', type: 'pressbook' },
     ],
     video: [
       { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=5A5djIicXsA' },
@@ -397,11 +398,11 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     foto: '/images/foto/lavorare-con-lentezza.jpg',
     fotoGallery: '/foto/lavorare-con-lentezza/',
     stills: [{ src: '/images/foto/lavorare-con-lentezza.jpg', alt: 'Lavorare con lentezza – foto di scena' }],
-    // locandina: PENDING
-    // poster: PENDING
+    locandina: '/images/locandine/lavorare-con-lentezza.jpg',
+    poster: { src: '/images/locandine/lavorare-con-lentezza.jpg', alt: 'Lavorare con lentezza – locandina' },
     presentazione: 'Avevo in mente un film su Radio Alice da quando, più di 20 anni prima, Franco "Bifo" Berardi mi aveva consegnato una scatola di audio-cassette con registrazioni dell\'emittente degli anni \'76-\'78 che gli erano state sequestrate (e riconsegnate) dai giudici durante una delle tante inchieste che lo avevano riguardato. Per me, allora 17enne, il \'77 bolognese era stata la morte di Francesco Lo Russo, l\'irruzione della polizia nella sede della radio e i carri armati in piazza. Ma anche gli indiani metropolitani e la (ri)scoperta della creatività (artistica e non) contrapposta alla seriosità della militanza. Poi scoprii che c\'era dentro tanto altro: fine delle ideologie e crisi della politica, linguaggi del desiderio e scenari prossimi futuri della comunicazione. Quando lo girammo, c\'era stata Genova 2001 e un velleitario sussulto di protagonismo dal basso. Scritto con Wu Ming, per molti aspetti un film ancora contemporaneo.',
     linkEsterni: [
-      { label: 'Pressbook', pending: true, type: 'pressbook' },
+      { label: 'Pressbook', url: '/pressbooks/lavorare-con-lentezza-pressbook.pdf', type: 'pressbook' },
     ],
     video: [
       { label: 'Film integrale', url: 'https://archive.org/details/lavorare_con_lentezza_radio_alice' },

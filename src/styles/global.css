@@ -148,17 +148,20 @@ header a,
 p a,
 blockquote a,
 .prose-guido a {
+  color: #059669;
+  font-weight: 600;
   text-decoration-line: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  text-decoration-color: rgba(5, 150, 105, 0.28);
-  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+  text-decoration-color: rgba(5, 150, 105, 0.35);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
 p a:hover,
 blockquote a:hover,
 .prose-guido a:hover {
-  text-decoration-color: currentColor;
+  color: #047857;
+  text-decoration-color: rgba(4, 120, 87, 0.6);
 }
 
 /* Simple list-row links (not block card links tagged with .group) */

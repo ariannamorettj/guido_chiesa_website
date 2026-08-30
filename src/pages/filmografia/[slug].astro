@@ -73,8 +73,12 @@ const videoEn = (meta.video ?? []).filter(v => !v.lang || v.lang === 'en');
 const videoAll = meta.video ?? [];
 
 // Link esterni (esclude quelli pending senza URL)
-const linkEsterniVisibili = (meta.linkEsterni ?? []).filter(l => l.url);
-const linkEsterniPending  = (meta.linkEsterni ?? []).filter(l => !l.url && l.pending);
+const linkEsterniAll  = (meta.linkEsterni ?? []).filter(l => l.url);
+const linkEsterniPending = (meta.linkEsterni ?? []).filter(l => !l.url && l.pending);
+// Per lingua: senza lang = appare sempre; con lang = filtrato
+const linkEsterniIt = linkEsterniAll.filter(l => !l.lang || l.lang === 'it');
+const linkEsterniEn = linkEsterniAll.filter(l => !l.lang || l.lang === 'en');
+const linkEsterniVisibili = linkEsterniAll; // usato solo per hasLinkFascia
 
 const schedaRows = meta.scheda
   ? Object.entries({
@@ -299,18 +303,33 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
     {hasLinkFascia && (
       <div class="mb-10 border-t border-zinc-100 pt-10">
 
-        {/* Link esterni con URL disponibile */}
-        {linkEsterniVisibili.length > 0 && (
+        {/* Link esterni — IT (o senza toggle) */}
+        {!hasLangToggle && linkEsterniAll.length > 0 && (
           <div class="mb-4 flex flex-wrap gap-3">
-            {linkEsterniVisibili.map((link) => (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700"
-              >
-                {link.label}
-                <span aria-hidden="true" class="text-emerald-200">↗</span>
+            {linkEsterniAll.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
+              </a>
+            ))}
+          </div>
+        )}
+        {hasLangToggle && linkEsterniIt.length > 0 && (
+          <div class="mb-4 flex flex-wrap gap-3" data-lang-content="it">
+            {linkEsterniIt.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
+              </a>
+            ))}
+          </div>
+        )}
+        {hasLangToggle && linkEsterniEn.length > 0 && (
+          <div class="mb-4 hidden flex-wrap gap-3" data-lang-content="en">
+            {linkEsterniEn.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
               </a>
             ))}
           </div>
