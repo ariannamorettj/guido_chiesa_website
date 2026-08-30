@@ -103,7 +103,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=i8vC5kapGPg' },
     ],
     rassegnaStampaAnno: 2026,
-    fotoGalleria: true, // PENDING
+    fotoGallery: '/foto/piccolo-miracolo/',
     scheda: {
       regia: 'Guido Chiesa',
       soggetto: 'Edoardo Leo, Nicoletta Micheli',
@@ -126,7 +126,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     locandina: '/images/locandine/amore-di-una-donna.jpg',
     poster: { src: '/images/locandine/amore-di-una-donna.jpg', alt: 'Per amore di una donna – locandina' },
     posterEn: { src: '/images/locandine/for-the-love-of-a-woman.jpg', alt: 'For the Love of a Woman – poster' },
-    // heroPhoto: PENDING (1 foto dalla galleria)
+    heroPhoto: { src: '/images/foto/amore-di-una-donna/padud-5-photo-by-manlio-ajovalasit-2023-colorado-film-production-vivo-film.jpg', alt: 'Per amore di una donna – foto di scena' },
     titoloEn: 'For the Love of a Woman',
     annoEn: 2026,
     presentazione: 'Quattro anni di gestazione, tra riscritture e casting in tre continenti con centinaia di attori visionati. Girato in inglese ed ebraico tra Sicilia e Israele nell\'autunno-inverno 2022, pronto nel settembre 2023 alla vigilia del pogrom del 7 ottobre e della successiva tragedia della guerra a Gaza. Bloccato per quasi due anni nel timore di proteste, o per pregiudizio, o mera codardia. Uscito nel 2025, vincitore del BiFest e distribuito negli USA nel 2026. È un film a cui tengo molto e che mi sembra venuto particolarmente bene.',
@@ -146,7 +146,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     ],
     rassegnaStampaAnno: 2025,
     rassegnaStampaAnnoEn: 2026,
-    fotoGalleria: true, // PENDING
+    fotoGallery: '/foto/amore-di-una-donna/',
     scheda: {
       regia: 'Guido Chiesa',
       soggetto: 'Meir Shalev',
@@ -166,7 +166,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   '30-notti-con-il-mio-ex': {
     locandina: '/images/locandine/30-notti-con-il-mio-ex.jpg',
     poster: { src: '/images/locandine/30-notti-con-il-mio-ex.jpg', alt: '30 notti con il mio ex – locandina' },
-    // heroPhoto: PENDING
+    heroPhoto: { src: '/images/foto/30-notti-con-il-mio-ex/30-notti-con-il-mio-ex-ph-loris-t-zambelli.jpg', alt: '30 notti con il mio ex – foto di scena' },
     presentazione: 'Un tentativo di andare oltre le definizioni pre-confezionate, mescolando generi e aspettative. E di affrontare la malattia mentale con leggerezza e ironia. Eppure è stato venduto come la commedia romantica che non era. A partire dal titolo fuori tempo massimo.',
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/30-notti-con-il-mio-ex-pressbook.pdf', type: 'pressbook' },
@@ -176,7 +176,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Backstage', url: 'https://www.youtube.com/watch?v=G4Myfivtp6Q' },
     ],
     rassegnaStampaAnno: 2025,
-    fotoGalleria: true, // PENDING
+    fotoGallery: '/foto/30-notti-con-il-mio-ex/',
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Nicoletta Micheli',
@@ -196,7 +196,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   'una-notte-da-dottore': {
     locandina: '/images/locandine/una-notte-da-dottore.jpg',
     poster: { src: '/images/locandine/una-notte-da-dottore.jpg', alt: 'Una notte da dottore – locandina' },
-    // heroPhoto: PENDING
+    heroPhoto: { src: '/images/foto/una-notte-da-dottore/dsc09793.jpg', alt: 'Una notte da dottore – foto di scena' },
     presentazione: 'Girato durante il lockdown, malinconico come le strade vuote di Roma e le vite dei due protagonisti. Una delle mie commedie preferite (tranne la locandina).',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/unanottedadottore', type: 'site' },
@@ -207,7 +207,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=9n1Mkd7wnk8' },
     ],
     rassegnaStampaAnno: 2021,
-    fotoGalleria: true, // PENDING
+    fotoGallery: '/foto/una-notte-da-dottore/',
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Nicoletta Micheli',
@@ -239,7 +239,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=oq3ih74PO8E' },
     ],
     rassegnaStampaAnno: 2020,
-    fotoGalleria: true, // PENDING
+    fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Nicoletta Micheli, Giovanni Bognetti, Guido Chiesa',
@@ -273,7 +273,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=IKgaErpNvto' },
     ],
     rassegnaStampaAnno: 2018,
-    fotoGalleria: true, // PENDING
+    fotoGalleria: true,
   },
 
   'classe-z': {
@@ -322,7 +322,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scene (playlist)', url: 'https://www.youtube.com/playlist?list=PLp4AC-K3ElaPjL293ZPQ3nQ7gTHeNEiNB' },
     ],
     rassegnaStampaAnno: 2015,
-    fotoGalleria: true, // PENDING
+    fotoGallery: '/foto/belli-di-papa/',
   },
 
   'i-am-you': {
@@ -374,13 +374,13 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   'le-pere-di-adamo': {
     locandina: '/images/locandine/le-pere-di-adamo.jpg',
     poster: { src: '/images/locandine/le-pere-di-adamo.jpg', alt: 'Le pere di Adamo – locandina' },
-    // heroPhoto: PENDING
+    heroPhoto: { src: '/images/foto/le-pere-di-adamo/pere-di-adamo-con-mitsou.jpg', alt: 'Le pere di Adamo – foto di scena' },
     video: [
       { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
       { label: 'Film (English subtitles)', url: 'https://youtu.be/4N_9OpuVwWo', lang: 'en' },
     ],
     rassegnaStampaAnno: 2007,
-    fotoGalleria: true, // PENDING
+    fotoGallery: '/foto/le-pere-di-adamo/',
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Luca Di Meo (Wu Ming 3)',
