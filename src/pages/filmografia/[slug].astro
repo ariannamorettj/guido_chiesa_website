@@ -45,10 +45,13 @@ function clean(html: string): string {
       const hasRel = /rel=/.test(attrs);
       return `<a${attrs} class="ext-pill"${hasTarget ? '' : ' target="_blank"'}${hasRel ? '' : ' rel="noopener"'}>↗ Link esterno</a>`;
     })
+    .replace(/<p>\s*<strong>Sinossi<\/strong>\s*<\/p>/gi, '<h3 class="film-section-label">Sinossi</h3>')
+    .replace(/<p>\s*<strong>Note di regia\.<\/strong>\s*/gi, '<h3 class="film-section-label">Note di regia</h3><p>')
     .trim();
 }
 
 const content = film.content ? clean(film.content) : null;
+const contentEn = meta.contentEn ? clean(meta.contentEn) : null;
 
 // Normalizza stills (nuovo array > vecchio campo foto)
 const stills = meta.heroPhoto
@@ -99,6 +102,23 @@ const schedaRows = meta.scheda
     }).filter(([, v]) => v !== undefined && v !== '')
   : [];
 
+const schedaLabelsEn: Record<string, string> = {
+  'Regia':          'Direction',
+  'Soggetto':       'Story',
+  'Sceneggiatura':  'Screenplay',
+  'Produzione':     'Production',
+  'Produttore':     'Producer',
+  'Interpreti':     'Cast',
+  'Fotografia':     'Cinematography',
+  'Scenografia':    'Production design',
+  'Costumi':        'Costume design',
+  'Montaggio':      'Editing',
+  'Musiche':        'Music',
+  'Durata':         'Running time',
+  'Distribuzione':  'Distribution',
+  'Genere':         'Genre',
+};
+
 const hasLinkFascia = linkEsterniVisibili.length > 0
   || videoAll.length > 0
   || meta.rassegnaStampaAnno
@@ -118,6 +138,42 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
       <span>→</span>
       <span class="text-zinc-700">{film.title}</span>
     </nav>
+
+    <!-- Foto di scena (hero) — prima del titolo, full width -->
+    {stills.length === 1 && (
+      <div class="mb-10 overflow-hidden rounded-2xl bg-zinc-950 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.40)]">
+        <img
+          src={base + stills[0].src.replace(/^\//, '')}
+          alt={stills[0].alt}
+          class="aspect-[3/2] w-full object-cover"
+          loading="lazy"
+          width="900"
+          height="600"
+        />
+        {'caption' in stills[0] && stills[0].caption && (
+          <p class="px-5 py-3 text-xs italic text-zinc-400">{stills[0].caption}</p>
+        )}
+      </div>
+    )}
+    {stills.length >= 2 && (
+      <div class="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {stills.map((still) => (
+          <div class="overflow-hidden rounded-xl bg-zinc-950 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.30)]">
+            <img
+              src={base + still.src.replace(/^\//, '')}
+              alt={still.alt}
+              class="aspect-[3/2] w-full object-cover"
+              loading="lazy"
+              width="400"
+              height="267"
+            />
+            {'caption' in still && still.caption && (
+              <p class="px-3 py-2 text-xs italic text-zinc-400">{still.caption}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    )}
 
     <!-- Titolo + anno + toggle IT/EN -->
     <div class="mb-10">
@@ -154,42 +210,6 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
         )}
       </h1>
     </div>
-
-    <!-- Foto di scena (hero) — sotto il titolo, full width -->
-    {stills.length === 1 && (
-      <div class="mb-10 overflow-hidden rounded-2xl bg-zinc-950 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.40)]">
-        <img
-          src={base + stills[0].src.replace(/^\//, '')}
-          alt={stills[0].alt}
-          class="aspect-[3/2] w-full object-cover"
-          loading="lazy"
-          width="900"
-          height="600"
-        />
-        {'caption' in stills[0] && stills[0].caption && (
-          <p class="px-5 py-3 text-xs italic text-zinc-400">{stills[0].caption}</p>
-        )}
-      </div>
-    )}
-    {stills.length >= 2 && (
-      <div class="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
-        {stills.map((still) => (
-          <div class="overflow-hidden rounded-xl bg-zinc-950 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.30)]">
-            <img
-              src={base + still.src.replace(/^\//, '')}
-              alt={still.alt}
-              class="aspect-[3/2] w-full object-cover"
-              loading="lazy"
-              width="400"
-              height="267"
-            />
-            {'caption' in still && still.caption && (
-              <p class="px-3 py-2 text-xs italic text-zinc-400">{still.caption}</p>
-            )}
-          </div>
-        ))}
-      </div>
-    )}
 
     <!-- 3. Locandina — standalone, centrata -->
     {posterSrc && !meta.posterEn && (
@@ -244,35 +264,59 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
       </>
     )}
 
-    <!-- 4. Presentazione -->
-    {(meta.presentazione || meta.presentazioneEn || content) && (
-      <div class="mb-12 max-w-3xl space-y-4 text-base leading-8 text-zinc-700">
-
+    <!-- 4. Presentazione del regista -->
+    {(meta.presentazione || meta.presentazioneEn) && (
+      <div class="mb-14 max-w-3xl">
+        <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+          {hasLangToggle
+            ? <><span data-lang-content="it">Presentazione</span><span class="hidden" data-lang-content="en">Presentation</span></>
+            : 'Presentazione'}
+        </h2>
         {meta.presentazione && (
-          <p data-lang-content="it">{meta.presentazione}</p>
+          <p class="text-base leading-8 text-zinc-700" data-lang-content={hasLangToggle ? "it" : undefined}>{meta.presentazione}</p>
         )}
-
         {meta.presentazioneEn && (
-          <p class="hidden" data-lang-content="en">{meta.presentazioneEn}</p>
+          <p class="hidden text-base leading-8 text-zinc-700" data-lang-content="en">{meta.presentazioneEn}</p>
         )}
+      </div>
+    )}
 
+    <!-- 5. Sinossi e note di regia (da filmografia) -->
+    {(content || contentEn) && (
+      <>
         {content && (
-          <div class="film-content">
+          <div class="mb-14 max-w-3xl film-content text-base leading-8 text-zinc-700"
+            data-lang-content={hasLangToggle && contentEn ? "it" : undefined}>
             <Fragment set:html={content} />
           </div>
         )}
-
-      </div>
+        {contentEn && (
+          <div class="mb-14 max-w-3xl film-content hidden text-base leading-8 text-zinc-700" data-lang-content="en">
+            <Fragment set:html={contentEn} />
+          </div>
+        )}
+      </>
     )}
 
     <!-- Scheda tecnica -->
     {schedaRows.length > 0 && (
       <div class="mb-12">
-        <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Scheda tecnica</h2>
+        <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
+          {hasLangToggle
+            ? <><span data-lang-content="it">Scheda tecnica</span><span class="hidden" data-lang-content="en">Technical details</span></>
+            : 'Scheda tecnica'}
+        </h2>
         <dl class="divide-y divide-zinc-100 rounded-2xl border border-zinc-100 bg-white shadow-sm">
           {schedaRows.map(([label, value]) => (
             <div class="grid grid-cols-[140px_1fr] gap-4 px-5 py-3">
-              <dt class="text-sm font-medium text-zinc-500">{label}</dt>
+              {hasLangToggle ? (
+                <>
+                  <dt class="text-sm font-medium text-zinc-500" data-lang-content="it">{label}</dt>
+                  <dt class="hidden text-sm font-medium text-zinc-500" data-lang-content="en">{schedaLabelsEn[label] ?? label}</dt>
+                </>
+              ) : (
+                <dt class="text-sm font-medium text-zinc-500">{label}</dt>
+              )}
               <dd class="text-sm text-zinc-800">{value}</dd>
             </div>
           ))}
@@ -280,161 +324,146 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
       </div>
     )}
 
-    <!-- Trailer embed (campo legacy, tenuto per backward compat) -->
-    {meta.trailer && (
-      <div class="mb-12">
-        <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Trailer</h2>
-        <div class="overflow-hidden rounded-2xl bg-zinc-950 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.40)]">
-          <div class="relative aspect-video">
-            <iframe
-              src={meta.trailer}
-              title={`Trailer – ${film.title}`}
-              class="absolute inset-0 h-full w-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-          </div>
-        </div>
-      </div>
-    )}
-
-    <!-- Fascia link: esterni + video + rassegna stampa + foto -->
+    <!-- Fascia link: Link e Video come sezioni distinte -->
     {hasLinkFascia && (
-      <div class="mb-10 border-t border-zinc-100 pt-10">
+      <div class="mb-10 space-y-8 border-t border-zinc-100 pt-10">
 
-        {/* Link esterni — IT (o senza toggle) */}
-        {!hasLangToggle && linkEsterniAll.length > 0 && (
-          <div class="mb-4 flex flex-wrap gap-3">
-            {linkEsterniAll.map((link) => (
-              <a href={link.url} target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
-                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
-              </a>
-            ))}
-          </div>
-        )}
-        {hasLangToggle && linkEsterniIt.length > 0 && (
-          <div class="mb-4 flex flex-wrap gap-3" data-lang-content="it">
-            {linkEsterniIt.map((link) => (
-              <a href={link.url} target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
-                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
-              </a>
-            ))}
-          </div>
-        )}
-        {hasLangToggle && linkEsterniEn.length > 0 && (
-          <div class="mb-4 hidden flex-wrap gap-3" data-lang-content="en">
-            {linkEsterniEn.map((link) => (
-              <a href={link.url} target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
-                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
-              </a>
-            ))}
-          </div>
-        )}
+        {/* ─── SEZIONE LINK ─── */}
+        {(linkEsterniAll.length > 0 || meta.rassegnaStampaAnno || meta.rassegnaStampaUrl || galleryUrl) && (
+          <div>
+            <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Link</h2>
 
-        {/* Link video — tutti se no toggle, filtrati se toggle */}
-        {!hasLangToggle && videoAll.length > 0 && (
-          <div class="mb-4 flex flex-wrap gap-3">
-            {videoAll.map((v) => (
-              <a
-                href={v.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700"
-              >
-                {v.label}
-                <span aria-hidden="true" class="text-zinc-400">↗</span>
-              </a>
-            ))}
-          </div>
-        )}
-
-        {/* Link video IT (con toggle) */}
-        {hasLangToggle && videoIt.length > 0 && (
-          <div class="mb-4 flex flex-wrap gap-3" data-lang-content="it">
-            {videoIt.map((v) => (
-              <a
-                href={v.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700"
-              >
-                {v.label}
-                <span aria-hidden="true" class="text-zinc-400">↗</span>
-              </a>
-            ))}
-          </div>
-        )}
-
-        {/* Link video EN (con toggle) */}
-        {hasLangToggle && videoEn.length > 0 && (
-          <div class="mb-4 hidden flex-wrap gap-3" data-lang-content="en">
-            {videoEn.map((v) => (
-              <a
-                href={v.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700"
-              >
-                {v.label}
-                <span aria-hidden="true" class="text-zinc-400">↗</span>
-              </a>
-            ))}
-          </div>
-        )}
-
-        {/* Rassegna stampa — IT */}
-        {(meta.rassegnaStampaAnno || meta.rassegnaStampaUrl) && (
-          <div class="flex flex-wrap gap-3">
-            <a
-              href={meta.rassegnaStampaUrl ? base + meta.rassegnaStampaUrl.replace(/^\//, '') : base + 'rassegna-stampa/'}
-              class:list={[
-                "inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition hover:border-zinc-400 hover:shadow-md",
-                hasLangToggle ? "" : ""
-              ]}
-              data-lang-content={hasLangToggle ? "it" : undefined}
-            >
-              Rassegna stampa{meta.rassegnaStampaAnno ? ` ${meta.rassegnaStampaAnno}` : ''}
-              <span aria-hidden="true" class="text-zinc-400">→</span>
-            </a>
-
-            {/* Rassegna stampa EN (solo se diversa) */}
-            {hasLangToggle && meta.rassegnaStampaAnnoEn && meta.rassegnaStampaAnnoEn !== meta.rassegnaStampaAnno && (
-              <a
-                href={base + 'rassegna-stampa/'}
-                class="hidden inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition hover:border-zinc-400 hover:shadow-md"
-                data-lang-content="en"
-              >
-                Press coverage {meta.rassegnaStampaAnnoEn}
-                <span aria-hidden="true" class="text-zinc-400">→</span>
-              </a>
+            {/* Riga 1: link esterni scaricabili/download (pressbook, filmitalia, ecc.) */}
+            {!hasLangToggle && linkEsterniAll.length > 0 && (
+              <div class="mb-3 flex flex-wrap gap-3">
+                {linkEsterniAll.map((link) => (
+                  <a href={link.url} target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                    {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
+                  </a>
+                ))}
+              </div>
+            )}
+            {hasLangToggle && linkEsterniIt.length > 0 && (
+              <div class="mb-3 flex flex-wrap gap-3" data-lang-content="it">
+                {linkEsterniIt.map((link) => (
+                  <a href={link.url} target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                    {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
+                  </a>
+                ))}
+              </div>
+            )}
+            {hasLangToggle && linkEsterniEn.length > 0 && (
+              <div class="mb-3 hidden flex-wrap gap-3" data-lang-content="en">
+                {linkEsterniEn.map((link) => (
+                  <a href={link.url} target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                    {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
+                  </a>
+                ))}
+              </div>
             )}
 
-            {/* Galleria foto */}
-            {galleryUrl && (
-              <a
-                href={base + galleryUrl.replace(/^\//, '')}
-                class="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition hover:border-zinc-400 hover:shadow-md"
-              >
-                Foto
-                <span aria-hidden="true" class="text-zinc-400">→</span>
-              </a>
+            {/* Riga 2: link di navigazione (galleria + rassegna stampa) */}
+            {(galleryUrl || meta.rassegnaStampaAnno || meta.rassegnaStampaUrl) && (
+              <div class="flex flex-wrap gap-3">
+                {galleryUrl && (
+                  <>
+                    <a href={base + galleryUrl.replace(/^\//, '')}
+                      class="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition hover:border-zinc-400 hover:shadow-md"
+                      data-lang-content={hasLangToggle ? "it" : undefined}>
+                      Galleria fotografica <span aria-hidden="true" class="text-zinc-400">→</span>
+                    </a>
+                    {hasLangToggle && (
+                      <a href={base + galleryUrl.replace(/^\//, '')}
+                        class="hidden inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition hover:border-zinc-400 hover:shadow-md"
+                        data-lang-content="en">
+                        Photo gallery <span aria-hidden="true" class="text-zinc-400">→</span>
+                      </a>
+                    )}
+                  </>
+                )}
+                {(meta.rassegnaStampaAnno || meta.rassegnaStampaUrl) && (
+                  <>
+                    <a
+                      href={meta.rassegnaStampaUrl ? base + meta.rassegnaStampaUrl.replace(/^\//, '') : base + 'rassegna-stampa/'}
+                      class="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition hover:border-zinc-400 hover:shadow-md"
+                      data-lang-content={hasLangToggle ? "it" : undefined}
+                    >
+                      Rassegna stampa <span aria-hidden="true" class="text-zinc-400">→</span>
+                    </a>
+                    {hasLangToggle && (
+                      <a
+                        href={meta.rassegnaStampaUrl ? base + meta.rassegnaStampaUrl.replace(/^\//, '') : base + 'rassegna-stampa/'}
+                        class="hidden inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition hover:border-zinc-400 hover:shadow-md"
+                        data-lang-content="en"
+                      >
+                        Press coverage <span aria-hidden="true" class="text-zinc-400">→</span>
+                      </a>
+                    )}
+                  </>
+                )}
+              </div>
             )}
           </div>
         )}
 
-        {/* Galleria foto (se non c'è rassegna) */}
-        {!meta.rassegnaStampaAnno && !meta.rassegnaStampaUrl && galleryUrl && (
-          <a
-            href={base + galleryUrl.replace(/^\//, '')}
-            class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:shadow-sm"
-          >
-            Foto
-            <span aria-hidden="true" class="text-zinc-400">→</span>
-          </a>
+        {/* ─── SEZIONE VIDEO ─── */}
+        {(videoAll.length > 0 || meta.trailer) && (
+          <div>
+            <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Video</h2>
+
+            {/* Link video — senza toggle */}
+            {!hasLangToggle && videoAll.length > 0 && (
+              <div class="mb-5 flex flex-wrap gap-3">
+                {videoAll.map((v) => (
+                  <a href={v.url} target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700">
+                    {v.label}<span aria-hidden="true" class="text-zinc-400">↗</span>
+                  </a>
+                ))}
+              </div>
+            )}
+            {/* Link video — IT con toggle */}
+            {hasLangToggle && videoIt.length > 0 && (
+              <div class="mb-5 flex flex-wrap gap-3" data-lang-content="it">
+                {videoIt.map((v) => (
+                  <a href={v.url} target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700">
+                    {v.label}<span aria-hidden="true" class="text-zinc-400">↗</span>
+                  </a>
+                ))}
+              </div>
+            )}
+            {/* Link video — EN con toggle */}
+            {hasLangToggle && videoEn.length > 0 && (
+              <div class="mb-5 hidden flex-wrap gap-3" data-lang-content="en">
+                {videoEn.map((v) => (
+                  <a href={v.url} target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700">
+                    {v.label}<span aria-hidden="true" class="text-zinc-400">↗</span>
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {/* Trailer embed (legacy) — solo se non già coperto dai link video sopra */}
+            {meta.trailer && videoAll.length === 0 && (
+              <div class="overflow-hidden rounded-2xl bg-zinc-950 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.40)]">
+                <div class="relative aspect-video">
+                  <iframe
+                    src={meta.trailer}
+                    title={`Trailer – ${film.title}`}
+                    class="absolute inset-0 h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+            )}
+          </div>
         )}
 
       </div>
@@ -445,7 +474,12 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
       href={base + "filmografia/"}
       class="inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-zinc-700"
     >
-      ← Torna alla filmografia
+      {hasLangToggle ? (
+        <>
+          <span data-lang-content="it">← Torna alla filmografia</span>
+          <span class="hidden" data-lang-content="en">← Back to filmography</span>
+        </>
+      ) : '← Torna alla filmografia'}
     </a>
 
   </section>
@@ -513,4 +547,22 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
   .film-content a.ext-pill:hover { background: #d1fae5; color: #047857; }
   .film-content em { font-style: italic; }
   .film-content strong { font-weight: 600; color: #18181b; }
+
+  .film-section-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #52525b;
+    border-top: 1px solid #e4e4e7;
+    padding-top: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .film-content .film-section-label:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
 </style>

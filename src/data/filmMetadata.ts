@@ -76,6 +76,8 @@ export type FilmMetadata = {
   titoloEn?: string;
   annoEn?: number;                            // anno uscita internazionale
   video?: VideoLink[];
+  rassegnaVideo?: VideoLink[];           // video per la pagina rassegna stampa (interviste, Q&A, podcast)
+  contentEn?: string;                    // HTML content in English (sinossi/note di regia)
   rassegnaStampaAnno?: number;
   rassegnaStampaAnnoEn?: number;
   fotoGalleria?: boolean;                     // true = esiste /foto/<slug>/
@@ -103,6 +105,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=i8vC5kapGPg' },
     ],
     rassegnaStampaAnno: 2026,
+    rassegnaStampaUrl: '/rassegna-stampa/#piccolo-miracolo',
     fotoGallery: '/foto/piccolo-miracolo/',
     scheda: {
       regia: 'Guido Chiesa',
@@ -144,8 +147,17 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scene 1', url: 'https://www.youtube.com/watch?v=Oay16Ng7E-E&t=50s', lang: 'en' },
       { label: 'Scene 2', url: 'https://youtu.be/tPZyLR7nG7E', lang: 'en' },
     ],
+    rassegnaVideo: [
+      { label: 'Intervista (Francesco Alò)', url: 'https://www.youtube.com/watch?v=o3jGNprBfRM' },
+      { label: 'Nostalghia Podcast – con Nicoletta Micheli e Guido Chiesa', url: 'https://www.youtube.com/watch?v=eJ5Uhyn8axI' },
+      { label: 'Effetto Notte – intervista a Guido Chiesa', url: 'https://www.youtube.com/watch?v=pkhcrnGFSyY' },
+      { label: 'Cinema Caravaggio – incontro con il pubblico (parte 1)', url: 'https://www.youtube.com/watch?v=bCFS8n23EQA' },
+      { label: 'Cinema Caravaggio – incontro con il pubblico (parte 2)', url: 'https://www.youtube.com/watch?v=uy7A9lnuc0A' },
+      { label: 'Cinematographe – intervista con Mili Avital e Guido Chiesa', url: 'https://www.youtube.com/watch?v=vLYCDEHXzmE' },
+    ],
     rassegnaStampaAnno: 2025,
     rassegnaStampaAnnoEn: 2026,
+    rassegnaStampaUrl: '/rassegna-stampa/#amore-di-una-donna',
     fotoGallery: '/foto/amore-di-una-donna/',
     scheda: {
       regia: 'Guido Chiesa',
@@ -176,6 +188,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Backstage', url: 'https://www.youtube.com/watch?v=G4Myfivtp6Q' },
     ],
     rassegnaStampaAnno: 2025,
+    rassegnaStampaUrl: '/rassegna-stampa/#30-notti-con-il-mio-ex',
     fotoGallery: '/foto/30-notti-con-il-mio-ex/',
     scheda: {
       regia: 'Guido Chiesa',
@@ -207,6 +220,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=9n1Mkd7wnk8' },
     ],
     rassegnaStampaAnno: 2021,
+    rassegnaStampaUrl: '/rassegna-stampa/#una-notte-da-dottore',
     fotoGallery: '/foto/una-notte-da-dottore/',
     scheda: {
       regia: 'Guido Chiesa',
@@ -273,6 +287,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=IKgaErpNvto' },
     ],
     rassegnaStampaAnno: 2018,
+    rassegnaStampaUrl: '/rassegna-stampa/#ti-presento-sofia',
     fotoGalleria: true,
   },
 
@@ -291,6 +306,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=edSW2FuQwpY' },
     ],
     rassegnaStampaAnno: 2017,
+    rassegnaStampaUrl: '/rassegna-stampa/#classe-z',
     fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
@@ -322,6 +338,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scene (playlist)', url: 'https://www.youtube.com/playlist?list=PLp4AC-K3ElaPjL293ZPQ3nQ7gTHeNEiNB' },
     ],
     rassegnaStampaAnno: 2015,
+    rassegnaStampaUrl: '/rassegna-stampa/#belli-di-papa',
     fotoGallery: '/foto/belli-di-papa/',
   },
 
@@ -359,7 +376,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scene 3', url: 'https://youtu.be/BldZ7UzBkuw', lang: 'en' },
       { label: 'Scene 4', url: 'https://youtu.be/pDpn8Hu0O_A', lang: 'en' },
     ],
+    contentEn: `<p><em>I Am with You</em> is a story about motherhood: that of Mary of Nazareth, from the conception of her son Jesus through to his adolescence. It portrays a mother and her relation with her son, supported by the discrete, evolving presence of Joseph, the patriarch who accepts to "step aside", foregoing the dominant male role. The questions raised by the film address topics such as birth, growth and the upbringing of children, all from a uniquely female point of view. This is what makes the film appealing both to believers and non-believers.</p>`,
     rassegnaStampaAnno: 2010,
+    rassegnaStampaUrl: '/rassegna-stampa/#io-sono-con-te',
     fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
@@ -379,7 +398,12 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
       { label: 'Film (English subtitles)', url: 'https://youtu.be/4N_9OpuVwWo', lang: 'en' },
     ],
+    rassegnaVideo: [
+      { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
+      { label: 'Film (English subtitles)', url: 'https://youtu.be/4N_9OpuVwWo', lang: 'en' },
+    ],
     rassegnaStampaAnno: 2007,
+    rassegnaStampaUrl: '/rassegna-stampa/#le-pere-di-adamo',
     fotoGallery: '/foto/le-pere-di-adamo/',
     scheda: {
       regia: 'Guido Chiesa',
