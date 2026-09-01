@@ -104,6 +104,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=Qz1dgM8oHv0' },
       { label: 'Scena 2', url: 'https://www.youtube.com/watch?v=i8vC5kapGPg' },
     ],
+    rassegnaVideo: [
+      { label: 'Gianni Canova – recensione video', url: 'https://www.youtube.com/watch?v=fPKxiZz2xwQ' },
+    ],
     rassegnaStampaAnno: 2026,
     rassegnaStampaUrl: '/rassegna-stampa/#piccolo-miracolo',
     fotoGallery: '/foto/piccolo-miracolo/',
@@ -148,12 +151,14 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scene 2', url: 'https://youtu.be/tPZyLR7nG7E', lang: 'en' },
     ],
     rassegnaVideo: [
-      { label: 'Intervista (Francesco Alò)', url: 'https://www.youtube.com/watch?v=o3jGNprBfRM' },
-      { label: 'Nostalghia Podcast – con Nicoletta Micheli e Guido Chiesa', url: 'https://www.youtube.com/watch?v=eJ5Uhyn8axI' },
-      { label: 'Effetto Notte – intervista a Guido Chiesa', url: 'https://www.youtube.com/watch?v=pkhcrnGFSyY' },
-      { label: 'Cinema Caravaggio – incontro con il pubblico (parte 1)', url: 'https://www.youtube.com/watch?v=bCFS8n23EQA' },
-      { label: 'Cinema Caravaggio – incontro con il pubblico (parte 2)', url: 'https://www.youtube.com/watch?v=uy7A9lnuc0A' },
-      { label: 'Cinematographe – intervista con Mili Avital e Guido Chiesa', url: 'https://www.youtube.com/watch?v=vLYCDEHXzmE' },
+      { label: 'Intervista (Francesco Alò)', url: 'https://www.youtube.com/watch?v=o3jGNprBfRM', lang: 'it' },
+      { label: 'Nostalghia Podcast – con Nicoletta Micheli e Guido Chiesa', url: 'https://www.youtube.com/watch?v=eJ5Uhyn8axI', lang: 'it' },
+      { label: 'Effetto Notte – intervista a Guido Chiesa', url: 'https://www.youtube.com/watch?v=pkhcrnGFSyY', lang: 'it' },
+      { label: 'Cinema Caravaggio – incontro con il pubblico (parte 1)', url: 'https://www.youtube.com/watch?v=bCFS8n23EQA', lang: 'it' },
+      { label: 'Cinema Caravaggio – incontro con il pubblico (parte 2)', url: 'https://www.youtube.com/watch?v=uy7A9lnuc0A', lang: 'it' },
+      { label: 'Cinematographe – intervista con Mili Avital e Guido Chiesa', url: 'https://www.youtube.com/watch?v=vLYCDEHXzmE', lang: 'it' },
+      { label: 'Patrolcast – interview with Mili Avital and Guido Chiesa', url: 'https://www.youtube.com/watch?v=dTCfgu6Q6KM', lang: 'en' },
+      { label: 'Showverse – interview with Guido Chiesa', url: 'https://www.youtube.com/watch?v=8PwtLAJSAvM', lang: 'en' },
     ],
     rassegnaStampaAnno: 2025,
     rassegnaStampaAnnoEn: 2026,
@@ -186,6 +191,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=t1s3jrvD8KI' },
       { label: 'Backstage', url: 'https://www.youtube.com/watch?v=G4Myfivtp6Q' },
+    ],
+    rassegnaVideo: [
+      { label: 'Giovanni Bogani – recensione video', url: 'https://www.youtube.com/watch?v=husMJi9c4O8' },
     ],
     rassegnaStampaAnno: 2025,
     rassegnaStampaUrl: '/rassegna-stampa/#30-notti-con-il-mio-ex',
@@ -395,10 +403,6 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     poster: { src: '/images/locandine/le-pere-di-adamo.jpg', alt: 'Le pere di Adamo – locandina' },
     heroPhoto: { src: '/images/foto/le-pere-di-adamo/pere-di-adamo-con-mitsou.jpg', alt: 'Le pere di Adamo – foto di scena' },
     video: [
-      { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
-      { label: 'Film (English subtitles)', url: 'https://youtu.be/4N_9OpuVwWo', lang: 'en' },
-    ],
-    rassegnaVideo: [
       { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
       { label: 'Film (English subtitles)', url: 'https://youtu.be/4N_9OpuVwWo', lang: 'en' },
     ],

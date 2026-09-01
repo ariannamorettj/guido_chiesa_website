@@ -264,24 +264,7 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
       </>
     )}
 
-    <!-- 4. Presentazione del regista -->
-    {(meta.presentazione || meta.presentazioneEn) && (
-      <div class="mb-14 max-w-3xl">
-        <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-          {hasLangToggle
-            ? <><span data-lang-content="it">Presentazione</span><span class="hidden" data-lang-content="en">Presentation</span></>
-            : 'Presentazione'}
-        </h2>
-        {meta.presentazione && (
-          <p class="text-base leading-8 text-zinc-700" data-lang-content={hasLangToggle ? "it" : undefined}>{meta.presentazione}</p>
-        )}
-        {meta.presentazioneEn && (
-          <p class="hidden text-base leading-8 text-zinc-700" data-lang-content="en">{meta.presentazioneEn}</p>
-        )}
-      </div>
-    )}
-
-    <!-- 5. Sinossi e note di regia (da filmografia) -->
+    <!-- 4. Sinossi e note di regia (da filmografia) -->
     {(content || contentEn) && (
       <>
         {content && (
