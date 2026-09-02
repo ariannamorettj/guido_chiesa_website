@@ -233,8 +233,8 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
     )}
     {posterSrc && meta.posterEn && (
       <>
-        <div class="mb-10 flex justify-center" data-lang-content="it">
-          <div style="width:220px">
+        <div class="mb-10" data-lang-content="it">
+          <div style="width:220px" class="mx-auto">
             <div class="overflow-hidden rounded-xl shadow-[0_12px_40px_-16px_rgba(0,0,0,0.35)]">
               <img
                 src={base + posterSrc.replace(/^\//, '')}
@@ -247,8 +247,8 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
             </div>
           </div>
         </div>
-        <div class="mb-10 hidden flex justify-center" data-lang-content="en">
-          <div style="width:220px">
+        <div class="mb-10 hidden" data-lang-content="en">
+          <div style="width:220px" class="mx-auto">
             <div class="overflow-hidden rounded-xl shadow-[0_12px_40px_-16px_rgba(0,0,0,0.35)]">
               <img
                 src={base + meta.posterEn.src.replace(/^\//, '')}
