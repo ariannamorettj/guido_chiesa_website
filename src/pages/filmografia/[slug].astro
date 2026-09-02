@@ -438,6 +438,24 @@ const hasLinkFascia = videoAll.length > 0
       </div>
     )}
 
+    {/* ─── SEZIONE ALTRI MATERIALI ─── */}
+    {meta.materialiExtra && meta.materialiExtra.length > 0 && (
+      <div class="mt-10">
+        <div class="mb-4 flex items-center gap-4">
+          <h2 class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Altri materiali</h2>
+          <div class="h-px flex-1 bg-zinc-100"></div>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          {meta.materialiExtra.map((m) => (
+            <a href={m.url} target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-400 hover:text-zinc-900">
+              {m.label} <span aria-hidden="true" class="text-zinc-400">↓</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
     <!-- Back -->
     <a
       href={base + "filmografia/"}

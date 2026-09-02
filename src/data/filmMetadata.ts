@@ -81,6 +81,7 @@ export type FilmMetadata = {
   rassegnaStampaAnno?: number;
   rassegnaStampaAnnoEn?: number;
   fotoGalleria?: boolean;                     // true = esiste /foto/<slug>/
+  materialiExtra?: { label: string; url: string }[];
 };
 
 export const filmMetadata: Record<string, FilmMetadata> = {
@@ -254,6 +255,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     trailer: 'https://www.youtube-nocookie.com/embed/oq3ih74PO8E',
     presentazione: 'Un film fortemente voluto da Maurizio Totti, produttore a cui devo molto. Non mi piaceva il film spagnolo a cui era ispirato e il tono grottesco non fa per me. Ma ci sono momenti della vita in cui lavorare aiuta a non pensare troppo. Doveva uscire al cinema l\'8 marzo 2020, poi è arrivato il Covid, il lockdown ed è finito su Prime Video.',
     linkEsterni: [
+      { label: 'Medusa', url: 'https://www.medusa.it/movie/cambio-tutto/', type: 'site' },
       { label: 'Filmitalia', url: 'https://filmitalia.org/it/film/133968/', type: 'site' },
       { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/cambiotuttochiesa', type: 'site' },
     ],
@@ -262,6 +264,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     ],
     rassegnaStampaAnno: 2020,
     fotoGalleria: true,
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/cambio-tutto-sceneggiatura.pdf' },
+    ],
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Nicoletta Micheli, Giovanni Bognetti, Guido Chiesa',
@@ -297,6 +302,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     rassegnaStampaAnno: 2018,
     rassegnaStampaUrl: '/rassegna-stampa/#ti-presento-sofia',
     fotoGalleria: true,
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/ti-presento-sofia-sceneggiatura.pdf' },
+    ],
   },
 
   'classe-z': {
@@ -308,6 +316,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Basso budget, attori giovani, tanta energia. Anche qui, molto divertimento e la voglia di provare qualcosa di diverso, tra angst generazionale e la commedia teen.',
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/classe-z-pressbook.pdf', type: 'pressbook' },
+      { label: 'Facebook', url: 'https://www.facebook.com/classezeta/', type: 'site' },
     ],
     video: [
       { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=5A5djIicXsA' },
@@ -330,6 +339,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       durata: '90 minuti',
       genere: 'Lungometraggio',
     },
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/classe-z-sceneggiatura.pdf' },
+    ],
   },
 
   'belli-di-papa': {
@@ -348,6 +360,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     rassegnaStampaAnno: 2015,
     rassegnaStampaUrl: '/rassegna-stampa/#belli-di-papa',
     fotoGallery: '/foto/belli-di-papa/',
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/belli-di-papa-sceneggiatura.pdf' },
+    ],
   },
 
   'io-sono-con-te': {
@@ -385,6 +400,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       durata: '102 minuti',
       genere: 'Lungometraggio',
     },
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/io-sono-con-te-sceneggiatura.pdf' },
+    ],
   },
 
   'le-pere-di-adamo': {
@@ -471,6 +489,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       durata: '132 minuti',
       genere: 'Lungometraggio',
     },
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/il-partigiano-johnny-sceneggiatura.pdf' },
+    ],
   },
 
   'non-mi-basta-mai': {
