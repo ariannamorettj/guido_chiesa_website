@@ -350,20 +350,6 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     fotoGallery: '/foto/belli-di-papa/',
   },
 
-  'i-am-you': {
-    foto: '/images/foto/io-sono-con-te.jpg',
-    fotoGallery: '/foto/io-sono-con-te/',
-    locandina: '/images/locandine/io-sono-con-te.jpg',
-    scheda: {
-      regia: 'Guido Chiesa',
-      sceneggiatura: 'Nicoletta Micheli, Filippo Kalomenidis, Guido Chiesa',
-      produzione: 'Colorado Film, Magda, Rai Cinema',
-      interpreti: 'Nadia Khlifi (Maria), Rabeb Srairi (Maria adulta), Mustapha Benstiti (Giuseppe), Ahmed Hafiene (Mardocheo), Mohamed Idoudi (Gesù), Fadila Belkebla (Elisabetta), Djemel Barek (Zaccaria), Carlo Cecchi (Erode), Giorgio Colangeli, Fabrizio Gifuni, Denis Lavant, Robinson Stevenin, Jerzy Stuhr (I Sapienti), Aymen Mabrouk (Traduttore), Mohamed Grayaa (Hillel)',
-      durata: '102 minuti',
-      genere: 'Lungometraggio',
-    },
-  },
-
   'io-sono-con-te': {
     foto: '/images/foto/io-sono-con-te.jpg',
     fotoGallery: '/foto/io-sono-con-te/',
@@ -385,6 +371,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Scene 4', url: 'https://youtu.be/pDpn8Hu0O_A', lang: 'en' },
     ],
     contentEn: `<p><em>I Am with You</em> is a story about motherhood: that of Mary of Nazareth, from the conception of her son Jesus through to his adolescence. It portrays a mother and her relation with her son, supported by the discrete, evolving presence of Joseph, the patriarch who accepts to "step aside", foregoing the dominant male role. The questions raised by the film address topics such as birth, growth and the upbringing of children, all from a uniquely female point of view. This is what makes the film appealing both to believers and non-believers.</p>`,
+    linkEsterni: [
+      { label: 'English pressbook', url: '/media/opera/nicoletta-micheli-filippo-kalomenidis-e-guido-chiesa/i-am-you/pressbook%20inglese.pdf', type: 'pressbook', lang: 'en' },
+    ],
     rassegnaStampaAnno: 2010,
     rassegnaStampaUrl: '/rassegna-stampa/#io-sono-con-te',
     fotoGalleria: true,
