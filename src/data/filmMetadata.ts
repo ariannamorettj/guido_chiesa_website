@@ -391,6 +391,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     locandina: '/images/locandine/le-pere-di-adamo.jpg',
     poster: { src: '/images/locandine/le-pere-di-adamo.jpg', alt: 'Le pere di Adamo – locandina' },
     heroPhoto: { src: '/images/foto/le-pere-di-adamo/pere-di-adamo-con-mitsou.jpg', alt: 'Le pere di Adamo – foto di scena' },
+    presentazione: 'In principio c\'era un\'analogia. Un\'affinità soprattutto visiva, forse poetica: i movimenti sociali assomigliano alle nuvole. Come le nuvole, arrivano, accadono, scompaiono. Poi, è entrato dentro di tutto: la meteorologia e la questione ambientale, il precariato e la scienza, l\'Illuminismo e la matematica, la politica e il mistero. Alla fine ne è venuto fuori un viaggio dentro i limiti della ragione e la necessità del mutamento. L\'ambizione era di realizzare un film leggero su argomenti pesanti. Non so se ci siamo riusciti, ma la fatica ne è valsa la pena. Perché nulla dopo mi è sembrato più come prima. Un lavoro ripagato con la censura del mercato ("bello ma difficile", il ritornello) e la disattenzione degli addetti ai lavori.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/leperediadamo', type: 'site' },
     ],
@@ -445,6 +446,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     stills: [{ src: '/images/foto/il-partigiano-johnny.jpg', alt: 'Il partigiano Johnny – foto di scena' }],
     poster: { src: '/images/locandine/il-partigiano-johnny.jpg', alt: 'Il partigiano Johnny – locandina' },
     heroPhoto: { src: '/images/foto/il-partigiano-johnny/guido-chiesa-e-stefano-dionisi-sul-set.jpg', alt: 'Il partigiano Johnny – foto di scena' },
+    presentazione: 'Ho dedicato quasi dieci anni alla realizzazione di questo progetto e solo alla fine ho capito perché l\'avevo fatto. Alcune scelte, col senno del poi, mi sembrano poco riuscite, anche se c\'era sempre dietro una ragione che mi aveva spinto ad adottarle. Oggi, lo rifarei completamente diverso, ma penso che sia un film destinato a invecchiare bene.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/ilpartigianojohnny', type: 'site' },
     ],
@@ -478,6 +480,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     stills: [{ src: '/images/foto/non-mi-basta-mai.jpg', alt: 'Non mi basta mai – foto di scena' }],
     poster: { src: '/images/locandine/non-mi-basta-mai.jpg', alt: 'Non mi basta mai – locandina' },
     heroPhoto: { src: '/images/foto/non-mi-basta-mai/ebe-matta.jpg', alt: 'Non mi basta mai – foto di scena' },
+    presentazione: 'Le vite al di là delle ideologie. Quando riguardo questo film, la cui realizzazione è merito principalmente di Daniele (stavo preparando Il partigiano Johnny nel mentre), non posso che riflettere su come le vite dei nostri cinque protagonisti siano state piegate, strattonate, spinte, centrifugate dalla Storia. Eppure, ferite, sono uscite dal gorgo se non felici, almeno con una non comune dignità. "Non mi basta mai" è dire ogni giorno che si può ancora cambiare. Il contrario di chi sente di aver diritto di brontolare solo perché un giorno credeva di aver avuto ragione.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/nonmibastamai', type: 'site' },
     ],
@@ -493,6 +496,10 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   'materiale-resistente': {
     locandina: '/images/locandine/materiale-resistente.jpg',
     poster: { src: '/images/locandine/materiale-resistente.jpg', alt: 'Materiale resistente – locandina' },
+    presentazione: 'All\'inizio, fu un disco. In occasione del Cinquantesimo anniversario della Liberazione, su iniziativa del Consorzio Produttori Indipendenti, 18 tra i migliori gruppi di rock italiano incidono un CD chiamato Materiale Resistente. Per l\'uscita del disco - che contiene i rifacimenti di celebri canzoni della Resistenza, nonché brani scritti ad hoc - viene organizzato un concerto il 25 aprile 1995 a Correggio, provincia di Reggio nell\'Emilia. Davide Ferrario, saputa la notizia, telefona a Guido Chiesa e gli propone di riunire tecnici, amici e complici per documentare un evento che gli sembra terribilmente suggestivo e insieme necessario. Chiesa accetta e il 25 aprile, in mezzo al prato con gli oltre seimila di Correggio, ci sono anche loro, tre troupe e vari fotografi.',
+    linkEsterni: [
+      { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=413&stile=small', type: 'site' },
+    ],
     video: [
       { label: 'Film', url: 'https://www.youtube.com/watch?v=e2R-8PdMqwM' },
     ],
@@ -534,7 +541,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     locandina: '/images/locandine/il-caso-martello.jpg',
     stills: [{ src: '/images/foto/il-caso-martello.jpg', alt: 'Il caso Martello – foto di scena' }],
     poster: { src: '/images/locandine/il-caso-martello.jpg', alt: 'Il caso Martello – locandina' },
-    // presentazione: da richiedere al cliente (2-4 frasi di sinossi)
+    presentazione: 'La prima volta che dissi "motore, azione" e tutti mi ascoltarono, mi resi conto del potere perverso che avevo in mano. Ho sempre cercato di farne un uso discreto, senza fingere di essere in un sistema democratico - il cinema non lo è! - ma neanche abusando di esso. Fare il cinema non me l\'ha ordinato il dottore e non è mai stato il cinema in sé e per sé la ragione profonda del mio interesse per questo linguaggio espressivo. All\'epoca di Il caso Martello pensavo che questa ragione fosse l\'impegno politico e culturale, declinato attraverso il discorso sull\'essere umano e il suo agire, privato e sociale. Oggi, è rimasto solo l\'essere umano, il resto in prospettiva, sullo sfondo, il linguaggio come indivisibile forma e sostanza.',
     linkEsterni: [
       { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=99', type: 'site' },
     ],
