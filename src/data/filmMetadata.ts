@@ -391,6 +391,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     locandina: '/images/locandine/le-pere-di-adamo.jpg',
     poster: { src: '/images/locandine/le-pere-di-adamo.jpg', alt: 'Le pere di Adamo – locandina' },
     heroPhoto: { src: '/images/foto/le-pere-di-adamo/pere-di-adamo-con-mitsou.jpg', alt: 'Le pere di Adamo – foto di scena' },
+    linkEsterni: [
+      { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/leperediadamo', type: 'site' },
+    ],
     video: [
       { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
       { label: 'Film (English subtitles)', url: 'https://youtu.be/4N_9OpuVwWo', lang: 'en' },
@@ -442,6 +445,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     stills: [{ src: '/images/foto/il-partigiano-johnny.jpg', alt: 'Il partigiano Johnny – foto di scena' }],
     poster: { src: '/images/locandine/il-partigiano-johnny.jpg', alt: 'Il partigiano Johnny – locandina' },
     heroPhoto: { src: '/images/foto/il-partigiano-johnny/guido-chiesa-e-stefano-dionisi-sul-set.jpg', alt: 'Il partigiano Johnny – foto di scena' },
+    linkEsterni: [
+      { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/ilpartigianojohnny', type: 'site' },
+    ],
     video: [
       { label: 'Backstage parte 1', url: 'https://youtu.be/ACbmHGbgd5Y' },
       { label: 'Backstage parte 2', url: 'https://youtu.be/Rt8V98axWA0' },
@@ -472,6 +478,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     stills: [{ src: '/images/foto/non-mi-basta-mai.jpg', alt: 'Non mi basta mai – foto di scena' }],
     poster: { src: '/images/locandine/non-mi-basta-mai.jpg', alt: 'Non mi basta mai – locandina' },
     heroPhoto: { src: '/images/foto/non-mi-basta-mai/ebe-matta.jpg', alt: 'Non mi basta mai – foto di scena' },
+    linkEsterni: [
+      { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/nonmibastamai', type: 'site' },
+    ],
     rassegnaStampaAnno: 1999,
     fotoGalleria: true,
     scheda: {
@@ -506,6 +515,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     locandina: '/images/locandine/babylon-la-paura-e-la-miglior-amica-delluomo.jpg',
     stills: [{ src: '/images/foto/babylon.jpg', alt: 'Babylon – foto di scena' }],
     poster: { src: '/images/locandine/babylon-la-paura-e-la-miglior-amica-delluomo.jpg', alt: 'Babylon – locandina' },
+    presentazione: 'Ho un rapporto ambivalente con questo film. Scritto e realizzato in tempi rapidissimi, un\'anomalia in una vicenda professionale fatta di tempi lunghi. Girato con 300 milioni in 18 giorni, nessun aiuto statale o televisivo, era la risposta allo stimolo che ci giungeva dal cinema americano indipendente, che in quegli anni insegnava al mondo come fare film a basso costo e alto tasso emotivo. Mai distribuito — per via di una congiuntura sfavorevole che obbligò la Mikado, che l\'aveva preso, a rinunciare perché la Fininvest gli aveva tagliato i pre-acquisti televisivi — ha girato il mondo più di ogni mio altro lavoro. Rimane la sensazione di aver fatto il passo più lungo della gamba, ma anche l\'orgoglio per averci provato.',
     video: [
       { label: 'Film', url: 'https://www.youtube.com/watch?v=bbR_a_ao1vE' },
     ],
