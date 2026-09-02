@@ -119,8 +119,7 @@ const schedaLabelsEn: Record<string, string> = {
   'Genere':         'Genre',
 };
 
-const hasLinkFascia = linkEsterniVisibili.length > 0
-  || videoAll.length > 0
+const hasLinkFascia = videoAll.length > 0
   || meta.rassegnaStampaAnno
   || meta.rassegnaStampaUrl
   || galleryUrl;
@@ -264,24 +263,43 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
       </>
     )}
 
-    <!-- 4. Sinossi e note di regia (da filmografia) -->
-    {(content || contentEn) && (
-      <>
-        {content && (
-          <div class="mb-14 max-w-3xl film-content text-base leading-8 text-zinc-700"
-            data-lang-content={hasLangToggle && contentEn ? "it" : undefined}>
-            <Fragment set:html={content} />
+    <!-- 4. Pressbook e link esterni -->
+    {linkEsterniAll.length > 0 && (
+      <div class="mb-10">
+        {!hasLangToggle && (
+          <div class="flex flex-wrap gap-3">
+            {linkEsterniAll.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
+              </a>
+            ))}
           </div>
         )}
-        {contentEn && (
-          <div class="mb-14 max-w-3xl film-content hidden text-base leading-8 text-zinc-700" data-lang-content="en">
-            <Fragment set:html={contentEn} />
+        {hasLangToggle && linkEsterniIt.length > 0 && (
+          <div class="flex flex-wrap gap-3" data-lang-content="it">
+            {linkEsterniIt.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
+              </a>
+            ))}
           </div>
         )}
-      </>
+        {hasLangToggle && linkEsterniEn.length > 0 && (
+          <div class="hidden flex-wrap gap-3" data-lang-content="en">
+            {linkEsterniEn.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+                {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
     )}
 
-    <!-- Scheda tecnica -->
+    <!-- 5. Scheda tecnica -->
     {schedaRows.length > 0 && (
       <div class="mb-12">
         <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
@@ -311,44 +329,12 @@ const hasLinkFascia = linkEsterniVisibili.length > 0
     {hasLinkFascia && (
       <div class="mb-10 space-y-8 border-t border-zinc-100 pt-10">
 
-        {/* ─── SEZIONE LINK ─── */}
-        {(linkEsterniAll.length > 0 || meta.rassegnaStampaAnno || meta.rassegnaStampaUrl || galleryUrl) && (
+        {/* ─── SEZIONE LINK (galleria + rassegna stampa) ─── */}
+        {(meta.rassegnaStampaAnno || meta.rassegnaStampaUrl || galleryUrl) && (
           <div>
             <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Link</h2>
 
-            {/* Riga 1: link esterni scaricabili/download (pressbook, filmitalia, ecc.) */}
-            {!hasLangToggle && linkEsterniAll.length > 0 && (
-              <div class="mb-3 flex flex-wrap gap-3">
-                {linkEsterniAll.map((link) => (
-                  <a href={link.url} target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
-                    {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
-                  </a>
-                ))}
-              </div>
-            )}
-            {hasLangToggle && linkEsterniIt.length > 0 && (
-              <div class="mb-3 flex flex-wrap gap-3" data-lang-content="it">
-                {linkEsterniIt.map((link) => (
-                  <a href={link.url} target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
-                    {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
-                  </a>
-                ))}
-              </div>
-            )}
-            {hasLangToggle && linkEsterniEn.length > 0 && (
-              <div class="mb-3 hidden flex-wrap gap-3" data-lang-content="en">
-                {linkEsterniEn.map((link) => (
-                  <a href={link.url} target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
-                    {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
-                  </a>
-                ))}
-              </div>
-            )}
-
-            {/* Riga 2: link di navigazione (galleria + rassegna stampa) */}
+            {/* Galleria fotografica e rassegna stampa */}
             {(galleryUrl || meta.rassegnaStampaAnno || meta.rassegnaStampaUrl) && (
               <div class="flex flex-wrap gap-3">
                 {galleryUrl && (

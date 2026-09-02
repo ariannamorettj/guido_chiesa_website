@@ -97,7 +97,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     trailer: 'https://www.youtube-nocookie.com/embed/p0TK6WQMuuY',
     presentazione: 'Arrivato tra capo e collo quando sembrava ormai sepolto, manco il tempo di riflettere e già eravamo al montaggio (meno di 5 mesi dalla scrittura della prima stesura della sceneggiatura alla fine delle riprese), buttato in sala in piena canicola estiva. Bel cast e Greta Scarano vincitrice a Taormina. Un film di transizione perché servono anche questi.',
     linkEsterni: [
-      { label: 'Pressbook', pending: true, type: 'pressbook' },
+      { label: 'Pressbook', url: '/pressbooks/piccolo-miracolo-pressbook.pdf', type: 'pressbook' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=p0TK6WQMuuY' },
