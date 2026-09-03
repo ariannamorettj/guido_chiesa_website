@@ -544,6 +544,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     stills: [{ src: '/images/foto/babylon.jpg', alt: 'Babylon – foto di scena' }],
     poster: { src: '/images/locandine/babylon-la-paura-e-la-miglior-amica-delluomo.jpg', alt: 'Babylon – locandina' },
     presentazione: 'Ho un rapporto ambivalente con questo film. Scritto e realizzato in tempi rapidissimi, un\'anomalia in una vicenda professionale fatta di tempi lunghi. Girato con 300 milioni in 18 giorni, nessun aiuto statale o televisivo, era la risposta allo stimolo che ci giungeva dal cinema americano indipendente, che in quegli anni insegnava al mondo come fare film a basso costo e alto tasso emotivo. Mai distribuito — per via di una congiuntura sfavorevole che obbligò la Mikado, che l\'aveva preso, a rinunciare perché la Fininvest gli aveva tagliato i pre-acquisti televisivi — ha girato il mondo più di ogni mio altro lavoro. Rimane la sensazione di aver fatto il passo più lungo della gamba, ma anche l\'orgoglio per averci provato.',
+    linkEsterni: [
+      { label: 'Pressbook', url: '/pressbooks/babylon-la-paura-e-la-miglior-amica-delluomo-pressbook.pdf', type: 'pressbook' },
+    ],
     video: [
       { label: 'Film', url: 'https://www.youtube.com/watch?v=bbR_a_ao1vE' },
     ],
