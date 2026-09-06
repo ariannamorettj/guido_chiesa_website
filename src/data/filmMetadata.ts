@@ -590,21 +590,65 @@ export const filmMetadata: Record<string, FilmMetadata> = {
      CORTOMETRAGGI
   ═══════════════════════════════════════════════════════ */
 
+  'fragole-celesti': {
+    heroPhoto: { src: '/images/foto/fragole-celesti.jpg', alt: 'Fragole celesti – foto di scena' },
+    presentazione: 'Cinque attrici, sei donne, sette performance sulla relazione tra abuso sessuale e dipendenza da droghe, cibi, alcool, ecc. Fermata d\'Autobus è una comunità terapeutica che si occupa di ogni forma di dipendenza (droghe, cibo, alcool, gioco, ecc.). I dati da loro raccolti in oltre trent\'anni di attività testimoniano che il 77% delle pazienti (e il 44% dei pazienti maschi) ha subito durante l\'infanzia maltrattamenti, abusi o reiterate molestie sessuali. A partire da questo dato, i terapeuti di Fermata d\'Autobus hanno dato vita al progetto di Fragole celesti, una comunità per sole donne. Tutte le immagini, le parole e i suoni di questo lavoro sono stati generati, suggeriti, ispirati dalle testimonianze di queste pazienti. Note di regia: non volevo fare un documentario, ma una serie di "prose/poesie" alla ricerca delle parole perdute di donne che una volta erano bambine fiduciose e ora brancolano sotto il peso e il senso di colpa dell\'innocenza violata. Un lavoro di cui sono molto convinto e contento.',
+    scheda: {
+      genere: 'Cortometraggio',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://www.youtube.com/watch?v=mZFNprMlKHQ' },
+    ],
+    fotoGalleria: true,
+    fotoGallery: '/foto/fragole-celesti/',
+    linkEsterni: [
+      { label: 'Cinema Italiano', url: 'https://www.cinemaitaliano.info/fragolecelesti', type: 'site' },
+    ],
+  },
+
   'il-cuore-del-soldatino': {
     heroPhoto: { src: '/images/foto/il-cuore-del-soldatino.jpg', alt: 'Il cuore del soldatino – foto di scena' },
+    presentazione: 'Una favola di Hans Christian Andersen, uno dei pochi ricordi di un\'infanzia normalmente felice. Ma dove sono finiti tutti gli altri ricordi? Perché sono stati rimossi? E poi, lo sono stati veramente? Filmati, fotografie dei nostri primi anni possono restituirci le emozioni, le sensazioni di quello che abbiamo vissuto? Guardandoli, si può forse capire il prezzo pagato. Note di regia: questo film, benché breve, mi è costato molta fatica. Non so se fornisce le risposte ai quesiti sopra esposti. Una possibile soluzione, forse, sta nella favola di Andersen, un narratore che non cerca mai la ricomposizione tra vittime e persecutori (quella stessa che altri suoi illustri colleghi praticano, guarda caso, sempre a vantaggio degli adulti!). L\'autore di Il soldatino di piombo riconosce sempre e fino in fondo la sofferenza di un\'infanzia negata, colpevolizzata, manipolata in nome dell\'educazione e dell\'imposizione delle regole. Un\'infanzia che, una volta cresciuta, finisce poi per credersi umanità diversa, con senso di colpa o con l\'orgoglio delle scelte trasgressive. Senza rendersi conto che entrambe le strade non sono altro che strategie di sopravvivenza alla mancanza d\'amore.',
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/kAdSewSK8oI' },
+    ],
+    linkEsterni: [
+      { label: 'Vivo Film', url: 'https://vivofilm.it/production/il-cuore-del-soldatino/', type: 'site' },
+    ],
   },
   'quei-momenti-eroici': {
     heroPhoto: { src: '/images/foto/quei-momenti-eroici.jpg', alt: 'Quei momenti eroici – foto di scena' },
+    presentazione: 'Girato senza budget, in Super8 a New York nel 1988 (ad esclusione del brano di Nick Cave con Cristiano Godano dei Marlene Kuntz, girato in 16 mm. sette anni più tardi) e finito di montare nel 1995 in Italia con abbondante aggiunta di materiale d\'archivio. Sette canzoni celebri, sette solitudini, sette storie di personaggi che credono troppo alle canzoni che ascoltano, sette (falsi) video musicali che narrano di quei momenti in cui si è così soli che non fa nemmeno male esistere. Note di regia: chi si prende troppo sul serio è perduto, ma chi non ci prova nemmeno a prendere qualcosa sul serio non sa che cosa vuol dire vivere. Col senno del poi, questo lavoro segna una graduale presa di distanza dal rock e dalla sua mitologia adolescenziale. Al momento, fu un grande divertimento. Con James Smith, Chuck De Cuir, Guido Chiesa, Trula Hoosier, Michael Pyrnick, Rebecca Moore, Cristiano Godano, Monica Merlo. Scritto da Guido Chiesa, prodotto da Christine Vachon e Michael Solomon per Cross Production e Brooklin Films, fotografia: Les Japan, fotografia per "By The Time I Get To Phoenix": Gherardo Gossi, montaggio: Fulvio Molena, 21 minuti.',
+    video: [
+      { label: 'Film completo', url: 'https://www.youtube.com/watch?v=uj11aMW0eSw' },
+    ],
   },
-  'civilta': {},
+
+  'il-tempo-dei-sogni': {
+    heroPhoto: { src: '/images/foto/il-tempo-dei-sogni.jpg', alt: 'Il tempo dei sogni – foto di scena' },
+    presentazione: 'Il film finanziato dal Comitato di Tutela Verde Roero, che si prefigge la salvaguardia e la promozione dell\'omonima area del Piemonte. Ma nessuno ci ha chiesto di fare uno spot pubblicitario o un bozzetto elegiaco. La storia potrebbe svolgersi ovunque e crediamo che i temi toccati dal film — la morte, la crudeltà nella natura, il rapporto tra le generazioni — vadano ben al di là dei confini del Roero.',
+    scheda: {
+      genere: 'Cortometraggio',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/0Nu9I14YWm8' },
+    ],
+    linkEsterni: [
+      { label: 'Torino Film Festival', url: 'https://www.torinofilmfest.org/it/11-festival-internazionale-cinema-giovani/film/il-tempo-dei-sogni-(un-film-per-il-roero)/2289/', type: 'site' },
+    ],
+  },
 
   'black-harvest': {
     heroPhoto: { src: '/images/foto/black-harvest.jpg', alt: 'Black Harvest – foto di scena' },
+    presentazione: 'Black Harvest doveva essere il primo capitolo del lungometraggio Short Lives (poi diventato The Hole, e infine Tomesha), la saga di Danny, la sua banda di "bruciati" e del "buco nella Valle della Morte" sognato da Charles Manson.',
     fotoGallery: '/foto/black-harvest/',
     trailer: 'https://www.youtube-nocookie.com/embed/nvEv3APs6Ko',
     fotoGalleria: true,
+    rassegnaStampaAnno: 1986,
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/black-harvest-pressbook.pdf', type: 'pressbook' },
+      { label: 'Sceneggiatura: The Hole', url: '/sceneggiature/#hole', type: 'site' },
+      { label: 'Sceneggiatura: Tomesha', url: '/sceneggiature/#tomesha', type: 'site' },
     ],
   },
 
@@ -613,6 +657,14 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     fotoGallery: '/foto/give-me-a-spell/',
     stills: [{ src: '/images/foto/give-me-a-spell.jpg', alt: 'Give Me A Spell – foto di scena' }],
     fotoGalleria: true,
+    presentazione: 'Give me a spell segue in pochi sguardi la disintegrazione di una giovane coppia. Michael e Donna si combattono, alternando una reciproca comprensione e un reciproco rifiuto dell\'altro. Essi si confrontano con la frustrazione e la paura che assale coloro per cui le parole e il silenzio sono egualmente isolanti. Note di regia: il titolo del film è originato dall\'ossessione per la parola spell che, ho scoperto, ha diversi significati: formula magica, riposo, periodo di tempo... Alcune persone hanno trovato strano un simile titolo per una storia di due amanti che, nel giorno finale della loro separazione, dicono e fanno cose inaspettate come l\'amore e una litigata di economia domestica. Ma non è forse l\'amore una forma di spell, una formula magica? Ho cercato di realizzare questa storia usando uno stile semplice, austero, evitando ogni discorso di metacinema. Tutti gli elementi dell\'inquadratura sono stati selezionati con una severa attenzione alla loro relazione con gli attori e l\'atmosfera della vicenda.',
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/KWo-dH5D1EQ' },
+    ],
+    rassegnaStampaAnno: 1985,
+    linkEsterni: [
+      { label: 'Torino Film Festival', url: 'https://www.torinofilmfest.org/it/3-festival-internazionale-cinema-giovani/film/give-me-a-spell/5052/', type: 'site' },
+    ],
   },
 
   /* ═══════════════════════════════════════════════════════
@@ -633,6 +685,13 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       durata: '6 episodi × 90 minuti ciascuno',
       genere: 'Serial',
     },
+    trailer: 'https://www.youtube-nocookie.com/embed/HvTIIFGzk_Q',
+    rassegnaStampaAnno: 2008,
+    fotoGalleria: true,
+    fotoGallery: '/foto/quo-vadis-baby/',
+    linkEsterni: [
+      { label: 'Wikipedia', url: 'https://it.wikipedia.org/wiki/Quo_vadis,_baby?_(miniserie_televisiva)', type: 'site' },
+    ],
   },
 
   /* ═══════════════════════════════════════════════════════
@@ -687,8 +746,26 @@ export const filmMetadata: Record<string, FilmMetadata> = {
 
   'partigiani': {
     heroPhoto: { src: '/images/foto/partigiani.jpg', alt: 'Partigiani – foto di scena' },
+    presentazione: '25 aprile 1995, cinquant\'anni dalla Liberazione, Guido Chiesa e Davide Ferrario iniziano a Correggio, provincia di Reggio Emilia, l\'avventura di Materiale resistente: rock e partigiani, giovani e anziani, un minimo comune denominatore chiamato resistenza. Sei mesi dopo, alla prima del film a Correggio, la platea è per metà composta da partigiani. Assistono ammutoliti, poi esprimono un desiderio per nulla narcisistico: la prossima volta fate un film su di noi. Guido e Davide sanno che gli tocca. È l\'inizio di un rapporto intenso, problematico, a tratti polemico tra partigiani e filmmaker (a cui si aggiungono man mano Daniele Vicari, Antonio Leotti e Marco Puccioni), che solo incidentalmente verte sul film e le sue necessità specifiche. La vera questione è un\'altra: che cos\'è la memoria? A che serve? Dove finisce l\'analisi storica e inizia la retorica? Che ne sarà dell\'identità e del mito dei partigiani ora che il loro tempo si avvia alla fine? Domande pesanti, ambiziose, che accompagnano le lunghe ricerche che precedono la realizzazione del film, nonché il dibattito stesso tra i filmmaker, per nulla unanimi nell\'approccio alla materia. Partigiani è infine proprio questo: l\'esito di un confronto, per forza di cose frammentario e aperto, che ha coinvolto cineasti e ricercatori, partigiani e loro familiari, fino a comprendere l\'intera Correggio e la storia di questi cinquantadue anni di post-Resistenza. Il video è composto da nove episodi, il primo dei quali (realizzato da Guido Chiesa) è una fiction, basato su un fatto realmente accaduto. Gli episodi successivi sono dei documentari.',
+    scheda: {
+      regia: 'Guido Chiesa, Davide Ferrario, Antonio Leotti, Marco Puccioni, Daniele Vicari',
+      sceneggiatura: 'Guido Chiesa, Davide Ferrario, Antonio Leotti, Marco Puccioni, Daniele Vicari',
+      produzione: 'Intel Film, A.N.P.I.',
+      fotografia: 'Giovanni Gebbia, Gherardo Gossi, Massimiliano Trevis, Terek Ben Abdallah',
+      montaggio: 'Luca Gasparini',
+      musiche: 'Afa',
+      durata: '62 minuti',
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://www.youtube.com/watch?v=GpQlU3U-DBg' },
+    ],
+    rassegnaStampaAnno: 1997,
     fotoGallery: '/foto/partigiani/',
     fotoGalleria: true,
+    linkEsterni: [
+      { label: 'Torino Film Festival', url: 'https://www.torinofilmfest.org/it/16-torino-film-festival/film/partigiani/1186/', type: 'site' },
+    ],
   },
 
   'il-contratto': {
@@ -706,47 +783,271 @@ export const filmMetadata: Record<string, FilmMetadata> = {
 
   'alice-e-paradiso': {
     heroPhoto: { src: '/images/foto/alice-e-paradiso.jpg', alt: 'Alice è in paradiso – foto di scena' },
+    presentazione: 'Per 25 anni, Radio Alice è rimasta la "radio degli autonomi", la voce degli scontri che sconvolsero il capoluogo emiliano nel marzo \'77. Eppure, chiunque si avvicini oggi alla vicenda di Radio Alice non fatica a scoprire che l\'aspetto belligerante era ben lontano dal suo progetto culturale e dalle esperienze personali e collettive che l\'avevano generata. In realtà, Radio Alice è stato uno dei più singolari e originali esperimenti sulla comunicazione che abbiano mai preso piede in Italia. Priva di una vera e propria redazione e ancor più di un palinsesto, l\'emittente bolognese, concepita nel 1975 nel bel mezzo dell\'esplosione delle cosiddette radio libere, aveva fatto della spontaneità e della contaminazione qualcosa di più di una semplice bandiera: un progetto in cui istanze politiche, artistiche ed esistenziali si fondevano nel comune denominatore dell\'universo radiofonico.',
     trailer: 'https://player.vimeo.com/video/249293958',
+    rassegnaStampaAnno: 2002,
+    scheda: {
+      genere: 'Documentario',
+    },
+    linkEsterni: [
+      { label: 'Cinema Italiano', url: 'https://www.cinemaitaliano.info/aliceeinparadiso', type: 'site' },
+      { label: 'Radio Alice', url: 'https://radioalice.org/index.php?option=com_content&view=article&id=34:alice-e-in-paradiso&catid=13&Itemid=129', type: 'site' },
+    ],
   },
 
   'ma-che-ci-faccio-io-sanremo': {
     heroPhoto: { src: '/images/foto/ma-che-ci-faccio-io-sanremo.jpg', alt: 'Ma che ci faccio io a Sanremo – foto di scena' },
+    presentazione: 'Un viaggio nel carrozzone del Festival in compagnia di alcuni tra i suoi conduttori occasionali degli ultimi 25 anni (Stefania Casini, Andrea Giordana, Rosita Celentano, Andrea Occhipinti, Veronica Pivetti), di un giornalista innamorato del festival (Nino Pirito), di molto materiale d\'archivio e di uno sguardo ironico e tutt\'altro che complice. Note di regia: un divertissement senza ambizioni.',
+    scheda: {
+      genere: 'Documentario',
+    },
   },
 
   'provini-un-massacro': {
     heroPhoto: { src: '/images/foto/provini-un-massacro.jpg', alt: 'Provini per un massacro – foto di scena' },
+    presentazione: 'Pasolini scelse gli attori del suo Salò o le 120 giornate di Sodoma prendendoli "dalla strada". Quei provini sono stati ripetuti per registrare le reazioni degli aspiranti attori di oggi, ragazzi e ragazze seguiti poi nella quotidianità delle periferie di Roma in una vera e propria indagine sulla omologazione dei corpi e delle vite che Pasolini denunciava con la barbarie del suo ultimo film. Note di regia: ho un rapporto ambiguo e contraddittorio con l\'opera di Pasolini, ma Salò rimane uno dei 4-5 film che indico quando mi chiedono "il tuo film preferito". È uno dei miei lavori a cui sono più legato perché sfugge all\'ideologia e cerca di ascoltare con pietas le nuove vittime della de-umanizzazione del materialismo consumista.',
+    rassegnaStampaAnno: 2000,
+    scheda: {
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/mzRj7cvgEaA' },
+    ],
+    linkEsterni: [
+      { label: 'Torino Film Festival', url: 'https://www.torinofilmfest.org/en/18-torino-film-festival/film/provini-per-un-massacro/573/', type: 'site' },
+    ],
   },
 
   'una-questione-privata-vita-di-beppe-fenoglio': {
     heroPhoto: { src: '/images/foto/una-questione-privata-vita-di-beppe-fenoglio.jpg', alt: 'Una questione privata. Vita di Beppe Fenoglio – foto di scena' },
+    presentazione: 'Sullo sfondo di un\'Alba provinciale e conservatrice, i racconti di chi ha conosciuto Beppe Fenoglio (10 mesi di lavoro e quasi 200 interviste) permettono di ricostruirne la personalità, il rapporto con la città, le donne (in particolare con Fulvia, il suo primo amore, e con Luciana Bombardi, la donna che sposò), l\'esperienza partigiana, l\'impegno civile dopo la guerra, le opere letterarie, i legami con gli altri intellettuali, le passioni, la malattia e la morte. Note di regia: credo che se mi sono occupato così tanto di Fenoglio, non è stato per la Resistenza o per le comuni radici piemontesi, ma perché mi ha permesso di fare i conti con una parte di me. Il migliore scrittore italiano del \'900, comunque, a mio modesto avviso.',
+    rassegnaStampaAnno: 1998,
+    scheda: {
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/Nqagx97OtLk' },
+    ],
+    linkEsterni: [
+      { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=548&stile=small', type: 'site' },
+    ],
   },
 
   'volare-la-grande-trasformazione-1951-19': {
     heroPhoto: { src: '/images/foto/volare-la-grande-trasformazione-1951-19.jpg', alt: 'Volare, la grande trasformazione – foto di scena' },
+    presentazione: 'Nel dopoguerra, l\'Italia da povero paese agricolo, cattolico e familista diventa potenza industriale di rincalzo, consumista e ancora familista (ma con i rapporti di forza tra padri e figli, uomini e donne, città e campagne definitivamente stravolti). L\'Italia del boom economico, di Modugno che canta Volare a Sanremo, della Vespa e dei televisori in ogni casa. Ma anche della Dolce vita e del governo Tambroni, di Enrico Mattei e della cementificazione massiccia delle periferie. Per alcuni fu l\'inizio della modernizzazione del paese, per altri (Pasolini) una grande tragedia antropologica. Ma, forse, non sono solo queste le letture possibili. Note di regia: le letture che Volare affronta e propone partono dal passato per interpretare il presente, per capire le radici di fenomeni sociali e politici tutt\'altro che sepolti. E nel farlo rifiuta la logica della nostalgia, il revivalismo post-moderno, l\'umiliazione del valore etico dell\'immagine. Solo così, il discorso sul passato può diventare altro che una mera celebrazione del presente.',
+    scheda: {
+      sceneggiatura: 'Guido Chiesa, Giovanni De Luna',
+      produzione: 'Videa in coproduzione con Rai e Artè',
+      produttore: 'Carlo Cresto-Dina',
+      montaggio: 'Luca Gasparini',
+      durata: '55 minuti',
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/-iJ3GfoMGcM' },
+    ],
+  },
+
+  'un-giorno-di-fuoco': {
+    heroPhoto: { src: '/images/foto/un-giorno-di-fuoco.jpg', alt: 'Un giorno di fuoco – foto di scena' },
+    presentazione: 'Alba, 5 ottobre 1996. I CSI in concerto nella chiesa di San Domenico. Alle loro spalle, sull\'abside, le immagini proiettate dal sottoscritto. In mezzo, le letture di Giuseppe Cederna e le testimonianze del fratello Walter, dell\'amico Ugo Cerrato, del commilitone e partigiano Aldo Spinardi e della figlia mai conosciuta Margherita. Il tutto, necessariamente, per Giuseppe Fenoglio, detto Beppe, scrittore albese morto nel 1963 a 41 anni, ex partigiano, impiegato in una ditta vinicola e figura anomala nel panorama culturale italiano del dopoguerra: schivo, provinciale benché capace di una lingua universale. Un giorno di fuoco è stato un evento irripetibile, mai replicabile. Il film e il disco fatto uscire dai CSI (La terra, la guerra e una questione privata) restituiscono solo un\'ombra dell\'energia che circolava quella sera nella chiesa di Alba. Ma quel che ha scritto Fenoglio è più che mai lì a parlarci.',
+    scheda: {
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/yURAviTkr6M' },
+    ],
+    linkEsterni: [
+      { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=522&stile=small', type: 'site' },
+    ],
+  },
+
+  'nascita-di-una-democrazia': {
+    heroPhoto: { src: '/images/foto/nascita-di-una-democrazia.jpg', alt: 'Nascita di una democrazia – foto di scena' },
+    presentazione: 'Mentre a Roma si scrive la Costituzione, nel resto del paese inizia una faticosa rinascita, tra le ferite del recente passato e l\'ebbrezza per la scoperta della politica. Attraverso interviste, musiche, film e materiali d\'archivio, il racconto di quanto è accaduto in Italia durante i due anni in cui è stata scritta la Costituzione. Da Tombolo a Trieste, da Aci Trezza dove Visconti gira "La terra trema" a Reggio Emilia dove si formano i grandi partiti di massa. Andato in onda in 2 puntate su RAI 2 nel 1997.',
+    rassegnaStampaAnno: 1997,
+    scheda: {
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Parte 1', url: 'https://youtu.be/MiWy8Ljy_jI' },
+      { label: 'Parte 2', url: 'https://youtu.be/k_IJ5kM5bLU' },
+    ],
+    linkEsterni: [
+      { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=536&stile=small', type: 'site' },
+    ],
   },
 
   'petali-di-candore-marlene-kuntz-96-97': {
     heroPhoto: { src: '/images/foto/petali-di-candore-marlene-kuntz-96-97.jpg', alt: 'Petali di candore. Marlene Kuntz \'96–\'97 – foto di scena' },
+    presentazione: 'Oltre un anno sulle orme dei Marlene Kuntz dal vivo, sulla strada e nella loro natia provincia di Cuneo. Ritratto dietro le quinte del gruppo musicale piemontese dei Marlene Kuntz, impegnato in un tour per l\'uscita dell\'album Il vile. Note di regia: ho affetto per i Marlene non solo per la musica che hanno saputo realizzare, ma soprattutto perché non nascondono il loro provincialismo, senza per questo farne una bandiera.',
+    scheda: {
+      regia: 'Guido Chiesa, Francesca Dall\'Olio',
+      produzione: 'Consorzio Produttori Indipendenti per Polygram',
+      fotografia: 'Francesca Dall\'Olio',
+      musiche: 'Marlene Kuntz (repertorio)',
+      montaggio: 'Luca Gasparini',
+      durata: '98 minuti',
+      genere: 'Documentario',
+    },
+  },
+
+  'ritratti-dautore-i-fratelli-taviani': {
+    heroPhoto: { src: '/images/foto/ritratti-dautore-i-fratelli-taviani.jpg', alt: 'Ritratti d\'autore: I fratelli Taviani – foto di scena' },
+    presentazione: 'A cena con i celebri fratelli registi, per parlare di cinema, Underground di Kusturica e generazioni a confronto. Un\'esperienza vivace e un incontro utile alla riflessione. Parte della serie "Ritratti d\'autore" che metteva di fronte registi di diverse età ed epoche.',
+    scheda: {
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/mctQL4Ks9f8' },
+    ],
+    linkEsterni: [
+      { label: 'IMDb', url: 'https://www.imdb.com/it/title/tt1547594/fullcredits/?ref_=tt_cst_sm', type: 'site' },
+    ],
   },
 
   'rane-culatelli-e-lucciole': {
     heroPhoto: { src: '/images/foto/rane-culatelli-e-lucciole.jpg', alt: 'Rane, culatelli e lucciole – foto di scena' },
+    presentazione: 'Viaggio nei luoghi dove Bernardo Bertolucci ha girato la sua "trilogia padana": Prima della rivoluzione, La strategia del ragno, Novecento. Note di regia: girato come parte di una serie (credo mai realizzata) di sopralluoghi sulle location di set famosi. Nelle ambizioni voleva essere, attraverso Bertolucci, uno sguardo sull\'Emilia e le sue contraddizioni para-comuniste e ultra-consumiste. Temo che la durata richiesta non abbia giovato alle idee, già non lucidissime di per sé. Scritto da Guido Chiesa, prodotto da Brooklyn Film per Telepiù, fotografia Gherardo Gossi, montaggio Benni Atria, suono Gianluca Costamagna, ricerche e sopralluoghi Simone Simonazzi, produzione Enrico Verra, 16 minuti.',
+    scheda: {
+      sceneggiatura: 'Guido Chiesa',
+      produzione: 'Brooklyn Film per Telepiù',
+      fotografia: 'Gherardo Gossi',
+      montaggio: 'Benni Atria',
+      durata: '16 minuti',
+      genere: 'Documentario',
+    },
   },
 
   'indipendenti-new-york-radiografia-di-unalternativa': {
     heroPhoto: { src: '/images/foto/indipendenti-new-york-radiografia-di-unalternativa.jpg', alt: 'Indipendenti a New York – foto di scena' },
+    presentazione: 'Girato in Hi8 con una troupe improvvisata, è la fotografia del cinema indipendente americano dieci anni dopo il successo di film come Stranger Than Paradise, Lola Darling, Smithereens, che avevano legittimato commercialmente le produzioni indie. Note di regia: un ritorno, sul filo della memoria personale, in un mondo che avevo a lungo frequentato, ma da cui mi sentivo man mano più distante.',
+    scheda: {
+      sceneggiatura: 'Guido Chiesa',
+      produzione: 'Brooklyn Film per Telepiù',
+      fotografia: 'Michael Kasino',
+      montaggio: 'Benni Atria',
+      produttore: 'Michael Solomon',
+      durata: '17 minuti',
+      genere: 'Documentario',
+    },
+    linkEsterni: [
+      { label: 'IMDb', url: 'https://www.imdb.com/it/title/tt15289346/fullcredits/?ref_=tt_ov_sm_2#amzn1.imdb.concept.name_credit_group.7caf7d16-5db9-4f4f-8864-d4c6e711c686', type: 'site' },
+    ],
   },
 
   'torino-guerra-1940-1945': {
     heroPhoto: { src: '/images/foto/torino-guerra-1940-1945.jpg', alt: 'Torino in guerra. 1940–1945 – foto di scena' },
+    presentazione: 'Il racconto, attraverso materiali d\'archivio e le dichiarazioni di alcuni testimoni "qualunque" della vita a Torino durante gli anni della guerra, prima vissuta attraverso le notizie dai fronti, poi in prima persona con l\'occupazione nazifascista. Eventi storici, racconti privati, costume, sport e vita quotidiana, si alternano in una narrazione che fungeva da corollario all\'omonima mostra allestita nel 1995 all\'interno della Mole Antonelliana, non ancora Museo del Cinema. La proiezione era accompagnata, in alcuni precisi punti (i bombardamenti, l\'instaurazione della RSI, le fucilazioni), dalla messinscena di eventi live realizzati con la collaborazione di Fulvio Massaro. Note di regia: primo frutto della collaborazione con lo storico Giovanni De Luna, che aveva travisato la mia saltuaria frequentazione della sede di Lotta Continua di Chieri per una militanza seria e continuata come la sua. A lui, tra l\'altro, devo l\'interesse per il documentario e l\'apprendimento di un metodo interdisciplinare di analisi storica che non ho più abbandonato. Scritto da Guido Chiesa e Giovanni De Luna, prodotto da Brooklyn Film, ricerche Giovanna Boursier, montaggio Luca Gasparini, musiche Giuseppe Napoli, 90 minuti.',
+    scheda: {
+      sceneggiatura: 'Guido Chiesa, Giovanni De Luna',
+      produzione: 'Brooklyn Film',
+      montaggio: 'Luca Gasparini',
+      musiche: 'Giuseppe Napoli',
+      durata: '90 minuti',
+      genere: 'Documentario',
+    },
   },
 
   '25-aprile-la-memoria-inquieta': {
     heroPhoto: { src: '/images/foto/25-aprile-la-memoria-inquieta.jpg', alt: '25 Aprile: la memoria inquieta – foto di scena' },
+    presentazione: 'Non sempre il 25 aprile è stato commemorato allo stesso modo. La diversa tipologia delle sue celebrazioni scandisce le fasi principali della vicenda storica dell\'Italia repubblicana: la ricostruzione, il centrismo, il centrosinistra, gli anni \'70, fino ai dibattiti e alle polemiche dell\'ultimo decennio. Si può dire, comunque, che solo agli inizi degli anni \'60 la resistenza fu introdotta nel paradigma di fondazione dell\'Italia repubblicana. Si è trattato però sempre di una memoria inquieta, così che il 25 aprile è una data che non è mai riuscita ad ottenere il riconoscimento di tutti gli italiani. È come se quel surplus di democrazia e di partecipazione politica legato al ricordo dell\'insurrezione contro i tedeschi e i fascisti abbia sempre costituito un ostacolo insormontabile all\'affermarsi di una memoria condivisa da tutti. Questa memoria è ricostruita in questo documentario attraverso l\'analisi di materiali filmici destinati prevalentemente alla televisione.',
+    scheda: {
+      sceneggiatura: 'Guido Chiesa, Giovanni De Luna',
+      produzione: 'RAI',
+      montaggio: 'Daniele Vantini',
+      musiche: 'Giuseppe Napoli',
+      durata: '60 minuti',
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://www.youtube.com/watch?v=0tzfLaghvxY' },
+    ],
+    rassegnaStampaAnno: 1995,
   },
 
   'memorie-di-una-fabbrica': {
     heroPhoto: { src: '/images/foto/memorie-di-una-fabbrica.jpg', alt: 'Memorie di una fabbrica – foto di scena' },
+    presentazione: 'Un luogo della mia giovinezza, che è stato uno dei miei primi set, raccontato con interviste, foto e filmati di repertorio che tratteggiano una storia familiare, l\'evoluzione dei rapporti di classe e della tecnologia applicata al lavoro.',
+    scheda: {
+      sceneggiatura: 'Guido Chiesa',
+      produzione: 'Brooklyn Films',
+      fotografia: 'Gherardo Gossi',
+      montaggio: 'Luca Gasparini',
+      durata: '40 minuti',
+      genere: 'Documentario',
+    },
+    linkEsterni: [
+      { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=532&stile=small', type: 'site' },
+    ],
+  },
+
+  /* ═══════════════════════════════════════════════════════
+     VIDEOCLIP
+  ═══════════════════════════════════════════════════════ */
+
+  'se-mi-scrivi-perturbazione': {
+    presentazione: 'Un\'esperienza spiritosa con un gruppo senza puzza sotto il naso.',
+    video: [
+      { label: 'Videoclip', url: 'https://www.youtube.com/watch?v=QDaZd5AOSx8' },
+    ],
+  },
+
+  'gioia-e-rivoluzione-afterhours': {
+    presentazione: 'Cover degli Area dal film Lavorare con lentezza. Fare paragoni è un esercizio onanistico, ogni versione è un discorso a sé. E questa è puro Afterhours.',
+    video: [
+      { label: 'Videoclip', url: 'https://www.youtube.com/watch?v=uCw1XylFwaQ' },
+    ],
+  },
+
+  'otto-giorni-mambassa': {
+    presentazione: 'Una canzone dal secondo LP dei Mambassa.',
+    video: [
+      { label: 'Videoclip', url: 'https://youtu.be/JN5ETKp_uKk' },
+    ],
+  },
+
+  'umore-blu-neon-mambassa': {
+    presentazione: 'Divertenti e provinciali, nel senso buono.',
+    video: [
+      { label: 'Videoclip', url: 'https://youtu.be/LrNKNM0SJLk' },
+    ],
+  },
+
+  'qualcosa-yo-yo-mundi': {
+    presentazione: 'Dall\'album Percorsi di musica sghemba: "La descrizione impossibile di una presenza percepita in ogni dove e in ogni momento, presenza spirituale e impalpabile colta ora negli sguardi, ora tra le cose del quotidiano, nel desiderio e negli elementi, una canzone quasi religiosa: nel nulla che ci tende tranelli, qualcosa." (Yo Yo Mundi)',
+    video: [
+      { label: 'Videoclip', url: 'https://youtu.be/kaSL5LuXLw4' },
+    ],
+  },
+
+  'come-stavamo-ieri-marlene-kuntz': {
+    presentazione: 'Il mio video preferito.',
+    video: [
+      { label: 'Videoclip', url: 'https://www.youtube.com/watch?v=IQ7UH8wM2us' },
+    ],
+  },
+
+  'merry-x-mas-marlene-kuntz': {
+    presentazione: 'Girato con immagini girate ad hoc e altre tratte da Babylon, alla cui colonna sonora avevano collaborato i Marlene Kuntz.',
+    video: [
+      { label: 'Videoclip', url: 'https://www.youtube.com/watch?v=NRMQL-VYEF8' },
+    ],
+  },
+
+  'lieve-marlene-kuntz': {
+    presentazione: 'Un singolo fortemente voluto dai CSI.',
+    video: [
+      { label: 'Videoclip', url: 'https://www.youtube.com/watch?v=EKg5K18VJnY' },
+    ],
+  },
+
+  'gocce-di-sole-assalti-frontali': {
+    presentazione: 'Assalti Frontali, dopo la milionesima assemblea, decise di non "riconoscerlo". Non riuscimmo a capirci, ma resta il ricordo di un\'esperienza arricchente e naif.',
+    video: [
+      { label: 'Videoclip', url: 'https://youtu.be/y9U3zvJJusI' },
+    ],
   },
 
 };
