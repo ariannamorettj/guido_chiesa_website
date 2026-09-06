@@ -590,15 +590,18 @@ export const filmMetadata: Record<string, FilmMetadata> = {
      CORTOMETRAGGI
   ═══════════════════════════════════════════════════════ */
 
-  'il-cuore-del-soldatino': {},
-  'quei-momenti-eroici': {},
+  'il-cuore-del-soldatino': {
+    heroPhoto: { src: '/images/foto/il-cuore-del-soldatino.jpg', alt: 'Il cuore del soldatino – foto di scena' },
+  },
+  'quei-momenti-eroici': {
+    heroPhoto: { src: '/images/foto/quei-momenti-eroici.jpg', alt: 'Quei momenti eroici – foto di scena' },
+  },
   'civilta': {},
 
   'black-harvest': {
-    foto: '/images/foto/black-harvest.jpg',
+    heroPhoto: { src: '/images/foto/black-harvest.jpg', alt: 'Black Harvest – foto di scena' },
     fotoGallery: '/foto/black-harvest/',
     trailer: 'https://www.youtube-nocookie.com/embed/nvEv3APs6Ko',
-    stills: [{ src: '/images/foto/black-harvest.jpg', alt: 'Black Harvest – foto di scena' }],
     fotoGalleria: true,
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/black-harvest-pressbook.pdf', type: 'pressbook' },
@@ -636,19 +639,114 @@ export const filmMetadata: Record<string, FilmMetadata> = {
      DOCUMENTARI
   ═══════════════════════════════════════════════════════ */
 
+  'sono-stati-loro-48-ore-novi-ligure': {
+    heroPhoto: { src: '/images/foto/sono-stati-loro-48-ore-novi-ligure.jpg', alt: 'Sono stati loro – le villette di Novi Ligure' },
+    presentazione: 'Il 21 febbraio 2001, la vita di Novi Ligure cambia drammaticamente: in una villetta della periferia vengono trucidati Susy Cassini e suo figlio Gianluca. L\'unica sopravvissuta, Erika, indica ladri di origine slava. Per 48 ore l\'informazione italiana gronda di dettagli macabri, e nel calderone finisce tutto: immigrati clandestini, inefficacia delle pene, prostituzione, droga, pena di morte. Poi l\'annuncio choc: gli assassini sono Erika e il suo ragazzo. Il documentario indaga l\'angoscia degli abitanti di Novi — costruita in parte dai mass media, sfruttata dalla politica, ma reale — attraverso materiale documentario e i dialoghi di un gruppo di amici interpretato da attori. Quello che ho cercato di fare è mettere in scena la globalità dei fattori in gioco, non la denuncia: volevo indagare il "dietro le quinte" di quelle dichiarazioni. L\'angoscia, l\'ansia e la paura sono reali, anche quando — come nel caso di Novi — sono basate su errori di valutazione.',
+    fotoGalleria: true,
+    rassegnaStampaAnno: 2003,
+    scheda: {
+      genere: 'Documentario',
+    },
+    video: [
+      { label: 'Film completo', url: 'https://youtu.be/SEflvPlsmYw' },
+    ],
+    linkEsterni: [
+      { label: 'Cinema Italiano', url: 'https://www.cinemaitaliano.info/sonostatiloro', type: 'site' },
+    ],
+  },
+
+  'stessa-spiaggia-stesso-mare': {
+    heroPhoto: { src: '/images/foto/stessa-spiaggia-stesso-mare.jpg', alt: 'Stessa spiaggia, stesso mare – foto di scena' },
+    presentazione: 'Com\'era la Riviera Romagnola prima di essere invasa da pacifiche orde di turisti nordeuropei? Com\'è nato il mito di quel breve tratto di costa italiana, delle sue notti, dei suoi \'vitelloni\'? Cosa ha significato sul piano sociale e culturale l\'avvento del turismo straniero di massa nell\'Italia del Boom economico e delle sue contraddizioni? Queste e molte altre domande sono al centro di Stessa spiaggia, stesso mare, un documentario in cui Guido Chiesa ha scelto di indagare quel peculiare \'melting pot\' alla romagnola che si è venuto a creare in Riviera dal dopoguerra in poi, grazie all\'afflusso di incredibili quantità di turisti tedeschi, britannici e scandinavi, attratti dal mito d\'un\'Italia assolata, sensuale e terribilmente \'latina\'. Un incontro che ha creato famiglie, ristoranti, pensioni, mettendo le ali all\'economia della zona, e che ha dato vita a un immaginario collettivo che resiste ancora oggi. Con taglio leggero e ironico, Chiesa rivisita quegli anni attraverso le testimonianze dei protagonisti e materiali documentari d\'archivio, in una trama narrativa arricchita dalle immagini della Riviera oggi e dalle parole dei suoi protagonisti di un tempo.',
+    scheda: {
+      durata: '52 minuti',
+      genere: 'Documentario',
+    },
+    linkEsterni: [
+      { label: 'Link esterno', url: 'http://www.vivofilm.it/?p=161', type: 'site' },
+    ],
+  },
+
+  'kishe-ione-la-nostra-chiesa': {
+    heroPhoto: { src: '/images/foto/kishe-ione-la-nostra-chiesa.jpg', alt: 'Kishe Ione – La nostra Chiesa – foto di scena' },
+    presentazione: 'Per chi si avvicina per la prima volta alla scoperta del mondo e della cultura arbereshe, l\'aspetto forse più sorprendente è la permanenza di una forte identità religiosa, legata alla tradizione del rito greco ortodosso, benché sviluppatasi in seno alla Chiesa cattolica romana. La nostra chiesa racconta, in un percorso introdotto e accompagnato dal linguista Francesco Altimari, la storia e lo stato attuale di questa peculiare dimensione degli italo albanesi, declinandola attraverso tre comunità simbolo: San Demetrio Corone, Spezzano Albanese e Falconara Albanese. Nel primo caso si prende in esame una realtà in cui il rito è ancora forte, vivo, praticato, e in cui l\'identità degli arbereshe appare salda e al tempo stesso dinamica. Nel secondo, la scomparsa nel XVII secolo del rito bizantino a favore di quello latino pare a lungo andare aver indebolito la comunità arbereshe, lasciandola più indifesa di fronte all\'omologazione del mondo contemporaneo. Il terzo caso — Falconara, comune isolato sullo Ionio — ha assistito negli anni \'70 a una sorta di trapianto artificiale, con il ritorno forzoso del rito bizantino dopo quasi trecento anni. Ed è proprio l\'identità il fuoco del discorso: un\'identità che, di fronte alla crescente secolarizzazione, all\'accresciuta mobilità sociale e ai matrimoni misti, rischia di divenire col tempo una mera indicazione anagrafica.',
+    scheda: {
+      regia: 'Guido Chiesa, Enzo Mercuri',
+      sceneggiatura: 'Guido Chiesa, Enzo Mercuri',
+      produzione: 'Palomar',
+      produttore: 'Nicola Sofri',
+      fotografia: 'Pino Iannelli',
+      montaggio: 'Benni Atria, Stefano Cravero',
+      durata: '52 minuti',
+      genere: 'Documentario',
+    },
+    linkEsterni: [
+      { label: 'Cinema Italiano', url: 'https://www.cinemaitaliano.info/lanostrachiesa', type: 'site' },
+    ],
+  },
+
   'partigiani': {
-    foto: '/images/foto/partigiani.jpg',
+    heroPhoto: { src: '/images/foto/partigiani.jpg', alt: 'Partigiani – foto di scena' },
     fotoGallery: '/foto/partigiani/',
-    stills: [{ src: '/images/foto/partigiani.jpg', alt: 'Partigiani – foto di scena' }],
     fotoGalleria: true,
   },
 
   'il-contratto': {
+    heroPhoto: { src: '/images/foto/il-contratto.jpg', alt: 'Il contratto – foto di scena' },
+    presentazione: 'Jadelin Mabiala Gangbo ha 25 anni e abita a Bologna. Fa parte dei venticinquenni che girano in quel sottobosco di studenti, bohemienne e frequentatori di osterie; ne ha tutti i tratti e le idiosincrasie: lunghi capelli rasta, vestiti sdruciti, atteggiamento chiuso. Uno come tanti. Se non fosse per tre, distinte e inseparabili, peculiarità. La prima è che Jadelin, come dice lui, è negro. La seconda è che rischia l\'espulsione. È arrivato in Italia a 4 anni, figlio di un imprenditore congolese; quando i genitori falliscono e fuggono in Africa, i sette fratelli finiscono ai servizi sociali. A 18 anni Jadelin esce dall\'affidamento e diventa cittadino… del Benin. Con 21 anni di Italia addosso e un accento che più di Imola non si può, deve rinnovare periodicamente il permesso di soggiorno. Con la nuova legge, se non trova un contratto di lavoro potrà essere espulso. Ma ecco la terza, inattesa peculiarità: Jadelin scrive. Nota di regia: la sua storia evidenzia tutti i limiti di un discorso sull\'immigrazione fatto esclusivamente su parametri economici o di pubblica sicurezza.',
     trailer: 'https://www.youtube-nocookie.com/embed/7ZqBqXpeLk8',
+    rassegnaStampaAnno: 2002,
+    scheda: {
+      genere: 'Documentario',
+    },
+    linkEsterni: [
+      { label: 'Cinematografo', url: 'https://www.cinematografo.it/film/il-contratto-n6tbv7hs', type: 'site' },
+    ],
   },
 
   'alice-e-paradiso': {
+    heroPhoto: { src: '/images/foto/alice-e-paradiso.jpg', alt: 'Alice è in paradiso – foto di scena' },
     trailer: 'https://player.vimeo.com/video/249293958',
+  },
+
+  'ma-che-ci-faccio-io-sanremo': {
+    heroPhoto: { src: '/images/foto/ma-che-ci-faccio-io-sanremo.jpg', alt: 'Ma che ci faccio io a Sanremo – foto di scena' },
+  },
+
+  'provini-un-massacro': {
+    heroPhoto: { src: '/images/foto/provini-un-massacro.jpg', alt: 'Provini per un massacro – foto di scena' },
+  },
+
+  'una-questione-privata-vita-di-beppe-fenoglio': {
+    heroPhoto: { src: '/images/foto/una-questione-privata-vita-di-beppe-fenoglio.jpg', alt: 'Una questione privata. Vita di Beppe Fenoglio – foto di scena' },
+  },
+
+  'volare-la-grande-trasformazione-1951-19': {
+    heroPhoto: { src: '/images/foto/volare-la-grande-trasformazione-1951-19.jpg', alt: 'Volare, la grande trasformazione – foto di scena' },
+  },
+
+  'petali-di-candore-marlene-kuntz-96-97': {
+    heroPhoto: { src: '/images/foto/petali-di-candore-marlene-kuntz-96-97.jpg', alt: 'Petali di candore. Marlene Kuntz \'96–\'97 – foto di scena' },
+  },
+
+  'rane-culatelli-e-lucciole': {
+    heroPhoto: { src: '/images/foto/rane-culatelli-e-lucciole.jpg', alt: 'Rane, culatelli e lucciole – foto di scena' },
+  },
+
+  'indipendenti-new-york-radiografia-di-unalternativa': {
+    heroPhoto: { src: '/images/foto/indipendenti-new-york-radiografia-di-unalternativa.jpg', alt: 'Indipendenti a New York – foto di scena' },
+  },
+
+  'torino-guerra-1940-1945': {
+    heroPhoto: { src: '/images/foto/torino-guerra-1940-1945.jpg', alt: 'Torino in guerra. 1940–1945 – foto di scena' },
+  },
+
+  '25-aprile-la-memoria-inquieta': {
+    heroPhoto: { src: '/images/foto/25-aprile-la-memoria-inquieta.jpg', alt: '25 Aprile: la memoria inquieta – foto di scena' },
+  },
+
+  'memorie-di-una-fabbrica': {
+    heroPhoto: { src: '/images/foto/memorie-di-una-fabbrica.jpg', alt: 'Memorie di una fabbrica – foto di scena' },
   },
 
 };
