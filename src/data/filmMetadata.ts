@@ -600,6 +600,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     trailer: 'https://www.youtube-nocookie.com/embed/nvEv3APs6Ko',
     stills: [{ src: '/images/foto/black-harvest.jpg', alt: 'Black Harvest – foto di scena' }],
     fotoGalleria: true,
+    linkEsterni: [
+      { label: 'Pressbook', url: '/pressbooks/black-harvest-pressbook.pdf', type: 'pressbook' },
+    ],
   },
 
   'give-me-spell': {
