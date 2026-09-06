@@ -420,7 +420,7 @@ const yearGroups = films.reduce((acc, film) => {
             );
 
             return (
-              <details id={film.id} class="rs-item group" data-has-lang={hasLangToggle ? '' : undefined}>
+              <details id={film.id ?? film.slug} class="rs-item group" data-has-lang={hasLangToggle ? '' : undefined}>
                 <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 transition hover:bg-zinc-50">
                   <div>
                     <span class="block text-base font-semibold text-zinc-900">

@@ -674,6 +674,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
   'quo-vadis-baby': {
     locandina: '/images/locandine/quo-vadis-baby.jpg',
     poster: { src: '/images/locandine/quo-vadis-baby.jpg', alt: 'Quo Vadis, Baby? – locandina' },
+    presentazione: 'Quando mi hanno offerto la regia della serie Quo Vadis Baby per Sky, due sono state le indicazioni che più mi hanno convinto ad accettare. La prima è stata di Gabriele Salvatores e del produttore Maurizio Totti: «Non vogliamo che tu rifaccia Quo Vadis Baby, il film. Devi fare qualcosa di tuo». La seconda è venuta dal team di Sky responsabile della serie: «Osa». L\'opportunità di realizzare una serie televisiva in Italia in libertà – di regia, di cast, di linguaggio – era troppo ghiotta per essere rifiutata. Si parla spesso di televisione di qualità, si cita ad ogni piè sospinto l\'originalità dei serial americani (facendo torto ad alcuni ottimi prodotti nostrani che pure esistono), ci si lamenta delle limitazioni di contenuto imposte dai network generalisti: trovarsi invece a lavorare fianco a fianco con un gruppo di persone disposte a rischiare, a sperimentare, a portare in televisione modi e tempi del cinema senza mortificare la prima e banalizzare il secondo, è stata, a prescindere dai risultati, un\'esperienza fresca e positiva. Sapevamo di poter sbagliare, ma il viaggio valeva il prezzo del biglietto.',
     scheda: {
       sceneggiatura: 'Marco Videtta, Fabio Scamoni',
       produzione: 'Colorado Film, Sky Italia',
@@ -807,6 +808,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     heroPhoto: { src: '/images/foto/provini-un-massacro.jpg', alt: 'Provini per un massacro – foto di scena' },
     presentazione: 'Pasolini scelse gli attori del suo Salò o le 120 giornate di Sodoma prendendoli "dalla strada". Quei provini sono stati ripetuti per registrare le reazioni degli aspiranti attori di oggi, ragazzi e ragazze seguiti poi nella quotidianità delle periferie di Roma in una vera e propria indagine sulla omologazione dei corpi e delle vite che Pasolini denunciava con la barbarie del suo ultimo film. Note di regia: ho un rapporto ambiguo e contraddittorio con l\'opera di Pasolini, ma Salò rimane uno dei 4-5 film che indico quando mi chiedono "il tuo film preferito". È uno dei miei lavori a cui sono più legato perché sfugge all\'ideologia e cerca di ascoltare con pietas le nuove vittime della de-umanizzazione del materialismo consumista.',
     rassegnaStampaAnno: 2000,
+    rassegnaStampaUrl: '/rassegna-stampa/#provini-per-un-massacro',
     scheda: {
       genere: 'Documentario',
     },
@@ -822,6 +824,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     heroPhoto: { src: '/images/foto/una-questione-privata-vita-di-beppe-fenoglio.jpg', alt: 'Una questione privata. Vita di Beppe Fenoglio – foto di scena' },
     presentazione: 'Sullo sfondo di un\'Alba provinciale e conservatrice, i racconti di chi ha conosciuto Beppe Fenoglio (10 mesi di lavoro e quasi 200 interviste) permettono di ricostruirne la personalità, il rapporto con la città, le donne (in particolare con Fulvia, il suo primo amore, e con Luciana Bombardi, la donna che sposò), l\'esperienza partigiana, l\'impegno civile dopo la guerra, le opere letterarie, i legami con gli altri intellettuali, le passioni, la malattia e la morte. Note di regia: credo che se mi sono occupato così tanto di Fenoglio, non è stato per la Resistenza o per le comuni radici piemontesi, ma perché mi ha permesso di fare i conti con una parte di me. Il migliore scrittore italiano del \'900, comunque, a mio modesto avviso.',
     rassegnaStampaAnno: 1998,
+    rassegnaStampaUrl: '/rassegna-stampa/#una-questione-privata',
     scheda: {
       genere: 'Documentario',
     },
@@ -965,6 +968,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Film completo', url: 'https://www.youtube.com/watch?v=0tzfLaghvxY' },
     ],
     rassegnaStampaAnno: 1995,
+    rassegnaStampaUrl: '/rassegna-stampa/#25-aprile-memoria-inquieta',
   },
 
   'memorie-di-una-fabbrica': {
