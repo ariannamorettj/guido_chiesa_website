@@ -23,7 +23,6 @@ export const navGroups: NavGroup[] = [
   { label: "Progetti",         href: b("/progetti/") },
   { label: "Musica",           href: b("/musica/") },
   { label: "Foto",             href: b("/foto/") },
-  { label: "Video",            href: b("/video/") },
   { label: "Rassegna stampa",  href: b("/rassegna-stampa/") },
   { label: "Contatti",         href: b("/contatti/") },
 ];
@@ -37,7 +36,6 @@ export const footerLinks: NavItem[] = [
   { label: "Progetti",         href: b("/progetti/") },
   { label: "Musica",           href: b("/musica/") },
   { label: "Foto",             href: b("/foto/") },
-  { label: "Video",            href: b("/video/") },
   { label: "Rassegna stampa",  href: b("/rassegna-stampa/") },
   { label: "Contatti",         href: b("/contatti/") },
 ];
