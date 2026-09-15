@@ -178,16 +178,6 @@ export const sceneggiature: ScriptItem[] = [
 <p><a href="/media/opera/nicoletta-micheli-guido-chiesa-e-filippo-kalomenidis/io-sono-con-te/LETITBE%20gen%202010.pdf">↓ Scarica PDF</a></p>`,
   },
   {
-    year: 2013,
-    title: "Fuga di cervelli",
-    content: null,
-  },
-  {
-    year: 2014,
-    title: "Tutto molto bello",
-    content: null,
-  },
-  {
     year: 2015,
     title: "Belli di papà",
     href: "/sceneggiature/belli-di-papa/",
