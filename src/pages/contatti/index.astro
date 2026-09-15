@@ -14,14 +14,6 @@ const profili = [
   },
 ];
 
-const sitiCollegati = [
-  { label: "IMDb",          href: "https://www.imdb.com/it/name/nm0157337/" },
-  { label: "ANICA Academy", href: "https://www.anicaacademy.org/docenti/guido-chiesa/" },
-  { label: "Vivofilm",      href: "https://vivofilm.it/directors/guidochiesa/" },
-  { label: "MyMovies",      href: "https://www.mymovies.it/persone/guido-chiesa/49903/" },
-  { label: "Filmitalia",    href: "https://filmitalia.org/it/filmography/0/8213/" },
-  { label: "Movieplayer",   href: "https://movieplayer.it/personaggi/guido-chiesa_22522/" },
-];
 ---
 
 <MainLayout title="Contatti | Guido Chiesa" description="Contatti di Guido Chiesa, regista e sceneggiatore.">
@@ -48,26 +40,6 @@ const sitiCollegati = [
         </li>
       ))}
     </ul>
-
-    <!-- Siti collegati -->
-    <div class="mt-16">
-      <div class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">Siti collegati</div>
-      <ul class="mt-4 divide-y divide-black/5">
-        {sitiCollegati.map((item) => (
-          <li class="py-3">
-            <a
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex items-center justify-between"
-            >
-              <span class="text-sm font-medium text-zinc-700 transition group-hover:text-emerald-700">{item.label}</span>
-              <span class="shrink-0 text-zinc-300 transition group-hover:translate-x-0.5 group-hover:text-emerald-500">↗</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
 
   </section>
 </MainLayout>
