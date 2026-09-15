@@ -48,8 +48,9 @@ const base = import.meta.env.BASE_URL;
                 const meta = slug ? (filmMetadata[slug] ?? {}) : {};
                 const hasPresentazione = !!(meta.presentazione || meta.presentazioneEn);
                 const hasLangToggle = !!(meta.presentazioneEn);
+                const useDropdown = label !== "Documentari";
 
-                if (hasPresentazione && slug) {
+                if (hasPresentazione && slug && useDropdown) {
                   return (
                     <details class="film-item rounded-xl">
                       <summary class="flex cursor-pointer list-none items-baseline gap-5 px-4 py-2.5 rounded-xl transition hover:bg-white hover:shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)]">

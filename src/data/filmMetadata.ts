@@ -579,6 +579,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     linkEsterni: [
       { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=99', type: 'site' },
       { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/IL+CASO+MARTELLO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281992%29', type: 'site' },
+      { label: 'Genesi del film', url: '/testi/genesi-di-il-caso-martello/', type: 'site' },
     ],
     rassegnaStampaAnno: 1991,
     fotoUrl: '/foto/il-caso-martello/',

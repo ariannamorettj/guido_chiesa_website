@@ -210,6 +210,13 @@ const hasLinkFascia = videoAll.length > 0
       </h1>
     </div>
 
+    <!-- 2b. Presentazione (documentari: niente dropdown in lista, il testo vive qui) -->
+    {film.categoria === 'Documentario' && meta.presentazione && (
+      <div class="mb-10 max-w-3xl">
+        <p class="text-base leading-7 text-zinc-600">{meta.presentazione}</p>
+      </div>
+    )}
+
     <!-- 3. Locandina — standalone, centrata -->
     {posterSrc && !meta.posterEn && (
       <div class="mb-10 flex justify-center">

@@ -79,7 +79,8 @@ export const lungometraggi: FilmItem[] = [
 <p><a href="/media/opera/guido-chiesa-e-antonio-leotti/babylon-la-paura-e-la-miglior-amica-delluomo/scheda%20babylon.doc">↓ Scheda .doc</a></p>` },
   { year: 1991, title: "Il caso Martello", href: "/filmografia/il-caso-martello/", content: `<p><a href="http://www.comingsoon.it/film/il-caso-martello/37790/scheda/">Link esterno</a></p>
 <p>La prima volta che dissi &ldquo;motore, azione&rdquo; e tutti mi ascoltarono, mi resi conto del potere perverso che avevo in mano. Ho sempre cercato di farne un uso discreto, senza fingere di essere in un sistema democratico &mdash; il cinema non lo è! &mdash; ma neanche abusando di esso.</p>
-<p>Fare il cinema non me l&rsquo;ha ordinato il dottore e non è mai stato il cinema in sé e per sé la ragione profonda del mio interesse per questo linguaggio espressivo. All&rsquo;epoca di <em>Il caso Martello</em> pensavo che questa ragione fosse l&rsquo;impegno politico e culturale, declinato attraverso il discorso sull&rsquo;essere umano e il suo agire, privato e sociale. Oggi, è rimasto solo l&rsquo;essere umano, il resto in prospettiva, sullo sfondo, il linguaggio come indivisibile forma e sostanza.</p>` },
+<p>Fare il cinema non me l&rsquo;ha ordinato il dottore e non è mai stato il cinema in sé e per sé la ragione profonda del mio interesse per questo linguaggio espressivo. All&rsquo;epoca di <em>Il caso Martello</em> pensavo che questa ragione fosse l&rsquo;impegno politico e culturale, declinato attraverso il discorso sull&rsquo;essere umano e il suo agire, privato e sociale. Oggi, è rimasto solo l&rsquo;essere umano, il resto in prospettiva, sullo sfondo, il linguaggio come indivisibile forma e sostanza.</p>
+<p>Qui si racconta la <a href="/testi/genesi-di-il-caso-martello/">genesi del film</a>.</p>` },
 ];
 
 export const cortometraggi: FilmItem[] = [
