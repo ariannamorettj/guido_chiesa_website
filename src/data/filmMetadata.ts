@@ -112,6 +112,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     rassegnaStampaAnno: 2026,
     rassegnaStampaUrl: '/rassegna-stampa/#piccolo-miracolo',
     fotoGallery: '/foto/piccolo-miracolo/',
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/piccolo-miracolo-sceneggiatura.pdf' },
+    ],
     scheda: {
       regia: 'Guido Chiesa',
       soggetto: 'Edoardo Leo, Nicoletta Micheli',
@@ -166,6 +169,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     rassegnaStampaAnnoEn: 2026,
     rassegnaStampaUrl: '/rassegna-stampa/#amore-di-una-donna',
     fotoGallery: '/foto/amore-di-una-donna/',
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/amore-di-una-donna-sceneggiatura.pdf' },
+    ],
     scheda: {
       regia: 'Guido Chiesa',
       soggetto: 'Meir Shalev',
@@ -201,6 +207,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     rassegnaStampaAnno: 2025,
     rassegnaStampaUrl: '/rassegna-stampa/#30-notti-con-il-mio-ex',
     fotoGallery: '/foto/30-notti-con-il-mio-ex/',
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/30-notti-con-il-mio-ex-sceneggiatura.pdf' },
+    ],
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Nicoletta Micheli',
@@ -234,6 +243,9 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     rassegnaStampaAnno: 2021,
     rassegnaStampaUrl: '/rassegna-stampa/#una-notte-da-dottore',
     fotoGallery: '/foto/una-notte-da-dottore/',
+    materialiExtra: [
+      { label: 'Sceneggiatura', url: '/materiali/una-notte-da-dottore-sceneggiatura.pdf' },
+    ],
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Nicoletta Micheli',

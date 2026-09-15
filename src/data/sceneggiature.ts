@@ -205,4 +205,32 @@ export const sceneggiature: ScriptItem[] = [
     pdf: true,
     content: `<p><a href="/media/opera/cambio-tutto/CAMBIO%20TUTTO%21%209%20settembre.pdf">↓ Scarica PDF</a></p>`,
   },
+  {
+    year: 2021,
+    title: "Una notte da dottore",
+    href: "/materiali/una-notte-da-dottore-sceneggiatura.pdf",
+    pdf: true,
+    content: `<p><a href="/materiali/una-notte-da-dottore-sceneggiatura.pdf">↓ Scarica PDF</a></p>`,
+  },
+  {
+    year: 2025,
+    title: "Per amore di una donna",
+    href: "/materiali/amore-di-una-donna-sceneggiatura.pdf",
+    pdf: true,
+    content: `<p><a href="/materiali/amore-di-una-donna-sceneggiatura.pdf">↓ Scarica PDF</a></p>`,
+  },
+  {
+    year: 2025,
+    title: "30 notti con il mio ex",
+    href: "/materiali/30-notti-con-il-mio-ex-sceneggiatura.pdf",
+    pdf: true,
+    content: `<p><a href="/materiali/30-notti-con-il-mio-ex-sceneggiatura.pdf">↓ Scarica PDF</a></p>`,
+  },
+  {
+    year: 2026,
+    title: "Piccolo Miracolo",
+    href: "/materiali/piccolo-miracolo-sceneggiatura.pdf",
+    pdf: true,
+    content: `<p><a href="/materiali/piccolo-miracolo-sceneggiatura.pdf">↓ Scarica PDF</a></p>`,
+  },
 ];
