@@ -99,6 +99,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Arrivato tra capo e collo quando sembrava ormai sepolto, manco il tempo di riflettere e già eravamo al montaggio (meno di 5 mesi dalla scrittura della prima stesura della sceneggiatura alla fine delle riprese), buttato in sala in piena canicola estiva. Bel cast e Greta Scarano vincitrice a Taormina. Un film di transizione perché servono anche questi.',
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/piccolo-miracolo-pressbook.pdf', type: 'pressbook' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=OLAK5uy_k_5RCTEnaFTc34Bqv92sDdY6PEd8OWmPI', type: 'site' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=p0TK6WQMuuY' },
@@ -188,6 +189,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Un tentativo di andare oltre le definizioni pre-confezionate, mescolando generi e aspettative. E di affrontare la malattia mentale con leggerezza e ironia. Eppure è stato venduto come la commedia romantica che non era. A partire dal titolo fuori tempo massimo.',
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/30-notti-con-il-mio-ex-pressbook.pdf', type: 'pressbook' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=OLAK5uy_kKP5kjqFzFHEjE3cf6KPEC-H1rLGirYdQ', type: 'site' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=t1s3jrvD8KI' },
@@ -222,6 +224,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Girato durante il lockdown, malinconico come le strade vuote di Roma e le vite dei due protagonisti. Una delle mie commedie preferite (tranne la locandina).',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/unanottedadottore', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=PL-5xYlicATtD0rzoU7lKifEX6a9XkVaMU', type: 'site' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=ifhfVPO9Onc' },
@@ -293,6 +296,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Ho tre figli e tornando indietro ne avrei voluti anche altri. Forse è per questo che mi ha intrigato raccontare di una donna che non vuole bambini. O probabilmente mi sono immedesimato in un personaggio maschile goffo ed eternamente in difetto. Specie con la figlia. L\'importante era non giudicare, né lei, né lui.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/tipresentosofia', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=PLsyyQxxPdMsnbRRfyS4KBjyMM1XmLdscN', type: 'site' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=ullqRK2jFVA' },
@@ -317,6 +321,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/classe-z-pressbook.pdf', type: 'pressbook' },
       { label: 'Facebook', url: 'https://www.facebook.com/classezeta/', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=PL-5xYlicATtAy9Gq2rORzS51_utg-9yoM', type: 'site' },
     ],
     video: [
       { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=5A5djIicXsA' },
@@ -388,6 +393,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     contentEn: `<p><em>I Am with You</em> is a story about motherhood: that of Mary of Nazareth, from the conception of her son Jesus through to his adolescence. It portrays a mother and her relation with her son, supported by the discrete, evolving presence of Joseph, the patriarch who accepts to "step aside", foregoing the dominant male role. The questions raised by the film address topics such as birth, growth and the upbringing of children, all from a uniquely female point of view. This is what makes the film appealing both to believers and non-believers.</p>`,
     linkEsterni: [
       { label: 'English pressbook', url: '/media/opera/nicoletta-micheli-filippo-kalomenidis-e-guido-chiesa/i-am-you/pressbook%20inglese.pdf', type: 'pressbook', lang: 'en' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=OLAK5uy_mPw2mTB0NyWJqQupdKF5KzCUfVa-xUTIs', type: 'site' },
     ],
     rassegnaStampaAnno: 2010,
     rassegnaStampaUrl: '/rassegna-stampa/#io-sono-con-te',
@@ -412,6 +418,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'In principio c\'era un\'analogia. Un\'affinità soprattutto visiva, forse poetica: i movimenti sociali assomigliano alle nuvole. Come le nuvole, arrivano, accadono, scompaiono. Poi, è entrato dentro di tutto: la meteorologia e la questione ambientale, il precariato e la scienza, l\'Illuminismo e la matematica, la politica e il mistero. Alla fine ne è venuto fuori un viaggio dentro i limiti della ragione e la necessità del mutamento. L\'ambizione era di realizzare un film leggero su argomenti pesanti. Non so se ci siamo riusciti, ma la fatica ne è valsa la pena. Perché nulla dopo mi è sembrato più come prima. Un lavoro ripagato con la censura del mercato ("bello ma difficile", il ritornello) e la disattenzione degli addetti ai lavori.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/leperediadamo', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/LE+PERE+DI+ADAMO+-+MUSICA+DI+TEHO+TEARDO+%282007%29', type: 'site' },
     ],
     video: [
       { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
@@ -467,6 +474,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Ho dedicato quasi dieci anni alla realizzazione di questo progetto e solo alla fine ho capito perché l\'avevo fatto. Alcune scelte, col senno del poi, mi sembrano poco riuscite, anche se c\'era sempre dietro una ragione che mi aveva spinto ad adottarle. Oggi, lo rifarei completamente diverso, ma penso che sia un film destinato a invecchiare bene.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/ilpartigianojohnny', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/IL+PARTIGIANO+JOHNNY+-+MUSICHE+DI+ALEXANDER+BALANESCU+%282000%29', type: 'site' },
     ],
     video: [
       { label: 'Backstage parte 1', url: 'https://youtu.be/ACbmHGbgd5Y' },
@@ -504,6 +512,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Le vite al di là delle ideologie. Quando riguardo questo film, la cui realizzazione è merito principalmente di Daniele (stavo preparando Il partigiano Johnny nel mentre), non posso che riflettere su come le vite dei nostri cinque protagonisti siano state piegate, strattonate, spinte, centrifugate dalla Storia. Eppure, ferite, sono uscite dal gorgo se non felici, almeno con una non comune dignità. "Non mi basta mai" è dire ogni giorno che si può ancora cambiare. Il contrario di chi sente di aver diritto di brontolare solo perché un giorno credeva di aver avuto ragione.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/nonmibastamai', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/NON+MI+BASTA+MAI+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281999%29', type: 'site' },
     ],
     rassegnaStampaAnno: 1999,
     fotoGalleria: true,
@@ -546,6 +555,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Ho un rapporto ambivalente con questo film. Scritto e realizzato in tempi rapidissimi, un\'anomalia in una vicenda professionale fatta di tempi lunghi. Girato con 300 milioni in 18 giorni, nessun aiuto statale o televisivo, era la risposta allo stimolo che ci giungeva dal cinema americano indipendente, che in quegli anni insegnava al mondo come fare film a basso costo e alto tasso emotivo. Mai distribuito — per via di una congiuntura sfavorevole che obbligò la Mikado, che l\'aveva preso, a rinunciare perché la Fininvest gli aveva tagliato i pre-acquisti televisivi — ha girato il mondo più di ogni mio altro lavoro. Rimane la sensazione di aver fatto il passo più lungo della gamba, ma anche l\'orgoglio per averci provato.',
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/babylon-la-paura-e-la-miglior-amica-delluomo-pressbook.pdf', type: 'pressbook' },
+      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/BABYLON+-+MUSICA+DI+GIUSEPPE+NAPOLI+%281994%29', type: 'site' },
     ],
     video: [
       { label: 'Film', url: 'https://www.youtube.com/watch?v=bbR_a_ao1vE' },
@@ -568,6 +578,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'La prima volta che dissi "motore, azione" e tutti mi ascoltarono, mi resi conto del potere perverso che avevo in mano. Ho sempre cercato di farne un uso discreto, senza fingere di essere in un sistema democratico - il cinema non lo è! - ma neanche abusando di esso. Fare il cinema non me l\'ha ordinato il dottore e non è mai stato il cinema in sé e per sé la ragione profonda del mio interesse per questo linguaggio espressivo. All\'epoca di Il caso Martello pensavo che questa ragione fosse l\'impegno politico e culturale, declinato attraverso il discorso sull\'essere umano e il suo agire, privato e sociale. Oggi, è rimasto solo l\'essere umano, il resto in prospettiva, sullo sfondo, il linguaggio come indivisibile forma e sostanza.',
     linkEsterni: [
       { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=99', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/IL+CASO+MARTELLO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281992%29', type: 'site' },
     ],
     rassegnaStampaAnno: 1991,
     fotoUrl: '/foto/il-caso-martello/',
@@ -614,6 +625,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     ],
     linkEsterni: [
       { label: 'Vivo Film', url: 'https://vivofilm.it/production/il-cuore-del-soldatino/', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/IL+CUORE+DEL+SOLDATINO+-+MUSICHE+DI+TEHO+TEARDO+%282006%29', type: 'site' },
     ],
   },
   'quei-momenti-eroici': {
@@ -692,6 +704,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     fotoGallery: '/foto/quo-vadis-baby/',
     linkEsterni: [
       { label: 'Wikipedia', url: 'https://it.wikipedia.org/wiki/Quo_vadis,_baby?_(miniserie_televisiva)', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/QUO+VADIS+BABY%3F+-+MUSICHE+DI+TEHO+TEARDO+%282008%29', type: 'site' },
     ],
   },
 
@@ -817,6 +830,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     ],
     linkEsterni: [
       { label: 'Torino Film Festival', url: 'https://www.torinofilmfest.org/en/18-torino-film-festival/film/provini-per-un-massacro/573/', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/PROVINI+PER+UN+MASSACRO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%282000%29', type: 'site' },
     ],
   },
 
