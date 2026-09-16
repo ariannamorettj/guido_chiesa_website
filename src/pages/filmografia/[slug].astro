@@ -96,11 +96,15 @@ const schedaRows = meta.scheda
       Costumi:        meta.scheda.costumi,
       Montaggio:      meta.scheda.montaggio,
       Musiche:        meta.scheda.musiche,
+      Suono:          meta.scheda.suono,
+      Ricerche:       meta.scheda.ricerche,
       Durata:         meta.scheda.durata,
       Distribuzione:  meta.scheda.distribuzione,
       Genere:         meta.scheda.genere,
     }).filter(([, v]) => v !== undefined && v !== '')
   : [];
+// "Genere" da solo non conta come scheda tecnica: è già mostrato nel badge categoria in alto
+const hasSchedaTecnica = schedaRows.some(([label]) => label !== 'Genere');
 
 const schedaLabelsEn: Record<string, string> = {
   'Regia':          'Direction',
@@ -114,6 +118,8 @@ const schedaLabelsEn: Record<string, string> = {
   'Costumi':        'Costume design',
   'Montaggio':      'Editing',
   'Musiche':        'Music',
+  'Suono':          'Sound',
+  'Ricerche':       'Research',
   'Durata':         'Running time',
   'Distribuzione':  'Distribution',
   'Genere':         'Genre',
@@ -214,6 +220,12 @@ const hasLinkFascia = videoAll.length > 0
     {film.categoria === 'Documentario' && meta.presentazione && (
       <div class="mb-10 max-w-3xl">
         <p class="text-base leading-7 text-zinc-600">{meta.presentazione}</p>
+        {meta.noteDiRegia && (
+          <p class="film-section-label">Note di regia</p>
+        )}
+        {meta.noteDiRegia && (
+          <p class="text-base leading-7 text-zinc-600">{meta.noteDiRegia}</p>
+        )}
       </div>
     )}
 
@@ -307,7 +319,7 @@ const hasLinkFascia = videoAll.length > 0
     )}
 
     <!-- 5. Scheda tecnica -->
-    {schedaRows.length > 0 && (
+    {hasSchedaTecnica && (
       <div class="mb-12">
         <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
           {hasLangToggle
