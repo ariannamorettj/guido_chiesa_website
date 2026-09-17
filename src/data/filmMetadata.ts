@@ -311,7 +311,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Ho tre figli e tornando indietro ne avrei voluti anche altri. Forse è per questo che mi ha intrigato raccontare di una donna che non vuole bambini. O probabilmente mi sono immedesimato in un personaggio maschile goffo ed eternamente in difetto. Specie con la figlia. L\'importante era non giudicare, né lei, né lui.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/tipresentosofia', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=PLsyyQxxPdMsnbRRfyS4KBjyMM1XmLdscN', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/watch?v=FmQKNUajQqQ&list=PLsyyQxxPdMsnbRRfyS4KBjyMM1XmLdscN', type: 'site' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=ullqRK2jFVA' },
@@ -336,7 +336,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/classe-z-pressbook.pdf', type: 'pressbook' },
       { label: 'Facebook', url: 'https://www.facebook.com/classezeta/', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=PL-5xYlicATtAy9Gq2rORzS51_utg-9yoM', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=PL-5xYlicATtAy9Gq2rORzS5I_utg-9y0M', type: 'site' },
     ],
     video: [
       { label: 'Scena 1', url: 'https://www.youtube.com/watch?v=5A5djIicXsA' },
@@ -489,7 +489,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Ho dedicato quasi dieci anni alla realizzazione di questo progetto e solo alla fine ho capito perché l\'avevo fatto. Alcune scelte, col senno del poi, mi sembrano poco riuscite, anche se c\'era sempre dietro una ragione che mi aveva spinto ad adottarle. Oggi, lo rifarei completamente diverso, ma penso che sia un film destinato a invecchiare bene.',
     linkEsterni: [
       { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/ilpartigianojohnny', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/IL+PARTIGIANO+JOHNNY+-+MUSICHE+DI+ALEXANDER+BALANESCU+%282000%29', type: 'site' },
+      { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=OLAK5uy_nhw-buSYRAXZKtjz2csCLjaYIK2iF9qcY', type: 'site' },
     ],
     video: [
       { label: 'Backstage parte 1', url: 'https://youtu.be/ACbmHGbgd5Y' },
