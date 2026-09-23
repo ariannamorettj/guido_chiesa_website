@@ -85,6 +85,7 @@ export type FilmMetadata = {
   rassegnaStampaAnnoEn?: number;
   fotoGalleria?: boolean;                     // true = esiste /foto/<slug>/
   materialiExtra?: { label: string; url: string }[];
+  colonnaSonora?: { title: string; src: string }[];  // tracce self-hosted in public/audio/<slug>/
 };
 
 export const filmMetadata: Record<string, FilmMetadata> = {
@@ -168,6 +169,11 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Patrolcast – interview with Mili Avital and Guido Chiesa', url: 'https://www.youtube.com/watch?v=dTCfgu6Q6KM', lang: 'en' },
       { label: 'Showverse – interview with Guido Chiesa', url: 'https://www.youtube.com/watch?v=8PwtLAJSAvM', lang: 'en' },
     ],
+    colonnaSonora: [
+      { title: 'Intro', src: '/audio/amore-di-una-donna/intro.mp3' },
+      { title: 'Yehudit Arrival', src: '/audio/amore-di-una-donna/yehudit-arrival.mp3' },
+      { title: 'Yehudit & Moshe Married', src: '/audio/amore-di-una-donna/yehudit-and-moshe-married.mp3' },
+    ],
     rassegnaStampaAnno: 2025,
     rassegnaStampaAnnoEn: 2026,
     rassegnaStampaUrl: '/rassegna-stampa/#amore-di-una-donna',
@@ -186,6 +192,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       scenografia: 'Alessia Anfuso',
       costumi: 'Susanna Mastroianni',
       montaggio: 'Luca Gasparini',
+      musiche: 'Zoe Keating',
       durata: '117 minuti',
       genere: 'Lungometraggio',
     },
@@ -235,7 +242,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     heroPhoto: { src: '/images/foto/una-notte-da-dottore/dsc09793.jpg', alt: 'Una notte da dottore – foto di scena' },
     presentazione: 'Girato durante il lockdown, malinconico come le strade vuote di Roma e le vite dei due protagonisti. Una delle mie commedie preferite (tranne la locandina).',
     linkEsterni: [
-      { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/unanottedadottore', type: 'site' },
+      { label: 'Link esterno', url: 'https://nuovo.cinemaitaliano.info/unanottedadottore', type: 'site' },
       { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=PL-5xYlicATtD0rzoU7lKifEX6a9XkVaMU', type: 'site' },
     ],
     video: [
@@ -310,7 +317,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     heroPhoto: { src: '/images/foto/ti-presento-sofia/foto-scena.jpg', alt: 'Ti presento Sofia – foto di scena' },
     presentazione: 'Ho tre figli e tornando indietro ne avrei voluti anche altri. Forse è per questo che mi ha intrigato raccontare di una donna che non vuole bambini. O probabilmente mi sono immedesimato in un personaggio maschile goffo ed eternamente in difetto. Specie con la figlia. L\'importante era non giudicare, né lei, né lui.',
     linkEsterni: [
-      { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/tipresentosofia', type: 'site' },
+      { label: 'Link esterno', url: 'https://nuovo.cinemaitaliano.info/tipresentosofia', type: 'site' },
       { label: 'Colonna sonora', url: 'https://www.youtube.com/watch?v=FmQKNUajQqQ&list=PLsyyQxxPdMsnbRRfyS4KBjyMM1XmLdscN', type: 'site' },
     ],
     video: [
@@ -335,7 +342,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Basso budget, attori giovani, tanta energia. Anche qui, molto divertimento e la voglia di provare qualcosa di diverso, tra angst generazionale e la commedia teen.',
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/classe-z-pressbook.pdf', type: 'pressbook' },
-      { label: 'Facebook', url: 'https://www.facebook.com/classezeta/', type: 'site' },
+      { label: 'Link esterno', url: 'https://www.facebook.com/classezeta/', type: 'site' },
       { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=PL-5xYlicATtAy9Gq2rORzS5I_utg-9y0M', type: 'site' },
     ],
     video: [
@@ -371,7 +378,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Prima commedia, prima volta in testa al box office. Ci sono arrivato quasi per caso (doveva farlo un altro regista, ma i produttori non erano convinti del suo approccio), ma si vede che era destino. Anche qui battutine impacciate e accuse neanche troppo sussurrate: "si è venduto", "lo fa per i soldi". Mi sono divertito e, per quanto sia stato difficile prendergli le misure, Diego Abatantuono è un attore straordinario.',
     linkEsterni: [
       { label: 'Pressbook', pending: true, type: 'pressbook' },
-      { label: 'Filmitalia', url: 'https://filmitalia.org/it/film/81409/', type: 'site' },
+      { label: 'Link esterno', url: 'https://filmitalia.org/it/film/81409/', type: 'site' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=G6h9aO306eY' },
@@ -432,12 +439,18 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     heroPhoto: { src: '/images/foto/le-pere-di-adamo/pere-di-adamo-con-mitsou.jpg', alt: 'Le pere di Adamo – foto di scena' },
     presentazione: 'In principio c\'era un\'analogia. Un\'affinità soprattutto visiva, forse poetica: i movimenti sociali assomigliano alle nuvole. Come le nuvole, arrivano, accadono, scompaiono. Poi, è entrato dentro di tutto: la meteorologia e la questione ambientale, il precariato e la scienza, l\'Illuminismo e la matematica, la politica e il mistero. Alla fine ne è venuto fuori un viaggio dentro i limiti della ragione e la necessità del mutamento. L\'ambizione era di realizzare un film leggero su argomenti pesanti. Non so se ci siamo riusciti, ma la fatica ne è valsa la pena. Perché nulla dopo mi è sembrato più come prima. Un lavoro ripagato con la censura del mercato ("bello ma difficile", il ritornello) e la disattenzione degli addetti ai lavori.',
     linkEsterni: [
-      { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/leperediadamo', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/LE+PERE+DI+ADAMO+-+MUSICA+DI+TEHO+TEARDO+%282007%29', type: 'site' },
+      { label: 'Link esterno', url: 'https://www.cinemaitaliano.info/leperediadamo', type: 'site' },
     ],
     video: [
       { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
       { label: 'Film (English subtitles)', url: 'https://youtu.be/4N_9OpuVwWo', lang: 'en' },
+    ],
+    colonnaSonora: [
+      { title: 'Svago', src: '/audio/le-pere-di-adamo/svago.mp3' },
+      { title: 'Millimoz', src: '/audio/le-pere-di-adamo/millimoz.mp3' },
+      { title: 'Moz moz', src: '/audio/le-pere-di-adamo/moz-moz.mp3' },
+      { title: 'Mozzy', src: '/audio/le-pere-di-adamo/mozzy.mp3' },
+      { title: 'Svago + Moza', src: '/audio/le-pere-di-adamo/svago-e-moza.mp3' },
     ],
     rassegnaStampaAnno: 2007,
     rassegnaStampaUrl: '/rassegna-stampa/#le-pere-di-adamo',
@@ -471,10 +484,16 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Backstage parte 1', url: 'https://youtu.be/32b3DBYdwH4' },
       { label: 'Backstage parte 2', url: 'https://youtu.be/samOkriJHjE' },
     ],
+    colonnaSonora: [
+      { title: 'Munifried', src: '/audio/lavorare-con-lentezza/munifried.mp3' },
+      { title: 'Taglia i fili', src: '/audio/lavorare-con-lentezza/taglia-i-fili.mp3' },
+      { title: 'Tunnel delle australiane', src: '/audio/lavorare-con-lentezza/tunnel-delle-australiane.mp3' },
+    ],
     rassegnaStampaAnno: 2004,
     scheda: {
       regia: 'Guido Chiesa',
       sceneggiatura: 'Guido Chiesa, Wu Ming 1',
+      musiche: 'Teho Teardo',
       genere: 'Lungometraggio',
     },
   },
@@ -488,7 +507,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     heroPhoto: { src: '/images/foto/il-partigiano-johnny/guido-chiesa-e-stefano-dionisi-sul-set.jpg', alt: 'Il partigiano Johnny – foto di scena' },
     presentazione: 'Ho dedicato quasi dieci anni alla realizzazione di questo progetto e solo alla fine ho capito perché l\'avevo fatto. Alcune scelte, col senno del poi, mi sembrano poco riuscite, anche se c\'era sempre dietro una ragione che mi aveva spinto ad adottarle. Oggi, lo rifarei completamente diverso, ma penso che sia un film destinato a invecchiare bene.',
     linkEsterni: [
-      { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/ilpartigianojohnny', type: 'site' },
+      { label: 'Link esterno', url: 'https://www.cinemaitaliano.info/ilpartigianojohnny', type: 'site' },
       { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=OLAK5uy_nhw-buSYRAXZKtjz2csCLjaYIK2iF9qcY', type: 'site' },
     ],
     video: [
@@ -526,13 +545,18 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     heroPhoto: { src: '/images/foto/non-mi-basta-mai/ebe-matta.jpg', alt: 'Non mi basta mai – foto di scena' },
     presentazione: 'Le vite al di là delle ideologie. Quando riguardo questo film, la cui realizzazione è merito principalmente di Daniele (stavo preparando Il partigiano Johnny nel mentre), non posso che riflettere su come le vite dei nostri cinque protagonisti siano state piegate, strattonate, spinte, centrifugate dalla Storia. Eppure, ferite, sono uscite dal gorgo se non felici, almeno con una non comune dignità. "Non mi basta mai" è dire ogni giorno che si può ancora cambiare. Il contrario di chi sente di aver diritto di brontolare solo perché un giorno credeva di aver avuto ragione.',
     linkEsterni: [
-      { label: 'CinemaItaliano', url: 'https://www.cinemaitaliano.info/nonmibastamai', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/NON+MI+BASTA+MAI+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281999%29', type: 'site' },
+      { label: 'Link esterno', url: 'https://www.cinemaitaliano.info/nonmibastamai', type: 'site' },
+    ],
+    colonnaSonora: [
+      { title: 'Pietro Perotti', src: '/audio/non-mi-basta-mai/pietro-perotti.mp3' },
+      { title: 'Il lavoro si difende lavorando', src: '/audio/non-mi-basta-mai/il-lavoro-si-difende-lavorando.mp3' },
+      { title: 'Esquimesi', src: '/audio/non-mi-basta-mai/esquimesi.mp3' },
     ],
     rassegnaStampaAnno: 1999,
     fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa, Daniele Vicari',
+      musiche: 'Giuseppe Napoli',
       durata: '78 minuti',
       genere: 'Documentario',
     },
@@ -543,7 +567,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     poster: { src: '/images/locandine/materiale-resistente.jpg', alt: 'Materiale resistente – locandina' },
     presentazione: 'All\'inizio, fu un disco. In occasione del Cinquantesimo anniversario della Liberazione, su iniziativa del Consorzio Produttori Indipendenti, 18 tra i migliori gruppi di rock italiano incidono un CD chiamato Materiale Resistente. Per l\'uscita del disco - che contiene i rifacimenti di celebri canzoni della Resistenza, nonché brani scritti ad hoc - viene organizzato un concerto il 25 aprile 1995 a Correggio, provincia di Reggio nell\'Emilia. Davide Ferrario, saputa la notizia, telefona a Guido Chiesa e gli propone di riunire tecnici, amici e complici per documentare un evento che gli sembra terribilmente suggestivo e insieme necessario. Chiesa accetta e il 25 aprile, in mezzo al prato con gli oltre seimila di Correggio, ci sono anche loro, tre troupe e vari fotografi.',
     linkEsterni: [
-      { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=413&stile=small', type: 'site' },
+      { label: 'Link esterno', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=413&stile=small', type: 'site' },
     ],
     video: [
       { label: 'Film', url: 'https://www.youtube.com/watch?v=e2R-8PdMqwM' },
@@ -570,15 +594,18 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Ho un rapporto ambivalente con questo film. Scritto e realizzato in tempi rapidissimi, un\'anomalia in una vicenda professionale fatta di tempi lunghi. Girato con 300 milioni in 18 giorni, nessun aiuto statale o televisivo, era la risposta allo stimolo che ci giungeva dal cinema americano indipendente, che in quegli anni insegnava al mondo come fare film a basso costo e alto tasso emotivo. Mai distribuito — per via di una congiuntura sfavorevole che obbligò la Mikado, che l\'aveva preso, a rinunciare perché la Fininvest gli aveva tagliato i pre-acquisti televisivi — ha girato il mondo più di ogni mio altro lavoro. Rimane la sensazione di aver fatto il passo più lungo della gamba, ma anche l\'orgoglio per averci provato.',
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/babylon-la-paura-e-la-miglior-amica-delluomo-pressbook.pdf', type: 'pressbook' },
-      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/BABYLON+-+MUSICA+DI+GIUSEPPE+NAPOLI+%281994%29', type: 'site' },
     ],
     video: [
       { label: 'Film', url: 'https://www.youtube.com/watch?v=bbR_a_ao1vE' },
+    ],
+    colonnaSonora: [
+      { title: 'Babylon Balconi', src: '/audio/babylon/babylon-balconi.mp3' },
     ],
     rassegnaStampaAnno: 1994, // ⚠️ brief indicava 1991, ma il film è del 1994 — usato 1994 provvisoriamente
     fotoGalleria: true,
     scheda: {
       regia: 'Guido Chiesa',
+      musiche: 'Giuseppe Napoli',
       durata: '94 minuti',
       genere: 'Lungometraggio',
     },
@@ -592,9 +619,13 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     poster: { src: '/images/locandine/il-caso-martello.jpg', alt: 'Il caso Martello – locandina' },
     presentazione: 'La prima volta che dissi "motore, azione" e tutti mi ascoltarono, mi resi conto del potere perverso che avevo in mano. Ho sempre cercato di farne un uso discreto, senza fingere di essere in un sistema democratico - il cinema non lo è! - ma neanche abusando di esso. Fare il cinema non me l\'ha ordinato il dottore e non è mai stato il cinema in sé e per sé la ragione profonda del mio interesse per questo linguaggio espressivo. All\'epoca di Il caso Martello pensavo che questa ragione fosse l\'impegno politico e culturale, declinato attraverso il discorso sull\'essere umano e il suo agire, privato e sociale. Oggi, è rimasto solo l\'essere umano, il resto in prospettiva, sullo sfondo, il linguaggio come indivisibile forma e sostanza.',
     linkEsterni: [
-      { label: 'Torino Città del Cinema', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=99', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/IL+CASO+MARTELLO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281992%29', type: 'site' },
+      { label: 'Link esterno', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=99', type: 'site' },
       { label: 'Genesi del film', url: '/testi/genesi-di-il-caso-martello/', type: 'site' },
+    ],
+    colonnaSonora: [
+      { title: 'La discesa', src: '/audio/il-caso-martello/la-discesa.mp3' },
+      { title: 'Per tutte le destinazioni', src: '/audio/il-caso-martello/per-tutte-le-destinazioni.mp3' },
+      { title: 'Pina', src: '/audio/il-caso-martello/pina.mp3' },
     ],
     rassegnaStampaAnno: 1991,
     fotoUrl: '/foto/il-caso-martello/',
@@ -639,9 +670,17 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     video: [
       { label: 'Film completo', url: 'https://youtu.be/kAdSewSK8oI' },
     ],
+    colonnaSonora: [
+      { title: 'C2', src: '/audio/il-cuore-del-soldatino/c2.mp3' },
+      { title: 'Albero bimbi love', src: '/audio/il-cuore-del-soldatino/albero-bimbi-love.mp3' },
+      { title: 'Love song', src: '/audio/il-cuore-del-soldatino/love-song.mp3' },
+    ],
+    scheda: {
+      musiche: 'Teho Teardo',
+      genere: 'Cortometraggio',
+    },
     linkEsterni: [
       { label: 'Link esterno', url: 'https://vivofilm.it/production/il-cuore-del-soldatino/', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/IL+CUORE+DEL+SOLDATINO+-+MUSICHE+DI+TEHO+TEARDO+%282006%29', type: 'site' },
     ],
   },
   'quei-momenti-eroici': {
@@ -667,10 +706,14 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     heroPhoto: { src: '/images/foto/il-tempo-dei-sogni.jpg', alt: 'Il tempo dei sogni – foto di scena' },
     presentazione: 'Il film finanziato dal Comitato di Tutela Verde Roero, che si prefigge la salvaguardia e la promozione dell\'omonima area del Piemonte. Ma nessuno ci ha chiesto di fare uno spot pubblicitario o un bozzetto elegiaco. La storia potrebbe svolgersi ovunque e crediamo che i temi toccati dal film — la morte, la crudeltà nella natura, il rapporto tra le generazioni — vadano ben al di là dei confini del Roero.',
     scheda: {
+      musiche: 'Giuseppe Napoli',
       genere: 'Cortometraggio',
     },
     video: [
       { label: 'Film completo', url: 'https://youtu.be/0Nu9I14YWm8' },
+    ],
+    colonnaSonora: [
+      { title: 'Roero', src: '/audio/il-tempo-dei-sogni/roero.mp3' },
     ],
     linkEsterni: [
       { label: 'Link esterno', url: 'https://www.torinofilmfest.org/it/11-festival-internazionale-cinema-giovani/film/il-tempo-dei-sogni-(un-film-per-il-roero)/2289/', type: 'site' },
@@ -726,12 +769,16 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       genere: 'Serial',
     },
     trailer: 'https://www.youtube-nocookie.com/embed/HvTIIFGzk_Q',
+    colonnaSonora: [
+      { title: 'Anche tu', src: '/audio/quo-vadis-baby/anche-tu.mp3' },
+      { title: 'RustiC', src: '/audio/quo-vadis-baby/rustic.mp3' },
+      { title: 'Noir 1', src: '/audio/quo-vadis-baby/noir-1.mp3' },
+    ],
     rassegnaStampaAnno: 2008,
     fotoGalleria: true,
     fotoGallery: '/foto/quo-vadis-baby/',
     linkEsterni: [
       { label: 'Link esterno', url: 'https://it.wikipedia.org/wiki/Quo_vadis,_baby?_(miniserie_televisiva)', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/QUO+VADIS+BABY%3F+-+MUSICHE+DI+TEHO+TEARDO+%282008%29', type: 'site' },
     ],
   },
 
@@ -857,14 +904,18 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     rassegnaStampaAnno: 2000,
     rassegnaStampaUrl: '/rassegna-stampa/#provini-per-un-massacro',
     scheda: {
+      musiche: 'Giuseppe Napoli',
       genere: 'Documentario',
     },
     video: [
       { label: 'Film completo', url: 'https://youtu.be/mzRj7cvgEaA' },
     ],
+    colonnaSonora: [
+      { title: 'Cecilia', src: '/audio/provini-un-massacro/cecilia.mp3' },
+      { title: 'Tema 1', src: '/audio/provini-un-massacro/tema-1.mp3' },
+    ],
     linkEsterni: [
       { label: 'Link esterno', url: 'https://www.torinofilmfest.org/en/18-torino-film-festival/film/provini-per-un-massacro/573/', type: 'site' },
-      { label: 'Colonna sonora', url: 'https://www.last.fm/music/Guido+Chiesa/PROVINI+PER+UN+MASSACRO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%282000%29', type: 'site' },
     ],
   },
 

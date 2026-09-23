@@ -128,7 +128,8 @@ const schedaLabelsEn: Record<string, string> = {
 const hasLinkFascia = videoAll.length > 0
   || meta.rassegnaStampaAnno
   || meta.rassegnaStampaUrl
-  || galleryUrl;
+  || galleryUrl
+  || (meta.colonnaSonora && meta.colonnaSonora.length > 0);
 ---
 
 <MainLayout
@@ -451,6 +452,53 @@ const hasLinkFascia = videoAll.length > 0
                 </div>
               </div>
             )}
+          </div>
+        )}
+
+        {/* ─── SEZIONE COLONNA SONORA ─── */}
+        {meta.colonnaSonora && meta.colonnaSonora.length > 0 && (
+          <div>
+            <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Colonna sonora</h2>
+            <div class="space-y-3" data-audio-group>
+              {meta.colonnaSonora.map((track) => (
+                <div class="flex flex-col gap-2 rounded-xl border border-zinc-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:gap-4" data-audio-row>
+                  <span class="flex items-center gap-2 text-sm font-medium text-zinc-700 sm:w-56 sm:shrink-0">
+                    {track.title}
+                    <svg data-audio-spinner class="hidden h-3.5 w-3.5 shrink-0 animate-spin text-emerald-600" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                    </svg>
+                  </span>
+                  <audio controls preload="none" class="w-full" src={base + track.src.replace(/^\//, '')}>
+                    <a href={base + track.src.replace(/^\//, '')} target="_blank" rel="noopener">{track.title}</a>
+                  </audio>
+                </div>
+              ))}
+            </div>
+            <script>
+              // Un solo player alla volta + spinner mentre la traccia carica (preload="none").
+              document.querySelectorAll<HTMLElement>('[data-audio-group]').forEach((group) => {
+                const players = Array.from(group.querySelectorAll('audio'));
+                players.forEach((audio) => {
+                  audio.addEventListener('play', () => {
+                    players.forEach((other) => {
+                      if (other !== audio) other.pause();
+                    });
+                  });
+
+                  const spinner = audio.closest('[data-audio-row]')?.querySelector<HTMLElement>('[data-audio-spinner]');
+                  if (!spinner) return;
+                  const show = () => spinner.classList.remove('hidden');
+                  const hide = () => spinner.classList.add('hidden');
+                  audio.addEventListener('loadstart', show);
+                  audio.addEventListener('waiting', show);
+                  audio.addEventListener('canplay', hide);
+                  audio.addEventListener('playing', hide);
+                  audio.addEventListener('pause', hide);
+                  audio.addEventListener('error', hide);
+                });
+              });
+            </script>
           </div>
         )}
 

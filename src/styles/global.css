@@ -144,24 +144,31 @@ header a,
 
 /* ── Link affordances ── */
 
-/* Inline text links in paragraphs, blockquotes and prose */
-p a,
-blockquote a,
-.prose-guido a {
-  color: #059669;
-  font-weight: 600;
-  text-decoration-line: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  text-decoration-color: rgba(5, 150, 105, 0.35);
-  transition: color 0.15s ease, text-decoration-color 0.15s ease;
-}
+/* Inline text links in paragraphs, blockquotes and prose.
+   In @layer base so an explicit Tailwind text-color utility on a link
+   (e.g. a solid-background pill/button placed inside a <p>) still wins —
+   otherwise this unlayered rule beats every Tailwind utility regardless
+   of source order, which previously produced unreadable green-on-green
+   buttons wherever a pill link sat inside prose. */
+@layer base {
+  p a,
+  blockquote a,
+  .prose-guido a {
+    color: #059669;
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(5, 150, 105, 0.35);
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  }
 
-p a:hover,
-blockquote a:hover,
-.prose-guido a:hover {
-  color: #047857;
-  text-decoration-color: rgba(4, 120, 87, 0.6);
+  p a:hover,
+  blockquote a:hover,
+  .prose-guido a:hover {
+    color: #047857;
+    text-decoration-color: rgba(4, 120, 87, 0.6);
+  }
 }
 
 /* Simple list-row links (not block card links tagged with .group) */

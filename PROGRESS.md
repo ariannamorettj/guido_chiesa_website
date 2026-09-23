@@ -86,3 +86,21 @@ Segnalazione cliente: la galleria di *Per amore di una donna* non compariva in `
 **Anomalia non risolta — da girare al cliente**: `quo-vadis-baby` in `filmMetadata.ts` ha `fotoGalleria: true` e `fotoGallery: '/foto/quo-vadis-baby/'`, ma non esiste alcuna pagina `/foto/quo-vadis-baby/` né immagini corrispondenti. Non essendoci foto da mostrare, il fix esclude questa voce dal listing FOTO (nessun placeholder, nessun link rotto) invece di crearla. Se il cliente fornisce foto di scena per *Quo Vadis, Baby?*, si potrà creare la pagina galleria seguendo lo schema delle altre e comparirà automaticamente in FOTO senza altri interventi.
 
 File modificato: `src/pages/foto/index.astro`.
+
+## Sessione 2026-09-23 (2) — Colonne sonora self-hosted
+
+Richiesta cliente: "canzoni su YouTube restano su YouTube; quelle che non sono da nessuna parte vanno caricate da qualche parte; sono troppo pesanti?".
+
+**Audit**: 10 film avevano una colonna sonora senza una vera destinazione online — 7 con link "Colonna sonora" verso pagine last.fm (verificate dal vivo: 0 ascoltatori/0 scrobbles, nessuna tracklist, riproduzione impossibile senza account Spotify — link morti, aggiunti come stopgap in una sessione precedente), 3 senza alcun link (Lavorare con lentezza, Il tempo dei sogni, **Per amore di una donna** — quest'ultimo anche l'unico senza il campo `musiche` in scheda tecnica, essendo la colonna sonora più recente, mai gestita finora).
+
+I file scaricati dal cliente in `~/Downloads/audio_guido/` (27 tracce, divise per film) hanno sovrapposizione 1:1 con questi 10 film: nessun duplicato per film già coperti da YouTube, nessuna lacuna. Bitrate originali 192–320kbps CBR, ~99MB totali: pesanti più del necessario per streaming web.
+
+**Fix**: tracce ricodificate a 128kbps CBR (`ffmpeg -c:a libmp3lame -b:a 128k`) → **~63MB totali** (durate identiche, verificate via ffprobe), self-hosted in `public/audio/<slug>/<traccia>.mp3` (stessa logica già in uso per pressbook/sceneggiature in `public/`). Nuova sezione "Colonna sonora" nella scheda film (`filmografia/[slug].astro`) con player `<audio controls>` nativo per traccia, tra la sezione Video e Altri materiali. Rimossi i 7 link last.fm morti da `linkEsterni`. Aggiunto il campo `musiche` mancante in scheda tecnica dove il compositore era noto solo dal nome dell'album/last.fm ma non ancora accreditato: Babylon, Il caso Martello (già presente), Non mi basta mai, Provini per un massacro, Il tempo dei sogni, Lavorare con lentezza, Il cuore del soldatino (creato anche il blocco `scheda` che mancava del tutto), Per amore di una donna (Zoe Keating).
+
+Nuovo campo tipo: `colonnaSonora?: { title: string; src: string }[]` in `FilmMetadata` (`filmMetadata.ts`).
+
+File modificati: `src/data/filmMetadata.ts`, `src/pages/filmografia/[slug].astro`. File aggiunti: `public/audio/**` (27 mp3, ~63MB).
+
+`npm run build`: 0 errori/warning nuovi. Verificati tutti i 27 `src` degli `<audio>` contro `dist/` — nessun 404.
+
+**Non ancora fatto**: commit non creato (in attesa di conferma esplicita, come da prassi — non si committa senza richiesta diretta).
