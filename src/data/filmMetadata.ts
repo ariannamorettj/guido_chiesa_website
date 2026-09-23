@@ -280,9 +280,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     trailer: 'https://www.youtube-nocookie.com/embed/oq3ih74PO8E',
     presentazione: 'Un film fortemente voluto da Maurizio Totti, produttore a cui devo molto. Non mi piaceva il film spagnolo a cui era ispirato e il tono grottesco non fa per me. Ma ci sono momenti della vita in cui lavorare aiuta a non pensare troppo. Doveva uscire al cinema l\'8 marzo 2020, poi è arrivato il Covid, il lockdown ed è finito su Prime Video.',
     linkEsterni: [
-      { label: 'Medusa', url: 'https://www.medusa.it/movie/cambio-tutto/', type: 'site' },
-      { label: 'Filmitalia', url: 'https://filmitalia.org/it/film/133968/', type: 'site' },
-      { label: 'CinemaItaliano', url: 'https://nuovo.cinemaitaliano.info/cambiotuttochiesa', type: 'site' },
+      { label: 'Link esterno', url: 'https://filmitalia.org/it/film/133968/', type: 'site' },
     ],
     video: [
       { label: 'Trailer', url: 'https://www.youtube.com/watch?v=oq3ih74PO8E' },
