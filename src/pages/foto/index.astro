@@ -1,24 +1,75 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+import { lungometraggi, cortometraggi, serial, documentari, videoclip } from '../../data/filmografia';
+import type { FilmItem } from '../../data/filmografia';
+import { filmMetadata } from '../../data/filmMetadata';
 
-const galleries = [
-  { year: 2020, title: "Cambio tutto!", thumb: "/images/foto/cambio-tutto.jpg", href: "/foto/cambio-tutto/" },
-  { year: 2017, title: "Fragole celesti", thumb: "/images/foto/fragole-celesti.jpg", href: "/foto/fragole-celesti/" },
-  { year: 2018, title: "Ti presento Sofia", thumb: "/images/foto/ti-presento-sofia.jpg", href: "/foto/ti-presento-sofia/" },
-  { year: 2017, title: "Classe Z", thumb: "/images/foto/classe-z.jpg", href: "/foto/classe-z/" },
-  { year: 2010, title: "Io sono con te", thumb: "/images/foto/io-sono-con-te.jpg", href: "/foto/io-sono-con-te/" },
-  { year: 2004, title: "Lavorare con lentezza", thumb: "/images/foto/lavorare-con-lentezza.jpg", href: "/foto/lavorare-con-lentezza/" },
-  { year: 2000, title: "Il partigiano Johnny", thumb: "/images/foto/il-partigiano-johnny.jpg", href: "/foto/il-partigiano-johnny/" },
-  { year: 1999, title: "Non mi basta mai", thumb: "/images/foto/non-mi-basta-mai.jpg", href: "/foto/non-mi-basta-mai/" },
-  { year: 1997, title: "Partigiani", thumb: "/images/foto/partigiani.jpg", href: "/foto/partigiani/" },
-  { year: 1994, title: "Babylon", thumb: "/images/foto/babylon.jpg", href: "/foto/babylon/" },
-  { year: 1991, title: "Il caso Martello", thumb: "/images/foto/il-caso-martello.jpg", href: "/foto/il-caso-martello/" },
+// Le gallerie astro effettivamente pubblicate sotto /foto/<slug>/ (fonte di verità
+// per l'esistenza della pagina, indipendente dai dati dei film).
+const fotoPages = import.meta.glob('./*/index.astro');
+const existingGallerySlugs = new Set(
+  Object.keys(fotoPages)
+    .map((path) => path.match(/^\.\/([^/]+)\/index\.astro$/)?.[1])
+    .filter((slug): slug is string => Boolean(slug))
+);
+
+type Gallery = { year: number; title: string; thumb: string; href: string };
+
+function slugFromHref(href: string | null): string | null {
+  return href?.match(/^\/filmografia\/([^/]+)\/$/)?.[1] ?? null;
+}
+
+function gallerySlugFromPath(path: string): string | null {
+  return path.match(/^\/foto\/([^/]+)\/$/)?.[1] ?? null;
+}
+
+// Gallerie referenziate dai dati del film ma senza una pagina /foto/ corrispondente:
+// non generano un link rotto, vengono solo segnalate qui (vedi report al committente).
+const missingGalleries: { title: string; slug: string; path: string }[] = [];
+
+function galleriesFromFilms(films: FilmItem[]): Gallery[] {
+  const out: Gallery[] = [];
+  for (const film of films) {
+    const slug = slugFromHref(film.href);
+    if (!slug) continue;
+    const meta = filmMetadata[slug];
+    if (!meta) continue;
+
+    // Stessa risoluzione usata in filmografia/[slug].astro per il link "Galleria foto".
+    const path = meta.fotoUrl ?? meta.fotoGallery ?? (meta.fotoGalleria ? `/foto/${slug}/` : null);
+    if (!path) continue;
+
+    const gallerySlug = gallerySlugFromPath(path);
+    if (!gallerySlug || !existingGallerySlugs.has(gallerySlug)) {
+      missingGalleries.push({ title: film.title, slug, path });
+      continue;
+    }
+
+    const thumb = meta.foto ?? meta.heroPhoto?.src ?? meta.stills?.[0]?.src;
+    if (!thumb) continue;
+
+    out.push({ year: film.year, title: film.title, thumb, href: path });
+  }
+  return out;
+}
+
+const filmGalleries = [
+  ...galleriesFromFilms(lungometraggi),
+  ...galleriesFromFilms(cortometraggi),
+  ...galleriesFromFilms(serial),
+  ...galleriesFromFilms(documentari),
+  ...galleriesFromFilms(videoclip),
+];
+
+// Gallerie non legate a una scheda film: collaborazioni citate solo in Biografia
+// (Guido Chiesa come aiuto regia/produzione, non regista).
+const extraGalleries: Gallery[] = [
   { year: 1988, title: "The Hole", thumb: "/images/foto/the-hole.jpg", href: "/foto/the-hole/" },
-  { year: 1986, title: "Black Harvest", thumb: "/images/foto/black-harvest.jpg", href: "/foto/black-harvest/" },
-  { year: 1985, title: "Give Me a Spell", thumb: "/images/foto/give-me-a-spell.jpg", href: "/foto/give-me-a-spell/" },
   { year: 1985, title: "Down by Law", thumb: "/images/foto/down-by-law.jpg", href: "/foto/down-by-law/" },
   { year: 1984, title: "Stranger Than Paradise", thumb: "/images/foto/stranger-than-paradise.jpg", href: "/foto/stranger-than-paradise/" },
 ];
+
+const galleries: Gallery[] = [...filmGalleries, ...extraGalleries].sort((a, b) => b.year - a.year);
 ---
 
 <MainLayout title="Foto | Guido Chiesa" description="Gallerie fotografiche di Guido Chiesa: stills, backstage e ritratti.">
