@@ -289,8 +289,8 @@ const hasLinkFascia = videoAll.length > 0
         {!hasLangToggle && (
           <div class="flex flex-wrap gap-3">
             {linkEsterniAll.map((link) => (
-              <a href={link.url?.startsWith('/') ? base + link.url.slice(1) : link.url} target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+              <a id={link.label === 'Colonna sonora' ? 'colonna-sonora' : undefined} href={link.url?.startsWith('/') ? base + link.url.slice(1) : link.url} target="_blank" rel="noopener noreferrer"
+                class="scroll-mt-24 inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
                 {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
               </a>
             ))}
@@ -299,8 +299,8 @@ const hasLinkFascia = videoAll.length > 0
         {hasLangToggle && linkEsterniIt.length > 0 && (
           <div class="flex flex-wrap gap-3" data-lang-content="it">
             {linkEsterniIt.map((link) => (
-              <a href={link.url?.startsWith('/') ? base + link.url.slice(1) : link.url} target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
+              <a id={link.label === 'Colonna sonora' ? 'colonna-sonora' : undefined} href={link.url?.startsWith('/') ? base + link.url.slice(1) : link.url} target="_blank" rel="noopener noreferrer"
+                class="scroll-mt-24 inline-flex items-center gap-1.5 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 hover:border-emerald-700">
                 {link.label}<span aria-hidden="true" class="text-emerald-200">↗</span>
               </a>
             ))}
@@ -475,6 +475,9 @@ const hasLinkFascia = videoAll.length > 0
                 </div>
               ))}
             </div>
+            <a href={base + "musica/"} class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-emerald-700">
+              Tutte le colonne sonore <span aria-hidden="true">→</span>
+            </a>
             <script>
               // Un solo player alla volta + spinner mentre la traccia carica (preload="none").
               document.querySelectorAll<HTMLElement>('[data-audio-group]').forEach((group) => {

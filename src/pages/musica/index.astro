@@ -6,7 +6,7 @@ import { filmMetadata } from '../../data/filmMetadata';
 
 const base = import.meta.env.BASE_URL;
 
-type ColonnaSonora = { year: number; title: string; href: string; external: boolean };
+type ColonnaSonora = { year: number; title: string; href: string };
 
 function slugFromHref(href: string | null): string | null {
   return href?.match(/^\/filmografia\/([^/]+)\/$/)?.[1] ?? null;
@@ -20,13 +20,14 @@ function colonneSonoreFromFilms(films: FilmItem[]): ColonnaSonora[] {
     const meta = filmMetadata[slug];
     if (!meta) continue;
 
-    // Priorità: link esterno "Colonna sonora" (YouTube) se presente,
-    // altrimenti la sezione con i player self-hosted nella scheda del film.
-    const externalLink = meta.linkEsterni?.find((l) => l.label === 'Colonna sonora' && l.url);
-    if (externalLink?.url) {
-      out.push({ year: film.year, title: film.title, href: externalLink.url, external: true });
-    } else if (meta.colonnaSonora && meta.colonnaSonora.length > 0) {
-      out.push({ year: film.year, title: film.title, href: `/filmografia/${slug}/#colonna-sonora`, external: false });
+    // Ha una colonna sonora (YouTube in linkEsterni o player self-hosted)?
+    // In entrambi i casi si punta alla scheda del film sul sito, mai
+    // direttamente a una risorsa esterna: da qui si arriva sempre al film,
+    // e dalla scheda del film si arriva eventualmente a YouTube.
+    const hasExternal = meta.linkEsterni?.some((l) => l.label === 'Colonna sonora' && l.url);
+    const hasSelfHosted = meta.colonnaSonora && meta.colonnaSonora.length > 0;
+    if (hasExternal || hasSelfHosted) {
+      out.push({ year: film.year, title: film.title, href: `/filmografia/${slug}/#colonna-sonora` });
     }
   }
   return out;
@@ -59,9 +60,7 @@ const colonneSonore = [
           <li class="flex items-baseline gap-4 py-4">
             <span class="w-12 shrink-0 text-sm font-semibold tabular-nums text-zinc-400">{item.year}</span>
             <a
-              href={item.external ? item.href : base + item.href.slice(1)}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noopener noreferrer" : undefined}
+              href={base + item.href.slice(1)}
               class="text-base font-medium text-zinc-800 transition hover:text-emerald-700"
             >
               {item.title}
