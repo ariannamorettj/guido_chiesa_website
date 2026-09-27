@@ -1,16 +1,44 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+import { lungometraggi, cortometraggi, serial, documentari, videoclip } from '../../data/filmografia';
+import type { FilmItem } from '../../data/filmografia';
+import { filmMetadata } from '../../data/filmMetadata';
+
+const base = import.meta.env.BASE_URL;
+
+type ColonnaSonora = { year: number; title: string; href: string; external: boolean };
+
+function slugFromHref(href: string | null): string | null {
+  return href?.match(/^\/filmografia\/([^/]+)\/$/)?.[1] ?? null;
+}
+
+function colonneSonoreFromFilms(films: FilmItem[]): ColonnaSonora[] {
+  const out: ColonnaSonora[] = [];
+  for (const film of films) {
+    const slug = slugFromHref(film.href);
+    if (!slug) continue;
+    const meta = filmMetadata[slug];
+    if (!meta) continue;
+
+    // Priorità: link esterno "Colonna sonora" (YouTube) se presente,
+    // altrimenti la sezione con i player self-hosted nella scheda del film.
+    const externalLink = meta.linkEsterni?.find((l) => l.label === 'Colonna sonora' && l.url);
+    if (externalLink?.url) {
+      out.push({ year: film.year, title: film.title, href: externalLink.url, external: true });
+    } else if (meta.colonnaSonora && meta.colonnaSonora.length > 0) {
+      out.push({ year: film.year, title: film.title, href: `/filmografia/${slug}/#colonna-sonora`, external: false });
+    }
+  }
+  return out;
+}
 
 const colonneSonore = [
-  { year: 2008, title: "Quo vadis baby?", href: "http://www.last.fm/music/Guido+Chiesa/QUO+VADIS+BABY%3F+-+MUSICHE+DI+TEHO+TEARDO+%282008%29" },
-  { year: 2007, title: "Le pere di Adamo", href: "http://www.last.fm/music/Guido+Chiesa/LE+PERE+DI+ADAMO+-+MUSICA+DI+TEHO+TEARDO+%282007%29" },
-  { year: 2006, title: "Il cuore del soldatino", href: "http://www.last.fm/music/Guido+Chiesa/IL+CUORE+DEL+SOLDATINO+-+MUSICHE+DI+TEHO+TEARDO+%282006%29" },
-  { year: 2000, title: "Provini per un massacro", href: "http://www.last.fm/music/Guido+Chiesa/PROVINI+PER+UN+MASSACRO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%282000%29" },
-  { year: 2000, title: "Il partigiano Johnny", href: "http://www.last.fm/music/Guido+Chiesa/IL+PARTIGIANO+JOHNNY+-+MUSICHE+DI+ALEXANDER+BALANESCU+%282000%29" },
-  { year: 1999, title: "Non mi basta mai", href: "http://www.last.fm/music/Guido+Chiesa/NON+MI+BASTA+MAI+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281999%29" },
-  { year: 1994, title: "Babylon (La paura è la miglior amica dell'uomo)", href: "http://www.last.fm/music/Guido+Chiesa/BABYLON+-+MUSICA+DI+GIUSEPPE+NAPOLI+%281994%29" },
-  { year: 1991, title: "Il caso Martello", href: "http://www.last.fm/music/Guido+Chiesa/IL+CASO+MARTELLO+-+MUSICHE+DI+GIUSEPPE+NAPOLI+%281992%29" },
-];
+  ...colonneSonoreFromFilms(lungometraggi),
+  ...colonneSonoreFromFilms(cortometraggi),
+  ...colonneSonoreFromFilms(serial),
+  ...colonneSonoreFromFilms(documentari),
+  ...colonneSonoreFromFilms(videoclip),
+].sort((a, b) => b.year - a.year);
 ---
 
 <MainLayout title="Musica | Guido Chiesa" description="Musica e colonne sonore legate ai progetti di Guido Chiesa.">
@@ -31,9 +59,9 @@ const colonneSonore = [
           <li class="flex items-baseline gap-4 py-4">
             <span class="w-12 shrink-0 text-sm font-semibold tabular-nums text-zinc-400">{item.year}</span>
             <a
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={item.external ? item.href : base + item.href.slice(1)}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
               class="text-base font-medium text-zinc-800 transition hover:text-emerald-700"
             >
               {item.title}
