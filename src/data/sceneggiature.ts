@@ -214,7 +214,7 @@ export const sceneggiature: ScriptItem[] = [
   },
   {
     year: 2025,
-    title: "Per amore di una donna",
+    title: "Per amore di una donna/For the Love of a Woman",
     href: "/materiali/amore-di-una-donna-sceneggiatura.pdf",
     pdf: true,
     content: `<p><a href="/materiali/amore-di-una-donna-sceneggiatura.pdf">↓ Scarica PDF</a></p>`,
