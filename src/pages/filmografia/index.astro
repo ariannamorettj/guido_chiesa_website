@@ -48,7 +48,7 @@ const base = import.meta.env.BASE_URL;
                 const meta = slug ? (filmMetadata[slug] ?? {}) : {};
                 const hasPresentazione = !!(meta.presentazione || meta.presentazioneEn);
                 const hasLangToggle = !!(meta.presentazioneEn);
-                const useDropdown = label !== "Documentari";
+                const useDropdown = !["Documentari", "Serial", "Cortometraggi"].includes(label);
 
                 if (hasPresentazione && slug && useDropdown) {
                   return (

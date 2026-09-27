@@ -86,6 +86,7 @@ export type FilmMetadata = {
   fotoGalleria?: boolean;                     // true = esiste /foto/<slug>/
   materialiExtra?: { label: string; url: string }[];
   colonnaSonora?: { title: string; src: string }[];  // tracce self-hosted in public/audio/<slug>/
+  nascondiSchedaTecnica?: boolean;  // non mostrare il box "Scheda tecnica" in pagina, pur mantenendo i dati (es. musiche, usati anche in /musica/)
 };
 
 export const filmMetadata: Record<string, FilmMetadata> = {
@@ -682,6 +683,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       musiche: 'Teho Teardo',
       genere: 'Cortometraggio',
     },
+    nascondiSchedaTecnica: true,
     linkEsterni: [
       { label: 'Link esterno', url: 'https://vivofilm.it/production/il-cuore-del-soldatino/', type: 'site' },
     ],
@@ -712,6 +714,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       musiche: 'Giuseppe Napoli',
       genere: 'Cortometraggio',
     },
+    nascondiSchedaTecnica: true,
     video: [
       { label: 'Film completo', url: 'https://youtu.be/0Nu9I14YWm8' },
     ],
@@ -778,8 +781,6 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { title: 'Noir 1', src: '/audio/quo-vadis-baby/noir-1.mp3' },
     ],
     rassegnaStampaAnno: 2008,
-    fotoGalleria: true,
-    fotoGallery: '/foto/quo-vadis-baby/',
     linkEsterni: [
       { label: 'Link esterno', url: 'https://it.wikipedia.org/wiki/Quo_vadis,_baby?_(miniserie_televisiva)', type: 'site' },
     ],
@@ -812,6 +813,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       durata: '52 minuti',
       genere: 'Documentario',
     },
+    nascondiSchedaTecnica: true,
     linkEsterni: [
       { label: 'Link esterno', url: 'http://www.vivofilm.it/?p=161', type: 'site' },
     ],
@@ -910,6 +912,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       musiche: 'Giuseppe Napoli',
       genere: 'Documentario',
     },
+    nascondiSchedaTecnica: true,
     video: [
       { label: 'Film completo', url: 'https://youtu.be/mzRj7cvgEaA' },
     ],

@@ -104,7 +104,7 @@ const schedaRows = meta.scheda
     }).filter(([, v]) => v !== undefined && v !== '')
   : [];
 // "Genere" da solo non conta come scheda tecnica: è già mostrato nel badge categoria in alto
-const hasSchedaTecnica = schedaRows.some(([label]) => label !== 'Genere');
+const hasSchedaTecnica = !meta.nascondiSchedaTecnica && schedaRows.some(([label]) => label !== 'Genere');
 
 const schedaLabelsEn: Record<string, string> = {
   'Regia':          'Direction',
@@ -217,8 +217,8 @@ const hasLinkFascia = videoAll.length > 0
       </h1>
     </div>
 
-    <!-- 2b. Presentazione (documentari: niente dropdown in lista, il testo vive qui) -->
-    {film.categoria === 'Documentario' && meta.presentazione && (
+    <!-- 2b. Presentazione (categorie senza dropdown in lista: il testo vive qui) -->
+    {['Documentario', 'Serial', 'Cortometraggio'].includes(film.categoria) && meta.presentazione && (
       <div class="mb-10 max-w-3xl">
         <p class="text-base leading-7 text-zinc-600">{meta.presentazione}</p>
         {meta.noteDiRegia && (
