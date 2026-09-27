@@ -6,7 +6,7 @@ import { filmMetadata } from '../../data/filmMetadata';
 
 const base = import.meta.env.BASE_URL;
 
-type ColonnaSonora = { year: number; title: string; href: string };
+type ColonnaSonora = { year: number; title: string; href: string; composer?: string };
 
 function slugFromHref(href: string | null): string | null {
   return href?.match(/^\/filmografia\/([^/]+)\/$/)?.[1] ?? null;
@@ -27,7 +27,12 @@ function colonneSonoreFromFilms(films: FilmItem[]): ColonnaSonora[] {
     const hasExternal = meta.linkEsterni?.some((l) => l.label === 'Colonna sonora' && l.url);
     const hasSelfHosted = meta.colonnaSonora && meta.colonnaSonora.length > 0;
     if (hasExternal || hasSelfHosted) {
-      out.push({ year: film.year, title: film.title, href: `/filmografia/${slug}/#colonna-sonora` });
+      out.push({
+        year: film.year,
+        title: film.title,
+        href: `/filmografia/${slug}/#colonna-sonora`,
+        composer: meta.scheda?.musiche,
+      });
     }
   }
   return out;
@@ -59,12 +64,17 @@ const colonneSonore = [
         {colonneSonore.map((item) => (
           <li class="flex items-baseline gap-4 py-4">
             <span class="w-12 shrink-0 text-sm font-semibold tabular-nums text-zinc-400">{item.year}</span>
-            <a
-              href={base + item.href.slice(1)}
-              class="text-base font-medium text-zinc-800 transition hover:text-emerald-700"
-            >
-              {item.title}
-            </a>
+            <div>
+              <a
+                href={base + item.href.slice(1)}
+                class="text-base font-medium text-zinc-800 transition hover:text-emerald-700"
+              >
+                {item.title}
+              </a>
+              {item.composer && (
+                <span class="block text-sm text-zinc-400">musiche di {item.composer}</span>
+              )}
+            </div>
           </li>
         ))}
       </ul>

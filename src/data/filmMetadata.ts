@@ -130,7 +130,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       scenografia: 'Roberto De Angelis',
       costumi: 'Cristiana Mancini',
       montaggio: 'Barbara Magrelli',
-      musiche: 'Stefano Della Casa',
+      musiche: 'Francesco Cerasi',
       durata: '103 minuti',
       distribuzione: '01 Distribution',
       genere: 'Lungometraggio',
@@ -329,6 +329,10 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     materialiExtra: [
       { label: 'Sceneggiatura', url: '/materiali/ti-presento-sofia-sceneggiatura.pdf' },
     ],
+    scheda: {
+      musiche: 'Francesco Cerasi',
+      genere: 'Lungometraggio',
+    },
   },
 
   'classe-z': {
@@ -423,6 +427,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       sceneggiatura: 'Nicoletta Micheli, Filippo Kalomenidis, Guido Chiesa',
       produzione: 'Colorado Film, Magda, Rai Cinema',
       interpreti: 'Nadia Khlifi (Maria), Rabeb Srairi (Maria adulta), Mustapha Benstiti (Giuseppe), Ahmed Hafiene (Mardocheo), Mohamed Idoudi (Gesù), Fadila Belkebla (Elisabetta), Djemel Barek (Zaccaria), Carlo Cecchi (Erode), Giorgio Colangeli, Fabrizio Gifuni, Denis Lavant, Robinson Stevenin, Jerzy Stuhr (I Sapienti), Aymen Mabrouk (Traduttore), Mohamed Grayaa (Hillel)',
+      musiche: 'Nicola Tescari',
       durata: '102 minuti',
       genere: 'Lungometraggio',
     },
