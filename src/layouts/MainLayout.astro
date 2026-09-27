@@ -273,4 +273,110 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
     backBtn.classList.add('opacity-100');
     backBtn.addEventListener('click', () => history.back());
   }
+
+  // ── Anteprima file (PDF/immagini) al posto del download diretto ──
+  // Intercetta i link locali verso pdf/doc/jpg/png e apre una card con
+  // anteprima incorporata + bottone di download, invece di navigare via.
+  const FILE_EXT = /\.(pdf|docx?|jpe?g|png)(?:[?#]|$)/i;
+  const PDF_EXT = /\.pdf(?:[?#]|$)/i;
+  const IMG_EXT = /\.(jpe?g|png)(?:[?#]|$)/i;
+
+  function cleanFileTitle(raw: string): string {
+    return raw.replace(/[↓↗↑→▶]/g, '').replace(/\s+/g, ' ').trim() || 'Anteprima file';
+  }
+
+  function closeFileModal(overlay: HTMLElement) {
+    overlay.classList.remove('is-visible');
+    document.body.classList.remove('file-modal-open');
+    window.removeEventListener('keydown', onFileModalKeydown);
+    overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+  }
+
+  let activeFileModal: HTMLElement | null = null;
+  function onFileModalKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape' && activeFileModal) closeFileModal(activeFileModal);
+  }
+
+  function openFileModal(url: string, rawTitle: string) {
+    const title = cleanFileTitle(rawTitle);
+    const overlay = document.createElement('div');
+    overlay.className = 'file-modal-overlay';
+
+    const card = document.createElement('div');
+    card.className = 'file-modal-card';
+
+    const header = document.createElement('div');
+    header.className = 'file-modal-header';
+    const titleEl = document.createElement('div');
+    titleEl.className = 'file-modal-title';
+    titleEl.textContent = title;
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'file-modal-close';
+    closeBtn.setAttribute('aria-label', 'Chiudi anteprima');
+    closeBtn.textContent = '✕';
+    header.append(titleEl, closeBtn);
+
+    const body = document.createElement('div');
+    body.className = 'file-modal-body';
+    if (PDF_EXT.test(url)) {
+      const iframe = document.createElement('iframe');
+      iframe.src = url;
+      iframe.title = title;
+      body.appendChild(iframe);
+    } else if (IMG_EXT.test(url)) {
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = title;
+      body.appendChild(img);
+    } else {
+      const note = document.createElement('div');
+      note.className = 'file-modal-noPreview';
+      note.textContent = 'Anteprima non disponibile per questo formato: scarica il file per aprirlo.';
+      body.appendChild(note);
+    }
+
+    const footer = document.createElement('div');
+    footer.className = 'file-modal-footer';
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.setAttribute('download', '');
+    downloadLink.className = 'file-modal-download';
+    downloadLink.textContent = '↓ Scarica';
+    footer.appendChild(downloadLink);
+
+    card.append(header, body, footer);
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+    document.body.classList.add('file-modal-open');
+    activeFileModal = overlay;
+
+    requestAnimationFrame(() => overlay.classList.add('is-visible'));
+
+    const doClose = () => { activeFileModal = null; closeFileModal(overlay); };
+    closeBtn.addEventListener('click', doClose);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) doClose(); });
+    window.addEventListener('keydown', onFileModalKeydown);
+  }
+
+  document.addEventListener('click', (e) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.defaultPrevented) return;
+    const link = (e.target as HTMLElement).closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || !FILE_EXT.test(href)) return;
+    let resolved: URL;
+    try {
+      resolved = new URL(link.href);
+    } catch {
+      return;
+    }
+    if (resolved.origin !== location.origin) return;
+    e.preventDefault();
+    // innerText (non textContent) rispetta le interruzioni di riga tra i figli
+    // block-level: per i link con titolo + fonte + badge su righe separate
+    // (es. rassegna stampa) prende solo la prima riga, cioè il titolo.
+    const firstLine = link.innerText.split('\n').map((s) => s.trim()).find(Boolean) || '';
+    openFileModal(resolved.href, firstLine);
+  });
 </script>
