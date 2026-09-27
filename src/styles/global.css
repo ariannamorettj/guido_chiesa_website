@@ -24,21 +24,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Glacial Indifference';
-  src: url('/fonts/GlacialIndifference-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Glacial Indifference';
-  src: url('/fonts/GlacialIndifference-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ── Tailwind v4 theme ── */
 @theme {
   /* --font-body:    'Agrandir',             system-ui, sans-serif; */
@@ -52,7 +37,7 @@
   /* --font-display: 'Rammetto One',         Georgia, serif; */
   /* --font-display: 'Sarina',               Georgia, serif; */
   --font-display: 'Trade Winds',          Georgia, serif;
-  --font-label:   'Glacial Indifference', system-ui, sans-serif;
+  --font-label:   'Jost', system-ui, sans-serif;
 }
 
 /* ── Global font assignments ── */
