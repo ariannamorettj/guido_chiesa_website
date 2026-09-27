@@ -484,6 +484,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'Avevo in mente un film su Radio Alice da quando, più di 20 anni prima, Franco "Bifo" Berardi mi aveva consegnato una scatola di audio-cassette con registrazioni dell\'emittente degli anni \'76-\'78 che gli erano state sequestrate (e riconsegnate) dai giudici durante una delle tante inchieste che lo avevano riguardato. Per me, allora 17enne, il \'77 bolognese era stata la morte di Francesco Lo Russo, l\'irruzione della polizia nella sede della radio e i carri armati in piazza. Ma anche gli indiani metropolitani e la (ri)scoperta della creatività (artistica e non) contrapposta alla seriosità della militanza. Poi scoprii che c\'era dentro tanto altro: fine delle ideologie e crisi della politica, linguaggi del desiderio e scenari prossimi futuri della comunicazione. Quando lo girammo, c\'era stata Genova 2001 e un velleitario sussulto di protagonismo dal basso. Scritto con Wu Ming, per molti aspetti un film ancora contemporaneo.',
     linkEsterni: [
       { label: 'Pressbook', url: '/pressbooks/lavorare-con-lentezza-pressbook.pdf', type: 'pressbook' },
+      { label: 'Tutte le storie parlano di oggi, e di domani', url: '/testi/tutte-le-storie-parlano-di-oggi-e-di-domani/', type: 'site' },
     ],
     video: [
       { label: 'Film integrale', url: 'https://archive.org/details/lavorare_con_lentezza_radio_alice' },
