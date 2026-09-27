@@ -419,6 +419,8 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     linkEsterni: [
       { label: 'English pressbook', url: '/media/opera/nicoletta-micheli-filippo-kalomenidis-e-guido-chiesa/i-am-you/pressbook%20inglese.pdf', type: 'pressbook', lang: 'en' },
       { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=OLAK5uy_mPw2mTB0NyWJqQupdKF5KzCUfVa-xUTIs', type: 'site' },
+      { label: 'Genesi del film', url: '/testi/io-so/', type: 'site' },
+      { label: 'Intervista per Zenit', url: '/testi/io-sono-con-te-intervista-per-zenit/', type: 'site' },
     ],
     rassegnaStampaAnno: 2010,
     rassegnaStampaUrl: '/rassegna-stampa/#io-sono-con-te',
@@ -444,6 +446,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'In principio c\'era un\'analogia. Un\'affinità soprattutto visiva, forse poetica: i movimenti sociali assomigliano alle nuvole. Come le nuvole, arrivano, accadono, scompaiono. Poi, è entrato dentro di tutto: la meteorologia e la questione ambientale, il precariato e la scienza, l\'Illuminismo e la matematica, la politica e il mistero. Alla fine ne è venuto fuori un viaggio dentro i limiti della ragione e la necessità del mutamento. L\'ambizione era di realizzare un film leggero su argomenti pesanti. Non so se ci siamo riusciti, ma la fatica ne è valsa la pena. Perché nulla dopo mi è sembrato più come prima. Un lavoro ripagato con la censura del mercato ("bello ma difficile", il ritornello) e la disattenzione degli addetti ai lavori.',
     linkEsterni: [
       { label: 'Link esterno', url: 'https://www.cinemaitaliano.info/leperediadamo', type: 'site' },
+      { label: 'Presentazione', url: '/testi/le-pere-di-adamo-presentazione/', type: 'site' },
     ],
     video: [
       { label: 'Film (italiano)', url: 'https://youtu.be/vi7MYiNAhHM', lang: 'it' },
@@ -513,6 +516,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     linkEsterni: [
       { label: 'Link esterno', url: 'https://www.cinemaitaliano.info/ilpartigianojohnny', type: 'site' },
       { label: 'Colonna sonora', url: 'https://www.youtube.com/playlist?list=OLAK5uy_nhw-buSYRAXZKtjz2csCLjaYIK2iF9qcY', type: 'site' },
+      { label: 'Lo sguardo epico del Partigiano Johnny', url: '/testi/lo-sguardo-epico-del-partigiano-johnny-da-fenoglio/', type: 'site' },
     ],
     video: [
       { label: 'Backstage parte 1', url: 'https://youtu.be/ACbmHGbgd5Y' },
@@ -572,6 +576,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     presentazione: 'All\'inizio, fu un disco. In occasione del Cinquantesimo anniversario della Liberazione, su iniziativa del Consorzio Produttori Indipendenti, 18 tra i migliori gruppi di rock italiano incidono un CD chiamato Materiale Resistente. Per l\'uscita del disco - che contiene i rifacimenti di celebri canzoni della Resistenza, nonché brani scritti ad hoc - viene organizzato un concerto il 25 aprile 1995 a Correggio, provincia di Reggio nell\'Emilia. Davide Ferrario, saputa la notizia, telefona a Guido Chiesa e gli propone di riunire tecnici, amici e complici per documentare un evento che gli sembra terribilmente suggestivo e insieme necessario. Chiesa accetta e il 25 aprile, in mezzo al prato con gli oltre seimila di Correggio, ci sono anche loro, tre troupe e vari fotografi.',
     linkEsterni: [
       { label: 'Link esterno', url: 'https://www.torinocittadelcinema.it/schedafilm.php?film_id=413&stile=small', type: 'site' },
+      { label: 'Prefazione al libro', url: '/testi/vipera-basco-forse-duccio/', type: 'site' },
     ],
     video: [
       { label: 'Film', url: 'https://www.youtube.com/watch?v=e2R-8PdMqwM' },
@@ -737,6 +742,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       { label: 'Pressbook', url: '/pressbooks/black-harvest-pressbook.pdf', type: 'pressbook' },
       { label: 'Sceneggiatura: The Hole', url: '/sceneggiature/#hole', type: 'site' },
       { label: 'Sceneggiatura: Tomesha', url: '/sceneggiature/#tomesha', type: 'site' },
+      { label: 'Genesi del film', url: '/testi/genesi-di-black-harvest/', type: 'site' },
     ],
   },
 

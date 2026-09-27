@@ -117,7 +117,7 @@ export const sceneggiature: ScriptItem[] = [
     year: 1999,
     title: "Il partigiano Johnny",
     href: "/sceneggiature/il-partigiano-johnny/",
-    content: `<p>Sulla genesi della sceneggiatura e il rapporto romanzo/film si veda anche <a href="/media/opera/guido-chiesa/sguardo-epico-partigiano-johnny/note-a-pj.pdf">questo testo</a> pubblicato sulla rivista <strong>Esperienze Letterarie</strong>.</p>
+    content: `<p>Sulla genesi della sceneggiatura e il rapporto romanzo/film si veda anche <a href="/testi/lo-sguardo-epico-del-partigiano-johnny-da-fenoglio/">questo testo</a> pubblicato sulla rivista <strong>Esperienze Letterarie</strong>.</p>
 <p><a href="/media/opera/guido-chiesa-e-antonio-leotti/il-partigiano-johnny/Il%20partigiano%20Johnny_.pdf">↓ Scarica PDF</a></p>`,
   },
   {
