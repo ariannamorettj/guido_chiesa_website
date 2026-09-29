@@ -779,7 +779,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
       montaggio: 'Alberto Masi, Stefano Cravero, Filippo Maria Montemurro',
       musiche: 'Teho Teardo',
       durata: '6 episodi × 90 minuti ciascuno',
-      genere: 'Serial',
+      genere: 'Serie TV',
     },
     trailer: 'https://www.youtube-nocookie.com/embed/HvTIIFGzk_Q',
     colonnaSonora: [
@@ -789,7 +789,7 @@ export const filmMetadata: Record<string, FilmMetadata> = {
     ],
     rassegnaStampaAnno: 2008,
     linkEsterni: [
-      { label: 'Link esterno', url: 'https://it.wikipedia.org/wiki/Quo_vadis,_baby?_(miniserie_televisiva)', type: 'site' },
+      { label: 'Link esterno', url: 'https://it.wikipedia.org/wiki/Quo_vadis,_baby%3F_(miniserie_televisiva)', type: 'site' },
     ],
   },
 

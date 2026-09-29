@@ -16,7 +16,7 @@ export async function getStaticPaths() {
   const all: FilmEntry[] = [
     ...lungometraggi.map(f => ({ ...f, categoria: 'Lungometraggio' as const })),
     ...cortometraggi.map(f => ({ ...f, categoria: 'Cortometraggio' as const })),
-    ...serial.map(f => ({ ...f, categoria: 'Serial' as const })),
+    ...serial.map(f => ({ ...f, categoria: 'Serie TV' as const })),
     ...documentari.map(f => ({ ...f, categoria: 'Documentario' as const })),
     ...videoclip.map(f => ({ ...f, categoria: 'Videoclip' as const })),
   ];
@@ -218,7 +218,7 @@ const hasLinkFascia = videoAll.length > 0
     </div>
 
     <!-- 2b. Presentazione (categorie senza dropdown in lista: il testo vive qui) -->
-    {['Documentario', 'Serial', 'Cortometraggio'].includes(film.categoria) && meta.presentazione && (
+    {['Documentario', 'Serie TV', 'Cortometraggio'].includes(film.categoria) && meta.presentazione && (
       <div class="mb-10 max-w-3xl">
         <p class="text-base leading-7 text-zinc-600">{meta.presentazione}</p>
         {meta.noteDiRegia && (

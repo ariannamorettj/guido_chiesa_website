@@ -13,7 +13,7 @@ import { filmMetadata } from '../../data/filmMetadata';
 const sections = [
   { label: "Lungometraggi", items: lungometraggi },
   { label: "Documentari", items: documentari },
-  { label: "Serial", items: serial },
+  { label: "Serie TV", items: serial },
   { label: "Cortometraggi", items: cortometraggi },
   { label: "Videoclip", items: videoclip },
 ];
@@ -22,7 +22,7 @@ const total = sections.reduce((n, s) => n + s.items.length, 0);
 const base = import.meta.env.BASE_URL;
 ---
 
-<MainLayout title="Filmografia | Guido Chiesa" description="Filmografia completa di Guido Chiesa: lungometraggi, documentari, cortometraggi, serial e videoclip.">
+<MainLayout title="Filmografia | Guido Chiesa" description="Filmografia completa di Guido Chiesa: lungometraggi, documentari, cortometraggi, serie TV e videoclip.">
   <section class="mx-auto max-w-7xl px-6 py-16 lg:py-24">
 
     <div class="max-w-3xl">
@@ -48,7 +48,7 @@ const base = import.meta.env.BASE_URL;
                 const meta = slug ? (filmMetadata[slug] ?? {}) : {};
                 const hasPresentazione = !!(meta.presentazione || meta.presentazioneEn);
                 const hasLangToggle = !!(meta.presentazioneEn);
-                const useDropdown = !["Documentari", "Serial", "Cortometraggi"].includes(label);
+                const useDropdown = !["Documentari", "Serie TV", "Cortometraggi"].includes(label);
 
                 if (hasPresentazione && slug && useDropdown) {
                   return (
