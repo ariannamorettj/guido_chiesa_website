@@ -184,6 +184,49 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
 </style>
 
 <script>
+  // Import dinamico: pdf.js (e il suo worker) pesano ~130KB gzip e vanno
+  // scaricati solo sulle pagine dove viene effettivamente aperto un PDF,
+  // non su tutto il sito (questo script è condiviso da ogni pagina).
+  let pdfjsLibPromise: ReturnType<typeof loadPdfjsLib> | null = null;
+  async function loadPdfjsLib() {
+    const [lib, worker] = await Promise.all([
+      import('pdfjs-dist'),
+      import('pdfjs-dist/build/pdf.worker.min.mjs?url'),
+    ]);
+    lib.GlobalWorkerOptions.workerSrc = worker.default;
+    return lib;
+  }
+
+  // Disegna il PDF pagina per pagina come <canvas> dentro un contenitore
+  // normale, invece di affidarsi al viewer nativo in un <iframe>: su
+  // mobile (soprattutto iOS Safari) quel viewer, annidato in una finestra
+  // sovrapposta, non scorre in modo affidabile — un <canvas> dentro un div
+  // scorrevole invece si comporta esattamente come l'immagine di rassegna
+  // stampa, su qualsiasi dispositivo.
+  async function renderPdfPages(container: HTMLElement, url: string) {
+    pdfjsLibPromise ??= loadPdfjsLib();
+    const pdfjsLib = await pdfjsLibPromise;
+    const pdf = await pdfjsLib.getDocument({ url }).promise;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+      const page = await pdf.getPage(pageNum);
+      const cssWidth = container.clientWidth || 672;
+      const unscaled = page.getViewport({ scale: 1 });
+      const scale = (cssWidth * dpr) / unscaled.width;
+      const viewport = page.getViewport({ scale });
+      const canvas = document.createElement('canvas');
+      canvas.className = 'file-modal-pdfPage';
+      canvas.width = Math.ceil(viewport.width);
+      canvas.height = Math.ceil(viewport.height);
+      canvas.style.width = `${cssWidth}px`;
+      canvas.style.height = `${viewport.height / dpr}px`;
+      container.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      if (!ctx) continue;
+      await page.render({ canvasContext: ctx, viewport }).promise;
+    }
+  }
+
   // ── Holographic engine — all pages ──
   // Continuously rotates through full rainbow spectrum (~24s per full cycle)
   let hue = 0;
@@ -320,10 +363,24 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
     const body = document.createElement('div');
     body.className = 'file-modal-body';
     if (PDF_EXT.test(url)) {
-      const iframe = document.createElement('iframe');
-      iframe.src = url;
-      iframe.title = title;
-      body.appendChild(iframe);
+      const pdfContainer = document.createElement('div');
+      pdfContainer.className = 'file-modal-pdf';
+      const loading = document.createElement('div');
+      loading.className = 'file-modal-noPreview';
+      loading.textContent = 'Caricamento anteprima…';
+      pdfContainer.appendChild(loading);
+      body.appendChild(pdfContainer);
+      renderPdfPages(pdfContainer, url)
+        .then(() => { loading.remove(); onResize(); })
+        .catch((err) => {
+          console.error('[pdf-preview]', err);
+          pdfContainer.replaceChildren();
+          const note = document.createElement('div');
+          note.className = 'file-modal-noPreview';
+          note.textContent = 'Anteprima non disponibile per questo file: scarica il file per aprirlo.';
+          pdfContainer.appendChild(note);
+          onResize();
+        });
     } else if (IMG_EXT.test(url)) {
       const img = document.createElement('img');
       img.src = url;
@@ -345,15 +402,55 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
     downloadLink.textContent = '↓ Scarica';
     footer.appendChild(downloadLink);
 
-    card.append(header, body, footer);
+    // Indicatore di scroll colorato, sovrapposto via JS: elemento a parte
+    // (non tocca .file-modal-body, che resta esattamente com'era). Serve
+    // solo perché su iOS Safari la barra di scroll nativa non è
+    // personalizzabile via CSS e resta sempre nera.
+    const scrollbarTrack = document.createElement('div');
+    scrollbarTrack.className = 'file-modal-scrollbar-track';
+    const scrollbarThumb = document.createElement('div');
+    scrollbarThumb.className = 'file-modal-scrollbar-thumb';
+    scrollbarTrack.appendChild(scrollbarThumb);
+
+    function positionTrack() {
+      const cardRect = card.getBoundingClientRect();
+      const bodyRect = body.getBoundingClientRect();
+      scrollbarTrack.style.top = `${bodyRect.top - cardRect.top + 8}px`;
+      scrollbarTrack.style.height = `${bodyRect.height - 16}px`;
+    }
+    function updateThumb() {
+      const { scrollTop, scrollHeight, clientHeight } = body;
+      const canScroll = scrollHeight > clientHeight + 1;
+      scrollbarTrack.classList.toggle('is-visible', canScroll);
+      if (!canScroll) return;
+      const trackHeight = scrollbarTrack.clientHeight;
+      const thumbHeight = Math.max(24, (clientHeight / scrollHeight) * trackHeight);
+      const maxTop = trackHeight - thumbHeight;
+      const top = (scrollTop / (scrollHeight - clientHeight)) * maxTop;
+      scrollbarThumb.style.height = `${thumbHeight}px`;
+      scrollbarThumb.style.transform = `translateY(${top}px)`;
+    }
+    function onResize() { positionTrack(); updateThumb(); }
+    body.addEventListener('scroll', updateThumb, { passive: true });
+    body.querySelectorAll('img').forEach((el) => el.addEventListener('load', onResize));
+    window.addEventListener('resize', onResize);
+
+    card.append(header, body, footer, scrollbarTrack);
     overlay.appendChild(card);
     document.body.appendChild(overlay);
     document.body.classList.add('file-modal-open');
     activeFileModal = overlay;
 
-    requestAnimationFrame(() => overlay.classList.add('is-visible'));
+    requestAnimationFrame(() => {
+      overlay.classList.add('is-visible');
+      onResize();
+    });
 
-    const doClose = () => { activeFileModal = null; closeFileModal(overlay); };
+    const doClose = () => {
+      activeFileModal = null;
+      window.removeEventListener('resize', onResize);
+      closeFileModal(overlay);
+    };
     closeBtn.addEventListener('click', doClose);
     overlay.addEventListener('click', (e) => { if (e.target === overlay) doClose(); });
     window.addEventListener('keydown', onFileModalKeydown);

@@ -336,22 +336,77 @@ body.file-modal-open {
   flex: 1;
   min-height: 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   background: #fafafa;
   display: flex;
-  align-items: center;
+  /* "flex-start" (non "center"): con align-items:center, nei browser
+     webkit/blink la parte di contenuto che eccede sopra il centro resta
+     fuori dall'intervallo scrollabile ed è irraggiungibile. */
+  align-items: flex-start;
   justify-content: center;
+  /* La barra nativa viene nascosta (solo visivamente: lo scroll funziona
+     comunque) a favore di quella colorata disegnata via JS in
+     MainLayout.astro — su iOS Safari è l'unico modo per colorarla. */
+  scrollbar-width: none;
+}
+.file-modal-body::-webkit-scrollbar {
+  display: none;
 }
 
+/* Scrollbar colorata (toni pastello arcobaleno già usati per lo spinner
+   di caricamento immagini) invece di grigio/nero semplice, che su sfondi
+   scuri rischierebbe di diventare invisibile. È un elemento a parte,
+   posizionato e dimensionato via JS: non fa parte del flusso/layout di
+   .file-modal-body, quindi non può comprometterne il rendering. */
+.file-modal-scrollbar-track {
+  position: absolute;
+  right: 0.3rem;
+  width: 6px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.file-modal-scrollbar-track.is-visible {
+  opacity: 1;
+}
+
+.file-modal-scrollbar-thumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #fca5a5 0%, #fde68a 25%, #86efac 50%, #93c5fd 75%, #d8b4fe 100%);
+}
+
+/* Niente object-fit/max-height: l'immagine resta leggibile alla sua
+   dimensione naturale (limitata solo in larghezza) e, se più alta dello
+   spazio visibile, fa scorrere .file-modal-body invece di rimpicciolirsi
+   fino a diventare illeggibile su schermi piccoli. */
 .file-modal-body img {
   max-width: 100%;
-  max-height: 78vh;
-  object-fit: contain;
+  height: auto;
+  display: block;
 }
 
-.file-modal-body iframe {
+/* PDF: pagine disegnate come <canvas> (vedi MainLayout.astro) impilate
+   verticalmente, non un iframe col viewer nativo — su mobile scorrono
+   come una normale immagine, dentro .file-modal-body. */
+.file-modal-pdf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
   width: 100%;
-  height: 78vh;
-  border: 0;
+}
+
+.file-modal-pdfPage {
+  max-width: 100%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
 .file-modal-noPreview {
@@ -387,10 +442,3 @@ body.file-modal-open {
   background: #065f46;
 }
 
-@media (max-width: 640px) {
-  .file-modal-body img,
-  .file-modal-body iframe {
-    max-height: 65vh;
-    height: 65vh;
-  }
-}
