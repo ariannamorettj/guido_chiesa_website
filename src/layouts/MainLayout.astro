@@ -460,6 +460,10 @@ const { title, description = "Guido Chiesa: regista e sceneggiatore" } = Astro.p
     if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.defaultPrevented) return;
     const link = (e.target as HTMLElement).closest('a');
     if (!link) return;
+    // Il bottone "Scarica" dentro la modale è anch'esso un <a> verso lo
+    // stesso file: senza questo controllo il listener lo intercetta e
+    // riapre la modale invece di lasciare scaricare il file.
+    if (link.hasAttribute('download')) return;
     const href = link.getAttribute('href');
     if (!href || !FILE_EXT.test(href)) return;
     let resolved: URL;
